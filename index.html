@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <main class="container" style="max-width: 850px;">
+        <div>
+            <img id="championIcon" src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/Aatrox.png" />
+
+            <img id="item1" src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
+            <img id="item2" src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
+            <img id="item3" src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
+            <img id="item4" src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
+            <img id="item5" src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
+            <img id="item6" src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
+        </div>
+        <button onclick="generate()">ROLL</button>
+        <div class="grid">
+            <div>
+                <label for="switchTop">
+                    <input type="checkbox" id="switchTop" name="switchTop" role="switch">Top</label>
+            </div>
+            <div>
+                <label for="switchJgl">
+                    <input type="checkbox" id="switchJgl" name="switchJgl" role="switch">Jungle</label>
+            </div>
+            <div>
+                <label for="switchMid">
+                    <input type="checkbox" id="switchMid" name="switchMid" role="switch">Mid</label>
+            </div>
+            <div>
+                <label for="switchAdc">
+                    <input type="checkbox" id="switchAdc" name="switchAdc" role="switch">Adc</label>
+            </div>
+            <div>
+                <label for="switchSup">
+                    <input type="checkbox" id="switchSup" name="switchSup" role="switch">Support</label>
+            </div>
+            <div>
+                <label for="switchFill">
+                    <input type="checkbox" id="switchFill" name="switchFill" role="switch">Fill</label>
+            </div>
+        </div>
+
+        <div class="grid" style="margin-top: 20px;">
+            <input type="search" id="search" name="search" placeholder="Search">
+            <div class="grid">
+                <button>Deselect All</button>
+                <button>Select All</button>
+            </div>
+        </div>
+        <div class="container" id="champselect"></div>
+
+    </main>
+
+</body>
+<script src="generator.js"></script>
+
+</html>
