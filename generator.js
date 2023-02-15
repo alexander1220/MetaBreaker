@@ -1,4 +1,6 @@
-//https://developer.riotgames.com/docs/lol#data-dragon 
+//https://developer.riotgames.com/docs/lol#data-dragon
+//runes-community https://raw.communitydragon.org/latest/game/assets/perks/styles/domination/
+//runes https://ddragon.leagueoflegends.com/cdn/13.3.1/data/en_US/runesReforged.json
 generate();
 fillChamps();
 

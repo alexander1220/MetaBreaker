@@ -10,17 +10,45 @@
 </head>
 
 <body>
+    <nav class="container" style="max-width: 1000px;">
+        <ul>
+            <li><strong>MetaBreaker</strong></li>
+        </ul>
+        <ul>
+            <li><a href="#">Rules</a></li>
+            <li><a href="#" role="button">Login</a></li>
+        </ul>
+    </nav>
     <main class="container" style="max-width: 850px;">
-        <div>
-            <img id="championIcon" src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/Aatrox.png" />
-
-            <img id="item1" src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
-            <img id="item2" src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
-            <img id="item3" src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
-            <img id="item4" src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
-            <img id="item5" src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
-            <img id="item6" src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
+        <div class="container">
+            <div class="grid" style="grid-template-columns:auto auto;display:inline-grid">
+                <div class="col">
+                    <img id="championIcon"
+                        src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/Aatrox.png" />
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <img id="item1" src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
+                        <img id="item2" src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
+                        <img id="item3" src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
+                        <img id="item4" src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
+                        <img id="item5" src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
+                        <img id="item6" src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
+                    </div>
+                    <img id="sumSpell1"
+                        src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/SummonerFlash.png" />
+                    <img id="sumSpell2"
+                        src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/SummonerFlash.png" />
+                </div>
+                <div class="col">
+                    <img id="rune1"
+                        src="https://raw.communitydragon.org/latest/game/assets/perks/styles/domination/darkharvest/darkharvest.png" />
+                    <img id="rune2"
+                        src="https://raw.communitydragon.org/latest/game/assets/perks/styles/domination/darkharvest/darkharvest.png" />
+                </div>
+            </div>
         </div>
+
         <button onclick="generate()">ROLL</button>
         <div class="grid">
             <div>
