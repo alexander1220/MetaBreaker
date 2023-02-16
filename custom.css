@@ -1,11 +1,15 @@
 .deselectedChamp {
+    width: 100px;
     -webkit-filter: grayscale(100%);
     /* Safari 6.0 - 9.0 */
     filter: grayscale(100%);
+    border: solid 1px black;
 }
 
 .selectedChamp {
+    width: 100px;
     -webkit-filter: grayscale(0%);
     /* Safari 6.0 - 9.0 */
     filter: grayscale(0%);
+    border: solid 1px rgba(216, 176, 0, 0.438);
 }
