@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css">
+    <link rel="stylesheet" href="pico.min.css">
     <link rel="stylesheet" href="custom.css">
     <title>Document</title>
 </head>
@@ -22,42 +22,47 @@
     </nav>
     <main class="container" style="max-width: 850px;">
         <div class="container">
-            <div class="grid" style="grid-template-columns:auto auto;display:inline-grid">
-                <div class="col">
-                    <img id="championIcon"
-                        src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/Aatrox.png" />
-                    <img id="championIcon"
-                        src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/FlashFrost.png" />
-                </div>
-                <div class="col">
-                    <div class="row">
-                        <img id="item1" src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
-                        <img id="item2" src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
-                        <img id="item3" src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
-                        <img id="item4" src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
-                        <img id="item5" src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
-                        <img id="item6" src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
-                    </div>
-                    <img id="sumSpell1"
-                        src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/SummonerFlash.png" />
-                    <img id="sumSpell2"
-                        src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/SummonerFlash.png" />
-                </div>
-                <div class="col">
-                    <img id="rune1"
-                        src="https://raw.communitydragon.org/latest/game/assets/perks/styles/domination/darkharvest/darkharvest.png" />
-                    <img id="rune2"
-                        src="https://raw.communitydragon.org/latest/game/assets/perks/styles/domination/darkharvest/darkharvest.png" />
-                </div>
-            </div>
-            <div class="col">
-                <img id="starterItem" src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1055.png" />
-                <label for="starterItem">Starter</label>
-            </div>
-            <div class="col">
-                <img id="lane"
-                    src="https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-bottom-blue.png" />
-            </div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td colspan="2" rowspan="2"><img id="championIcon"
+                                src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/Aatrox.png" /></td>
+                        <td><img id="starterItem"
+                                src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1055.png" />
+                        </td>
+                        <td style="text-align: right;"><img id="lane" style="max-width: 60px;"
+                                src="https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-bottom-blue.png" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><img id="item1"
+                                src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
+                            <img id="item2" src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
+                            <img id="item3" src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
+                            <img id="item4" src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
+                            <img id="item5" src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
+                            <img id="item6" src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2"><img id="spell"
+                                src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/FlashFrost.png" /></td>
+                        <td><img id="sumSpell1" style="max-width: 40px;"
+                                src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/SummonerFlash.png" />
+                        </td>
+                        <td colspan="2" rowspan="2" style="text-align: right;"><img id="rune1"
+                                src="https://raw.communitydragon.org/latest/game/assets/perks/styles/domination/darkharvest/darkharvest.png" />
+                            <img id="rune2"
+                                src="https://raw.communitydragon.org/latest/game/assets/perks/styles/domination/darkharvest/darkharvest.png" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img id="sumSpell2" style="max-width: 40px;"
+                                src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/SummonerFlash.png" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         </div>
 

@@ -13,3 +13,9 @@
     filter: grayscale(0%);
     border: solid 1px rgba(216, 176, 0, 0.438);
 }
+
+td{
+    border: 0;
+    padding:0;
+    margin: 0;
+}
