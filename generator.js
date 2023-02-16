@@ -5,11 +5,12 @@
 
 const championsUrl = 'http://ddragon.leagueoflegends.com/cdn/13.3.1/data/en_US/champion.json';
 const itemsUrl = 'http://ddragon.leagueoflegends.com/cdn/13.3.1/data/en_US/item.json';
-
-generate();
-searchChampion();
-
-window.onload = fillChamps();
+let champions;
+fetchChampions().then(() => {
+    generate();
+    searchChampion();
+    fillChamps();
+});
 
 const switches = {
     top: document.getElementById('switchTop'),
@@ -21,19 +22,23 @@ const switches = {
 
 setSwitches();
 
+async function fetchChampions() {
+    await Promise.resolve(
+        fetch(championsUrl)
+            .then(res => res.json())
+            .then(out => {
+                champions = out.data;
+            })
+            .catch(err => { throw err }));
+}
+
 function generate() {
 
-    fetch(championsUrl)
-        .then(res => res.json())
-        .then(out => {
-            let champions = out.data;
-            var keys = Object.keys(champions);
-            var randChamp = champions[keys[keys.length * Math.random() << 0]];
-            console.log(randChamp.name);
-            console.log(randChamp.tags);
-            document.getElementById("championIcon").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/" + randChamp.id + ".png";
-        })
-        .catch(err => { throw err });
+    var keys = Object.keys(champions);
+    var randChamp = champions[keys[keys.length * Math.random() << 0]];
+    console.log(randChamp.name);
+    console.log(randChamp.tags);
+    document.getElementById("championIcon").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/" + randChamp.id + ".png";
 
     fetch(itemsUrl)
         .then(res => res.json())
@@ -60,29 +65,22 @@ function generate() {
 
 function fillChamps() {
     var champGrid = document.getElementById('champselect');
-
-    fetch(championsUrl)
-        .then(res => res.json())
-        .then(out => {
-            let champions = out.data;
-            let keys = Object.keys(champions);
-            keys.forEach(element => {
-                var champ = champions[element];
-                var newChamp = document.createElement('img');
-                newChamp.setAttribute('id', champ.id);
-                newChamp.setAttribute('class', "selectedChamp");
-                newChamp.src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/" + champ.id + ".png";
-                newChamp.addEventListener('click', function (e) {
-                    if (newChamp.getAttribute('class') == 'deselectedChamp')
-                        newChamp.setAttribute('class', 'selectedChamp');
-                    else
-                        newChamp.setAttribute('class', 'deselectedChamp');
-                });
-                champGrid.appendChild(newChamp);
-            });
-            console.log(keys.length);
-        })
-        .catch(err => { throw err });
+    let keys = Object.keys(champions);
+    keys.forEach(element => {
+        var champ = champions[element];
+        var newChamp = document.createElement('img');
+        newChamp.setAttribute('id', champ.id);
+        newChamp.setAttribute('class', "selectedChamp");
+        newChamp.src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/" + champ.id + ".png";
+        newChamp.addEventListener('click', function (e) {
+            if (newChamp.getAttribute('class') == 'deselectedChamp')
+                newChamp.setAttribute('class', 'selectedChamp');
+            else
+                newChamp.setAttribute('class', 'deselectedChamp');
+        });
+        champGrid.appendChild(newChamp);
+    });
+    console.log(keys.length);
 }
 
 function deselectAll() {
@@ -102,50 +100,33 @@ function selectAll() {
 }
 
 function searchChampion() {
-    // Retrieve champion data from API
-    fetch(championsUrl)
-        .then(response => response.json())
-        .then(data => {
-            var champGrip = document.getElementById('champselect');
-            const champions = Object.values(data.data);
-            let keys = Object.keys(data.data);
-            // Search function
-            function searchChampion(query) {
-                //Basic Sort if query is found in any part of the name
-                return champions.filter(champion =>
-                    champion.name.toLowerCase().includes(query.toLowerCase())
-                );
+    const searchChampions = Object.values(champions);
+    // Search function
+    function searchChampion(query) {
+        //Basic Sort if query is found in any part of the name
+        return searchChampions.filter(champion =>
+            champion.name.toLowerCase().includes(query.toLowerCase())
+        );
+    }
 
-                //Sort by first letter of name 
-                /*
-                return champions.filter(champion =>
-                  champion.name.toLowerCase().startsWith(query.toLowerCase())
-                ).sort((a, b) =>
-                  a.name.charAt(0).toLowerCase() === query.toLowerCase().charAt(0) ?
-                  a.name.localeCompare(b.name) :
-                  a.name.charAt(0).toLowerCase().localeCompare(query.toLowerCase().charAt(0))
-                ); */
+    // Event listener for search input changes
+    const searchInput = document.querySelector('#search-input');
+    searchInput.addEventListener('input', () => {
+        const query = searchInput.value;
+        const results = searchChampion(query);
+        const searchResultsDiv = document.querySelector('#champselect');
+        var children = searchResultsDiv.children;
+        for (var i = 0; i < children.length; i++) {
+            children[i].setAttribute('style', "display:none");
+        }
+        if (results.length > 0) {
+            for (var i = 0; i < results.length; i++) {
+                children[results[i].id].setAttribute('style', "display:inline");
             }
-
-            // Event listener for search input changes
-            const searchInput = document.querySelector('#search-input');
-            searchInput.addEventListener('input', () => {
-                const query = searchInput.value;
-                const results = searchChampion(query);
-                const searchResultsDiv = document.querySelector('#champselect');
-                var children = searchResultsDiv.children;
-                for (var i = 0; i < children.length; i++) {
-                    children[i].setAttribute('style', "display:none");
-                }
-                if (results.length > 0) {
-                    for (var i = 0; i < results.length; i++) {
-                        children[results[i].id].setAttribute('style', "display:inline");
-                    }
-                } else {
-                    //document.getElementById('nochampsfound').setAttribute('style', "display:inline");
-                }
-            });
-        });
+        } else {
+            //document.getElementById('nochampsfound').setAttribute('style', "display:inline");
+        }
+    });
 }
 
 function setSwitches() {
