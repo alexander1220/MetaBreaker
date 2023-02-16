@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css">
+    <link rel="stylesheet" href="custom.css">
     <title>Document</title>
 </head>
 
@@ -15,7 +16,7 @@
             <li><strong>MetaBreaker</strong></li>
         </ul>
         <ul>
-            <li><a href="#">Rules</a></li>
+            <li><a data-target="modal-example" onClick="toggleModal(event)">Rules</a></li>
             <li><a href="#" role="button">Login</a></li>
         </ul>
     </nav>
@@ -79,14 +80,25 @@
         <div class="grid" style="margin-top: 20px;">
             <input type="search" id="search-input" name="search" placeholder="Search">
             <div class="grid">
-                <button>Deselect All</button>
-                <button>Select All</button>
+                <button onclick="deselectAll()">Deselect All</button>
+                <button onclick="selectAll()">Select All</button>
             </div>
         </div>
         <div class="container" id="champselect"></div>
     </main>
 
+    <dialog id="modal-example" open="false">
+        <article><a href="#close" aria-label="Close" class="close" data-target="modal-example"
+                onclick="toggleModal(event)"></a>
+            <h3>Rules</h3>
+            <p>Break the meta.</p>
+            <p>If you don't build EXACTLY what you rolled... then whats the points of using it 😪</p>
+            <footer><a href="#confirm" role="button" data-target="modal-example" onclick="toggleModal(event)">Okay</a>
+            </footer>
+        </article>
+    </dialog>
 </body>
 <script src="generator.js"></script>
+<script src="https://picocss.com/docs/js/modal.min.js"></script>
 
 </html>
