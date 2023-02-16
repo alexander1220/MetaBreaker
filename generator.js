@@ -1,6 +1,9 @@
 //https://developer.riotgames.com/docs/lol#data-dragon
 //runes-community https://raw.communitydragon.org/latest/game/assets/perks/styles/domination/
 //runes https://ddragon.leagueoflegends.com/cdn/13.3.1/data/en_US/runesReforged.json
+const championsUrl = 'http://ddragon.leagueoflegends.com/cdn/13.3.1/data/en_US/champion.json';
+const itemsUrl = 'http://ddragon.leagueoflegends.com/cdn/13.3.1/data/en_US/item.json';
+
 generate();
 searchChampion();
 
@@ -17,10 +20,8 @@ const switches = {
 setSwitches();
 
 function generate() {
-    var champsUrl = 'http://ddragon.leagueoflegends.com/cdn/13.3.1/data/en_US/champion.json';
-    var itemsUrl = 'http://ddragon.leagueoflegends.com/cdn/13.3.1/data/en_US/item.json';
 
-    fetch(champsUrl)
+    fetch(championsUrl)
         .then(res => res.json())
         .then(out => {
             let champions = out.data;
@@ -57,9 +58,8 @@ function generate() {
 
 function fillChamps() {
     var champGrid = document.getElementById('champselect');
-    var champsUrl = 'http://ddragon.leagueoflegends.com/cdn/13.3.1/data/en_US/champion.json';
 
-    fetch(champsUrl)
+    fetch(championsUrl)
         .then(res => res.json())
         .then(out => {
             let champions = out.data;
@@ -101,7 +101,7 @@ function selectAll() {
 
 function searchChampion() {
     // Retrieve champion data from API
-    fetch('https://ddragon.leagueoflegends.com/cdn/11.5.1/data/en_US/champion.json')
+    fetch(championsUrl)
         .then(response => response.json())
         .then(data => {
             var champGrip = document.getElementById('champselect');
@@ -131,16 +131,16 @@ function searchChampion() {
                 const query = searchInput.value;
                 const results = searchChampion(query);
                 const searchResultsDiv = document.querySelector('#champselect');
+                var children = searchResultsDiv.children;
+                for (var i = 0; i < children.length; i++) {
+                    children[i].setAttribute('style', "display:none");
+                }
                 if (results.length > 0) {
-                    var children = searchResultsDiv.children;
-                    for (var i = 0; i < children.length; i++) {
-                        children[i].setAttribute('style', "display:none");
-                    }
                     for (var i = 0; i < results.length; i++) {
                         children[results[i].id].setAttribute('style', "display:inline");
                     }
                 } else {
-                    searchResultsDiv.innerHTML = '<p>No results found.</p>';
+                    //document.getElementById('nochampsfound').setAttribute('style', "display:inline");
                 }
             });
         });
