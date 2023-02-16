@@ -1,27 +1,44 @@
-//https://developer.riotgames.com/docs/lol#data-dragon 
-generate();
-searchChampion();
+//https://developer.riotgames.com/docs/lol#data-dragon
+//runes-community https://raw.communitydragon.org/latest/game/assets/perks/styles/domination/
+//runes https://ddragon.leagueoflegends.com/cdn/13.3.1/data/en_US/runesReforged.json
+//individual champ(for abilities) http://ddragon.leagueoflegends.com/cdn/13.3.1/data/en_US/champion/Aatrox.json
 
-window.onload = fillChamps();
-document.getElementById('switchTop').addEventListener('click', function (e) {
-    console.log("top champs: " + document.getElementById('switchTop').checked);
+const championsUrl = 'http://ddragon.leagueoflegends.com/cdn/13.3.1/data/en_US/champion.json';
+const itemsUrl = 'http://ddragon.leagueoflegends.com/cdn/13.3.1/data/en_US/item.json';
+let champions;
+fetchChampions().then(() => {
+    generate();
+    searchChampion();
+    fillChamps();
 });
 
-function generate() {
-    var champsUrl = 'http://ddragon.leagueoflegends.com/cdn/13.3.1/data/en_US/champion.json';
-    var itemsUrl = 'http://ddragon.leagueoflegends.com/cdn/13.3.1/data/en_US/item.json';
+const switches = {
+    top: document.getElementById('switchTop'),
+    jgl: document.getElementById('switchJgl'),
+    mid: document.getElementById('switchMid'),
+    adc: document.getElementById('switchAdc'),
+    sup: document.getElementById('switchSup'),
+};
 
-    fetch(champsUrl)
-        .then(res => res.json())
-        .then(out => {
-            let champions = out.data;
-            var keys = Object.keys(champions);
-            var randChamp = champions[keys[keys.length * Math.random() << 0]];
-            console.log(randChamp.name);
-            console.log(randChamp.tags);
-            document.getElementById("championIcon").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/" + randChamp.id + ".png";
-        })
-        .catch(err => { throw err });
+setSwitches();
+
+async function fetchChampions() {
+    await Promise.resolve(
+        fetch(championsUrl)
+            .then(res => res.json())
+            .then(out => {
+                champions = out.data;
+            })
+            .catch(err => { throw err }));
+}
+
+function generate() {
+
+    var keys = Object.keys(champions);
+    var randChamp = champions[keys[keys.length * Math.random() << 0]];
+    console.log(randChamp.name);
+    console.log(randChamp.tags);
+    document.getElementById("championIcon").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/" + randChamp.id + ".png";
 
     fetch(itemsUrl)
         .then(res => res.json())
@@ -47,63 +64,85 @@ function generate() {
 }
 
 function fillChamps() {
-    var champGrip = document.getElementById('champselect');
-    var champsUrl = 'http://ddragon.leagueoflegends.com/cdn/13.3.1/data/en_US/champion.json';
+    var champGrid = document.getElementById('champselect');
+    let keys = Object.keys(champions);
+    keys.forEach(element => {
+        var champ = champions[element];
+        var newChamp = document.createElement('img');
+        newChamp.setAttribute('id', champ.id);
+        newChamp.setAttribute('class', "selectedChamp");
+        newChamp.src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/" + champ.id + ".png";
+        newChamp.addEventListener('click', function (e) {
+            if (newChamp.getAttribute('class') == 'deselectedChamp')
+                newChamp.setAttribute('class', 'selectedChamp');
+            else
+                newChamp.setAttribute('class', 'deselectedChamp');
+        });
+        champGrid.appendChild(newChamp);
+    });
+    console.log(keys.length);
+}
 
-    fetch(champsUrl)
-        .then(res => res.json())
-        .then(out => {
-            let champions = out.data;
-            let keys = Object.keys(champions);
-            keys.forEach(element => {
-                var champ = champions[element];
-                var newChamp = document.createElement('img');
-                newChamp.src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/" + champ.id + ".png";
-                champGrip.appendChild(newChamp);
-            });
-            console.log(keys.length);
-        })
-        .catch(err => { throw err });
+function deselectAll() {
+    var champGrid = document.getElementById('champselect');
+    var children = champGrid.children;
+    for (var i = 0; i < children.length; i++) {
+        children[i].setAttribute('class', 'deselectedChamp');
+    }
+}
+
+function selectAll() {
+    var champGrid = document.getElementById('champselect');
+    var children = champGrid.children;
+    for (var i = 0; i < children.length; i++) {
+        children[i].setAttribute('class', 'selectedChamp');
+    }
 }
 
 function searchChampion() {
-// Retrieve champion data from API
-fetch('https://ddragon.leagueoflegends.com/cdn/11.5.1/data/en_US/champion.json')
-  .then(response => response.json())
-  .then(data => {
-    var champGrip = document.getElementById('champselect');
-    const champions = Object.values(data.data);
-    let keys = Object.keys(data.data);
+    const searchChampions = Object.values(champions);
     // Search function
     function searchChampion(query) {
-      //Basic Sort if query is found in any part of the name
-      return champions.filter(champion =>
-        champion.name.toLowerCase().includes(query.toLowerCase())
-      );
-
-      //Sort by first letter of name 
-      /*
-      return champions.filter(champion =>
-        champion.name.toLowerCase().startsWith(query.toLowerCase())
-      ).sort((a, b) =>
-        a.name.charAt(0).toLowerCase() === query.toLowerCase().charAt(0) ?
-        a.name.localeCompare(b.name) :
-        a.name.charAt(0).toLowerCase().localeCompare(query.toLowerCase().charAt(0))
-      ); */
+        //Basic Sort if query is found in any part of the name
+        return searchChampions.filter(champion =>
+            champion.name.toLowerCase().includes(query.toLowerCase())
+        );
     }
 
     // Event listener for search input changes
     const searchInput = document.querySelector('#search-input');
     searchInput.addEventListener('input', () => {
-      const query = searchInput.value;
-      const results = searchChampion(query);
-      const searchResultsDiv = document.querySelector('#champselect');
-      if (results.length > 0) {
-        searchResultsDiv.innerHTML = `
-          ${results.map(champion => `<img src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/${champion.id}.png">`).join('')}
-      `;
-      } else {
-        searchResultsDiv.innerHTML = '<p>No results found.</p>';
-      }
+        const query = searchInput.value;
+        const results = searchChampion(query);
+        const searchResultsDiv = document.querySelector('#champselect');
+        var children = searchResultsDiv.children;
+        for (var i = 0; i < children.length; i++) {
+            children[i].setAttribute('style', "display:none");
+        }
+        if (results.length > 0) {
+            for (var i = 0; i < results.length; i++) {
+                children[results[i].id].setAttribute('style', "display:inline");
+            }
+        } else {
+            //document.getElementById('nochampsfound').setAttribute('style', "display:inline");
+        }
     });
-  });}
+}
+
+function setSwitches() {
+    var keys = Object.keys(switches);
+    keys.forEach(key => {
+        switches[key].addEventListener('click', function (e) {
+            document.getElementById('switchFill').checked = false;
+        });
+    });
+
+    document.getElementById('switchFill').addEventListener('click', function (e) {
+        if (document.getElementById('switchFill').checked == false)
+            return;
+        var keys = Object.keys(switches);
+        keys.forEach(key => {
+            switches[key].checked = true;
+        });
+    });
+}
