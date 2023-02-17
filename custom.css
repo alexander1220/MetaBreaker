@@ -19,3 +19,8 @@ td{
     padding:0;
     margin: 0;
 }
+#itemslots img{
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    /*box-shadow: 0 10px 5px black;*/
+}
