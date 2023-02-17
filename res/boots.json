@@ -1,0 +1,37 @@
+{
+  "3006": {
+    "name": "Berserker's Greaves",
+    "tags": ["Fighter", "Marksman"],
+    "type": "boots"
+  },
+  "3009": {
+    "name": "Boots of Swiftness",
+    "tags": ["Fighter", "Marksman", "Assassin"],
+    "type": "boots"
+  },
+  "3020": {
+    "name": "Sorcerer's Shoes",
+    "tags": ["Mage", "Support"],
+    "type": "boots"
+  },
+  "3047": {
+    "name": "Plated Steelcaps",
+    "tags": ["Tank"],
+    "type": "boots"
+  },
+  "3111": {
+    "name": "Mercury's Treads",
+    "tags": ["Tank"],
+    "type": "boots"
+  },
+  "3117": {
+    "name": "Mobility Boots",
+    "tags": ["Support"],
+    "type": "boots"
+  },
+  "3158": {
+    "name": "Ionian Boots of Lucidity",
+    "tags": ["Assassin"],
+    "type": "boots"
+  }
+}
