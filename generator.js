@@ -95,7 +95,7 @@ function generate() {
     var randTag = randChamp.tags[tagKey];
     console.log(randTag);
     var givenItems = [];
-    var blockedItems = []
+    var blockedItems = [];
 
     var bootKeys = Object.keys(boots);
     var boot = 0;
@@ -142,7 +142,6 @@ function generate() {
         document.getElementById(itemId).src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + key + ".png";
         document.getElementById(itemId).parentElement.setAttribute("data-tooltip", randItem.name);
     }
-    console.log("blocking: " + blockedItems.flat())
 }
 
 function fillChamps() {
@@ -232,4 +231,8 @@ function setSwitches() {
             switches[key].checked = true;
         });
     });
+}
+
+function switchTheme(){
+    theme.setAttribute("data-theme", document.getElementById('themeSwitch').checked ? "light" : "dark");
 }

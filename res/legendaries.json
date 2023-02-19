@@ -13,7 +13,7 @@
   },
   "3011": {
     "name": "Chemtech Putrifier",
-    "tags": ["Mage", "Support"],
+    "tags": ["Support"],
     "type": "legendary"
   },
   "3026": {
@@ -217,12 +217,12 @@
   },
   "3179": {
     "name": "Umbral Glaive",
-    "tags": ["Assassin", "Fighter", "Marksman"],
+    "tags": ["Assassin"],
     "type": "legendary"
   },
   "3181": {
     "name": "Hullbreaker",
-    "tags": ["Tank", "Assassin", "Fighter", "Marksman"],
+    "tags": ["Tank", "Fighter"],
     "type": "legendary"
   },
   "3193": {
@@ -237,7 +237,7 @@
   },
   "3504": {
     "name": "Ardent Censer",
-    "tags": ["Mage", "Support"],
+    "tags": ["Support"],
     "type": "legendary"
   },
   "3508": {
@@ -303,7 +303,7 @@
   },
   "6616": {
     "name": "Staff of Flowing Water",
-    "tags": ["Mage", "Support"],
+    "tags": ["Support"],
     "type": "legendary"
   },
   "6664": { 
