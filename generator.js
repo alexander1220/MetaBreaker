@@ -12,13 +12,14 @@ const championUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker
 
 let champions;
 let fullChampions;
+let selectedChampions = [];
 let boots;
 let legendaries;
 let mythics;
 Promise.all([fetchChampions(), fetchFullChampions(), fetchBoots(), fetchMythics(), fetchLegendaries()]).then(() => {
+    fillChamps();
     generate();
     searchChampion();
-    fillChamps();
 });
 
 const switches = {
@@ -78,9 +79,13 @@ async function fetchMythics() {
 }
 
 function generate() {
-
-    var keys = Object.keys(champions);
-    var champKey = keys[keys.length * Math.random() << 0];
+    if(selectedChampions.length <= 0){
+        alert("Please select atleast one champion.");
+        return;
+    }
+    //var keys = Object.keys(champions);
+    //var champKey = keys[keys.length * Math.random() << 0];
+    var champKey = selectedChampions[selectedChampions.length * Math.random() << 0];
     var randChamp = champions[champKey];
     console.log(randChamp.name);
     console.log(randChamp.tags);
@@ -142,11 +147,15 @@ function fillChamps() {
         newChamp.setAttribute('class', "selectedChamp");
         newChamp.src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/" + element + ".png";
         newChamp.addEventListener('click', function (e) {
-            if (newChamp.getAttribute('class') == 'deselectedChamp')
+            if (newChamp.getAttribute('class') == 'deselectedChamp') {
                 newChamp.setAttribute('class', 'selectedChamp');
-            else
+                selectedChampions.push(element);
+            } else {
                 newChamp.setAttribute('class', 'deselectedChamp');
+                selectedChampions = selectedChampions.filter(e => e !== element);
+            }
         });
+        selectedChampions.push(element);
         champGrid.appendChild(newChamp);
     });
     console.log(keys.length);
@@ -157,6 +166,7 @@ function deselectAll() {
     var children = champGrid.children;
     for (var i = 0; i < children.length; i++) {
         children[i].setAttribute('class', 'deselectedChamp');
+        selectedChampions = selectedChampions.filter(e => e !== children[i].id);
     }
 }
 
@@ -165,6 +175,7 @@ function selectAll() {
     var children = champGrid.children;
     for (var i = 0; i < children.length; i++) {
         children[i].setAttribute('class', 'selectedChamp');
+        selectedChampions.push(children[i].id);
     }
 }
 

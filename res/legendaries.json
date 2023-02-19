@@ -2,12 +2,14 @@
   "3003": {
     "name": "Archangel's Staff",
     "tags": ["Tank", "Mage"],
-    "type": "legendary"
+    "type": "legendary",
+    "blocking": [3004, 3053, 3119, 3156]
   },
   "3004": {
     "name": "Manamune",
     "tags": ["Assassin", "Fighter", "Marksman"],
-    "type": "legendary"
+    "type": "legendary",
+    "blocking": [3003, 3119]
   },
   "3011": {
     "name": "Chemtech Putrifier",
@@ -19,14 +21,27 @@
     "tags": ["Tank", "Assassin", "Fighter", "Marksman"],
     "type": "legendary"
   },
+  "3031":{
+    "name": "Infinity Edge",
+    "tags": ["Assassin", "Fighter", "Marksman"],
+    "type": "legendary",
+    "blocking": [3124, 6675]
+  },
   "3033": {
     "name": "Mortal Reminder",
     "tags": ["Assassin", "Fighter", "Marksman"],
-    "type": "legendary"
+    "type": "legendary",
+    "blocking": [3036, 6694]
   },
   "3036": {
     "name": "Lord Dominik's Regards",
     "tags": ["Assassin", "Fighter", "Marksman"],
+    "type": "legendary",
+    "blocking": [3033, 6694]
+  },
+  "3041": {
+    "name": "Mejai's Soulstealer",
+    "tags": ["Mage", "Support"],
     "type": "legendary"
   },
   "3046": {
@@ -42,10 +57,19 @@
   "3053": {
     "name": "Sterak's Gage",
     "tags": ["Tank", "Assassin", "Fighter", "Marksman"],
-    "type": "legendary"
+    "type": "legendary",
+    "blocking": [3003, 3156]
   },
-  "3065": { "name": "Spirit Visage", "tags": ["Tank"], "type": "legendary" },
-  "3068": { "name": "Sunfire Aegis", "tags": ["Tank"], "type": "legendary" },
+  "3065": { 
+    "name": "Spirit Visage", 
+    "tags": ["Tank"], 
+    "type": "legendary" 
+  },
+  "3068": { 
+    "name": "Sunfire Aegis", 
+    "tags": ["Tank"], 
+    "type": "legendary" 
+  },
   "3071": {
     "name": "Black Cleaver",
     "tags": ["Tank", "Assassin", "Fighter", "Marksman"],
@@ -61,11 +85,24 @@
     "tags": ["Assassin", "Fighter", "Marksman"],
     "type": "legendary"
   },
-  "3075": { "name": "Thornmail", "tags": ["Tank"], "type": "legendary" },
-  "3083": { "name": "Warmog's Armor", "tags": ["Tank"], "type": "legendary" },
+  "3075": { 
+    "name": "Thornmail", 
+    "tags": ["Tank"], 
+    "type": "legendary" 
+  },
+  "3083": { 
+    "name": "Warmog's Armor", 
+    "tags": ["Tank"], 
+    "type": "legendary" 
+  },
   "3085": {
     "name": "Runaan's Hurricane",
     "tags": ["Marksman"],
+    "type": "legendary"
+  },
+  "3089": {
+    "name": "Rabadon's Deathcap",
+    "tags": ["Mage"],
     "type": "legendary"
   },
   "3091": {
@@ -83,7 +120,11 @@
     "tags": ["Assassin", "Fighter", "Marksman"],
     "type": "legendary"
   },
-  "3100": { "name": "Lich Bane", "tags": ["Mage"], "type": "legendary" },
+  "3100": { 
+    "name": "Lich Bane", 
+    "tags": ["Mage"], 
+    "type": "legendary" 
+  },
   "3102": {
     "name": "Banshee's Veil",
     "tags": ["Tank", "Mage"],
@@ -94,8 +135,16 @@
     "tags": ["Tank", "Support"],
     "type": "legendary"
   },
-  "3109": { "name": "Knight's Vow", "tags": ["Tank"], "type": "legendary" },
-  "3110": { "name": "Frozen Heart", "tags": ["Tank"], "type": "legendary" },
+  "3109": { 
+    "name": "Knight's Vow", 
+    "tags": ["Tank"], 
+    "type": "legendary" 
+  },
+  "3110": { 
+    "name": "Frozen Heart", 
+    "tags": ["Tank"], 
+    "type": "legendary" 
+  },
   "3115": {
     "name": "Nashor's Tooth",
     "tags": ["Mage", "Marksman"],
@@ -109,25 +158,36 @@
   "3119": {
     "name": "Winter's Approach",
     "tags": ["Tank"],
-    "type": "legendary"
+    "type": "legendary",
+    "blocking": [3003, 3004]
   },
   "3124": {
     "name": "Guinsoo's Rageblade",
     "tags": ["Marksman"],
-    "type": "legendary"
+    "type": "legendary",
+    "blocking": [3031, 6675]
   },
-  "3135": { "name": "Void Staff", "tags": ["Mage"], "type": "legendary" },
+  "3135": { 
+    "name": "Void Staff", 
+    "tags": ["Mage"], 
+    "type": "legendary" 
+  },
   "3139": {
     "name": "Mercurial Scimitar",
     "tags": ["Tank", "Assassin", "Fighter", "Marksman"],
-    "type": "legendary"
+    "type": "legendary",
+    "blocking": [6035]
   },
   "3142": {
     "name": "Youmuu's Ghostblade",
     "tags": ["Assassin", "Fighter", "Marksman"],
     "type": "legendary"
   },
-  "3143": { "name": "Randuin's Omen", "tags": ["Tank"], "type": "legendary" },
+  "3143": { 
+    "name": "Randuin's Omen", 
+    "tags": ["Tank"], 
+    "type": "legendary" 
+  },
   "3153": {
     "name": "Blade of The Ruined King",
     "tags": ["Assassin", "Fighter", "Marksman"],
@@ -136,7 +196,8 @@
   "3156": {
     "name": "Maw of Malmortius",
     "tags": ["Tank", "Assassin", "Fighter", "Marksman"],
-    "type": "legendary"
+    "type": "legendary",
+    "blocking": [3003, 3053]
   },
   "3157": {
     "name": "Zhonya's Hourglass",
@@ -146,7 +207,8 @@
   "3161": {
     "name": "Spear Of Shojin",
     "tags": ["Tank", "Assassin", "Fighter", "Marksman"],
-    "type": "legendary"
+    "type": "legendary",
+    "blocking": [6675]
   },
   "3165": {
     "name": "Morellonomicon",
@@ -183,7 +245,11 @@
     "tags": ["Support", "Assassin", "Fighter", "Marksman"],
     "type": "legendary"
   },
-  "3742": { "name": "Dead Man's Plate", "tags": ["Tank"], "type": "legendary" },
+  "3742": { 
+    "name": "Dead Man's Plate", 
+    "tags": ["Tank"], 
+    "type": "legendary" 
+  },
   "3748": {
     "name": "Titanic Hydra",
     "tags": ["Tank", "Assassin", "Fighter", "Marksman"],
@@ -194,7 +260,11 @@
     "tags": ["Tank", "Assassin", "Fighter", "Marksman"],
     "type": "legendary"
   },
-  "4401": { "name": "Force of Nature", "tags": ["Tank"], "type": "legendary" },
+  "4401": { 
+    "name": "Force of Nature", 
+    "tags": ["Tank"], 
+    "type": "legendary" 
+  },
   "4628": {
     "name": "Horizon Focus",
     "tags": ["Tank", "Mage"],
@@ -218,7 +288,8 @@
   "6035": {
     "name": "Silvermere Dawn",
     "tags": ["Tank", "Assassin", "Fighter", "Marksman"],
-    "type": "legendary"
+    "type": "legendary",
+    "blocking": [3139]
   },
   "6333": {
     "name": "Death's Dance",
@@ -235,11 +306,16 @@
     "tags": ["Mage", "Support"],
     "type": "legendary"
   },
-  "6664": { "name": "Turbo Chemtank", "tags": ["Tank"], "type": "legendary" },
+  "6664": { 
+    "name": "Turbo Chemtank", 
+    "tags": ["Tank"], 
+    "type": "legendary" 
+  },
   "6675": {
     "name": "Navori Quickblades",
     "tags": ["Assassin", "Fighter", "Marksman"],
-    "type": "legendary"
+    "type": "legendary",
+    "blocking": [3161, 3124]
   },
   "6676": {
     "name": "The Collector",
@@ -249,7 +325,8 @@
   "6694": {
     "name": "Serylda's Grudge",
     "tags": ["Assassin", "Fighter", "Marksman"],
-    "type": "legendary"
+    "type": "legendary",
+    "blocking": [3033, 3036]
   },
   "6695": {
     "name": "Serpent's Fang",
