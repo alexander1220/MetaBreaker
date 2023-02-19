@@ -95,6 +95,7 @@ function generate() {
     var randTag = randChamp.tags[tagKey];
     console.log(randTag);
     var givenItems = [];
+    var blockedItems = []
 
     var bootKeys = Object.keys(boots);
     var boot = 0;
@@ -117,6 +118,8 @@ function generate() {
         if (randItem.tags.includes(randTag)) {
             mythic = randItem;
             givenItems.push(mythic);
+            if(randItem.hasOwnProperty("blocking"))
+                blockedItems.push(randItem.blocking)
             document.getElementById("item2").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + key + ".png";
             document.getElementById("item2").parentElement.setAttribute("data-tooltip", mythic.name);
         }
@@ -127,7 +130,10 @@ function generate() {
     for (let i = 2; i < 6; i++) {
         var key = keys[keys.length * Math.random() << 0];
         var randItem = items[key];
-        if (givenItems.includes(randItem.name) || !randItem.tags.includes(randTag)) {
+        if(randItem.hasOwnProperty("blocking"))
+            blockedItems.push(randItem.blocking)
+            
+        if (givenItems.includes(randItem.name) || !randItem.tags.includes(randTag) || blockedItems.flat().includes(key)) {
             i--;
             continue;
         }
@@ -136,6 +142,7 @@ function generate() {
         document.getElementById(itemId).src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + key + ".png";
         document.getElementById(itemId).parentElement.setAttribute("data-tooltip", randItem.name);
     }
+    console.log("blocking: " + blockedItems.flat())
 }
 
 function fillChamps() {
