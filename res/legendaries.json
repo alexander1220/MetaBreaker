@@ -237,12 +237,12 @@
   },
   "3504": {
     "name": "Ardent Censer",
-    "tags": ["Mage", "Support", "Marksman"],
+    "tags": ["Mage", "Support"],
     "type": "legendary"
   },
   "3508": {
     "name": "Essence Reaver",
-    "tags": ["Support", "Assassin", "Fighter", "Marksman"],
+    "tags": ["Assassin", "Fighter", "Marksman"],
     "type": "legendary"
   },
   "3742": { 

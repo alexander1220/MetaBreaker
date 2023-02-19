@@ -87,7 +87,8 @@
   "6657": {
     "name": "Rod of Ages",
     "tags": ["Mage"],
-    "type": "mythic"
+    "type": "mythic",
+    "blocking": [8020]
   },
   "6662": {
     "name": "Iceborn Gauntlet",
@@ -117,7 +118,8 @@
   "6673": {
     "name": "Immortal Shieldbow",
     "tags": ["Marksman"],
-    "type": "mythic"
+    "type": "mythic",
+    "blocking":[3003,3156,3053]
   },
   "6691": {
     "name": "Duskblade of Draktharr",
