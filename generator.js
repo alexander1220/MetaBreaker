@@ -3,13 +3,23 @@
 //runes https://ddragon.leagueoflegends.com/cdn/13.3.1/data/en_US/runesReforged.json
 //individual champ(for abilities) http://ddragon.leagueoflegends.com/cdn/13.3.1/data/en_US/champion/Aatrox.json
 
-const championsUrl = 'http://ddragon.leagueoflegends.com/cdn/13.3.1/data/en_US/champion.json';
+const fullChampionsUrl = 'http://ddragon.leagueoflegends.com/cdn/13.3.1/data/en_US/champion.json';
 const itemsUrl = 'http://ddragon.leagueoflegends.com/cdn/13.3.1/data/en_US/item.json';
+const legendaryItemUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/legendaries.json';
+const bootsItemUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/boots.json';
+const mythicItemUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/mythics.json';
+const championUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/champs.json';
+
 let champions;
-fetchChampions().then(() => {
+let fullChampions;
+let selectedChampions = [];
+let boots;
+let legendaries;
+let mythics;
+Promise.all([fetchChampions(), fetchFullChampions(), fetchBoots(), fetchMythics(), fetchLegendaries()]).then(() => {
+    fillChamps();
     generate();
     searchChampion();
-    fillChamps();
 });
 
 const switches = {
@@ -22,62 +32,149 @@ const switches = {
 
 setSwitches();
 
-async function fetchChampions() {
+async function fetchFullChampions() {
     await Promise.resolve(
-        fetch(championsUrl)
+        fetch(fullChampionsUrl)
             .then(res => res.json())
             .then(out => {
-                champions = out.data;
+                fullChampions = out.data;
+            })
+            .catch(err => { throw err }));
+}
+async function fetchChampions() {
+    await Promise.resolve(
+        fetch(championUrl)
+            .then(res => res.json())
+            .then(out => {
+                champions = out;
+            })
+            .catch(err => { throw err }));
+}
+async function fetchBoots() {
+    await Promise.resolve(
+        fetch(bootsItemUrl)
+            .then(res => res.json())
+            .then(out => {
+                boots = out;
+            })
+            .catch(err => { throw err }));
+}
+async function fetchLegendaries() {
+    await Promise.resolve(
+        fetch(legendaryItemUrl)
+            .then(res => res.json())
+            .then(out => {
+                legendaries = out;
+            })
+            .catch(err => { throw err }));
+}
+async function fetchMythics() {
+    await Promise.resolve(
+        fetch(mythicItemUrl)
+            .then(res => res.json())
+            .then(out => {
+                mythics = out;
             })
             .catch(err => { throw err }));
 }
 
 function generate() {
+    if (selectedChampions.length <= 0) {
+        alert("Please select atleast one champion.");
+        return;
+    }
 
-    var keys = Object.keys(champions);
-    var randChamp = champions[keys[keys.length * Math.random() << 0]];
+    //generate lane
+    //lane = availableLanes.pickRandom;
+
+
+    //var keys = Object.keys(champions);
+    //var champKey = keys[keys.length * Math.random() << 0];
+    var champKey = selectedChampions[selectedChampions.length * Math.random() << 0];
+    var randChamp = champions[champKey];
+    /*
+    check if champ has available tag for the lane 
+    (support can only go support, tanks only top&mid?, mages can go mid&support&.., etc...) 
+    else reroll champ, if out of all champs selected, none meet lane criteria then.. alert()?
+    ORRRR
+    just let every tag go on every lane
+    
+    */
     console.log(randChamp.name);
     console.log(randChamp.tags);
-    document.getElementById("championIcon").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/" + randChamp.id + ".png";
+    document.getElementById("championIcon").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/" + champKey + ".png";
+    var tagKeys = Object.keys(randChamp.tags);
+    var tagKey = tagKeys[tagKeys.length * Math.random() << 0];
+    var randTag = randChamp.tags[tagKey];
+    console.log(randTag);
+    var givenItems = [];
+    var blockedItems = [];
 
-    fetch(itemsUrl)
-        .then(res => res.json())
-        .then(out => {
-            var givenItems = [];
-            let items = out.data;
-            var keys = Object.keys(items);
-            for (let i = 0; i < 6; i++) {
-                var key = keys[keys.length * Math.random() << 0];
-                var randItem = items[key];
-                if (!randItem.colloq.startsWith(';') || givenItems.includes(randItem.name) || randItem.maps['11'] == false || randItem.tags.includes("Consumable") || randItem.tags.includes("Lane") || randItem.hasOwnProperty('into') || randItem.hasOwnProperty('consumed')) {
-                    i--;
-                    continue;
-                }
-                givenItems.push(randItem.name);
-                console.log(randItem.name);
-                var itemId = "item" + (i + 1);
-                document.getElementById(itemId).src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + key + ".png";
-            }
-            console.log(givenItems);
-        })
-        .catch(err => { throw err });
+    var bootKeys = Object.keys(boots);
+    var boot = 0;
+    while (boot == 0) {
+        var key = bootKeys[bootKeys.length * Math.random() << 0];
+        var randItem = boots[key];
+        if (randItem.tags.includes(randTag)) {
+            boot = randItem;
+            givenItems.push(boot);
+            document.getElementById("item1").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + key + ".png";
+            document.getElementById("item1").parentElement.setAttribute("data-tooltip", boot.name);
+        }
+    }
+
+    var mythicKeys = Object.keys(mythics);
+    var mythic = 0;
+    while (mythic == 0) {
+        var key = mythicKeys[mythicKeys.length * Math.random() << 0];
+        var randItem = mythics[key];
+        if (randItem.tags.includes(randTag)) {
+            mythic = randItem;
+            givenItems.push(mythic);
+            if (randItem.hasOwnProperty("blocking"))
+                blockedItems.push(randItem.blocking)
+            document.getElementById("item2").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + key + ".png";
+            document.getElementById("item2").parentElement.setAttribute("data-tooltip", mythic.name);
+        }
+    }
+
+    let items = legendaries;
+    var keys = Object.keys(items);
+    for (let i = 2; i < 6; i++) {
+        var key = keys[keys.length * Math.random() << 0];
+        var randItem = items[key];
+        if (randItem.hasOwnProperty("blocking"))
+            blockedItems.push(randItem.blocking)
+
+        if (givenItems.includes(randItem.name) || !randItem.tags.includes(randTag) || blockedItems.flat().includes(key)) {
+            i--;
+            continue;
+        }
+        givenItems.push(randItem.name);
+        var itemId = "item" + (i + 1);
+        document.getElementById(itemId).src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + key + ".png";
+        document.getElementById(itemId).parentElement.setAttribute("data-tooltip", randItem.name);
+    }
 }
 
 function fillChamps() {
     var champGrid = document.getElementById('champselect');
     let keys = Object.keys(champions);
     keys.forEach(element => {
-        var champ = champions[element];
         var newChamp = document.createElement('img');
-        newChamp.setAttribute('id', champ.id);
+        newChamp.setAttribute('id', element);
         newChamp.setAttribute('class', "selectedChamp");
-        newChamp.src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/" + champ.id + ".png";
+        newChamp.src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/" + element + ".png";
         newChamp.addEventListener('click', function (e) {
-            if (newChamp.getAttribute('class') == 'deselectedChamp')
+            if (newChamp.getAttribute('class') == 'deselectedChamp') {
                 newChamp.setAttribute('class', 'selectedChamp');
-            else
+                selectedChampions.push(element);
+            } else {
                 newChamp.setAttribute('class', 'deselectedChamp');
+                selectedChampions = selectedChampions.filter(e => e !== element);
+            }
         });
+        selectedChampions.push(element);
         champGrid.appendChild(newChamp);
     });
     console.log(keys.length);
@@ -88,6 +185,7 @@ function deselectAll() {
     var children = champGrid.children;
     for (var i = 0; i < children.length; i++) {
         children[i].setAttribute('class', 'deselectedChamp');
+        selectedChampions = selectedChampions.filter(e => e !== children[i].id);
     }
 }
 
@@ -96,11 +194,12 @@ function selectAll() {
     var children = champGrid.children;
     for (var i = 0; i < children.length; i++) {
         children[i].setAttribute('class', 'selectedChamp');
+        selectedChampions.push(children[i].id);
     }
 }
 
 function searchChampion() {
-    const searchChampions = Object.values(champions);
+    const searchChampions = Object.values(fullChampions);
     // Search function
     function searchChampion(query) {
         //Basic Sort if query is found in any part of the name
@@ -145,4 +244,8 @@ function setSwitches() {
             switches[key].checked = true;
         });
     });
+}
+
+function switchTheme() {
+    theme.setAttribute("data-theme", document.getElementById('themeSwitch').checked ? "light" : "dark");
 }

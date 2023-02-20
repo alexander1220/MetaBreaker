@@ -1,0 +1,6 @@
+Fighter,
+Mage,
+Assassin,
+Marksman,
+Tank,
+Support,
