@@ -79,14 +79,27 @@ async function fetchMythics() {
 }
 
 function generate() {
-    if(selectedChampions.length <= 0){
+    if (selectedChampions.length <= 0) {
         alert("Please select atleast one champion.");
         return;
     }
+
+    //generate lane
+    //lane = availableLanes.pickRandom;
+
+
     //var keys = Object.keys(champions);
     //var champKey = keys[keys.length * Math.random() << 0];
     var champKey = selectedChampions[selectedChampions.length * Math.random() << 0];
     var randChamp = champions[champKey];
+    /*
+    check if champ has available tag for the lane 
+    (support can only go support, tanks only top&mid?, mages can go mid&support&.., etc...) 
+    else reroll champ, if out of all champs selected, none meet lane criteria then.. alert()?
+    ORRRR
+    just let every tag go on every lane
+    
+    */
     console.log(randChamp.name);
     console.log(randChamp.tags);
     document.getElementById("championIcon").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/" + champKey + ".png";
@@ -118,7 +131,7 @@ function generate() {
         if (randItem.tags.includes(randTag)) {
             mythic = randItem;
             givenItems.push(mythic);
-            if(randItem.hasOwnProperty("blocking"))
+            if (randItem.hasOwnProperty("blocking"))
                 blockedItems.push(randItem.blocking)
             document.getElementById("item2").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + key + ".png";
             document.getElementById("item2").parentElement.setAttribute("data-tooltip", mythic.name);
@@ -130,9 +143,9 @@ function generate() {
     for (let i = 2; i < 6; i++) {
         var key = keys[keys.length * Math.random() << 0];
         var randItem = items[key];
-        if(randItem.hasOwnProperty("blocking"))
+        if (randItem.hasOwnProperty("blocking"))
             blockedItems.push(randItem.blocking)
-            
+
         if (givenItems.includes(randItem.name) || !randItem.tags.includes(randTag) || blockedItems.flat().includes(key)) {
             i--;
             continue;
@@ -233,6 +246,6 @@ function setSwitches() {
     });
 }
 
-function switchTheme(){
+function switchTheme() {
     theme.setAttribute("data-theme", document.getElementById('themeSwitch').checked ? "light" : "dark");
 }
