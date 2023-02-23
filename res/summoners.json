@@ -1,90 +1,120 @@
 {
-    "Ghost": {
-        "name": "SummonerHaste",
-        "tags": [
-            "Fighter",
-            "Tank"
-        ],
-        "id": 6
-    },
-    "Heal": {
-        "name": "SummonerHeal",
-        "tags": [
-            "Marksman",
-            "Mage",
-            "Support"
-        ],
-        "id": 7
-    },
-    "Barrier": {
-        "name": "SummonerBarrier",
-        "tags": [
-            "Marksman",
-            "Mage",
-            "Support"
-        ],
-        "id": 21
-    },
-    "Exhaust": {
-        "name": "SummonerExhaust",
-        "tags": [
-            "Marksman",
-            "Mage",
-            "Support"
-        ],
-        "id": 3
-    },
-    "Clarity": {
-        "name": "SummonerMana",
-        "tags": [
-            "Mage",
-            "Support"
-        ],
-        "id": 13
-    },
-    "Flash": {
-        "name": "SummonerFlash",
-        "tags": [
-            "Fighter",
-            "Mage",
-            "Assassin",
-            "Marksman",
-            "Tank",
-            "Support"
-        ],
-        "id": 4
-    },
-    "Teleport": {
-        "name": "SummonerTeleport",
-        "tags": [
-            "Fighter",
-            "Mage",
-            "Tank"
-        ],
-        "id": 12
-    },
-    "Cleanse": {
-        "name": "SummonerBoost",
-        "tags": [
-            "Mage",
-            "Marksman",
-            "Support"
-        ],
-        "id": 1
-    },
-    "Ignite": {
-        "name": "SummonerDot",
-        "tags": [
-            "Fighter",
-            "Mage",
-            "Assassin",
-            "Marksman",
-            "Support"
-        ],
-        "id": 14
-    },
-    "Smite": {
-        "name": "SummonerSmite",
-        "id": 11
-    }
+  "Ghost": {
+    "name": "SummonerHaste",
+    "tags": [
+      "Fighter",
+      "Tank",
+      "OnHit",
+      "OnHitMage",
+      "Marksman"
+    ],
+    "id": 6
+  },
+  "Heal": {
+    "name": "SummonerHeal",
+    "tags": [
+      "Marksman",
+      "AssassinSupport",
+      "EnchanterSupport"
+
+    ],
+    "id": 7
+  },
+  "Barrier": {
+    "name": "SummonerBarrier",
+    "tags": [
+      "Marksman",
+      "Mage"
+    ],
+    "id": 21
+  },
+  "Exhaust": {
+    "name": "SummonerExhaust",
+    "tags": [
+      "Marksman",
+      "Mage",
+      "MageSupport",
+      "TankSupport",
+      "EnchanterSupport",
+      "AssassinSupport",
+      "OnHit",
+      "Tank",
+      "OnHitMage"
+    ],
+    "id": 3
+  },
+  "Clarity": {
+    "name": "SummonerMana",
+    "tags": [
+
+    ],
+    "id": 13
+  },
+  "Flash": {
+    "name": "SummonerFlash",
+    "tags": [
+      "Fighter",
+      "Mage",
+      "BulkMage",
+      "APAssassin",
+      "ADAssassin",
+      "Marksman",
+      "OnHit",
+      "Tank",
+      "EnchanterSupport",
+      "TankSupport",
+      "AssassinSupport",
+      "MageSupport",
+      "Jungle",
+      "OnHitMage"
+    ],
+    "id": 4
+  },
+  "Teleport": {
+    "name": "SummonerTeleport",
+    "tags": [
+      "Fighter",
+      "Mage",
+      "Tank",
+      "BulkMage"
+
+    ],
+    "id": 12
+  },
+  "Cleanse": {
+    "name": "SummonerBoost",
+    "tags": [
+      "Mage",
+      "Marksman",
+      "APAssassin",
+      "OnHit",
+      "OnHitMage"
+
+    ],
+    "id": 1
+  },
+  "Ignite": {
+    "name": "SummonerDot",
+    "tags": [
+      "Fighter",
+      "Mage",
+      "BulkMage",
+      "APAssassin",
+      "ADAssassin",
+      "Marksman",
+      "OnHit",
+      "Tank",
+      "EnchanterSupport",
+      "TankSupport",
+      "AssassinSupport",
+      "MageSupport",
+      "OnHitMage"
+    ],
+    "id": 14
+  },
+  "Smite": {
+    "name": "SummonerSmite",
+    "tags": [ "Jungle" ],
+    "id": 11
+  }
 }

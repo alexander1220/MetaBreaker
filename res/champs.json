@@ -1,164 +1,650 @@
 {
-  "Aatrox": { "name": "Aatrox", "tags": ["Fighter", "Tank"] },
-  "Ahri": { "name": "Ahri", "tags": ["Mage", "Assassin"] },
-  "Akali": { "name": "Akali", "tags": ["Assassin"] },
-  "Akshan": { "name": "Akshan", "tags": ["Marksman", "Assassin"] },
-  "Alistar": { "name": "Alistar", "tags": ["Tank", "Support"] },
-  "Amumu": { "name": "Amumu", "tags": ["Tank", "Mage"] },
-  "Anivia": { "name": "Anivia", "tags": ["Mage", "Support"] },
-  "Annie": { "name": "Annie", "tags": ["Mage"] },
-  "Aphelios": { "name": "Aphelios", "tags": ["Marksman"] },
-  "Ashe": { "name": "Ashe", "tags": ["Marksman", "Support"] },
-  "AurelionSol": { "name": "Aurelion Sol", "tags": ["Mage"] },
-  "Azir": { "name": "Azir", "tags": ["Mage", "Marksman"] },
-  "Bard": { "name": "Bard", "tags": ["Support", "Mage"] },
-  "Belveth": { "name": "Bel'Veth", "tags": ["Fighter"] },
-  "Blitzcrank": { "name": "Blitzcrank", "tags": ["Tank", "Fighter"] },
-  "Brand": { "name": "Brand", "tags": ["Mage"] },
-  "Braum": { "name": "Braum", "tags": ["Support", "Tank"] },
-  "Caitlyn": { "name": "Caitlyn", "tags": ["Marksman"] },
-  "Camille": { "name": "Camille", "tags": ["Fighter", "Tank"] },
-  "Cassiopeia": { "name": "Cassiopeia", "tags": ["Mage"] },
-  "Chogath": { "name": "Cho'Gath", "tags": ["Tank", "Mage"] },
-  "Corki": { "name": "Corki", "tags": ["Marksman"] },
-  "Darius": { "name": "Darius", "tags": ["Fighter", "Tank"] },
-  "Diana": { "name": "Diana", "tags": ["Fighter", "Mage"] },
-  "Draven": { "name": "Draven", "tags": ["Marksman"] },
-  "DrMundo": { "name": "Dr. Mundo", "tags": ["Fighter", "Tank"] },
-  "Ekko": { "name": "Ekko", "tags": ["Assassin", "Fighter"] },
-  "Elise": { "name": "Elise", "tags": ["Mage", "Fighter"] },
-  "Evelynn": { "name": "Evelynn", "tags": ["Mage"] },
-  "Ezreal": { "name": "Ezreal", "tags": ["Marksman", "Mage"] },
-  "Fiddlesticks": { "name": "Fiddlesticks", "tags": ["Mage", "Support"] },
-  "Fiora": { "name": "Fiora", "tags": ["Fighter", "Assassin"] },
-  "Fizz": { "name": "Fizz", "tags": ["Mage"] },
-  "Galio": { "name": "Galio", "tags": ["Tank", "Mage"] },
-  "Gangplank": { "name": "Gangplank", "tags": ["Fighter"] },
-  "Garen": { "name": "Garen", "tags": ["Fighter", "Tank"] },
-  "Gnar": { "name": "Gnar", "tags": ["Fighter", "Tank"] },
-  "Gragas": { "name": "Gragas", "tags": ["Fighter", "Mage"] },
-  "Graves": { "name": "Graves", "tags": ["Marksman"] },
-  "Gwen": { "name": "Gwen", "tags": ["Fighter", "Assassin"] },
-  "Hecarim": { "name": "Hecarim", "tags": ["Fighter", "Tank"] },
-  "Heimerdinger": { "name": "Heimerdinger", "tags": ["Mage", "Support"] },
-  "Illaoi": { "name": "Illaoi", "tags": ["Fighter", "Tank"] },
-  "Irelia": { "name": "Irelia", "tags": ["Fighter", "Assassin"] },
-  "Ivern": { "name": "Ivern", "tags": ["Support", "Mage"] },
-  "Janna": { "name": "Janna", "tags": ["Support", "Mage"] },
-  "JarvanIV": { "name": "Jarvan IV", "tags": ["Tank", "Fighter"] },
-  "Jax": { "name": "Jax", "tags": ["Fighter", "Assassin"] },
-  "Jayce": { "name": "Jayce", "tags": ["Fighter", "Marksman"] },
-  "Jhin": { "name": "Jhin", "tags": ["Marksman", "Mage"] },
-  "Jinx": { "name": "Jinx", "tags": ["Marksman"] },
-  "Kaisa": { "name": "Kai'Sa", "tags": ["Marksman"] },
-  "Kalista": { "name": "Kalista", "tags": ["Marksman"] },
-  "Karma": { "name": "Karma", "tags": ["Mage", "Support"] },
-  "Karthus": { "name": "Karthus", "tags": ["Mage"] },
-  "Kassadin": { "name": "Kassadin", "tags": ["Mage"] },
-  "Katarina": { "name": "Katarina", "tags": ["Assassin", "Mage"] },
-  "Kayle": { "name": "Kayle", "tags": ["Fighter", "Support"] },
-  "Kayn": { "name": "Kayn", "tags": ["Fighter", "Assassin"] },
-  "Kennen": { "name": "Kennen", "tags": ["Mage", "Marksman"] },
-  "Khazix": { "name": "Kha'Zix", "tags": ["Assassin"] },
-  "Kindred": { "name": "Kindred", "tags": ["Marksman"] },
-  "Kled": { "name": "Kled", "tags": ["Fighter", "Tank"] },
-  "KogMaw": { "name": "Kog'Maw", "tags": ["Marksman", "Mage"] },
-  "KSante": { "name": "K'Sante", "tags": ["Tank", "Fighter"] },
-  "Leblanc": { "name": "LeBlanc", "tags": ["Assassin", "Mage"] },
-  "LeeSin": { "name": "Lee Sin", "tags": ["Fighter", "Assassin"] },
-  "Leona": { "name": "Leona", "tags": ["Tank", "Support"] },
-  "Lillia": { "name": "Lillia", "tags": ["Fighter", "Mage"] },
-  "Lissandra": { "name": "Lissandra", "tags": ["Mage"] },
-  "Lucian": { "name": "Lucian", "tags": ["Marksman"] },
-  "Lulu": { "name": "Lulu", "tags": ["Support", "Mage", "Marksman"] },
-  "Lux": { "name": "Lux", "tags": ["Mage", "Support"] },
-  "Malphite": { "name": "Malphite", "tags": ["Tank", "Fighter"] },
-  "Malzahar": { "name": "Malzahar", "tags": ["Mage", "Assassin"] },
-  "Maokai": { "name": "Maokai", "tags": ["Tank", "Mage"] },
-  "MasterYi": { "name": "Master Yi", "tags": ["Assassin", "Fighter"] },
-  "MissFortune": { "name": "Miss Fortune", "tags": ["Marksman"] },
-  "MonkeyKing": { "name": "Wukong", "tags": ["Fighter", "Tank"] },
-  "Mordekaiser": { "name": "Mordekaiser", "tags": ["Mage"] },
-  "Morgana": { "name": "Morgana", "tags": ["Mage", "Support"] },
-  "Nami": { "name": "Nami", "tags": ["Support", "Mage"] },
-  "Nasus": { "name": "Nasus", "tags": ["Fighter", "Tank"] },
-  "Nautilus": { "name": "Nautilus", "tags": ["Tank", "Support"] },
-  "Neeko": { "name": "Neeko", "tags": ["Mage", "Support"] },
-  "Nidalee": { "name": "Nidalee", "tags": ["Assassin", "Mage"] },
-  "Nilah": { "name": "Nilah", "tags": ["Fighter", "Assassin"] },
-  "Nocturne": { "name": "Nocturne", "tags": ["Assassin", "Fighter"] },
-  "Nunu": { "name": "Nunu & Willump", "tags": ["Tank", "Fighter"] },
-  "Olaf": { "name": "Olaf", "tags": ["Fighter", "Tank"] },
-  "Orianna": { "name": "Orianna", "tags": ["Mage", "Support"] },
-  "Ornn": { "name": "Ornn", "tags": ["Tank", "Fighter"] },
-  "Pantheon": { "name": "Pantheon", "tags": ["Fighter", "Assassin"] },
-  "Poppy": { "name": "Poppy", "tags": ["Tank", "Fighter"] },
-  "Pyke": { "name": "Pyke", "tags": ["Support", "Assassin"] },
-  "Qiyana": { "name": "Qiyana", "tags": ["Assassin", "Fighter"] },
-  "Quinn": { "name": "Quinn", "tags": ["Marksman", "Assassin"] },
-  "Rakan": { "name": "Rakan", "tags": ["Support"] },
-  "Rammus": { "name": "Rammus", "tags": ["Tank", "Fighter"] },
-  "RekSai": { "name": "Rek'Sai", "tags": ["Fighter"] },
-  "Rell": { "name": "Rell", "tags": ["Tank", "Support"] },
-  "Renata": { "name": "Renata Glasc", "tags": ["Support", "Mage"] },
-  "Renekton": { "name": "Renekton", "tags": ["Fighter", "Tank"] },
-  "Rengar": { "name": "Rengar", "tags": ["Assassin", "Fighter"] },
-  "Riven": { "name": "Riven", "tags": ["Fighter", "Assassin"] },
-  "Rumble": { "name": "Rumble", "tags": ["Fighter", "Mage"] },
-  "Ryze": { "name": "Ryze", "tags": ["Mage", "Fighter"] },
-  "Samira": { "name": "Samira", "tags": ["Marksman"] },
-  "Sejuani": { "name": "Sejuani", "tags": ["Tank", "Fighter"] },
-  "Senna": { "name": "Senna", "tags": ["Marksman", "Support"] },
-  "Seraphine": { "name": "Seraphine", "tags": ["Mage", "Support"] },
-  "Sett": { "name": "Sett", "tags": ["Fighter", "Tank"] },
-  "Shaco": { "name": "Shaco", "tags": ["Assassin"] },
-  "Shen": { "name": "Shen", "tags": ["Tank"] },
-  "Shyvana": { "name": "Shyvana", "tags": ["Fighter", "Tank"] },
-  "Singed": { "name": "Singed", "tags": ["Tank", "Fighter"] },
-  "Sion": { "name": "Sion", "tags": ["Tank", "Fighter"] },
-  "Sivir": { "name": "Sivir", "tags": ["Marksman"] },
-  "Skarner": { "name": "Skarner", "tags": ["Fighter", "Tank"] },
-  "Sona": { "name": "Sona", "tags": ["Support", "Mage"] },
-  "Soraka": { "name": "Soraka", "tags": ["Support", "Mage"] },
-  "Swain": { "name": "Swain", "tags": ["Mage", "Fighter"] },
-  "Sylas": { "name": "Sylas", "tags": ["Mage", "Assassin"] },
-  "Syndra": { "name": "Syndra", "tags": ["Mage"] },
-  "TahmKench": { "name": "Tahm Kench", "tags": ["Support", "Tank"] },
-  "Taliyah": { "name": "Taliyah", "tags": ["Mage", "Support"] },
-  "Talon": { "name": "Talon", "tags": ["Assassin"] },
-  "Taric": { "name": "Taric", "tags": ["Support", "Fighter"] },
-  "Teemo": { "name": "Teemo", "tags": ["Marksman", "Assassin"] },
-  "Thresh": { "name": "Thresh", "tags": ["Support", "Fighter"] },
-  "Tristana": { "name": "Tristana", "tags": ["Marksman", "Assassin"] },
-  "Trundle": { "name": "Trundle", "tags": ["Fighter", "Tank"] },
-  "Tryndamere": { "name": "Tryndamere", "tags": ["Fighter", "Assassin"] },
-  "TwistedFate": { "name": "Twisted Fate", "tags": ["Mage"] },
-  "Twitch": { "name": "Twitch", "tags": ["Marksman", "Assassin"] },
-  "Udyr": { "name": "Udyr", "tags": ["Fighter", "Tank"] },
-  "Urgot": { "name": "Urgot", "tags": ["Fighter", "Tank"] },
-  "Varus": { "name": "Varus", "tags": ["Marksman", "Mage"] },
-  "Vayne": { "name": "Vayne", "tags": ["Marksman", "Assassin"] },
-  "Veigar": { "name": "Veigar", "tags": ["Mage"] },
-  "Velkoz": { "name": "Vel'Koz", "tags": ["Mage"] },
-  "Vex": { "name": "Vex", "tags": ["Mage"] },
-  "Vi": { "name": "Vi", "tags": ["Fighter", "Assassin"] },
-  "Viego": { "name": "Viego", "tags": ["Assassin", "Fighter"] },
-  "Viktor": { "name": "Viktor", "tags": ["Mage"] },
-  "Vladimir": { "name": "Vladimir", "tags": ["Mage"] },
-  "Volibear": { "name": "Volibear", "tags": ["Fighter", "Tank"] },
-  "Warwick": { "name": "Warwick", "tags": ["Fighter", "Tank"] },
-  "Xayah": { "name": "Xayah", "tags": ["Marksman"] },
-  "Xerath": { "name": "Xerath", "tags": ["Mage"] },
-  "XinZhao": { "name": "Xin Zhao", "tags": ["Fighter", "Assassin"] },
-  "Yasuo": { "name": "Yasuo", "tags": ["Fighter", "Assassin"] },
-  "Yone": { "name": "Yone", "tags": ["Assassin", "Fighter"] },
-  "Yorick": { "name": "Yorick", "tags": ["Fighter", "Tank"] },
-  "Yuumi": { "name": "Yuumi", "tags": ["Support", "Mage"] },
-  "Zac": { "name": "Zac", "tags": ["Tank", "Fighter"] },
-  "Zed": { "name": "Zed", "tags": ["Assassin"] },
-  "Zeri": { "name": "Zeri", "tags": ["Marksman"] },
-  "Ziggs": { "name": "Ziggs", "tags": ["Mage"] },
-  "Zilean": { "name": "Zilean", "tags": ["Support", "Mage"] },
-  "Zoe": { "name": "Zoe", "tags": ["Mage", "Support"] },
-  "Zyra": { "name": "Zyra", "tags": ["Mage", "Support"] }
+  "Aatrox": {
+    "name": "Aatrox",
+    "tags": [ "Fighter", "Tank", "ADAssassin" ]
+  },
+  "Ahri": {
+    "name": "Ahri",
+    "tags": [ "Mage", "APAssassin", "MageSupport", "Marksman" ]
+  },
+  "Akali": {
+    "name": "Akali",
+    "tags": [ "APAssassin", "ADAssassin", "BulkMage", "Mage", "OnHitMage" ]
+  },
+  "Akshan": {
+    "name": "Akshan",
+    "tags": [ "Marksman", "ADAssassin", "OnHit" ]
+  },
+  "Alistar": {
+    "name": "Alistar",
+    "tags": [ "Tank", "TankSupport", "MageSupport", "BulkMage", "Fighter", "APAssassin" ]
+  },
+  "Amumu": {
+    "name": "Amumu",
+    "tags": [ "Tank", "Mage", "BulkMage", "APAssassin", "MageSupport", "TankSupport" ]
+  },
+  "Anivia": {
+    "name": "Anivia",
+    "tags": [ "Mage", "MageSupport", "Marksman" ]
+  },
+  "Annie": {
+    "name": "Annie",
+    "tags": [ "Mage", "EnchanterSupport", "MageSupport", "Marksman", "APAssassin" ]
+  },
+  "Aphelios": {
+    "name": "Aphelios",
+    "tags": [ "Marksman", "OnHit", "Fighter" ]
+  },
+  "Ashe": {
+    "name": "Ashe",
+    "tags": [ "Marksman", "AssassinSupport", "OnHit" ]
+  },
+  "AurelionSol": {
+    "name": "Aurelion Sol",
+    "tags": [ "Mage", "BulkMage", "APAssassin" ]
+  },
+  "Azir": {
+    "name": "Azir",
+    "tags": [ "Mage", "APAssassin", "OnHitMage" ]
+  },
+  "Bard": {
+    "name": "Bard",
+    "tags": [ "OnHitMage", "MageSupport", "Mage", "EnchanterSupport", "APAssassin", "Marksman", "OnHit", "Fighter", "BulkMage" ]
+  },
+  "Belveth": {
+    "name": "Bel'Veth",
+    "tags": [ "Fighter", "OnHit", "Marksman", "ADAssassin" ]
+  },
+  "Blitzcrank": {
+    "name": "Blitzcrank",
+    "tags": [ "Tank", "Fighter", "TankSupport", "MageSupport", "Mage", "BulkMage", "APAssassin", "Marksman" ]
+  },
+  "Brand": {
+    "name": "Brand",
+    "tags": [ "Mage", "MageSupport", "Marksman", "BulkMage", "APAssassin" ]
+  },
+  "Braum": {
+    "name": "Braum",
+    "tags": [ "TankSupport", "Tank", "Fighter", "OnHit", "OnHitMage" ]
+  },
+  "Caitlyn": {
+    "name": "Caitlyn",
+    "tags": [ "Marksman", "OnHit", "AssassinSupport", "ADAssassin" ]
+  },
+  "Camille": {
+    "name": "Camille",
+    "tags": [ "Fighter", "ADAssassin", "AssassinSupport" ]
+  },
+  "Cassiopeia": {
+    "name": "Cassiopeia",
+    "tags": [ "Mage", "Marksman", "MageSupport", "BulkMage" ]
+  },
+  "Chogath": {
+    "name": "Cho'Gath",
+    "tags": [ "Tank", "Mage", "OnHit", "TankSupport", "MageSupport" ]
+  },
+  "Corki": {
+    "name": "Corki",
+    "tags": [ "Marksman", "Mage", "APAssassin", "ADAssassin", "OnHitMage" ]
+  },
+  "Darius": {
+    "name": "Darius",
+    "tags": [ "Fighter", "Tank", "ADAssassin", "TankSupport" ]
+  },
+  "Diana": {
+    "name": "Diana",
+    "tags": [ "Fighter", "Mage", "BulkMage", "Fighter", "OnHitMage" ]
+  },
+  "Draven": {
+    "name": "Draven",
+    "tags": [ "Marksman", "OnHit", "ADAssassin" ]
+  },
+  "DrMundo": {
+    "name": "Dr. Mundo",
+    "tags": [ "Fighter", "Tank", "TankSupport" ]
+  },
+  "Ekko": {
+    "name": "Ekko",
+    "tags": [ "APAssassin", "Fighter", "Mage", "OnHitMage", "MageSupport" ]
+  },
+  "Elise": {
+    "name": "Elise",
+    "tags": [ "Mage", "Fighter", "APAssassin", "MageSupport", "BulkMage" ]
+  },
+  "Evelynn": {
+    "name": "Evelynn",
+    "tags": [ "Mage", "APAssassin", "MageSupport", "BulkMage" ]
+  },
+  "Ezreal": {
+    "name": "Ezreal",
+    "tags": [ "Marksman", "Mage", "OnHitMage", "AssassinSupport", "OnHit", "ADAssassin" ]
+  },
+  "Fiddlesticks": {
+    "name": "Fiddlesticks",
+    "tags": [ "Mage", "MageSupport", "BulkMage", "APAssassin", "Marksman" ]
+  },
+  "Fiora": {
+    "name": "Fiora",
+    "tags": [ "Fighter", "ADAssassin", "OnHit" ]
+  },
+  "Fizz": {
+    "name": "Fizz",
+    "tags": [ "Mage", "OnHitMage", "MageSupport", "BulkMage", "ADAssassin", "APAssassin" ]
+  },
+  "Galio": {
+    "name": "Galio",
+    "tags": [ "Tank", "Mage", "BulkMage", "ADAssassin", "MageSupport", "TankSupport", "Fighter" ]
+  },
+  "Gangplank": {
+    "name": "Gangplank",
+    "tags": [ "Fighter", "ADAssassin", "Marksman" ]
+  },
+  "Garen": {
+    "name": "Garen",
+    "tags": [ "Fighter", "Tank", "ADAssassin", "Marksman" ]
+  },
+  "Gnar": {
+    "name": "Gnar",
+    "tags": [ "Fighter", "Tank", "OnHit", "Marksman", "TankSupport" ]
+  },
+  "Gragas": {
+    "name": "Gragas",
+    "tags": [ "Fighter", "Mage", "BulkMage", "Tank", "MageSupport", "TankSupport" ]
+  },
+  "Graves": {
+    "name": "Graves",
+    "tags": [ "Marksman", "ADAssassin", "Fighter" ]
+  },
+  "Gwen": {
+    "name": "Gwen",
+    "tags": [ "APAssassin", "BulkMage", "OnHitMage" ]
+  },
+  "Hecarim": {
+    "name": "Hecarim",
+    "tags": [ "Fighter", "Tank", "ADAssassin", "APAssassin", "BulkMage", "Mage" ]
+  },
+  "Heimerdinger": {
+    "name": "Heimerdinger",
+    "tags": [ "Mage", "MageSupport", "APAssassin", "BulkMage" ]
+  },
+  "Illaoi": {
+    "name": "Illaoi",
+    "tags": [ "Fighter", "Tank", "ADAssassin", "AssassinSupport", "TankSupport" ]
+  },
+  "Irelia": {
+    "name": "Irelia",
+    "tags": [ "Fighter", "ADAssassin", "OnHit", "AssassinSupport" ]
+  },
+  "Ivern": {
+    "name": "Ivern",
+    "tags": [ "SupportMage", "Mage", "BulkMage", "EnchanterSupport" ]
+  },
+  "Janna": {
+    "name": "Janna",
+    "tags": [ "SupportMage", "Mage", "Marksman", "EnchanterSupport", "BulkMage" ]
+  },
+  "JarvanIV": {
+    "name": "Jarvan IV",
+    "tags": [ "Tank", "Fighter", "ADAssassin", "AssassinSupport", "TankSupport" ]
+  },
+  "Jax": {
+    "name": "Jax",
+    "tags": [ "Fighter", "ADAssassin", "OnHit", "Marksman" ]
+  },
+  "Jayce": {
+    "name": "Jayce",
+    "tags": [ "Fighter", "Marksman", "OnHit", "ADAssassin", "AssassinSupport" ]
+  },
+  "Jhin": {
+    "name": "Jhin",
+    "tags": [ "Marksman", "ADAssassin", "AssassinSupport" ]
+  },
+  "Jinx": {
+    "name": "Jinx",
+    "tags": [ "Marksman", "OnHit", "ADAssassin" ]
+  },
+  "Kaisa": {
+    "name": "Kai'Sa",
+    "tags": [ "Marksman", "APAssassin", "ADAssassin", "OnHitMage", "APAssassin", "Mage", "MageSupport", "OnHit" ]
+  },
+  "Kalista": {
+    "name": "Kalista",
+    "tags": [ "Marksman", "OnHit", "ADAssassin" ]
+  },
+  "Karma": {
+    "name": "Karma",
+    "tags": [ "Mage", "TankSupport", "MageSupport", "EnchanterSupport", "APAssassin", "BulkMage" ]
+  },
+  "Karthus": {
+    "name": "Karthus",
+    "tags": [ "Mage", "BulkMage", "MageSupport" ]
+  },
+  "Kassadin": {
+    "name": "Kassadin",
+    "tags": [ "Mage", "BulkMage", "ADAssassin", "OnHitMage", "Marksman" ]
+  },
+  "Katarina": {
+    "name": "Katarina",
+    "tags": [ "APAssassin", "Mage", "OnHitMage", "BulkMage" ]
+  },
+  "Kayle": {
+    "name": "Kayle",
+    "tags": [ "Fighter", "Support", "OnHitMage", "OnHit", "Marksman", "BulkMage", "MageSupport" ]
+  },
+  "Kayn": {
+    "name": "Kayn",
+    "tags": [ "Fighter", "ADAssassin", "AssassinSupport" ]
+  },
+  "Kennen": {
+    "name": "Kennen",
+    "tags": [ "Mage", "Marksman", "BulkMage", "OnHit", "OnHitMage", "MageSupport", "APAssassin" ]
+  },
+  "Khazix": {
+    "name": "Kha'Zix",
+    "tags": [ "ADAssassin", "Fighter", "AssassinSupport" ]
+  },
+  "Kindred": {
+    "name": "Kindred",
+    "tags": [ "Marksman", "OnHit", "Fighter", "ADAssassin", "AssassinSupport" ]
+  },
+  "Kled": {
+    "name": "Kled",
+    "tags": [ "Fighter", "Tank", "ADAssassin", "TankSupport", "AssassinSupport" ]
+  },
+  "KogMaw": {
+    "name": "Kog'Maw",
+    "tags": [ "Marksman", "Mage", "BulkMage", "APAssassin", "OnHit", "OnHitMage", "MageSupport" ]
+  },
+  "KSante": {
+    "name": "K'Sante",
+    "tags": [ "Tank", "Fighter", "OnHit", "ADAssassin", "AssassinSupport", "TankSupport", "Marksman" ]
+  },
+  "Leblanc": {
+    "name": "LeBlanc",
+    "tags": [ "APAssassin", "Mage", "BulkMage", "Marksman", "MageSupport" ]
+  },
+  "LeeSin": {
+    "name": "Lee Sin",
+    "tags": [ "Fighter", "ADAssassin", "Tank", "AssassinSupport", "TankSupport" ]
+  },
+  "Leona": {
+    "name": "Leona",
+    "tags": [ "Tank", "TankSupport", "Fighter" ]
+  },
+  "Lillia": {
+    "name": "Lillia",
+    "tags": [ "Fighter", "Mage", "BulkMage", "MageSupport" ]
+  },
+  "Lissandra": {
+    "name": "Lissandra",
+    "tags": [ "Mage", "BulkMage", "MageSupport", "Marksman", "APAssassin" ]
+  },
+  "Lucian": {
+    "name": "Lucian",
+    "tags": [ "Marksman", "OnHit", "Fighter", "ADAssassin", "AssassinSupport" ]
+  },
+  "Lulu": {
+    "name": "Lulu",
+    "tags": [ "EnchanterSupport", "Mage", "MageSupport", "Marksman", "OnHitMage", "BulkMage" ]
+  },
+  "Lux": {
+    "name": "Lux",
+    "tags": [ "Mage", "MageSupport", "Marksman" ]
+  },
+  "Malphite": {
+    "name": "Malphite",
+    "tags": [ "Tank", "Fighter", "APAssassin", "BulkMage", "ADAssassin", "MageSupport", "TankSupport" ]
+  },
+  "Malzahar": {
+    "name": "Malzahar",
+    "tags": [ "Mage", "APAssassin", "BulkMage", "Mage", "MageSupport" ]
+  },
+  "Maokai": {
+    "name": "Maokai",
+    "tags": [ "Tank", "Mage", "Fighter", "BulkMage", "APAssassin", "MageSupport", "TankSupport" ]
+  },
+  "MasterYi": {
+    "name": "Master Yi",
+    "tags": [ "ADAssassin", "Fighter", "OnHit" ]
+  },
+  "MissFortune": {
+    "name": "Miss Fortune",
+    "tags": [ "Marksman", "OnHit", "Mage", "APAssassin", "MageSupport", "ADAssassin", "OnHitMage" ]
+  },
+  "MonkeyKing": {
+    "name": "Wukong",
+    "tags": [ "Fighter", "Tank", "ADAssassin", "Marksman", "AssassinSupport", "TankSupport" ]
+  },
+  "Mordekaiser": {
+    "name": "Mordekaiser",
+    "tags": [ "Mage", "BulkMage", "Fighter", "MageSupport", "Tank", "TankSupport", "OnHitMage" ]
+  },
+  "Morgana": {
+    "name": "Morgana",
+    "tags": [ "Mage", "MageSupport", "APAssassin", "BulkMage", "Tank", "TankSupport" ]
+  },
+  "Nami": {
+    "name": "Nami",
+    "tags": [ "MageSupport", "Mage", "EnchanterSupport", "APAssassin", "Marksman", "Tank", "TankSupport", "BulkMage", "OnHitMage" ]
+  },
+  "Nasus": {
+    "name": "Nasus",
+    "tags": [ "Fighter", "Tank", "ADAssassin", "BulkMage", "Mage", "MageSupport", "TankSupport", "Marksman" ]
+  },
+  "Nautilus": {
+    "name": "Nautilus",
+    "tags": [ "Tank", "MageSupport", "Mage", "Fighter", "BulkMage", "APAssassin" ]
+  },
+  "Neeko": {
+    "name": "Neeko",
+    "tags": [ "Mage", "MageSupport", "BulkMage", "APAssassin", "Marksman" ]
+  },
+  "Nidalee": {
+    "name": "Nidalee",
+    "tags": [ "APAssassin", "Mage", "Fighter", "BulkMage", "MageSupport", "EnchanterSupport", "Marksman" ]
+  },
+  "Nilah": {
+    "name": "Nilah",
+    "tags": [ "Fighter", "ADAssassin", "Marksman", "OnHit" ]
+  },
+  "Nocturne": {
+    "name": "Nocturne",
+    "tags": [ "ADAssassin", "Fighter", "AssassinSupport", "OnHit", "Marksman" ]
+  },
+  "Nunu": {
+    "name": "Nunu & Willump",
+    "tags": [ "Tank", "Fighter", "Mage", "BulkMage", "APAssassin", "MageSupport", "TankSupport" ]
+  },
+  "Olaf": {
+    "name": "Olaf",
+    "tags": [ "Fighter", "Tank", "OnHit", "TankSupport" ]
+  },
+  "Orianna": {
+    "name": "Orianna",
+    "tags": [ "Mage", "MageSupport", "EnchanterSupport", "APAssassin" ]
+  },
+  "Ornn": {
+    "name": "Ornn",
+    "tags": [ "Tank", "Fighter", "ADAssassin", "TankSupport" ]
+  },
+  "Pantheon": {
+    "name": "Pantheon",
+    "tags": [ "Fighter", "ADAssassin", "AssassinSupport", "TankSupport", "Tank" ]
+  },
+  "Poppy": {
+    "name": "Poppy",
+    "tags": [ "Tank", "Fighter", "ADAssassin", "TankSupport", "AssassinSupport" ]
+  },
+  "Pyke": {
+    "name": "Pyke",
+    "tags": [ "AssassinSupport", "ADAssassin", "Fighter", "Tank", "TankSupport" ]
+  },
+  "Qiyana": {
+    "name": "Qiyana",
+    "tags": [ "ADAssassin", "Fighter", "AssassinSupport" ]
+  },
+  "Quinn": {
+    "name": "Quinn",
+    "tags": [ "Marksman", "ADAssassin", "OnHit", "AssassinSupport", "Fighter" ]
+  },
+  "Rakan": {
+    "name": "Rakan",
+    "tags": [ "MageSupport", "EnchanterSupport", "Mage", "APAssassin", "BulkMage", "TankSupport", "Fighter", "Tank" ]
+  },
+  "Rammus": {
+    "name": "Rammus",
+    "tags": [ "Tank", "Fighter", "APAssassin", "BulkMage", "Mage", "TankSupport", "MageSupport" ]
+  },
+  "RekSai": {
+    "name": "Rek'Sai",
+    "tags": [ "Fighter", "ADAssassin", "OnHit" ]
+  },
+  "Rell": {
+    "name": "Rell",
+    "tags": [ "Tank", "TankSupport", "Fighter" ]
+  },
+  "Renata": {
+    "name": "Renata Glasc",
+    "tags": [ "MageSupport", "Mage", "EnchanterSupport", "BulkMage" ]
+  },
+  "Renekton": {
+    "name": "Renekton",
+    "tags": [ "Fighter", "Tank", "ADAssassin", "TankSupport", "AssassinSupport" ]
+  },
+  "Rengar": {
+    "name": "Rengar",
+    "tags": [ "ADAssassin", "Fighter", "APAssassin", "BulkMage", "AssassinSupport", "MageSupport", "OnHitMage" ]
+  },
+  "Riven": {
+    "name": "Riven",
+    "tags": [ "Fighter", "ADAssassin", "AssassinSupport" ]
+  },
+  "Rumble": {
+    "name": "Rumble",
+    "tags": [ "Fighter", "Mage", "BulkMage", "APAssassin", "MageSupport" ]
+  },
+  "Ryze": {
+    "name": "Ryze",
+    "tags": [ "Mage", "BulkMage", "MageSupport", "Marksman" ]
+  },
+  "Samira": {
+    "name": "Samira",
+    "tags": [ "Marksman", "ADAssassin", "Fighter" ]
+  },
+  "Sejuani": {
+    "name": "Sejuani",
+    "tags": [ "Tank", "Fighter", "BulkMage", "Mage", "APAssassin", "MageSupport", "TankSupport" ]
+  },
+  "Senna": {
+    "name": "Senna",
+    "tags": [ "Marksman", "AssassinSupport", "ADAssassin" ]
+  },
+  "Seraphine": {
+    "name": "Seraphine",
+    "tags": [ "Mage", "MageSupport", "EnchanterSupport", "BulkMage" ]
+  },
+  "Sett": {
+    "name": "Sett",
+    "tags": [ "Fighter", "Tank", "ADAssassin", "OnHit", "AssassinSupport", "TankSupport" ]
+  },
+  "Shaco": {
+    "name": "Shaco",
+    "tags": [ "ADAssassin", "APAssassin", "Mage", "BulkMage", "MageSupport", "AssassinSupport", "Marksman" ]
+  },
+  "Shen": {
+    "name": "Shen",
+    "tags": [ "Tank", "Fighter", "OnHit", "TankSupport" ]
+  },
+  "Shyvana": {
+    "name": "Shyvana",
+    "tags": [ "Fighter", "Tank", "BulkMage", "Mage", "APAssassin", "OnHitMage", "TankSupport", "MageSupport" ]
+  },
+  "Singed": {
+    "name": "Singed",
+    "tags": [ "Tank", "Fighter", "Mage", "BulkMage", "MageSupport", "TankSupport" ]
+  },
+  "Sion": {
+    "name": "Sion",
+    "tags": [ "Tank", "Fighter", "TankSupport", "AssassinSupport", "ADAssassin" ]
+  },
+  "Sivir": {
+    "name": "Sivir",
+    "tags": [ "Marksman", "OnHit", "ADAssassin" ]
+  },
+  "Skarner": {
+    "name": "Skarner",
+    "tags": [ "Fighter", "Tank", "OnHitMage", "BulkMage", "OnHit", "TankSupport" ]
+  },
+  "Sona": {
+    "name": "Sona",
+    "tags": [ "MageSupport", "Mage", "EnchanterSupport", "APAssassin", "Fighter", "Marksman", "BulkMage" ]
+  },
+  "Soraka": {
+    "name": "Soraka",
+    "tags": [ "MageSupport", "Mage", "EnchanterSupport", "Tank", "BulkMage", "Marksman", "OnHit" ]
+  },
+  "Swain": {
+    "name": "Swain",
+    "tags": [ "Mage", "Fighter", "MageSupport", "BulkMage", "Marksman", "Tank", "TankSupport" ]
+  },
+  "Sylas": {
+    "name": "Sylas",
+    "tags": [ "Mage", "APAssassin", "MageSupport", "BulkMage" ]
+  },
+  "Syndra": {
+    "name": "Syndra",
+    "tags": [ "Mage", "APAssassin", "Marksman", "MageSupport" ]
+  },
+  "TahmKench": {
+    "name": "Tahm Kench",
+    "tags": [ "TankSupport", "Tank", "MageSupport", "BulkMage", "Fighter", "Mage", "OnHit" ]
+  },
+  "Taliyah": {
+    "name": "Taliyah",
+    "tags": [ "Mage", "MageSupport", "BulkMage", "Marksman" ]
+  },
+  "Talon": {
+    "name": "Talon",
+    "tags": [ "ADAssassin", "Marksman", "AssassinSupport", "Fighter" ]
+  },
+  "Taric": {
+    "name": "Taric",
+    "tags": [ "TankSupport", "Fighter", "MageSupport", "BulkMage", "OnHitMage", "Tank", "OnHit" ]
+  },
+  "Teemo": {
+    "name": "Teemo",
+    "tags": [ "Marksman", "ADAssassin", "Mage", "BulkMage", "OnHitMage", "OnHit", "MageSupport" ]
+  },
+  "Thresh": {
+    "name": "Thresh",
+    "tags": [ "TankSupport", "Fighter", "Tank", "Marksman" ]
+  },
+  "Tristana": {
+    "name": "Tristana",
+    "tags": [ "Marksman", "ADAssassin", "OnHit" ]
+  },
+  "Trundle": {
+    "name": "Trundle",
+    "tags": [ "Fighter", "Tank", "OnHit", "Marksman", "TankSupport" ]
+  },
+  "Tryndamere": {
+    "name": "Tryndamere",
+    "tags": [ "Fighter", "ADAssassin", "APAssassin", "AssassinSupport", "MageSupport", "OnHitMage", "OnHit", "Marksman", "Mage" ]
+  },
+  "TwistedFate": {
+    "name": "Twisted Fate",
+    "tags": [ "Mage", "Marksman", "MageSupport", "APAssassin", "BulkMage", "OnHit", "OnHitMage" ]
+  },
+  "Twitch": {
+    "name": "Twitch",
+    "tags": [ "Marksman", "ADAssassin", "APAssassin", "OnHitMage", "OnHit", "MageSupport", "Mage" ]
+  },
+  "Udyr": {
+    "name": "Udyr",
+    "tags": [ "Fighter", "Tank", "BulkMage", "ADAssassin", "TankSupport" ]
+  },
+  "Urgot": {
+    "name": "Urgot",
+    "tags": [ "Fighter", "Tank", "TankSupport", "ADAssassin" ]
+  },
+  "Varus": {
+    "name": "Varus",
+    "tags": [ "Marksman", "Mage", "APAssassin", "OnHitMage", "OnHit", "MageSupport" ]
+  },
+  "Vayne": {
+    "name": "Vayne",
+    "tags": [ "Marksman", "ADAssassin", "OnHit" ]
+  },
+  "Veigar": {
+    "name": "Veigar",
+    "tags": [ "Mage", "MageSupport", "BulkMage", "Marksman", "APAssassin" ]
+  },
+  "Velkoz": {
+    "name": "Vel'Koz",
+    "tags": [ "Mage", "MageSupport", "APAssassin", "BulkMage" ]
+  },
+  "Vex": {
+    "name": "Vex",
+    "tags": [ "Mage", "MageSupport", "APAssassin", "BulkMage" ]
+  },
+  "Vi": {
+    "name": "Vi",
+    "tags": [ "Fighter", "ADAssassin", "Tank", "TankSupport", "AssassinSupport" ]
+  },
+  "Viego": {
+    "name": "Viego",
+    "tags": [ "ADAssassin", "Fighter", "OnHit", "Marksman" ]
+  },
+  "Viktor": {
+    "name": "Viktor",
+    "tags": [ "Mage", "APAssassin" ]
+  },
+  "Vladimir": {
+    "name": "Vladimir",
+    "tags": [ "Mage", "BulkMage", "MageSupport", "Marksman" ]
+  },
+  "Volibear": {
+    "name": "Volibear",
+    "tags": [ "Fighter", "Tank", "Mage", "BulkMage", "MageSupport", "TankSupport" ]
+  },
+  "Warwick": {
+    "name": "Warwick",
+    "tags": [ "Fighter", "Tank", "OnHit", "ADAssassin", "TankSupport" ]
+  },
+  "Xayah": {
+    "name": "Xayah",
+    "tags": [ "Marksman", "OnHit", "Fighter", "ADAssassin" ]
+  },
+  "Xerath": {
+    "name": "Xerath",
+    "tags": [ "Mage", "MageSupport", "APAssassin", "Marksman" ]
+  },
+  "XinZhao": {
+    "name": "Xin Zhao",
+    "tags": [ "Fighter", "ADAssassin", "OnHit", "AssassinSupport", "Marksman" ]
+  },
+  "Yasuo": {
+    "name": "Yasuo",
+    "tags": [ "Fighter", "ADAssassin", "Marksman", "OnHit" ]
+  },
+  "Yone": {
+    "name": "Yone",
+    "tags": [ "ADAssassin", "Fighter", "Marksman", "OnHit", "AssassinSupport" ]
+  },
+  "Yorick": {
+    "name": "Yorick",
+    "tags": [ "Fighter", "Tank", "OnHit", "TankSupport" ]
+  },
+  "Yuumi": {
+    "name": "Yuumi",
+    "tags": [ "MageSupport", "Mage", "EnchanterSupport", "Marksman", "Fighter" ]
+  },
+  "Zac": {
+    "name": "Zac",
+    "tags": [ "Tank", "Fighter", "Mage", "BulkMage", "MageSupport", "TankSupport", "APAssassin" ]
+  },
+  "Zed": {
+    "name": "Zed",
+    "tags": [ "ADAssassin", "Marksman", "Fighter" ]
+  },
+  "Zeri": {
+    "name": "Zeri",
+    "tags": [ "Marksman", "OnHit", "Fighter" ]
+  },
+  "Ziggs": {
+    "name": "Ziggs",
+    "tags": [ "Mage", "APAssassin" ]
+  },
+  "Zilean": {
+    "name": "Zilean",
+    "tags": [ "MageSupport", "Mage", "Marksman" ]
+  },
+  "Zoe": {
+    "name": "Zoe",
+    "tags": [ "Mage", "MageSupport", "APAssassin", "Marksman" ]
+  },
+  "Zyra": {
+    "name": "Zyra",
+    "tags": [ "Mage", "MageSupport", "BulkMage" ]
+  }
 }

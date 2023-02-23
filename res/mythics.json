@@ -1,139 +1,139 @@
 {
   "2065": {
     "name": "Shurelya's Battlesong",
-    "tags": ["Support"],
+    "tags": [ "EnchanterSupport", "TankSupport" ],
     "type": "mythic"
   },
   "3001": {
     "name": "Evenshroud",
-    "tags": ["Tank"],
+    "tags": [ "Tank" ],
     "type": "mythic"
   },
   "3078": {
     "name": "Trinity Force",
-    "tags": ["Fighter"],
+    "tags": [ "Fighter", "OnHit" ],
     "type": "mythic"
   },
   "3084": {
     "name": "Heartsteel",
-    "tags": ["Tank"],
+    "tags": [ "Tank", "TankSupport" ],
     "type": "mythic"
   },
   "3152": {
     "name": "Hextech Rocketbelt",
-    "tags": ["Mage"],
+    "tags": [ "Mage", "APAssassin", "MageSupport" ],
     "type": "mythic"
   },
   "3190": {
     "name": "Locket of the Iron Solari",
-    "tags": ["Tank"],
+    "tags": [ "Tank", "TankSupport", "EnchanterSupport" ],
     "type": "mythic"
   },
   "4005": {
     "name": "Imperial Mandate",
-    "tags": ["Support"],
+    "tags": [ "MageSupport", "EnchanterSupport" ],
     "type": "mythic"
   },
   "4633": {
     "name": "Riftmaker",
-    "tags": ["Mage"],
+    "tags": [ "BulkMage", "Mage", "OnHitMage" ],
     "type": "mythic"
   },
   "4636": {
     "name": "Night Harvester",
-    "tags": ["Mage"],
+    "tags": [ "Mage", "BulkMage", "OnHitMage" ],
     "type": "mythic"
   },
   "4644": {
     "name": "Crown of the Shattered Queen",
-    "tags": ["Mage"],
+    "tags": [ "Mage", "OnHitMage" ],
     "type": "mythic"
   },
   "6617": {
     "name": "Moonstone Renewer",
-    "tags": ["Support"],
+    "tags": [ "EnchanterSupport" ],
     "type": "mythic"
   },
   "6630": {
     "name": "Goredrinker",
-    "tags": ["Fighter"],
+    "tags": [ "Fighter", "Tank" ],
     "type": "mythic"
   },
   "6631": {
     "name": "Stridebreaker",
-    "tags": ["Fighter"],
+    "tags": [ "Fighter" ],
     "type": "mythic"
   },
   "6632": {
     "name": "Divine Sunderer",
-    "tags": ["Fighter"],
+    "tags": [ "Fighter", "OnHit" ],
     "type": "mythic"
   },
   "6653": {
     "name": "Liandry's Anguish",
-    "tags": ["Mage"],
+    "tags": [ "Mage", "BulkMage", "MageSupport" ],
     "type": "mythic"
   },
   "6655": {
     "name": "Luden's Tempest",
-    "tags": ["Mage"],
+    "tags": [ "APAssassin", "MageSupport" ],
     "type": "mythic"
   },
   "6656": {
     "name": "Everfrost",
-    "tags": ["Mage"],
+    "tags": [ "Mage" ],
     "type": "mythic"
   },
   "6657": {
     "name": "Rod of Ages",
-    "tags": ["Mage"],
+    "tags": [ "BulkMage" ],
     "type": "mythic",
-    "blocking": [8020]
+    "blocking": [ 8020 ]
   },
   "6662": {
     "name": "Iceborn Gauntlet",
-    "tags": ["Tank"],
+    "tags": [ "Tank", "Fighter", "TankSupport" ],
     "type": "mythic"
   },
   "6665": {
     "name": "Jak'Sho, The Protean",
-    "tags": ["Tank"],
+    "tags": [ "Tank", "Fighter", "TankSupport" ],
     "type": "mythic"
   },
   "6667": {
     "name": "Radiant Virtue",
-    "tags": ["Tank"],
+    "tags": [ "Tank", "Fighter" ],
     "type": "mythic"
   },
   "6671": {
     "name": "Galeforce",
-    "tags": ["Marksman"],
+    "tags": [ "Marksman", "OnHit" ],
     "type": "mythic"
   },
   "6672": {
     "name": "Kraken Slayer",
-    "tags": ["Marksman"],
+    "tags": [ "Marksman", "OnHit" ],
     "type": "mythic"
   },
   "6673": {
     "name": "Immortal Shieldbow",
-    "tags": ["Marksman"],
+    "tags": [ "Marksman" ],
     "type": "mythic",
-    "blocking":[3003,3156,3053]
+    "blocking": [ 3003, 3156, 3053 ]
   },
   "6691": {
     "name": "Duskblade of Draktharr",
-    "tags": ["Assassin"],
+    "tags": [ "ADAssassin", "OnHit", "AssassinSupport" ],
     "type": "mythic"
   },
   "6692": {
     "name": "Eclipse",
-    "tags": ["Assassin"],
+    "tags": [ "ADAssassin" ],
     "type": "mythic"
   },
   "6693": {
     "name": "Prowler's Claw",
-    "tags": ["Assassin"],
+    "tags": [ "ADAssassin", "OnHit", "AssassinSupport" ],
     "type": "mythic"
   }
 }

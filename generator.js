@@ -9,6 +9,8 @@ const legendaryItemUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBr
 const bootsItemUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/boots.json';
 const mythicItemUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/mythics.json';
 const championUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/champs.json';
+const startersUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/starters.json';
+const summonersUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/summoners.json';
 
 let champions;
 let fullChampions;
@@ -16,7 +18,9 @@ let selectedChampions = [];
 let boots;
 let legendaries;
 let mythics;
-Promise.all([fetchChampions(), fetchFullChampions(), fetchBoots(), fetchMythics(), fetchLegendaries()]).then(() => {
+let starters;
+let summoners;
+Promise.all([fetchChampions(), fetchFullChampions(), fetchSummoners(), fetchStarters(), fetchBoots(), fetchMythics(), fetchLegendaries()]).then(() => {
     fillChamps();
     generate();
     searchChampion();
@@ -47,6 +51,24 @@ async function fetchChampions() {
             .then(res => res.json())
             .then(out => {
                 champions = out;
+            })
+            .catch(err => { throw err }));
+}
+async function fetchSummoners() {
+    await Promise.resolve(
+        fetch(summonersUrl)
+            .then(res => res.json())
+            .then(out => {
+                summoners = out;
+            })
+            .catch(err => { throw err }));
+}
+async function fetchStarters() {
+    await Promise.resolve(
+        fetch(startersUrl)
+            .then(res => res.json())
+            .then(out => {
+                starters = out;
             })
             .catch(err => { throw err }));
 }
@@ -110,8 +132,40 @@ function generate() {
     var givenItems = [];
     var blockedItems = [];
 
+    var starterKeys = Object.keys(starters);
+    var starter = 0;
+
+    while (starter == 0) {
+        var key = starterKeys[starterKeys.length * Math.random() << 0];
+        var randItem = starters[key];
+        if (randItem.tags.includes(randTag)) {
+            starter = randItem;
+            givenItems.push(starter);
+            document.getElementById("starterItem").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + key + ".png";
+            document.getElementById("starterItem").parentElement.setAttribute("data-tooltip", starter.name);
+        }
+    }
+
+
+    var summonerKeys = Object.keys(summoners);
+    var summoner = 0;
+
+    while (summoner == 0) {
+        var key = summonerKeys[summonerKeys.length * Math.random() << 0];
+        var randItem = summoners[key];
+        if (randItem.tags.includes(randTag)) {
+            summoner = randItem;
+            givenItems.push(summoner);
+            document.getElementById("sumSpell1").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/" + summoner.name + ".png";
+            document.getElementById("sumSpell1").parentElement.setAttribute("data-tooltip", summoner.key);
+        }
+        document.getElementById("sumSpell2").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/SummonerFlash.png";
+        document.getElementById("sumSpell2").parentElement.setAttribute("data-tooltip", "Flash"); // daweil nur flash lassen?
+    }
+
     var bootKeys = Object.keys(boots);
     var boot = 0;
+
     while (boot == 0) {
         var key = bootKeys[bootKeys.length * Math.random() << 0];
         var randItem = boots[key];

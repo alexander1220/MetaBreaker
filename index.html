@@ -18,9 +18,12 @@
         <ul>
             <li><a data-target="modal-example" onClick="toggleModal(event)">Rules</a></li>
             <li><a href="#" role="button">Login</a></li>
-            <li><label for="themeSwitch">
-                <input type="checkbox" name="switchTop" role="switch" onclick="switchTheme()" id="themeSwitch">Theme</label></li>
-        
+            <li>
+                <label for="themeSwitch">
+                    <input type="checkbox" name="switchTop" role="switch" onclick="switchTheme()" id="themeSwitch">Theme
+                </label>
+            </li>
+
         </ul>
     </nav>
     <main class="container" style="max-width: 850px;">
@@ -28,48 +31,67 @@
             <table>
                 <tbody>
                     <tr>
-                        <td colspan="2" rowspan="2"><img id="championIcon"
-                                src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/Aatrox.png" /></td>
-                        <td><img id="starterItem"
-                                src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1055.png" />
+                        <td colspan="2" rowspan="2">
+                            <img id="championIcon"
+                                 src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/Aatrox.png" />
                         </td>
-                        <td style="text-align: right;"><img id="lane" style="max-width: 60px;"
-                                src="https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-bottom-blue.png" />
+                        <td>
+                            <img id="starterItem"
+                                 src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1055.png" />
+                        </td>
+                        <td style="text-align: right;">
+                            <img id="lane" style="max-width: 60px;"
+                                 src="https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-bottom-blue.png" />
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2" id="itemslots">
-                            <div style="display:inline;" data-tooltip="MYTOOLTIP" data-placement="bottom"><img
-                                    id="item1" style="border-color: rgb(168, 168, 221);"
-                                    src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" /></div>
-                            <div style="display:inline;" data-tooltip="MYTOOLTIP" data-placement="bottom"><img
-                                    id="item2" style="border-color: rgb(228, 165, 28);"
-                                    src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" /></div>
-                            <div style="display:inline;" data-tooltip="Top" data-placement="bottom"><img id="item3"
-                                    src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" /></div>
-                            <div style="display:inline;" data-tooltip="Top" data-placement="bottom"> <img id="item4"
-                                    src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" /></div>
-                            <div style="display:inline;" data-tooltip="Top" data-placement="bottom"><img id="item5"
-                                    src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" /></div>
-                            <div style="display:inline;" data-tooltip="Top" data-placement="bottom"><img id="item6"
-                                    src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" /></div>
+                            <div style="display:inline;" data-tooltip="MYTOOLTIP" data-placement="bottom">
+                                <img id="item1" style="border-color: rgb(168, 168, 221);"
+                                     src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
+                            </div>
+                            <div style="display:inline;" data-tooltip="MYTOOLTIP" data-placement="bottom">
+                                <img id="item2" style="border-color: rgb(228, 165, 28);"
+                                     src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
+                            </div>
+                            <div style="display:inline;" data-tooltip="Top" data-placement="bottom">
+                                <img id="item3"
+                                     src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
+                            </div>
+                            <div style="display:inline;" data-tooltip="Top" data-placement="bottom">
+                                <img id="item4"
+                                     src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
+                            </div>
+                            <div style="display:inline;" data-tooltip="Top" data-placement="bottom">
+                                <img id="item5"
+                                     src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
+                            </div>
+                            <div style="display:inline;" data-tooltip="Top" data-placement="bottom">
+                                <img id="item6"
+                                     src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1001.png" />
+                            </div>
                         </td>
                     </tr>
                     <tr>
-                        <td rowspan="2"><img id="spell"
-                                src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/FlashFrost.png" /></td>
-                        <td><img id="sumSpell1" style="max-width: 40px;"
-                                src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/SummonerFlash.png" />
+                        <td rowspan="2">
+                            <img id="spell"
+                                 src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/FlashFrost.png" />
                         </td>
-                        <td colspan="2" rowspan="2" style="text-align: right;"><img id="rune1"
-                                src="https://raw.communitydragon.org/latest/game/assets/perks/styles/domination/darkharvest/darkharvest.png" />
+                        <td>
+                            <img id="sumSpell1" style="max-width: 40px;"
+                                 src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/SummonerFlash.png" />
+                        </td>
+                        <td colspan="2" rowspan="2" style="text-align: right;">
+                            <img id="rune1"
+                                 src="https://raw.communitydragon.org/latest/game/assets/perks/styles/domination/darkharvest/darkharvest.png" />
                             <img id="rune2"
-                                src="https://raw.communitydragon.org/latest/game/assets/perks/styles/domination/darkharvest/darkharvest.png" />
+                                 src="https://raw.communitydragon.org/latest/game/assets/perks/styles/domination/darkharvest/darkharvest.png" />
                         </td>
                     </tr>
                     <tr>
-                        <td><img id="sumSpell2" style="max-width: 40px;"
-                                src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/SummonerFlash.png" />
+                        <td>
+                            <img id="sumSpell2" style="max-width: 40px;"
+                                 src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/SummonerFlash.png" />
                         </td>
                     </tr>
                 </tbody>
@@ -81,27 +103,33 @@
         <div class="grid">
             <div>
                 <label for="switchTop">
-                    <input type="checkbox" id="switchTop" name="switchTop" role="switch">Top</label>
+                    <input type="checkbox" id="switchTop" name="switchTop" role="switch">Top
+                </label>
             </div>
             <div>
                 <label for="switchJgl">
-                    <input type="checkbox" id="switchJgl" name="switchJgl" role="switch">Jungle</label>
+                    <input type="checkbox" id="switchJgl" name="switchJgl" role="switch">Jungle
+                </label>
             </div>
             <div>
                 <label for="switchMid">
-                    <input type="checkbox" id="switchMid" name="switchMid" role="switch">Mid</label>
+                    <input type="checkbox" id="switchMid" name="switchMid" role="switch">Mid
+                </label>
             </div>
             <div>
                 <label for="switchAdc">
-                    <input type="checkbox" id="switchAdc" name="switchAdc" role="switch">Adc</label>
+                    <input type="checkbox" id="switchAdc" name="switchAdc" role="switch">Adc
+                </label>
             </div>
             <div>
                 <label for="switchSup">
-                    <input type="checkbox" id="switchSup" name="switchSup" role="switch">Support</label>
+                    <input type="checkbox" id="switchSup" name="switchSup" role="switch">Support
+                </label>
             </div>
             <div>
                 <label for="switchFill">
-                    <input type="checkbox" id="switchFill" name="switchFill" role="switch">Fill</label>
+                    <input type="checkbox" id="switchFill" name="switchFill" role="switch">Fill
+                </label>
             </div>
         </div>
         <div class="grid" style="margin-top: 20px;">
@@ -115,12 +143,14 @@
     </main>
 
     <dialog id="modal-example" open="false">
-        <article><a href="#close" aria-label="Close" class="close" data-target="modal-example"
-                onclick="toggleModal(event)"></a>
+        <article>
+            <a href="#close" aria-label="Close" class="close" data-target="modal-example"
+               onclick="toggleModal(event)"></a>
             <h3>Rules</h3>
             <p>Break the meta.</p>
-            <p>If you don't build EXACTLY what you rolled... then whats the points of using it 😪</p>
-            <footer><a href="#confirm" role="button" data-target="modal-example" onclick="toggleModal(event)">Okay</a>
+            <p>If you don't build EXACTLY what you rolled... then whats the point of using it 😪</p>
+            <footer>
+                <a href="#confirm" role="button" data-target="modal-example" onclick="toggleModal(event)">Okay</a>
             </footer>
         </article>
     </dialog>
