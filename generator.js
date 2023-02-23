@@ -143,13 +143,12 @@ function generate() {
     for (let i = 2; i < 6; i++) {
         var key = keys[keys.length * Math.random() << 0];
         var randItem = items[key];
-        if (randItem.hasOwnProperty("blocking"))
-            blockedItems.push(randItem.blocking)
-
         if (givenItems.includes(randItem.name) || !randItem.tags.includes(randTag) || blockedItems.flat().includes(key)) {
             i--;
             continue;
         }
+        if (randItem.hasOwnProperty("blocking"))
+            blockedItems.push(randItem.blocking)
         givenItems.push(randItem.name);
         var itemId = "item" + (i + 1);
         document.getElementById(itemId).src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + key + ".png";
