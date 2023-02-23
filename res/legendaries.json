@@ -11,7 +11,8 @@
       3004,
       3053,
       3119,
-      3156
+      3156,
+      6673
     ]
   },
   "3004": {
@@ -62,7 +63,6 @@
   "3033": {
     "name": "Mortal Reminder",
     "tags": [
-
       "Marksman"
     ],
     "type": "legendary",
@@ -118,7 +118,8 @@
     "type": "legendary",
     "blocking": [
       3003,
-      3156
+      3156,
+      6673
     ]
   },
   "3065": {
@@ -164,7 +165,10 @@
       "Fighter",
       "OnHit"
     ],
-    "type": "legendary"
+    "type": "legendary",
+    "blocking":[
+      3748
+    ]
   },
   "3075": {
     "name": "Thornmail",
@@ -363,7 +367,8 @@
     "type": "legendary",
     "blocking": [
       3003,
-      3053
+      3053,
+      6673
     ]
   },
   "3157": {
@@ -464,7 +469,10 @@
       "Fighter",
       "OnHit"
     ],
-    "type": "legendary"
+    "type": "legendary",
+    "blocking": [
+      3074
+    ]
   },
   "3814": {
     "name": "Edge of Night",
@@ -567,6 +575,7 @@
     ],
     "type": "legendary",
     "blocking": [
+      3031,
       3161,
       3124
     ]
@@ -626,6 +635,9 @@
       "TankSupport",
       "BulkMage"
     ],
-    "type": "legendary"
+    "type": "legendary",
+    "blocking": [
+      6657
+    ]
   }
 }
