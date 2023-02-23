@@ -137,7 +137,7 @@ function generate() {
 
     while (starter == 0) {
         var key = starterKeys[starterKeys.length * Math.random() << 0];
-        var randItem = boots[key];
+        var randItem = starters[key];
         if (randItem.tags.includes(randTag)) {
             starter = randItem;
             givenItems.push(starter);
