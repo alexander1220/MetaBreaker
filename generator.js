@@ -152,7 +152,7 @@ function generate() {
 
     while (summoner == 0) {
         var key = summonerKeys[summonerKeys.length * Math.random() << 0];
-        var randItem = summoner[key];
+        var randItem = summoners[key];
         if (randItem.tags.includes(randTag)) {
             summoner = randItem;
             givenItems.push(summoner);
