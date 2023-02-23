@@ -156,8 +156,8 @@ function generate() {
         if (randItem.tags.includes(randTag)) {
             summoner = randItem;
             givenItems.push(summoner);
-            document.getElementById("spell").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/" + key + ".png";
-            document.getElementById("spell").parentElement.setAttribute("data-tooltip", spell.name);
+            document.getElementById("sumSpell1").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/" + key + ".png";
+            document.getElementById("sumSpell1").parentElement.setAttribute("data-tooltip", spell.name);
         }
     }
 
