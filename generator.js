@@ -153,11 +153,13 @@ function generate() {
     while (summoner == 0) {
         var key = summonerKeys[summonerKeys.length * Math.random() << 0];
         var randItem = summoners[key];
-        if (randItem.tags.includes(randTag)) {
-            summoner = randItem;
-            givenItems.push(summoner);
-            document.getElementById("sumSpell1").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/" + summoner.name + ".png";
-            document.getElementById("sumSpell1").parentElement.setAttribute("data-tooltip", summoner.key);
+        if (key != "Flash") {
+            if (randItem.tags.includes(randTag)) {
+                summoner = randItem;
+                givenItems.push(summoner);
+                document.getElementById("sumSpell1").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/" + summoner.name + ".png";
+                document.getElementById("sumSpell1").parentElement.setAttribute("data-tooltip", key);
+            }
         }
         document.getElementById("sumSpell2").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/SummonerFlash.png";
         document.getElementById("sumSpell2").parentElement.setAttribute("data-tooltip", "Flash"); // daweil nur flash lassen?
