@@ -1,7 +1,7 @@
 {
 	"1054": {
 		"name": "Doran's Shield",
-		"tags": [ "Tank","BulkMage" ]
+		"tags": [ "Tank", "BulkMage" ]
 	},
 	"1055": {
 		"name": "Doran's Blade",
@@ -9,7 +9,7 @@
 	},
 	"1056": {
 		"name": "Doran's Ring",
-		"tags": [ "Mage", "APAssassin","BulkMage" ]
+		"tags": [ "Mage", "APAssassin", "BulkMage" ]
 	},
 	"1036": {
 		"name": "Long Sword",
@@ -41,7 +41,7 @@
 	},
 	"3854": {
 		"name": "Steel Shoulderguards",
-		"tags": ["TankSupport"]
+		"tags": [ "TankSupport" ]
 	}
 
-	}
+}
