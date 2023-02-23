@@ -31,10 +31,10 @@
 		"name": "Spectral Sickle",
 		"tags": [ "AssassinSupport" ]
 	},
-	//"3858": {
-	//	"name": "Relic Shield",
-	//	"tags": [ "TankSupport" ]
-	//},
+	"3858": {
+		"name": "Relic Shield",
+		"tags": [  ]
+	},
 	"3850": {
 		"name": "Spellthief's Edge",
 		"tags": [ "MageSupport", "EnchanterSupport" ]
