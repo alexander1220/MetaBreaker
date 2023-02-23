@@ -157,8 +157,10 @@ function generate() {
             summoner = randItem;
             givenItems.push(summoner);
             document.getElementById("sumSpell1").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/" + summoner.name + ".png";
-            document.getElementById("sumSpell1").parentElement.setAttribute("data-tooltip", summoner.name);
+            document.getElementById("sumSpell1").parentElement.setAttribute("data-tooltip", summoner.key);
         }
+        document.getElementById("sumSpell2").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/SummonerFlash.png";
+        document.getElementById("sumSpell2").parentElement.setAttribute("data-tooltip", "Flash"); // daweil nur flash lassen?
     }
 
     var bootKeys = Object.keys(boots);
