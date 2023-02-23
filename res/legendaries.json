@@ -2,8 +2,9 @@
   "3003": {
     "name": "Archangel's Staff",
     "tags": [
-      "Tank",
-      "Mage"
+      "BulkMage",
+      "Mage",
+      "MageSupport"
     ],
     "type": "legendary",
     "blocking": [
@@ -16,9 +17,11 @@
   "3004": {
     "name": "Manamune",
     "tags": [
-      "Assassin",
+      "ADAssassin",
+      "OnHitMage",
+      "OnHit",
       "Fighter",
-      "Marksman"
+      "AssassinSupport"
     ],
     "type": "legendary",
     "blocking": [
@@ -29,25 +32,25 @@
   "3011": {
     "name": "Chemtech Putrifier",
     "tags": [
-      "Support"
+      "MageSupport",
+      "EnchanterSupport"
     ],
     "type": "legendary"
   },
   "3026": {
     "name": "Guardian Angel",
     "tags": [
-      "Tank",
-      "Assassin",
+      "ADAssassin",
       "Fighter",
-      "Marksman"
+      "Marksman",
+      "OnHit",
+      "AssassinSupport"
     ],
     "type": "legendary"
   },
   "3031": {
     "name": "Infinity Edge",
     "tags": [
-      "Assassin",
-      "Fighter",
       "Marksman"
     ],
     "type": "legendary",
@@ -59,8 +62,7 @@
   "3033": {
     "name": "Mortal Reminder",
     "tags": [
-      "Assassin",
-      "Fighter",
+      
       "Marksman"
     ],
     "type": "legendary",
@@ -72,8 +74,7 @@
   "3036": {
     "name": "Lord Dominik's Regards",
     "tags": [
-      "Assassin",
-      "Fighter",
+      "ADAssassin",
       "Marksman"
     ],
     "type": "legendary",
@@ -86,15 +87,15 @@
     "name": "Mejai's Soulstealer",
     "tags": [
       "Mage",
-      "Support"
+      "MageSupport",
+      "APAssassin"
     ],
     "type": "legendary"
   },
   "3046": {
     "name": "Phantom Dancer",
     "tags": [
-      "Assassin",
-      "Fighter",
+      "OnHit",
       "Marksman"
     ],
     "type": "legendary"
@@ -102,7 +103,8 @@
   "3050": {
     "name": "Zeke's Convergence",
     "tags": [
-      "Tank"
+      "TankSupport",
+      "EnchanterSupport"
     ],
     "type": "legendary"
   },
@@ -110,9 +112,8 @@
     "name": "Sterak's Gage",
     "tags": [
       "Tank",
-      "Assassin",
-      "Fighter",
-      "Marksman"
+      "ADAssassin",
+      "Fighter"
     ],
     "type": "legendary",
     "blocking": [
@@ -123,31 +124,34 @@
   "3065": {
     "name": "Spirit Visage",
     "tags": [
-      "Tank"
+      "Tank",
+      "BulkMage",
+      "TankSupport",
+      "Fighter"
     ],
     "type": "legendary"
   },
   "3068": {
     "name": "Sunfire Aegis",
     "tags": [
-      "Tank"
+      "Tank",
+      "BulkMage",
+      "Fighter"
     ],
     "type": "legendary"
   },
   "3071": {
     "name": "Black Cleaver",
     "tags": [
-      "Tank",
-      "Assassin",
-      "Fighter",
-      "Marksman"
+      "ADAssassin",
+      "Fighter"
     ],
     "type": "legendary"
   },
   "3072": {
     "name": "Bloodthirster",
     "tags": [
-      "Assassin",
+      "ADAssassin",
       "Fighter",
       "Marksman"
     ],
@@ -156,23 +160,27 @@
   "3074": {
     "name": "Ravenous Hydra",
     "tags": [
-      "Assassin",
+      "ADAssassin",
       "Fighter",
-      "Marksman"
+      "OnHit"
     ],
     "type": "legendary"
   },
   "3075": {
     "name": "Thornmail",
     "tags": [
-      "Tank"
+      "Tank",
+      "Fighter",
+      "TankSupport"
     ],
     "type": "legendary"
   },
   "3083": {
     "name": "Warmog's Armor",
     "tags": [
-      "Tank"
+      "Tank",
+      "BulkMage",
+      "TankSupport"
     ],
     "type": "legendary"
   },
@@ -186,17 +194,19 @@
   "3089": {
     "name": "Rabadon's Deathcap",
     "tags": [
-      "Mage"
+      "Mage",
+      "APAssassin",
+      "BulkMage",
+      "MageSupport",
+      "EnchanterSupport"
     ],
     "type": "legendary"
   },
   "3091": {
     "name": "Wit's End",
     "tags": [
-      "Tank",
-      "Assassin",
-      "Fighter",
-      "Marksman"
+      "OnHit",
+      "OnHitMage"
     ],
     "type": "legendary"
   },
@@ -210,7 +220,7 @@
   "3095": {
     "name": "Stormrazor",
     "tags": [
-      "Assassin",
+      "ADAssassin",
       "Fighter",
       "Marksman"
     ],
@@ -219,52 +229,60 @@
   "3100": {
     "name": "Lich Bane",
     "tags": [
-      "Mage"
+      "Mage",
+      "APAssassin",
+      "OnHitMage"
     ],
     "type": "legendary"
   },
   "3102": {
     "name": "Banshee's Veil",
     "tags": [
-      "Tank",
-      "Mage"
+      "Mage",
+      "BulkMage"
     ],
     "type": "legendary"
   },
   "3107": {
     "name": "Redemption",
     "tags": [
-      "Support"
+      "MageSupport",
+      "EnchanterSupport",
+      "TankSupport"
     ],
     "type": "legendary"
   },
   "3109": {
     "name": "Knight's Vow",
     "tags": [
-      "Tank"
+      "TankSupport",
+      "EnchanterSupport"
     ],
     "type": "legendary"
   },
   "3110": {
     "name": "Frozen Heart",
     "tags": [
-      "Tank"
+      "Tank",
+      "Fighter",
+      "BulkMage"
     ],
     "type": "legendary"
   },
   "3115": {
     "name": "Nashor's Tooth",
     "tags": [
-      "Mage",
-      "Marksman"
+      "OnHitMage"
     ],
     "type": "legendary"
   },
   "3116": {
     "name": "Rylai's Crystal Scepter",
     "tags": [
-      "Tank",
-      "Mage"
+      "BulkMage",
+      "Mage",
+      "MageSupport",
+      "EnchanterSupport"
     ],
     "type": "legendary"
   },
@@ -282,7 +300,7 @@
   "3124": {
     "name": "Guinsoo's Rageblade",
     "tags": [
-      "Marksman"
+      "OnHit"
     ],
     "type": "legendary",
     "blocking": [
@@ -293,16 +311,15 @@
   "3135": {
     "name": "Void Staff",
     "tags": [
-      "Mage"
+      "Mage",
+      "APAssassin"
     ],
     "type": "legendary"
   },
   "3139": {
     "name": "Mercurial Scimitar",
     "tags": [
-      "Tank",
-      "Assassin",
-      "Fighter",
+      "ADAssassin",
       "Marksman"
     ],
     "type": "legendary",
@@ -313,35 +330,35 @@
   "3142": {
     "name": "Youmuu's Ghostblade",
     "tags": [
-      "Assassin",
+      "ADAssassin",
       "Fighter",
-      "Marksman"
+      "AssassinSupport"
     ],
     "type": "legendary"
   },
   "3143": {
     "name": "Randuin's Omen",
     "tags": [
-      "Tank"
+      "Tank",
+      "Fighter",
+      "BulkMage"
     ],
     "type": "legendary"
   },
   "3153": {
     "name": "Blade of The Ruined King",
     "tags": [
-      "Assassin",
-      "Fighter",
-      "Marksman"
+      "OnHit",
+      "Fighter"
     ],
     "type": "legendary"
   },
   "3156": {
     "name": "Maw of Malmortius",
     "tags": [
-      "Tank",
-      "Assassin",
       "Fighter",
-      "Marksman"
+      "ADAssassin",
+      "OnHit"
     ],
     "type": "legendary",
     "blocking": [
@@ -352,18 +369,19 @@
   "3157": {
     "name": "Zhonya's Hourglass",
     "tags": [
-      "Tank",
-      "Mage"
+      "BulkMage",
+      "Mage",
+      "APAssassin",
+      "OnHitMage",
+      "MageSupport"
     ],
     "type": "legendary"
   },
   "3161": {
     "name": "Spear Of Shojin",
     "tags": [
-      "Tank",
-      "Assassin",
       "Fighter",
-      "Marksman"
+      "OnHit"
     ],
     "type": "legendary",
     "blocking": [
@@ -373,15 +391,18 @@
   "3165": {
     "name": "Morellonomicon",
     "tags": [
-      "Tank",
-      "Mage"
+      "APAssassin",
+      "Mage",
+      "MageSupport",
+      "EnchanterSupport"
     ],
     "type": "legendary"
   },
   "3179": {
     "name": "Umbral Glaive",
     "tags": [
-      "Assassin"
+      "ADAssassin",
+      "AssassinSupport"
     ],
     "type": "legendary"
   },
@@ -396,38 +417,43 @@
   "3193": {
     "name": "Gargoyle Stoneplate",
     "tags": [
-      "Tank"
+      "Tank",
+      "Fighter",
+      "TankSupport"
     ],
     "type": "legendary"
   },
   "3222": {
     "name": "Mikael's Blessing",
     "tags": [
-      "Tank",
-      "Support"
+      "MageSupport",
+      "EnchanterSupport"
     ],
     "type": "legendary"
   },
   "3504": {
     "name": "Ardent Censer",
     "tags": [
-      "Support"
+      "EnchanterSupport",
+      "MageSupport"
     ],
     "type": "legendary"
   },
   "3508": {
     "name": "Essence Reaver",
     "tags": [
-      "Assassin",
-      "Fighter",
-      "Marksman"
+      "ADAssassin",
+      "Marksman",
+      "OnHit"
     ],
     "type": "legendary"
   },
   "3742": {
     "name": "Dead Man's Plate",
     "tags": [
-      "Tank"
+      "Tank",
+      "Fighter",
+      "TankSupport"
     ],
     "type": "legendary"
   },
@@ -435,33 +461,30 @@
     "name": "Titanic Hydra",
     "tags": [
       "Tank",
-      "Assassin",
       "Fighter",
-      "Marksman"
+      "OnHit"
     ],
     "type": "legendary"
   },
   "3814": {
     "name": "Edge of Night",
     "tags": [
-      "Tank",
-      "Assassin",
-      "Fighter",
-      "Marksman"
+      "ADAssassin"
     ],
     "type": "legendary"
   },
   "4401": {
     "name": "Force of Nature",
     "tags": [
-      "Tank"
+      "Tank",
+      "TankSupport",
+      "BulkMage"
     ],
     "type": "legendary"
   },
   "4628": {
     "name": "Horizon Focus",
     "tags": [
-      "Tank",
       "Mage"
     ],
     "type": "legendary"
@@ -469,7 +492,6 @@
   "4629": {
     "name": "Cosmic Drive",
     "tags": [
-      "Tank",
       "Mage"
     ],
     "type": "legendary"
@@ -477,26 +499,25 @@
   "4637": {
     "name": "Demonic Embrace",
     "tags": [
-      "Tank",
-      "Mage"
+      "MageSupport",
+      "Mage",
+      "BulkMage"
     ],
     "type": "legendary"
   },
   "4645": {
     "name": "Shadowflame",
     "tags": [
-      "Tank",
-      "Mage"
+      "Mage",
+      "BulkMage",
+      "MageSupport"
     ],
     "type": "legendary"
   },
   "6035": {
     "name": "Silvermere Dawn",
     "tags": [
-      "Tank",
-      "Assassin",
-      "Fighter",
-      "Marksman"
+      "Fighter"
     ],
     "type": "legendary",
     "blocking": [
@@ -506,42 +527,42 @@
   "6333": {
     "name": "Death's Dance",
     "tags": [
-      "Tank",
-      "Assassin",
+      "ADAssassin",
       "Fighter",
-      "Marksman"
+      "OnHit"
     ],
     "type": "legendary"
   },
   "6609": {
     "name": "Chempunk Chainsword",
     "tags": [
-      "Tank",
-      "Assassin",
-      "Fighter",
-      "Marksman"
+      "AssassinSupport",
+      "ADAssassin",
+      "Fighter"
     ],
     "type": "legendary"
   },
   "6616": {
     "name": "Staff of Flowing Water",
     "tags": [
-      "Support"
+      "MageSupport",
+      "EnchanterSupport"
     ],
     "type": "legendary"
   },
   "6664": {
     "name": "Turbo Chemtank",
     "tags": [
-      "Tank"
+      "Tank",
+      "Fighter",
+      "TankSupport"
     ],
     "type": "legendary"
   },
   "6675": {
     "name": "Navori Quickblades",
     "tags": [
-      "Assassin",
-      "Fighter",
+      "ADAssassin",
       "Marksman"
     ],
     "type": "legendary",
@@ -553,18 +574,19 @@
   "6676": {
     "name": "The Collector",
     "tags": [
-      "Assassin",
-      "Fighter",
-      "Marksman"
+      "ADAssassin",
+      "Marksman",
+      "OnHit"
     ],
     "type": "legendary"
   },
   "6694": {
     "name": "Serylda's Grudge",
     "tags": [
-      "Assassin",
+      "ADAssassin",
       "Fighter",
-      "Marksman"
+      "OnHit",
+      "AssassinSupport"
     ],
     "type": "legendary",
     "blocking": [
@@ -575,25 +597,25 @@
   "6695": {
     "name": "Serpent's Fang",
     "tags": [
-      "Assassin",
+      "ADAssassin",
       "Fighter",
-      "Marksman"
+      "AssassinSupport"
     ],
     "type": "legendary"
   },
   "6696": {
     "name": "Axiom Arc",
     "tags": [
-      "Assassin",
-      "Fighter",
-      "Marksman"
+      "ADAssassin",
+      "AssassinSupport"
     ],
     "type": "legendary"
   },
   "8001": {
     "name": "Anathema's Chains",
     "tags": [
-      "Tank"
+      "Tank",
+      "TankSupport"
     ],
     "type": "legendary"
   },
@@ -601,7 +623,8 @@
     "name": "Abyssal Mask",
     "tags": [
       "Tank",
-      "Support"
+      "TankSupport",
+      "BulkMage"
     ],
     "type": "legendary"
   }
