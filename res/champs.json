@@ -537,7 +537,7 @@
   },
   "Twitch": {
     "name": "Twitch",
-    "tags": [ "Marksman", "ADAssassin", "APAssassin", "OnHitMage", "OnHit", "MageSupport", "Mage" ]
+    "tags": [ "Marksman", "ADAssassin", "APAssassin", "OnHitMage", "OnHit", "MageSupport" ]
   },
   "Udyr": {
     "name": "Udyr",

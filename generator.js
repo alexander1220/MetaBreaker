@@ -114,6 +114,101 @@ function generate() {
     //var champKey = keys[keys.length * Math.random() << 0];
     var champKey = selectedChampions[selectedChampions.length * Math.random() << 0];
     var randChamp = champions[champKey];
+
+    console.log(randChamp.name);
+    console.log(randChamp.tags);
+    document.getElementById("championIcon").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/" + champKey + ".png";
+    var tagKeys = Object.keys(randChamp.tags);
+    var tagKey = tagKeys[tagKeys.length * Math.random() << 0];
+    var randTag = randChamp.tags[tagKey];
+    var givenItems = [];
+    var blockedItems = [];
+
+    var isSupp = false;
+    var lanes = [switches.top, switches.jgl, switches.mid, switches.adc, switches.sup]
+    var enabledLanes = lanes.filter(s => s.checked);
+    var randLane;
+    if (enabledLanes.length > 0) {
+        randLane = enabledLanes[enabledLanes.length * Math.random() << 0];
+        isSupp = randLane.id.includes("Sup");
+    }
+    else {
+        randLane = lanes[lanes.length * Math.random() << 0];
+        isSupp = randLane.id.includes("Sup");
+    }
+    //todo: lane icon ändern
+
+    
+    
+    if (isSupp) {
+        
+        var suppChamps = selectedChampions.filter(champ => champions[champ].tags.includes("MageSupport") || champions[champ].tags.includes("TankSupport") || champions[champ].tags.includes("AssassinSupport") || champions[champ].tags.includes("EnchanterSupport"));
+        if (suppChamps.length > 0) {
+            var isPossib = false;
+            while (!isPossib) {
+                champKey = selectedChampions[selectedChampions.length * Math.random() << 0];
+                randChamp = champions[champKey];
+                tagKeys = Object.keys(randChamp.tags);
+                randTag = randChamp.tags[tagKey];
+                for (var i = 0; i < randChamp.tags.length; i++) {
+                    if (randChamp.tags[i] == "MageSupport" || randChamp.tags[i] == "EnchanterSupport" || randChamp.tags[i] == "TankSupport" || randChamp.tags[i] == "AssassinSupport")
+                        isPossib = true;
+                }
+                
+            }
+            document.getElementById("championIcon").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/" + champKey + ".png";
+            
+        }
+        if (!randChamp.tags.includes("MageSupport") && !randChamp.tags.includes("TankSupport") && !randChamp.tags.includes("EnchanterSupport") && !randChamp.tags.includes("AssassinSupport")) {
+            alert("There is no champion for this specific role selected. Don't troll too hard!");
+        } else {
+            var isPossible = false;
+
+            while (!isPossible) {
+
+                tagKey = tagKeys[tagKeys.length * Math.random() << 0];
+                console.log(tagKey);
+                randTag = randChamp.tags[tagKey];
+                console.log(randTag);
+                if (randTag == "MageSupport" || randTag == "EnchanterSupport" || randTag == "TankSupport" || randTag == "AssassinSupport")
+                    isPossible = true;
+            }
+        }
+    }
+    else {
+        var isPossible = false;
+
+        while (!isPossible) {
+
+            tagKey = tagKeys[tagKeys.length * Math.random() << 0];
+            randTag = randChamp.tags[tagKey];
+            console.log(randTag);
+            if (randTag != "MageSupport" && randTag != "EnchanterSupport" && randTag != "TankSupport" && randTag != "AssassinSupport")
+                isPossible = true;
+        }
+    }
+
+    
+    switch (randLane.id) {
+        case 'switchSup':
+            document.getElementById("lane").src = "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-utility-blue.png";
+            break;
+        case 'switchAdc':
+            document.getElementById("lane").src = "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-bottom-blue.png";
+            break;
+        case 'switchJgl':
+            document.getElementById("lane").src = "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-jungle-blue.png";
+            break;
+        case 'switchMid':
+            document.getElementById("lane").src = "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-middle-blue.png";
+            break;
+        case 'switchTop':
+            document.getElementById("lane").src = "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-top-blue.png";
+            break;
+
+    }
+    
+
     /*
     check if champ has available tag for the lane 
     (support can only go support, tanks only top&mid?, mages can go mid&support&.., etc...) 
@@ -122,20 +217,20 @@ function generate() {
     just let every tag go on every lane
     
     */
-    console.log(randChamp.name);
-    console.log(randChamp.tags);
-    document.getElementById("championIcon").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/" + champKey + ".png";
-    var tagKeys = Object.keys(randChamp.tags);
-    var tagKey = tagKeys[tagKeys.length * Math.random() << 0];
-    var randTag = randChamp.tags[tagKey];
-    console.log(randTag);
-    var givenItems = [];
-    var blockedItems = [];
+
+
+
+
+    
+
+
+
 
     var starterKeys = Object.keys(starters);
     var starter = 0;
 
     while (starter == 0) {
+        
         var key = starterKeys[starterKeys.length * Math.random() << 0];
         var randItem = starters[key];
         if (randItem.tags.includes(randTag)) {
@@ -182,6 +277,7 @@ function generate() {
     var mythicKeys = Object.keys(mythics);
     var mythic = 0;
     while (mythic == 0) {
+        console.log("mythic");
         var key = mythicKeys[mythicKeys.length * Math.random() << 0];
         var randItem = mythics[key];
         if (randItem.tags.includes(randTag)) {
@@ -197,6 +293,7 @@ function generate() {
     let items = legendaries;
     var keys = Object.keys(items);
     for (let i = 2; i < 6; i++) {
+        
         var key = keys[keys.length * Math.random() << 0];
         var randItem = items[key];
         if (givenItems.includes(randItem.name) || !randItem.tags.includes(randTag) || blockedItems.flat().includes(key)) {
@@ -211,6 +308,10 @@ function generate() {
         document.getElementById(itemId).parentElement.setAttribute("data-tooltip", randItem.name);
     }
 }
+
+
+
+
 
 function fillChamps() {
     var champGrid = document.getElementById('champselect');

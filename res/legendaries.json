@@ -250,7 +250,6 @@
   "3107": {
     "name": "Redemption",
     "tags": [
-      "MageSupport",
       "EnchanterSupport",
       "TankSupport"
     ],
@@ -385,8 +384,7 @@
   "3161": {
     "name": "Spear Of Shojin",
     "tags": [
-      "Fighter",
-      "OnHit"
+      "Fighter"
     ],
     "type": "legendary",
     "blocking": [
@@ -431,7 +429,6 @@
   "3222": {
     "name": "Mikael's Blessing",
     "tags": [
-      "MageSupport",
       "EnchanterSupport"
     ],
     "type": "legendary"
@@ -439,8 +436,7 @@
   "3504": {
     "name": "Ardent Censer",
     "tags": [
-      "EnchanterSupport",
-      "MageSupport"
+      "EnchanterSupport"
     ],
     "type": "legendary"
   },
@@ -448,8 +444,7 @@
     "name": "Essence Reaver",
     "tags": [
       "ADAssassin",
-      "Marksman",
-      "OnHit"
+      "Marksman"
     ],
     "type": "legendary"
   },
