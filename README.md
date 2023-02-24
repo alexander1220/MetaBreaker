@@ -30,7 +30,7 @@ We'd like to thank the following resources for their help in creating this proje
 - [Data Dragon](https://developer.riotgames.com/docs/lol#data-dragon)
 - [CommunityDragon](https://www.communitydragon.org/)
 - [League of Legends Wiki](https://leagueoflegends.fandom.com/wiki/League_of_Legends_Wiki)
-- [pico](https://picocss.com/)
+- [Pico](https://picocss.com/)
 
 ### License 📝
 
