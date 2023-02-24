@@ -1,6 +1,6 @@
 # MetaBreaker
 
-MetaBreaker is a League of Legends item build generator that helps you create off-meta builds for every champion. This web application is made by three people as a fun project, and updates are on the way.
+MetaBreaker is a League of Legends item build generator that helps you create off-meta builds for every champion. This web application is made by four people as a fun project, and more updates are on the way.
 
 ## Usage 🕹️
 
