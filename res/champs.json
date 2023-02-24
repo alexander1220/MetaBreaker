@@ -229,7 +229,7 @@
   },
   "Kayle": {
     "name": "Kayle",
-    "tags": [ "Fighter", "Support", "OnHitMage", "OnHit", "Marksman", "BulkMage", "MageSupport" ]
+    "tags": [ "Fighter", "OnHitMage", "OnHit", "Marksman", "BulkMage", "MageSupport" ]
   },
   "Kayn": {
     "name": "Kayn",
