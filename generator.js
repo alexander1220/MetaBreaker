@@ -20,6 +20,7 @@ let legendaries;
 let mythics;
 let starters;
 let summoners;
+
 Promise.all([fetchChampions(), fetchFullChampions(), fetchSummoners(), fetchStarters(), fetchBoots(), fetchMythics(), fetchLegendaries()]).then(() => {
     fillChamps();
     generate();
@@ -106,18 +107,11 @@ function generate() {
         return;
     }
 
-    //generate lane
-    //lane = availableLanes.pickRandom;
-
-
-    //var keys = Object.keys(champions);
-    //var champKey = keys[keys.length * Math.random() << 0];
     var champKey = selectedChampions[selectedChampions.length * Math.random() << 0];
     var randChamp = champions[champKey];
 
     console.log(randChamp.name);
     console.log(randChamp.tags);
-    document.getElementById("championIcon").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/" + champKey + ".png";
     var tagKeys = Object.keys(randChamp.tags);
     var tagKey = tagKeys[tagKeys.length * Math.random() << 0];
     var randTag = randChamp.tags[tagKey];
@@ -131,17 +125,12 @@ function generate() {
     if (enabledLanes.length > 0) {
         randLane = enabledLanes[enabledLanes.length * Math.random() << 0];
         isSupp = randLane.id.includes("Sup");
+    } else {
+        alert("Please select atleast one role.");
+        return;
     }
-    else {
-        randLane = lanes[lanes.length * Math.random() << 0];
-        isSupp = randLane.id.includes("Sup");
-    }
-    //todo: lane icon ändern
 
-    
-    
     if (isSupp) {
-        
         var suppChamps = selectedChampions.filter(champ => champions[champ].tags.includes("MageSupport") || champions[champ].tags.includes("TankSupport") || champions[champ].tags.includes("AssassinSupport") || champions[champ].tags.includes("EnchanterSupport"));
         if (suppChamps.length > 0) {
             var isPossib = false;
@@ -154,16 +143,14 @@ function generate() {
                     if (randChamp.tags[i] == "MageSupport" || randChamp.tags[i] == "EnchanterSupport" || randChamp.tags[i] == "TankSupport" || randChamp.tags[i] == "AssassinSupport")
                         isPossib = true;
                 }
-                
             }
-            document.getElementById("championIcon").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/" + champKey + ".png";
-            
         }
+
         if (!randChamp.tags.includes("MageSupport") && !randChamp.tags.includes("TankSupport") && !randChamp.tags.includes("EnchanterSupport") && !randChamp.tags.includes("AssassinSupport")) {
             alert("There is no champion for this specific role selected. Don't troll too hard!");
+            return;
         } else {
             var isPossible = false;
-
             while (!isPossible) {
 
                 tagKey = tagKeys[tagKeys.length * Math.random() << 0];
@@ -174,10 +161,8 @@ function generate() {
                     isPossible = true;
             }
         }
-    }
-    else {
+    } else {
         var isPossible = false;
-
         while (!isPossible) {
 
             tagKey = tagKeys[tagKeys.length * Math.random() << 0];
@@ -188,49 +173,30 @@ function generate() {
         }
     }
 
-    
+    document.getElementById("championIcon").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/" + champKey + ".png";
+    var laneLink = "";
     switch (randLane.id) {
         case 'switchSup':
-            document.getElementById("lane").src = "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-utility-blue.png";
+            laneLink = "icon-position-utility-blue.png";
             break;
         case 'switchAdc':
-            document.getElementById("lane").src = "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-bottom-blue.png";
+            laneLink = "icon-position-bottom-blue.png";
             break;
         case 'switchJgl':
-            document.getElementById("lane").src = "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-jungle-blue.png";
+            laneLink = "icon-position-jungle-blue.png";
             break;
         case 'switchMid':
-            document.getElementById("lane").src = "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-middle-blue.png";
+            laneLink = "icon-position-middle-blue.png";
             break;
         case 'switchTop':
-            document.getElementById("lane").src = "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-top-blue.png";
+            laneLink = "icon-position-top-blue.png";
             break;
-
     }
-    
 
-    /*
-    check if champ has available tag for the lane 
-    (support can only go support, tanks only top&mid?, mages can go mid&support&.., etc...) 
-    else reroll champ, if out of all champs selected, none meet lane criteria then.. alert()?
-    ORRRR
-    just let every tag go on every lane
-    
-    */
-
-
-
-
-    
-
-
-
-
+    document.getElementById("lane").src = "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/" + laneLink;
     var starterKeys = Object.keys(starters);
     var starter = 0;
-
     while (starter == 0) {
-        
         var key = starterKeys[starterKeys.length * Math.random() << 0];
         var randItem = starters[key];
         if (randItem.tags.includes(randTag)) {
@@ -241,10 +207,8 @@ function generate() {
         }
     }
 
-
     var summonerKeys = Object.keys(summoners);
     var summoner = 0;
-
     while (summoner == 0) {
         var key = summonerKeys[summonerKeys.length * Math.random() << 0];
         var randItem = summoners[key];
@@ -256,13 +220,13 @@ function generate() {
                 document.getElementById("sumSpell1").parentElement.setAttribute("data-tooltip", key);
             }
         }
+
         document.getElementById("sumSpell2").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/SummonerFlash.png";
         document.getElementById("sumSpell2").parentElement.setAttribute("data-tooltip", "Flash"); // daweil nur flash lassen?
     }
 
     var bootKeys = Object.keys(boots);
     var boot = 0;
-
     while (boot == 0) {
         var key = bootKeys[bootKeys.length * Math.random() << 0];
         var randItem = boots[key];
@@ -293,25 +257,22 @@ function generate() {
     let items = legendaries;
     var keys = Object.keys(items);
     for (let i = 2; i < 6; i++) {
-        
         var key = keys[keys.length * Math.random() << 0];
         var randItem = items[key];
         if (givenItems.includes(randItem.name) || !randItem.tags.includes(randTag) || blockedItems.flat().includes(key)) {
             i--;
             continue;
         }
+
         if (randItem.hasOwnProperty("blocking"))
             blockedItems.push(randItem.blocking)
+
         givenItems.push(randItem.name);
         var itemId = "item" + (i + 1);
         document.getElementById(itemId).src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + key + ".png";
         document.getElementById(itemId).parentElement.setAttribute("data-tooltip", randItem.name);
     }
 }
-
-
-
-
 
 function fillChamps() {
     var champGrid = document.getElementById('champselect');
@@ -356,9 +317,7 @@ function selectAll() {
 
 function searchChampion() {
     const searchChampions = Object.values(fullChampions);
-    // Search function
     function searchChampion(query) {
-        //Basic Sort if query is found in any part of the name
         return searchChampions.filter(champion =>
             champion.name.toLowerCase().includes(query.toLowerCase())
         );
