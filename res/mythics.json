@@ -66,7 +66,7 @@
   },
   "6632": {
     "name": "Divine Sunderer",
-    "tags": [ "Fighter", "OnHit" ],
+    "tags": [ "Fighter" ],
     "type": "mythic"
   },
   "6653": {
@@ -123,7 +123,7 @@
   },
   "6691": {
     "name": "Duskblade of Draktharr",
-    "tags": [ "ADAssassin", "OnHit", "AssassinSupport" ],
+    "tags": [ "ADAssassin", "AssassinSupport" ],
     "type": "mythic"
   },
   "6692": {
@@ -133,7 +133,7 @@
   },
   "6693": {
     "name": "Prowler's Claw",
-    "tags": [ "ADAssassin", "OnHit", "AssassinSupport" ],
+    "tags": [ "ADAssassin", "AssassinSupport" ],
     "type": "mythic"
   }
 }
