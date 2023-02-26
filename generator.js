@@ -122,7 +122,17 @@ function generate() {
     var lanes = [switches.top, switches.jgl, switches.mid, switches.adc, switches.sup]
     var enabledLanes = lanes.filter(s => s.checked);
     var randLane;
+    var suppChamps = selectedChampions.filter(champ => champions[champ].tags.includes("MageSupport") || champions[champ].tags.includes("TankSupport") || champions[champ].tags.includes("AssassinSupport") || champions[champ].tags.includes("EnchanterSupport"));
+
     if (enabledLanes.length > 0) {
+        var suppsAvailable = suppChamps.length > 0;
+        if (!suppsAvailable)
+            enabledLanes = enabledLanes.filter(s => !s.id.includes("Sup"));
+        if (!enabledLanes.length > 0) {
+            alert("There is no champion for this specific role selected. Don't troll too hard!");
+            return;
+        }
+
         randLane = enabledLanes[enabledLanes.length * Math.random() << 0];
         isSupp = randLane.id.includes("Sup");
     } else {
@@ -131,7 +141,6 @@ function generate() {
     }
 
     if (isSupp) {
-        var suppChamps = selectedChampions.filter(champ => champions[champ].tags.includes("MageSupport") || champions[champ].tags.includes("TankSupport") || champions[champ].tags.includes("AssassinSupport") || champions[champ].tags.includes("EnchanterSupport"));
         if (suppChamps.length > 0) {
             var isPossib = false;
             while (!isPossib) {
