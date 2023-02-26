@@ -36,8 +36,10 @@
                                  src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/Aatrox.png" />
                         </td>
                         <td>
-                            <img id="starterItem"
-                                 src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1055.png" />
+                            <div style="display:inline;" data-tooltip="MYTOOLTIP" data-placement="bottom">
+                                <img id="starterItem" style="border-color: rgb(168, 168, 221);"
+                                    src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1055.png" />
+                            </div>
                         </td>
                         <td style="text-align: right;">
                             <img id="lane" style="max-width: 60px;"
@@ -74,12 +76,16 @@
                     </tr>
                     <tr>
                         <td rowspan="2">
-                            <img id="spell"
-                                 src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/FlashFrost.png" />
+                            <div style="display:inline;" data-tooltip="MYTOOLTIP" data-placement="bottom">
+                                <img id="spell"
+                                    src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/FlashFrost.png" />
+                            </div>
                         </td>
                         <td>
-                            <img id="sumSpell1" style="max-width: 40px;"
-                                 src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/SummonerFlash.png" />
+                            <div style="display:inline;" data-tooltip="MYTOOLTIP" data-placement="bottom">
+                                <img id="sumSpell1" style="max-width: 40px;"
+                                    src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/SummonerFlash.png" />
+                            </div>
                         </td>
                         <td colspan="2" rowspan="2" style="text-align: right;">
                             <img id="rune1"
@@ -90,8 +96,10 @@
                     </tr>
                     <tr>
                         <td>
-                            <img id="sumSpell2" style="max-width: 40px;"
-                                 src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/SummonerFlash.png" />
+                            <div style="display:inline;" data-tooltip="MYTOOLTIP" data-placement="bottom">
+                                <img id="sumSpell2" style="max-width: 40px;"
+                                     src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/SummonerFlash.png" />
+                            </div>
                         </td>
                     </tr>
                 </tbody>
@@ -103,32 +111,32 @@
         <div class="grid">
             <div>
                 <label for="switchTop">
-                    <input type="checkbox" id="switchTop" name="switchTop" role="switch">Top
+                    <input type="checkbox" id="switchTop" name="switchTop" role="switch" checked="true">Top
                 </label>
             </div>
             <div>
                 <label for="switchJgl">
-                    <input type="checkbox" id="switchJgl" name="switchJgl" role="switch">Jungle
+                    <input type="checkbox" id="switchJgl" name="switchJgl" role="switch" checked="true">Jungle
                 </label>
             </div>
             <div>
                 <label for="switchMid">
-                    <input type="checkbox" id="switchMid" name="switchMid" role="switch">Mid
+                    <input type="checkbox" id="switchMid" name="switchMid" role="switch" checked="true">Mid
                 </label>
             </div>
             <div>
                 <label for="switchAdc">
-                    <input type="checkbox" id="switchAdc" name="switchAdc" role="switch">Adc
+                    <input type="checkbox" id="switchAdc" name="switchAdc" role="switch" checked="true">Adc
                 </label>
             </div>
             <div>
                 <label for="switchSup">
-                    <input type="checkbox" id="switchSup" name="switchSup" role="switch">Support
+                    <input type="checkbox" id="switchSup" name="switchSup" role="switch" checked="true">Support
                 </label>
             </div>
             <div>
                 <label for="switchFill">
-                    <input type="checkbox" id="switchFill" name="switchFill" role="switch">Fill
+                    <input type="checkbox" id="switchFill" name="switchFill" role="switch" checked="true">Fill
                 </label>
             </div>
         </div>
@@ -148,7 +156,7 @@
                onclick="toggleModal(event)"></a>
             <h3>Rules</h3>
             <p>Break the meta.</p>
-            <p>If you don't build EXACTLY what you rolled... then whats the point of using it 😪</p>
+            <p>If you don't build EXACTLY what you rolled... then what's the point of using it 😪</p>
             <footer>
                 <a href="#confirm" role="button" data-target="modal-example" onclick="toggleModal(event)">Okay</a>
             </footer>
