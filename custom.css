@@ -25,3 +25,8 @@ td {
     border-radius: 5px;
     /*box-shadow: 0 10px 5px black;*/
 }
+
+/* removing dotted lines when using tooltips */
+[data-tooltip]:not(a,button,input){
+    border: none;
+}

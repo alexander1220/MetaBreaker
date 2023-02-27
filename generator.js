@@ -11,6 +11,8 @@ const mythicItemUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreak
 const championUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/champs.json';
 const startersUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/starters.json';
 const summonersUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/summoners.json';
+const runesUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/runes.json';
+const keystonesUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/keystones.json';
 const runeIconUrl = 'https://ddragon.canisback.com/img/';
 
 let champions;
@@ -21,8 +23,10 @@ let legendaries;
 let mythics;
 let starters;
 let summoners;
+let runes;
+let keystones;
 
-Promise.all([fetchChampions(), fetchFullChampions(), fetchSummoners(), fetchStarters(), fetchBoots(), fetchMythics(), fetchLegendaries()]).then(() => {
+Promise.all([fetchChampions(), fetchFullChampions(), fetchSummoners(), fetchStarters(), fetchBoots(), fetchMythics(), fetchLegendaries(), fetchRunes(), fetchKeystones()]).then(() => {
     fillChamps();
     generate();
     searchChampion();
@@ -98,6 +102,24 @@ async function fetchMythics() {
             .then(res => res.json())
             .then(out => {
                 mythics = out;
+            })
+            .catch(err => { throw err }));
+}
+async function fetchRunes() {
+    await Promise.resolve(
+        fetch(runesUrl)
+            .then(res => res.json())
+            .then(out => {
+                runes = out;
+            })
+            .catch(err => { throw err }));
+}
+async function fetchKeystones() {
+    await Promise.resolve(
+        fetch(keystonesUrl)
+            .then(res => res.json())
+            .then(out => {
+                keystones = out;
             })
             .catch(err => { throw err }));
 }
@@ -278,6 +300,25 @@ function generate() {
         document.getElementById(itemId).src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + key + ".png";
         document.getElementById(itemId).parentElement.setAttribute("data-tooltip", randItem.name);
     }
+
+    var blockedRunes = [];
+    var keys = Object.keys(keystones);
+    var key = keys[keys.length * Math.random() << 0];
+    var randKeystone = keystones[key];
+    blockedRunes.push(randKeystone.blocking);
+    var rune = 0;
+    var runeKeys = Object.keys(runes);
+    while (rune == 0) {
+        var key = runeKeys[runeKeys.length * Math.random() << 0];
+        var randRune = runes[key];
+        if (!blockedRunes.flat().includes(randRune.id))
+            rune = randRune;
+    }
+    document.getElementById("rune1").src = runeIconUrl + randKeystone.icon;
+    document.getElementById("rune1").parentElement.setAttribute("data-tooltip", randKeystone.name);
+    document.getElementById("rune2").src = runeIconUrl + rune.icon;
+    document.getElementById("rune2").parentElement.setAttribute("data-tooltip", rune.name);
+    console.log("KEYSTONE: " + randKeystone.name + " with RUNE: " + rune.name);
 }
 
 function fillChamps() {
