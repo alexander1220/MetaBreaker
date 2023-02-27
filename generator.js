@@ -11,6 +11,7 @@ const mythicItemUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreak
 const championUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/champs.json';
 const startersUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/starters.json';
 const summonersUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/summoners.json';
+const runeIconUrl = 'https://ddragon.canisback.com/img/';
 
 let champions;
 let fullChampions;
