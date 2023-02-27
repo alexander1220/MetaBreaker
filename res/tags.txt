@@ -10,5 +10,5 @@ EnchanterSupport,
 TankSupport,
 AssassinSupport,
 MageSupport,
-Jungle,
-OnHitMage
+OnHitMage,
+Jungle

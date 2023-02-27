@@ -3,7 +3,10 @@
     "id": 8112,
     "name": "Electrocute",
     "icon": "perk-images/Styles/Domination/Electrocute/Electrocute.png",
-    "tags": [],
+    "tags": [
+      "APAssassin",
+      "ADAssassin"
+    ],
     "blocking": [8100]
   },
   "Predator": {
@@ -17,21 +20,33 @@
     "id": 8128,
     "name": "Dark Harvest",
     "icon": "perk-images/Styles/Domination/DarkHarvest/DarkHarvest.png",
-    "tags": [],
+    "tags": [
+      "Mage",
+      "BulkMage",
+      "APAssassin",
+      "ADAssassin",
+      "AssassinSupport",
+      "MageSupport"
+    ],
     "blocking": [8100]
   },
   "HailOfBlades": {
     "id": 9923,
     "name": "Hail of Blades",
     "icon": "perk-images/Styles/Domination/HailOfBlades/HailOfBlades.png",
-    "tags": [],
+    "tags": [
+      "Marksman",
+      "OnHit",
+      "OnHitMage",
+      "AssassinSupport"
+    ],
     "blocking": [8100]
   },
   "GlacialAugment": {
     "id": 8351,
     "name": "Glacial Augment",
     "icon": "perk-images/Styles/Inspiration/GlacialAugment/GlacialAugment.png",
-    "tags": [],
+    "tags": [ "TankSupport", "EnchanterSupport" ],
     "blocking": [8300]
   },
   "UnsealedSpellbook": {
@@ -45,21 +60,28 @@
     "id": 8369,
     "name": "First Strike",
     "icon": "perk-images/Styles/Inspiration/FirstStrike/FirstStrike.png",
-    "tags": [],
+    "tags": [
+      "APAssassin",
+      "ADAssassin",
+      "AssassinSupport"
+    ],
     "blocking": [8300]
   },
   "PressTheAttack": {
     "id": 8005,
     "name": "Press the Attack",
     "icon": "perk-images/Styles/Precision/PressTheAttack/PressTheAttack.png",
-    "tags": [],
+    "tags": [ "Marksman", "OnHit" ],
     "blocking": [8000]
   },
   "LethalTempo": {
     "id": 8008,
     "name": "Lethal Tempo",
     "icon": "perk-images/Styles/Precision/LethalTempo/LethalTempoTemp.png",
-    "tags": [],
+    "tags": [
+      "Marksman",
+      "OnHit"
+    ],
     "blocking": [8000]
   },
   "FleetFootwork": {
@@ -73,42 +95,42 @@
     "id": 8010,
     "name": "Conqueror",
     "icon": "perk-images/Styles/Precision/Conqueror/Conqueror.png",
-    "tags": [],
+    "tags": [ "Fighter", "Tank", "OnHitMage" ],
     "blocking": [8000]
   },
   "GraspOfTheUndying": {
     "id": 8437,
     "name": "Grasp of the Undying",
     "icon": "perk-images/Styles/Resolve/GraspOfTheUndying/GraspOfTheUndying.png",
-    "tags": [],
+    "tags": [ "Tank", "Fighter" ],
     "blocking": [8400]
   },
   "Aftershock": {
     "id": 8439,
     "name": "Aftershock",
     "icon": "perk-images/Styles/Resolve/VeteranAftershock/VeteranAftershock.png",
-    "tags": [],
+    "tags": [ "Tank" ],
     "blocking": [8400]
   },
   "Guardian": {
     "id": 8465,
     "name": "Guardian",
     "icon": "perk-images/Styles/Resolve/Guardian/Guardian.png",
-    "tags": [],
+    "tags": [ "TankSupport" ],
     "blocking": [8400]
   },
   "SummonAery": {
     "id": 8214,
     "name": "Summon Aery",
     "icon": "perk-images/Styles/Sorcery/SummonAery/SummonAery.png",
-    "tags": [],
+    "tags": [ "EnchanterSupport", "MageSupport" ],
     "blocking": [8200]
   },
   "ArcaneComet": {
     "id": 8229,
     "name": "Arcane Comet",
     "icon": "perk-images/Styles/Sorcery/ArcaneComet/ArcaneComet.png",
-    "tags": [],
+    "tags": [ "MageSupport", "Mage", "BulkMage" ],
     "blocking": [8200]
   },
   "PhaseRush": {
