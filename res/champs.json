@@ -529,7 +529,7 @@
   },
   "Tryndamere": {
     "name": "Tryndamere",
-    "tags": [ "Fighter", "ADAssassin", "APAssassin", "AssassinSupport", "MageSupport", "OnHitMage", "OnHit", "Marksman", "Mage" ]
+    "tags": [ "Fighter", "ADAssassin", "AssassinSupport", "OnHit", "Marksman", "BulkMage" ]
   },
   "TwistedFate": {
     "name": "Twisted Fate",

@@ -163,9 +163,7 @@ function generate() {
             while (!isPossible) {
 
                 tagKey = tagKeys[tagKeys.length * Math.random() << 0];
-                console.log(tagKey);
                 randTag = randChamp.tags[tagKey];
-                console.log(randTag);
                 if (randTag == "MageSupport" || randTag == "EnchanterSupport" || randTag == "TankSupport" || randTag == "AssassinSupport")
                     isPossible = true;
             }
@@ -176,7 +174,6 @@ function generate() {
 
             tagKey = tagKeys[tagKeys.length * Math.random() << 0];
             randTag = randChamp.tags[tagKey];
-            console.log(randTag);
             if (randTag != "MageSupport" && randTag != "EnchanterSupport" && randTag != "TankSupport" && randTag != "AssassinSupport")
                 isPossible = true;
         }
@@ -250,7 +247,6 @@ function generate() {
     var mythicKeys = Object.keys(mythics);
     var mythic = 0;
     while (mythic == 0) {
-        console.log("mythic");
         var key = mythicKeys[mythicKeys.length * Math.random() << 0];
         var randItem = mythics[key];
         if (randItem.tags.includes(randTag)) {
@@ -368,8 +364,4 @@ function setSwitches() {
             switches[key].checked = true;
         });
     });
-}
-
-function switchTheme() {
-    theme.setAttribute("data-theme", document.getElementById('themeSwitch').checked ? "light" : "dark");
 }
