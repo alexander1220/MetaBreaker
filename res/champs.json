@@ -177,11 +177,11 @@
   },
   "Ivern": {
     "name": "Ivern",
-    "tags": [ "SupportMage", "Mage", "BulkMage", "EnchanterSupport" ]
+    "tags": [ "MageSupport", "Mage", "BulkMage", "EnchanterSupport" ]
   },
   "Janna": {
     "name": "Janna",
-    "tags": [ "SupportMage", "Mage", "Marksman", "EnchanterSupport", "BulkMage" ]
+    "tags": [ "MageSupport", "Mage", "Marksman", "EnchanterSupport", "BulkMage" ]
   },
   "JarvanIV": {
     "name": "Jarvan IV",
