@@ -303,11 +303,18 @@ function generate() {
 
     var blockedRunes = [];
     var keys = Object.keys(keystones);
+    console.log(keys);
+    keys = keys.filter(k => keystones[k].tags.includes(randTag));
+    console.log(keys);
     var key = keys[keys.length * Math.random() << 0];
+    console.log(randTag);
+   
     var randKeystone = keystones[key];
     blockedRunes.push(randKeystone.blocking);
     var rune = 0;
     var runeKeys = Object.keys(runes);
+    runeKeys = runeKeys.filter(rk => runes[rk].tags.includes(randTag));
+    console.log(runeKeys);
     while (rune == 0) {
         var key = runeKeys[runeKeys.length * Math.random() << 0];
         var randRune = runes[key];
