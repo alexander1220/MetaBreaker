@@ -226,6 +226,9 @@ function generate() {
     var starterKeys = Object.keys(starters);
     var starter = 0;
     while (starter == 0) {
+        if (randLane.id == "switchJgl") {
+            //get random jungler item
+        }
         var key = starterKeys[starterKeys.length * Math.random() << 0];
         var randItem = starters[key];
         if (randItem.tags.includes(randTag)) {
@@ -308,7 +311,7 @@ function generate() {
     console.log(keys);
     var key = keys[keys.length * Math.random() << 0];
     console.log(randTag);
-   
+
     var randKeystone = keystones[key];
     blockedRunes.push(randKeystone.blocking);
     var rune = 0;
