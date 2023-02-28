@@ -226,12 +226,16 @@ function generate() {
     var starterKeys = Object.keys(starters);
     var starter = 0;
     while (starter == 0) {
+        var isJgl = false;
         if (randLane.id == "switchJgl") {
-            //get random jungler item
+            starterKeys = starterKeys.filter(sk => starters[sk].tags.includes("Jungle"));
+            console.log(starterKeys);
+            isJgl = true;
+
         }
         var key = starterKeys[starterKeys.length * Math.random() << 0];
         var randItem = starters[key];
-        if (randItem.tags.includes(randTag)) {
+        if (randItem.tags.includes(randTag) || isJgl) {
             starter = randItem;
             givenItems.push(starter);
             document.getElementById("starterItem").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + key + ".png";
@@ -241,21 +245,43 @@ function generate() {
 
     var summonerKeys = Object.keys(summoners);
     var summoner = 0;
+    var firstSummoner;
     while (summoner == 0) {
         var key = summonerKeys[summonerKeys.length * Math.random() << 0];
         var randItem = summoners[key];
         if (key != "Flash") {
             if (randItem.tags.includes(randTag)) {
                 summoner = randItem;
-                givenItems.push(summoner);
                 document.getElementById("sumSpell1").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/" + summoner.name + ".png";
                 document.getElementById("sumSpell1").parentElement.setAttribute("data-tooltip", key);
+                firstSummoner = key;
             }
         }
-
-        document.getElementById("sumSpell2").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/SummonerFlash.png";
-        document.getElementById("sumSpell2").parentElement.setAttribute("data-tooltip", "Flash"); // daweil nur flash lassen?
     }
+    document.getElementById("sumSpell2").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/SummonerFlash.png";
+    document.getElementById("sumSpell2").parentElement.setAttribute("data-tooltip", "Flash"); // daweil nur flash lassen?
+    if (randChamp.name == "Yuumi" && isSupp) {
+        summonersKeys = summonerKeys.filter(yk => summoners[yk].name != summoner);
+        summoner = 0;
+        
+        while (summoner == 0) {
+            key = summonerKeys[summonerKeys.length * Math.random() << 0];
+            console.log(key);
+            randItem = summoners[key];
+            if (key != "Flash" && key != firstSummoner) {
+                if (randItem.tags.includes(randTag)) {
+                    summoner = randItem;
+                    document.getElementById("sumSpell2").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/" + summoner.name + ".png";
+                    document.getElementById("sumSpell2").parentElement.setAttribute("data-tooltip", key);
+                }
+            }
+        }
+    }
+    if (randLane.id == "switchJgl") {
+        document.getElementById("sumSpell1").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/SummonerSmite.png";
+        document.getElementById("sumSpell1").parentElement.setAttribute("data-tooltip", "Smite");
+    }
+
 
     var bootKeys = Object.keys(boots);
     var boot = 0;
