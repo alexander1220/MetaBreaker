@@ -50,7 +50,8 @@
         <h2 id="contributing-🤝">
             Contributing 🤝
         </h2>
-        <p>We welcome contributions to this project! If you'd like to contribute, you can create a <a data-target="bug-popup" onClick="toggleModal(event)">bug
+        <p>We welcome contributions to this project! If you'd like to contribute, you can create a <a
+                data-target="bug-popup" onClick="toggleModal(event)">bug
                 ticket</a> on the site or if you want to make some work yourself, please follow these steps:</p>
         <p>Fork <a href="https://github.com/alexander1220/MetaBreaker">this repository</a> to your GitHub account.
             Clone your forked repository to your local machine.
@@ -82,20 +83,20 @@
 
     <dialog id="bug-popup" open="false">
         <article>
-            <a href="#close" aria-label="Close" class="close" data-target="bug-popup"
-                onclick="toggleModal(event)"></a>
+            <a href="#close" aria-label="Close" class="close" data-target="bug-popup" onclick="toggleModal(event)"></a>
             <h3>Create a ticket</h3>
-            <label for="fruit">Ticket</label>
-            <select id="fruit" required>
-              <option>Bug</option>
-              <option>Suggestion</option>
+            <label for="ticket-type">Ticket</label>
+            <select id="ticket-type" required>
+                <option>Bug</option>
+                <option>Suggestion</option>
             </select>
-          
+
             <!-- Markup example 2: input is after label -->
             <label for="buginfo">Tell us something about it</label>
-            <textarea id="buginfo" cols="40" rows="3" placeholder="Give us information..." name="buginfo" required style="min-width: 500px;"></textarea>
+            <textarea id="buginfo" cols="40" rows="3" placeholder="Give us information..." name="buginfo" required
+                style="min-width: 500px;"></textarea>
             <small>We'll try to take care of it ASAP.</small>
-          
+
             <footer>
                 <button href="#confirm" type="submit">Submit</button>
             </footer>
@@ -109,6 +110,7 @@
             <h3>Rules</h3>
             <p>Break the meta.</p>
             <p>If you don't build EXACTLY what you rolled... then what's the point of using it 😪</p>
+            <p>You are allowed to switch up the order of the items.</p>
             <footer>
                 <a href="#confirm" role="button" data-target="modal-example" onclick="toggleModal(event)">Okay</a>
             </footer>

@@ -203,26 +203,35 @@ function generate() {
     }
 
     document.getElementById("championIcon").src = "http://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/" + champKey + ".png";
+    document.getElementById("championIcon").parentElement.setAttribute("data-tooltip", randChamp.name);
     var laneLink = "";
+    var laneName = "";
     switch (randLane.id) {
         case 'switchSup':
             laneLink = "icon-position-utility-blue.png";
+            laneName = "Support";
             break;
         case 'switchAdc':
             laneLink = "icon-position-bottom-blue.png";
+            laneName = "ADC";
             break;
         case 'switchJgl':
             laneLink = "icon-position-jungle-blue.png";
+            laneName = "Jungle";
             break;
         case 'switchMid':
             laneLink = "icon-position-middle-blue.png";
+            laneName = "Mid";
             break;
         case 'switchTop':
             laneLink = "icon-position-top-blue.png";
+            laneName = "Top";
             break;
     }
 
     document.getElementById("lane").src = "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/" + laneLink;
+    document.getElementById("lane").parentElement.setAttribute("data-tooltip", laneName);
+    document.getElementById("buildDescription").innerHTML = randChamp.name + ", " + randTag.replace("AD", "Ad").replace("AP", "Ap").replace(/([a-z])([A-Z])/g, '$1 $2');
     var starterKeys = Object.keys(starters);
     var starter = 0;
     while (starter == 0) {
@@ -263,7 +272,7 @@ function generate() {
     if (randChamp.name == "Yuumi" && isSupp) {
         summonersKeys = summonerKeys.filter(yk => summoners[yk].name != summoner);
         summoner = 0;
-        
+
         while (summoner == 0) {
             key = summonerKeys[summonerKeys.length * Math.random() << 0];
             console.log(key);

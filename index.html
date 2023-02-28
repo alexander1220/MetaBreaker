@@ -32,18 +32,23 @@
                 <tbody>
                     <tr>
                         <td colspan="2" rowspan="2">
-                            <img id="championIcon"
-                                src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/Aatrox.png" />
+                            <div style="display:inline;" data-tooltip="MYTOOLTIP" data-placement="left">
+                                <img id="championIcon"
+                                    src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/Aatrox.png" />
+                            </div>
                         </td>
                         <td>
+                            <h2 id="buildDescription" style="text-align: left;margin-bottom: 0;">Nasus, OnHit</h2>
                             <div style="display:inline;" data-tooltip="MYTOOLTIP" data-placement="bottom">
                                 <img id="starterItem" style="border: 2px solid rgb(181, 181, 185);border-radius: 5px;"
                                     src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/1055.png" />
                             </div>
                         </td>
                         <td style="text-align: right;">
-                            <img id="lane" style="max-width: 60px;"
-                                src="https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-bottom-blue.png" />
+                            <div style="display:inline;" data-tooltip="Lane" data-placement="right">
+                                <img id="lane" style="max-width: 60px;"
+                                    src="https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-bottom-blue.png" />
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -79,7 +84,7 @@
                         </td>
                         -->
                         <td colspan="2">
-                            <div style="display:inline;" data-tooltip="MYTOOLTIP" data-placement="bottom">
+                            <div style="display:inline;" data-tooltip="Champion" data-placement="left">
                                 <img id="sumSpell2" style="max-width: 40px;"
                                     src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/SummonerFlash.png" />
                             </div>
@@ -97,7 +102,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <div style="display:inline;" data-tooltip="MYTOOLTIP" data-placement="bottom">
+                            <div style="display:inline;" data-tooltip="MYTOOLTIP" data-placement="left">
                                 <img id="sumSpell1" style="max-width: 40px;"
                                     src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/SummonerFlash.png" />
                             </div>
@@ -155,8 +160,8 @@
         <article>
             <a href="#close" aria-label="Close" class="close" data-target="bug-popup" onclick="toggleModal(event)"></a>
             <h3>Create a ticket</h3>
-            <label for="fruit">Ticket</label>
-            <select id="fruit" required>
+            <label for="ticket-type">Ticket</label>
+            <select id="ticket-type" required>
                 <option>Bug</option>
                 <option>Suggestion</option>
             </select>
@@ -168,7 +173,7 @@
             <small>We'll try to take care of it ASAP.</small>
 
             <footer>
-                <button href="#confirm" type="submit">Submit</button>
+                <button href="#confirm" type="submit" disabled>Submit</button>
             </footer>
         </article>
     </dialog>
@@ -180,6 +185,7 @@
             <h3>Rules</h3>
             <p>Break the meta.</p>
             <p>If you don't build EXACTLY what you rolled... then what's the point of using it 😪</p>
+            <p>You are allowed to switch up the order of the items.</p>
             <footer>
                 <a href="#confirm" role="button" data-target="modal-example" onclick="toggleModal(event)">Okay</a>
             </footer>
