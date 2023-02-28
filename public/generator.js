@@ -1,19 +1,19 @@
-//httpss://developer.riotgames.com/docs/lol#data-dragon
-//runes-community httpss://raw.communitydragon.org/latest/game/assets/perks/styles/domination/
-//runes httpss://ddragon.leagueoflegends.com/cdn/13.3.1/data/en_US/runesReforged.json
+//https://developer.riotgames.com/docs/lol#data-dragon
+//runes-community https://raw.communitydragon.org/latest/game/assets/perks/styles/domination/
+//runes https://ddragon.leagueoflegends.com/cdn/13.3.1/data/en_US/runesReforged.json
 //individual champ(for abilities) https://ddragon.leagueoflegends.com/cdn/13.3.1/data/en_US/champion/Aatrox.json
 
 const fullChampionsUrl = 'https://ddragon.leagueoflegends.com/cdn/13.3.1/data/en_US/champion.json';
 const itemsUrl = 'https://ddragon.leagueoflegends.com/cdn/13.3.1/data/en_US/item.json';
-const legendaryItemUrl = 'httpss://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/legendaries.json';
-const bootsItemUrl = 'httpss://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/boots.json';
-const mythicItemUrl = 'httpss://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/mythics.json';
-const championUrl = 'httpss://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/champs.json';
-const startersUrl = 'httpss://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/starters.json';
-const summonersUrl = 'httpss://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/summoners.json';
-const runesUrl = 'httpss://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/runes.json';
-const keystonesUrl = 'httpss://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/keystones.json';
-const runeIconUrl = 'httpss://ddragon.canisback.com/img/';
+const legendaryItemUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/legendaries.json';
+const bootsItemUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/boots.json';
+const mythicItemUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/mythics.json';
+const championUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/champs.json';
+const startersUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/starters.json';
+const summonersUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/summoners.json';
+const runesUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/runes.json';
+const keystonesUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/keystones.json';
+const runeIconUrl = 'https://ddragon.canisback.com/img/';
 
 let champions;
 let fullChampions;
@@ -229,7 +229,7 @@ function generate() {
             break;
     }
 
-    document.getElementById("lane").src = "httpss://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/" + laneLink;
+    document.getElementById("lane").src = "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/" + laneLink;
     document.getElementById("lane").parentElement.setAttribute("data-tooltip", laneName);
     document.getElementById("buildDescription").innerHTML = randChamp.name + ", " + randTag.replace("AD", "Ad").replace("AP", "Ap").replace(/([a-z])([A-Z])/g, '$1 $2');
     var starterKeys = Object.keys(starters);
