@@ -5,14 +5,15 @@
 
 const fullChampionsUrl = 'https://ddragon.leagueoflegends.com/cdn/13.3.1/data/en_US/champion.json';
 const itemsUrl = 'https://ddragon.leagueoflegends.com/cdn/13.3.1/data/en_US/item.json';
-const legendaryItemUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/legendaries.json';
-const bootsItemUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/boots.json';
-const mythicItemUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/mythics.json';
-const championUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/champs.json';
-const startersUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/starters.json';
-const summonersUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/summoners.json';
-const runesUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/runes.json';
-const keystonesUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/keystones.json';
+// const legendaryItemUrl = 'https://raw.githubusercontent.com/alexander1220/MetaBreaker/dev/res/legendaries.json';
+const legendaryItemUrl = 'res/legendaries.json';
+const bootsItemUrl = 'res/boots.json';
+const mythicItemUrl = 'res/mythics.json';
+const championUrl = 'res/champs.json';
+const startersUrl = 'res/starters.json';
+const summonersUrl = 'res/summoners.json';
+const runesUrl = 'res/runes.json';
+const keystonesUrl = 'res/keystones.json';
 const runeIconUrl = 'https://ddragon.canisback.com/img/';
 
 let champions;
