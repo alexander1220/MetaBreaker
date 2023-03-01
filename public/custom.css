@@ -14,13 +14,19 @@
     border: solid 1px rgba(216, 176, 0, 0.438);
 }
 
-td{
+td {
     border: 0;
-    padding:0;
+    padding: 0;
     margin: 0;
 }
-#itemslots img{
+
+#itemslots img {
     border: 2px solid rgb(0, 0, 0);
     border-radius: 5px;
     /*box-shadow: 0 10px 5px black;*/
+}
+
+/* removing dotted lines when using tooltips */
+[data-tooltip]:not(a,button,input){
+    border: none;
 }
