@@ -459,7 +459,7 @@ async function sendBugReport() {
     var bugDescription = document.getElementById("description").value;
     var data = { "bug_type": bugType, "description": bugDescription };
     console.log("sending the bug...[" + bugType + ":" + bugDescription + "]")
-    const response = await fetch(window.location.href + "bugreports", {
+    const response = await fetch(window.location.href + "api/bugreports", {
         method: "POST", // *GET, POST, PUT, DELETE, etc.
         mode: "cors", // no-cors, *cors, same-origin
         cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
