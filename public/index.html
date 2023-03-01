@@ -158,23 +158,26 @@
 
     <dialog id="bug-popup" open="false">
         <article>
-            <a href="#close" aria-label="Close" class="close" data-target="bug-popup" onclick="toggleModal(event)"></a>
-            <h3>Create a ticket</h3>
-            <label for="ticket-type">Ticket</label>
-            <select id="ticket-type" required>
-                <option>Bug</option>
-                <option>Suggestion</option>
-            </select>
+            <form action="/bugreports" method="post" enctype="application/x-www-form-urlencoded">
+                <a href="#close" aria-label="Close" class="close" data-target="bug-popup"
+                    onclick="toggleModal(event)"></a>
+                <h3>Create a ticket</h3>
+                <label for="bug_type">Ticket</label>
+                <select id="bug_type" name="bug_type" required>
+                    <option value="bug">Bug</option>
+                    <option value="suggestion">Suggestion</option>
+                </select>
 
-            <!-- Markup example 2: input is after label -->
-            <label for="buginfo">Tell us something about it</label>
-            <textarea id="buginfo" cols="40" rows="3" placeholder="Give us information..." name="buginfo" required
-                style="min-width: 500px;"></textarea>
-            <small>We'll try to take care of it ASAP.</small>
+                <!-- Markup example 2: input is after label -->
+                <label for="description">Tell us something about it</label>
+                <textarea id="description" name="description" cols="40" rows="3" placeholder="Give us information..."
+                    maxlength="2000" required style="min-width: 500px;"></textarea>
+                <small>We'll try to take care of it ASAP.</small>
 
-            <footer>
-                <button href="#confirm" type="submit" disabled>Submit</button>
-            </footer>
+                <footer>
+                    <button type="submit">Submit</button>
+                </footer>
+            </form>
         </article>
     </dialog>
 
