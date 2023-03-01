@@ -10,13 +10,6 @@ app.use("/", express.static("public"));
 
 app.use(bodyParser.json());
 app.post("/bugreports", async (req, res) => {
-    /*
-        req:
-        {
-            "bug_type":"bug",
-            "description":"error on startup",
-        }
-    */
     await prisma.bug_reports.create({ data: { bug_type: req.body.bug_type, description: req.body.description } })
     res.end();
 })
