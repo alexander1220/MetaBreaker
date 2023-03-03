@@ -47,10 +47,10 @@
         <p>This web application is built using HTML, CSS, and JavaScript. It also utilizes the Riot Games Data Dragon to
             gather data about champions and items.</p>
 
-        <h2 id="contributing-🤝">
-            Contributing 🤝
+        <h2 id="bug-🐞">
+            Found a bug 🐞 or have a suggestion?
         </h2>
-        <p>We welcome contributions to this project! If you'd like to contribute, you can create a <a
+        <p>If you have something to share, please use our bug reporter and create a <a
                 data-target="bug-popup" onClick="toggleModal(event)">bug
                 ticket</a> on the site.</p>
 
@@ -74,28 +74,26 @@
         <p>This project is licensed under the MIT License. See the LICENSE file for more information.</p>
     </main>
 
-
     <dialog id="bug-popup" open="false">
         <article>
-            <form action="/bugreports" method="post" enctype="application/x-www-form-urlencoded">
-                <a href="#close" aria-label="Close" class="close" data-target="bug-popup"
-                    onclick="toggleModal(event)"></a>
-                <h3>Create a ticket</h3>
-                <label for="bug_type">Ticket</label>
-                <select id="bug_type" name="bug_type" required>
-                    <option value="bug">Bug</option>
-                    <option value="suggestion">Suggestion</option>
-                </select>
+            <!--<form action="/bugreports" method="post" enctype="application/x-www-form-urlencoded">-->
+            <a href="#close" aria-label="Close" class="close" data-target="bug-popup" onclick="toggleModal(event)"></a>
+            <h3>Create a ticket</h3>
+            <label for="bug_type">Ticket</label>
+            <select id="bug_type" name="bug_type" required>
+                <option value="bug">Bug</option>
+                <option value="suggestion">Suggestion</option>
+            </select>
 
-                <label for="description">Tell us something about it</label>
-                <textarea id="description" name="description" cols="40" rows="3" placeholder="Give us information..."
-                    maxlength="2000" required style="min-width: 500px;"></textarea>
-                <small>We'll try to take care of it ASAP.</small>
+                <label for="bug_description">Tell us something about it</label>
+            <textarea id="bug_description" name="description" cols="40" rows="3" placeholder="Give us information..."
+                maxlength="2000" required style="min-width: 500px;"></textarea>
+            <small>We'll try to take care of it ASAP. <span id="bug_char_count">0</span>/2000</small>
 
-                <footer>
-                    <button type="submit">Submit</button>
-                </footer>
-            </form>
+            <footer>
+                <button onclick="sendBugReport()">Submit</button>
+            </footer>
+            <!--</form>-->
         </article>
     </dialog>
 

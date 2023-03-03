@@ -169,14 +169,13 @@
                 <option value="suggestion">Suggestion</option>
             </select>
 
-            <label for="description">Tell us something about it</label>
-            <textarea id="description" name="description" cols="40" rows="3" placeholder="Give us information..."
+            <label for="bug_description">Tell us something about it</label>
+            <textarea id="bug_description" name="description" cols="40" rows="3" placeholder="Give us information..."
                 maxlength="2000" required style="min-width: 500px;"></textarea>
-            <small>We'll try to take care of it ASAP. 0/2000</small>
+            <small>We'll try to take care of it ASAP. <span id="bug_char_count">0</span>/2000</small>
 
             <footer>
                 <button onclick="sendBugReport()">Submit</button>
-                <button type="submit" disabled>Submit</button>
             </footer>
             <!--</form>-->
         </article>
