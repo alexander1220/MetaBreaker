@@ -398,7 +398,7 @@ function generate() {
 function objectPropertiesToArray(object) {
     var result = [];
     for (var objKey in object)
-        result.push({ objKey, "objVal": object[prop] })
+        result.push({ objKey, "objVal": object[objKey] })
     return result;
 }
 
