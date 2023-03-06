@@ -311,10 +311,13 @@ function generate() {
     //GIVE REST OF ITEMS
     var legisArray = objectPropertiesToArray(legendaries);
     var possibleLegis = legisArray.filter(leg => leg.objVal.tags.includes(randTag));
-    for (var i = 0; i < 6 - toGiveItems.length; i++) {
+    var itemsToGive = 6 - toGiveItems.length;
+    for (var i = 0; i < itemsToGive; i++) {
         possibleLegis = possibleLegis.filter(leg => !toGiveItems.includes(leg) && !blockedItems.flat().includes(leg.objKey));
         var chosenLegi = possibleLegis[possibleLegis.length * Math.random() << 0];
         toGiveItems.push(chosenLegi);
+        console.log("giving legi:")
+        console.log(chosenLegi)
         blockedItems.push(chosenLegi.objVal.blocking);
     }
     console.log(toGiveItems);
