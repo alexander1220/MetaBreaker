@@ -306,6 +306,9 @@ function generate() {
         var chosenBoots = possibleBoots[possibleBoots.length * Math.random() << 0];
         toGiveItems.push(chosenBoots);
         blockedItems.push(chosenBoots.objVal.blocking);
+        document.getElementById("item2").setAttribute("style", "border-color: rgb(228, 165, 28)");
+    } else {
+        document.getElementById("item2").setAttribute("style", "");
     }
     //GIVE REST OF ITEMS
     var legisArray = objectPropertiesToArray(legendaries);
