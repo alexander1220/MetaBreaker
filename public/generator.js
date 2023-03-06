@@ -316,6 +316,7 @@ function generate() {
         toGiveItems.push(chosenLegi);
         blockedItems.push(chosenLegi.objVal.blocking);
     }
+    console.log(toGiveItems);
     for (var i = 0; i < 6; i++) {
         var item = toGiveItems[i];
         var itemElement = "item" + (i + 1);
