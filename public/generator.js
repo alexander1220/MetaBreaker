@@ -292,53 +292,80 @@ function generate() {
         document.getElementById("sumSpell1").parentElement.setAttribute("data-tooltip", "Smite");
     }
 
-
-    var bootKeys = Object.keys(boots);
-    var boot = 0;
-    while (boot == 0) {
-        var key = bootKeys[bootKeys.length * Math.random() << 0];
-        var randItem = boots[key];
-        if (randItem.tags.includes(randTag)) {
-            boot = randItem;
-            givenItems.push(boot);
-            document.getElementById("item1").src = "https://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + key + ".png";
-            document.getElementById("item1").parentElement.setAttribute("data-tooltip", boot.name);
-        }
+    var toGiveItems = [];
+    //GIVE MYTHIC
+    var mythicsArray = objectPropertiesToArray(mythics);
+    var possibleMythics = mythicsArray.filter(m => m.objVal.tags.includes(randTag));
+    var chosenMythic = possibleMythics[possibleMythics.length * Math.random() << 0];
+    toGiveItems.push(chosenMythic);
+    blockedItems.push(chosenMythic.objVal.blocking);
+    //GIVE BOOTS (except cassio)
+    if (randChamp.name != "Cassiopeia") {
+        var bootsArray = objectPropertiesToArray(boots);
+        var possibleBoots = bootsArray.filter(b => b.objVal.tags.includes(randTag));
+        var chosenBoots = possibleBoots[possibleBoots.length * Math.random() << 0];
+        toGiveItems.push(chosenBoots);
+        blockedItems.push(chosenBoots.objVal.blocking);
     }
-
-    var mythicKeys = Object.keys(mythics);
-    var mythic = 0;
-    while (mythic == 0) {
-        var key = mythicKeys[mythicKeys.length * Math.random() << 0];
-        var randItem = mythics[key];
-        if (randItem.tags.includes(randTag)) {
-            mythic = randItem;
-            givenItems.push(mythic);
-            if (randItem.hasOwnProperty("blocking"))
-                blockedItems.push(randItem.blocking)
-            document.getElementById("item2").src = "https://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + key + ".png";
-            document.getElementById("item2").parentElement.setAttribute("data-tooltip", mythic.name);
-        }
+    //GIVE REST OF ITEMS
+    var legisArray = objectPropertiesToArray(legendaries);
+    var possibleLegis = legisArray.filter(leg => leg.objVal.tags.includes(randTag));
+    for (var i = 0; i < 6 - toGiveItems.length; i++) {
+        possibleLegis = possibleLegis.filter(leg => !toGiveItems.includes(leg) && !blockedItems.flat().includes(leg.objKey));
+        var chosenLegi = possibleLegis[possibleLegis.length * Math.random() << 0];
+        toGiveItems.push(chosenLegi);
+        blockedItems.push(chosenLegi.objVal.blocking);
     }
-
-    let items = legendaries;
-    var keys = Object.keys(items);
-    for (let i = 2; i < 6; i++) {
-        var key = keys[keys.length * Math.random() << 0];
-        var randItem = items[key];
-        if (givenItems.includes(randItem.name) || !randItem.tags.includes(randTag) || blockedItems.flat().includes(key)) {
-            i--;
-            continue;
-        }
-
-        if (randItem.hasOwnProperty("blocking"))
-            blockedItems.push(randItem.blocking)
-
-        givenItems.push(randItem.name);
-        var itemId = "item" + (i + 1);
-        document.getElementById(itemId).src = "https://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + key + ".png";
-        document.getElementById(itemId).parentElement.setAttribute("data-tooltip", randItem.name);
+    for (var i = 0; i < 6; i++) {
+        var item = toGiveItems[i];
+        var itemElement = "item" + (i + 1);
+        document.getElementById(itemElement).src = "https://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + item.objKey + ".png";
+        document.getElementById(itemElement).parentElement.setAttribute("data-tooltip", item.objVal.name);
     }
+    // var bootKeys = Object.keys(boots);
+    // var boot = 0;
+    // while (boot == 0) {
+    //     var key = bootKeys[bootKeys.length * Math.random() << 0];
+    //     var randItem = boots[key];
+    //     if (randItem.tags.includes(randTag)) {
+    //         boot = randItem;
+    //         givenItems.push(boot);
+    //     }
+    // }
+
+    // var mythicKeys = Object.keys(mythics);
+    // var mythic = 0;
+    // while (mythic == 0) {
+    //     var key = mythicKeys[mythicKeys.length * Math.random() << 0];
+    //     var randItem = mythics[key];
+    //     if (randItem.tags.includes(randTag)) {
+    //         mythic = randItem;
+    //         givenItems.push(mythic);
+    //         if (randItem.hasOwnProperty("blocking"))
+    //             blockedItems.push(randItem.blocking)
+    //         document.getElementById("item2").src = "https://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + key + ".png";
+    //         document.getElementById("item2").parentElement.setAttribute("data-tooltip", mythic.name);
+    //     }
+    // }
+
+    // let items = legendaries;
+    // var keys = Object.keys(items);
+    // for (let i = 2; i < 6; i++) {
+    //     var key = keys[keys.length * Math.random() << 0];
+    //     var randItem = items[key];
+    //     if (givenItems.includes(randItem.name) || !randItem.tags.includes(randTag) || blockedItems.flat().includes(key)) {
+    //         i--;
+    //         continue;
+    //     }
+
+    //     if (randItem.hasOwnProperty("blocking"))
+    //         blockedItems.push(randItem.blocking)
+
+    //     givenItems.push(randItem.name);
+    //     var itemId = "item" + (i + 1);
+    //     document.getElementById(itemId).src = "https://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + key + ".png";
+    //     document.getElementById(itemId).parentElement.setAttribute("data-tooltip", randItem.name);
+    // }
 
     var blockedRunes = [];
     var keys = Object.keys(keystones);
@@ -365,6 +392,18 @@ function generate() {
     document.getElementById("rune2").src = runeIconUrl + rune.icon;
     document.getElementById("rune2").parentElement.setAttribute("data-tooltip", rune.name);
     console.log("KEYSTONE: " + randKeystone.name + " with RUNE: " + rune.name);
+}
+
+function objectPropertiesToArray(object) {
+    var result = [];
+    for (var prop in object)
+        result.push({ "objKey": { prop }, "objVal": object[prop] })
+}
+
+function randomKeyValFromObject(object) {
+    var objKeys = Object.keys(object);
+    var key = objKeys[objKeys.length * Math.random() << 0];
+    return { "objKey": key, "objVal": object[key] };
 }
 
 function fillChamps() {
