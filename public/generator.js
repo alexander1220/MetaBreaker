@@ -28,8 +28,8 @@ let runes;
 let keystones;
 
 Promise.all([fetchChampions(), fetchFullChampions(), fetchSummoners(), fetchStarters(), fetchBoots(), fetchMythics(), fetchLegendaries(), fetchRunes(), fetchKeystones()]).then(() => {
-    generate();
     fillChamps();
+    generate();
     searchChampion();
 });
 
