@@ -306,7 +306,7 @@ function generate() {
         var chosenBoots = possibleBoots[possibleBoots.length * Math.random() << 0];
         toGiveItems.push(chosenBoots);
         blockedItems.push(chosenBoots.objVal.blocking);
-        document.getElementById("item2").setAttribute("style", "rgb(168, 168, 221);");
+        document.getElementById("item2").setAttribute("style", "border-color: rgb(168, 168, 221)");
     } else {
         document.getElementById("item2").setAttribute("style", "");
     }
