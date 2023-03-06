@@ -28,8 +28,8 @@ let runes;
 let keystones;
 
 Promise.all([fetchChampions(), fetchFullChampions(), fetchSummoners(), fetchStarters(), fetchBoots(), fetchMythics(), fetchLegendaries(), fetchRunes(), fetchKeystones()]).then(() => {
-    fillChamps();
     generate();
+    fillChamps();
     searchChampion();
 });
 
@@ -297,7 +297,6 @@ function generate() {
     var mythicsArray = objectPropertiesToArray(mythics);
     var possibleMythics = mythicsArray.filter(m => m.objVal.tags.includes(randTag));
     var chosenMythic = possibleMythics[possibleMythics.length * Math.random() << 0];
-    console.log(chosenMythic);
     toGiveItems.push(chosenMythic);
     blockedItems.push(chosenMythic.objVal.blocking);
     //GIVE BOOTS (except cassio)
@@ -316,62 +315,15 @@ function generate() {
         possibleLegis = possibleLegis.filter(leg => !toGiveItems.includes(leg) && !blockedItems.flat().includes(leg.objKey));
         var chosenLegi = possibleLegis[possibleLegis.length * Math.random() << 0];
         toGiveItems.push(chosenLegi);
-        console.log("giving legi:")
-        console.log(chosenLegi)
         blockedItems.push(chosenLegi.objVal.blocking);
     }
     console.log(toGiveItems);
     for (var i = 0; i < 6; i++) {
         var item = toGiveItems[i];
         var itemElement = "item" + (i + 1);
-        console.log(item);
         document.getElementById(itemElement).src = "https://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + item.objKey + ".png";
         document.getElementById(itemElement).parentElement.setAttribute("data-tooltip", item.objVal.name);
     }
-    // var bootKeys = Object.keys(boots);
-    // var boot = 0;
-    // while (boot == 0) {
-    //     var key = bootKeys[bootKeys.length * Math.random() << 0];
-    //     var randItem = boots[key];
-    //     if (randItem.tags.includes(randTag)) {
-    //         boot = randItem;
-    //         givenItems.push(boot);
-    //     }
-    // }
-
-    // var mythicKeys = Object.keys(mythics);
-    // var mythic = 0;
-    // while (mythic == 0) {
-    //     var key = mythicKeys[mythicKeys.length * Math.random() << 0];
-    //     var randItem = mythics[key];
-    //     if (randItem.tags.includes(randTag)) {
-    //         mythic = randItem;
-    //         givenItems.push(mythic);
-    //         if (randItem.hasOwnProperty("blocking"))
-    //             blockedItems.push(randItem.blocking)
-    //         document.getElementById("item2").src = "https://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + key + ".png";
-    //         document.getElementById("item2").parentElement.setAttribute("data-tooltip", mythic.name);
-    //     }
-    // }
-
-    // let items = legendaries;
-    // var keys = Object.keys(items);
-    // for (let i = 2; i < 6; i++) {
-    //     var key = keys[keys.length * Math.random() << 0];
-    //     var randItem = items[key];
-    //     if (givenItems.includes(randItem.name) || !randItem.tags.includes(randTag) || blockedItems.flat().includes(key)) {
-    //         i--;
-    //         continue;
-    //     }
-
-    //     if (randItem.hasOwnProperty("blocking"))
-    //         blockedItems.push(randItem.blocking)
-
-    //     givenItems.push(randItem.name);
-    //     var itemId = "item" + (i + 1);
-    //     document.getElementById(itemId).src = "https://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + key + ".png";
-    //     document.getElementById(itemId).parentElement.setAttribute("data-tooltip", randItem.name);
-    // }
 
     var blockedRunes = [];
     var keys = Object.keys(keystones);
