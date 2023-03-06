@@ -300,7 +300,7 @@ function generate() {
     toGiveItems.push(chosenMythic);
     blockedItems.push(chosenMythic.objVal.blocking);
     //GIVE BOOTS (except cassio)
-    if (randChamp.name != "Cassiopeia") {
+    if (randChamp.name != "Cassiopeia" && !(randChamp.name == "Yuumi" && randLane.id == "switchSup")) {
         var bootsArray = objectPropertiesToArray(boots);
         var possibleBoots = bootsArray.filter(b => b.objVal.tags.includes(randTag));
         var chosenBoots = possibleBoots[possibleBoots.length * Math.random() << 0];
