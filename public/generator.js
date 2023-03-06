@@ -297,6 +297,7 @@ function generate() {
     var mythicsArray = objectPropertiesToArray(mythics);
     var possibleMythics = mythicsArray.filter(m => m.objVal.tags.includes(randTag));
     var chosenMythic = possibleMythics[possibleMythics.length * Math.random() << 0];
+    console.log(chosenMythic);
     toGiveItems.push(chosenMythic);
     blockedItems.push(chosenMythic.objVal.blocking);
     //GIVE BOOTS (except cassio)
@@ -320,6 +321,7 @@ function generate() {
     for (var i = 0; i < 6; i++) {
         var item = toGiveItems[i];
         var itemElement = "item" + (i + 1);
+        console.log(item);
         document.getElementById(itemElement).src = "https://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + item.objKey + ".png";
         document.getElementById(itemElement).parentElement.setAttribute("data-tooltip", item.objVal.name);
     }
