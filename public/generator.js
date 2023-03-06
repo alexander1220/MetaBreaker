@@ -398,6 +398,7 @@ function objectPropertiesToArray(object) {
     var result = [];
     for (var prop in object)
         result.push({ "objKey": { prop }, "objVal": object[prop] })
+    return result;
 }
 
 function randomKeyValFromObject(object) {
