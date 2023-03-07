@@ -310,7 +310,7 @@ function generate() {
     }
     //GIVE REST OF ITEMS
     if (randLane.id == "switchSup")
-        toGiveItems.push(starter)
+        toGiveItems.push(chosenStarter)
 
     var legisArray = objectPropertiesToArray(legendaries);
     var possibleLegis = legisArray.filter(leg => leg.objVal.tags.includes(randTag));
