@@ -240,25 +240,16 @@ function generate() {
     document.getElementById("lane").src = "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/" + laneLink;
     document.getElementById("lane").parentElement.setAttribute("data-tooltip", laneName);
     document.getElementById("buildDescription").innerHTML = randChamp.name + ", " + randTag.replace("AD", "Ad").replace("AP", "Ap").replace(/([a-z])([A-Z])/g, '$1 $2');
-    var starterKeys = Object.keys(starters);
-    var starter = 0;
-    while (starter == 0) {
-        var isJgl = false;
-        if (randLane.id == "switchJgl") {
-            starterKeys = starterKeys.filter(sk => starters[sk].tags.includes("Jungle"));
-            console.log(starterKeys);
-            isJgl = true;
 
-        }
-        var key = starterKeys[starterKeys.length * Math.random() << 0];
-        var randItem = starters[key];
-        if (randItem.tags.includes(randTag) || isJgl) {
-            starter = randItem;
-            givenItems.push(starter);
-            document.getElementById("starterItem").src = "https://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + key + ".png";
-            document.getElementById("starterItem").parentElement.setAttribute("data-tooltip", starter.name);
-        }
+    //STARTER
+    var starterArray = objectPropertiesToArray(starters);
+    var possibleStarters = starterArray.filter(s => s.objVal.tags.includes(randTag));
+    if (randLane.id == "switchJgl") {
+        possibleStarters = starterArray.filter(s => s.objVal.tags.includes("Jungle"));
     }
+    var chosenStarter = possibleStarters[possibleStarters.length * Math.random() << 0];
+    document.getElementById("starterItem").src = "https://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + chosenStarter.objKey + ".png";
+    document.getElementById("starterItem").parentElement.setAttribute("data-tooltip", chosenStarter.objVal.name);
 
     var summonerKeys = Object.keys(summoners);
     var summoner = 0;
@@ -318,6 +309,9 @@ function generate() {
         document.getElementById("item2").setAttribute("style", "");
     }
     //GIVE REST OF ITEMS
+    if (randLane.id == "switchSup")
+        toGiveItems.push(chosenStarter)
+
     var legisArray = objectPropertiesToArray(legendaries);
     var possibleLegis = legisArray.filter(leg => leg.objVal.tags.includes(randTag));
     var itemsToGive = 6 - toGiveItems.length;
