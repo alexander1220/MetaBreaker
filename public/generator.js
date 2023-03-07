@@ -28,8 +28,9 @@ let runes;
 let keystones;
 
 Promise.all([fetchChampions(), fetchFullChampions(), fetchSummoners(), fetchStarters(), fetchBoots(), fetchMythics(), fetchLegendaries(), fetchRunes(), fetchKeystones()]).then(() => {
-    fillChamps();
+    fillChampionKeys();
     generate();
+    fillChamps();
     searchChampion();
 });
 
@@ -123,6 +124,12 @@ async function fetchKeystones() {
                 keystones = out;
             })
             .catch(err => { throw err }));
+}
+function fillChampionKeys() {
+    let keys = Object.keys(champions);
+    keys.forEach(element => {
+        selectedChampions.push(element);
+    });
 }
 
 function generate() {
