@@ -318,6 +318,9 @@ function generate() {
         document.getElementById("item2").setAttribute("style", "");
     }
     //GIVE REST OF ITEMS
+    if (randLane.id == "switchSup")
+        toGiveItems.push(starter)
+
     var legisArray = objectPropertiesToArray(legendaries);
     var possibleLegis = legisArray.filter(leg => leg.objVal.tags.includes(randTag));
     var itemsToGive = 6 - toGiveItems.length;
