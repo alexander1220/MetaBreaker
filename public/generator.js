@@ -386,7 +386,8 @@ function fillChamps() {
         newChamp.addEventListener('click', function (e) {
             if (newChamp.getAttribute('class') == 'deselectedChamp') {
                 newChamp.setAttribute('class', 'selectedChamp');
-                selectedChampions.push(element);
+                if (!selectedChampions.includes(element))
+                    selectedChampions.push(element);
             } else {
                 newChamp.setAttribute('class', 'deselectedChamp');
                 selectedChampions = selectedChampions.filter(e => e !== element);
