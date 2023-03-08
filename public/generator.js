@@ -322,18 +322,12 @@ function generate() {
     var legisArray = objectPropertiesToArray(legendaries);
     var possibleLegis = legisArray.filter(leg => leg.objVal.tags.includes(randTag));
     var itemsToGive = 6 - toGiveItems.length;
-    console.log("blocking:");
-    console.log(blockedItems);
     for (var i = 0; i < itemsToGive; i++) {
         var newPossibleLegis = possibleLegis.filter(leg => (!toGiveItems.includes(leg) && !blockedItems.flat().includes(leg.objKey)));
-        console.log("possible legis:")
-        console.log(newPossibleLegis);
         var chosenLegi = newPossibleLegis[newPossibleLegis.length * Math.random() << 0];
-        console.log("trying to give.. " + chosenLegi.objKey + ", " + chosenLegi.objVal.name);
         toGiveItems.push(chosenLegi);
         if (chosenLegi.objVal.hasOwnProperty("blocking"))
             blockedItems.push(chosenLegi.objVal.blocking);
-        console.log(chosenLegi.objVal);
     }
     console.log(toGiveItems);
     for (var i = 0; i < 6; i++) {
