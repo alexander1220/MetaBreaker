@@ -323,13 +323,7 @@ function generate() {
     var possibleLegis = legisArray.filter(leg => leg.objVal.tags.includes(randTag));
     var itemsToGive = 6 - toGiveItems.length;
     for (var i = 0; i < itemsToGive; i++) {
-        console.log("item #" + i);
-        var newPossibleLegis = possibleLegis.filter(function (leg) {
-            console.log(leg);
-            console.log(blockedItems);
-            console.log("CAN I not PUT THE ITEM IN??: " + blockedItems.flat().includes(leg.objKey));
-            return (!toGiveItems.includes(leg) && !blockedItems.flat().includes(leg.objKey))
-        });
+        var newPossibleLegis = possibleLegis.filter(leg => (!toGiveItems.includes(leg) && !blockedItems.flat().includes(leg.objKey)));
         var chosenLegi = newPossibleLegis[newPossibleLegis.length * Math.random() << 0];
         toGiveItems.push(chosenLegi);
         if (chosenLegi.objVal.hasOwnProperty("blocking")) {
