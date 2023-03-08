@@ -149,7 +149,6 @@ function generate() {
     var randChamp = champions[champKey];
 
     console.log(randChamp.name);
-    console.log(randChamp.tags);
     var tagKeys = Object.keys(randChamp.tags);
     var tagKey = tagKeys[tagKeys.length * Math.random() << 0];
     var randTag = randChamp.tags[tagKey];
@@ -281,7 +280,6 @@ function generate() {
 
         while (summoner == 0) {
             key = summonerKeys[summonerKeys.length * Math.random() << 0];
-            console.log(key);
             randItem = summoners[key];
             if (key != "Flash" && key != firstSummoner) {
                 if (randItem.tags.includes(randTag)) {
@@ -324,10 +322,13 @@ function generate() {
     var legisArray = objectPropertiesToArray(legendaries);
     var possibleLegis = legisArray.filter(leg => leg.objVal.tags.includes(randTag));
     var itemsToGive = 6 - toGiveItems.length;
+    console.log("blocking:");
     console.log(blockedItems);
     for (var i = 0; i < itemsToGive; i++) {
-        possibleLegis = possibleLegis.filter(leg => (!toGiveItems.includes(leg) && !blockedItems.flat().includes(leg.objKey)));
-        var chosenLegi = possibleLegis[possibleLegis.length * Math.random() << 0];
+        var newPossibleLegis = possibleLegis.filter(leg => (!toGiveItems.includes(leg) && !blockedItems.flat().includes(leg.objKey)));
+        console.log("possible legis:")
+        console.log(newPossibleLegis);
+        var chosenLegi = newPossibleLegis[newPossibleLegis.length * Math.random() << 0];
         console.log("trying to give.. " + chosenLegi.objKey + ", " + chosenLegi.objVal.name);
         toGiveItems.push(chosenLegi);
         if (chosenLegi.objVal.hasOwnProperty("blocking"))
@@ -345,18 +346,14 @@ function generate() {
 
     var blockedRunes = [];
     var keys = Object.keys(keystones);
-    console.log(keys);
     keys = keys.filter(k => keystones[k].tags.includes(randTag));
-    console.log(keys);
     var key = keys[keys.length * Math.random() << 0];
-    console.log(randTag);
 
     var randKeystone = keystones[key];
     blockedRunes.push(randKeystone.blocking);
     var rune = 0;
     var runeKeys = Object.keys(runes);
     runeKeys = runeKeys.filter(rk => runes[rk].tags.includes(randTag));
-    console.log(runeKeys);
     while (rune == 0) {
         var key = runeKeys[runeKeys.length * Math.random() << 0];
         var randRune = runes[key];
@@ -367,7 +364,6 @@ function generate() {
     document.getElementById("rune1").parentElement.setAttribute("data-tooltip", randKeystone.name);
     document.getElementById("rune2").src = runeIconUrl + rune.icon;
     document.getElementById("rune2").parentElement.setAttribute("data-tooltip", rune.name);
-    console.log("KEYSTONE: " + randKeystone.name + " with RUNE: " + rune.name);
 }
 
 function disableLoading(element) {
@@ -408,7 +404,6 @@ function fillChamps() {
         selectedChampions.push(element);
         champGrid.appendChild(newChamp);
     });
-    console.log(keys.length);
 }
 
 function deselectAll() {
