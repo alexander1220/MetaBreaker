@@ -374,7 +374,7 @@ function disableLoading(element) {
 function objectPropertiesToArray(object) {
     var result = [];
     for (var objKey in object)
-        result.push({ objKey, "objVal": object[objKey] })
+        result.push({ "objKey": parseInt(objKey), "objVal": object[objKey] })
     return result;
 }
 
