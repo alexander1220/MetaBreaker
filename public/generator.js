@@ -322,7 +322,9 @@ function generate() {
     var legisArray = objectPropertiesToArray(legendaries);
     var possibleLegis = legisArray.filter(leg => leg.objVal.tags.includes(randTag));
     var itemsToGive = 6 - toGiveItems.length;
+    console.log(blockedItems);
     for (var i = 0; i < itemsToGive; i++) {
+        console.log("trying to give.. " + leg.objKey + ", " + leg.objVal.name);
         possibleLegis = possibleLegis.filter(leg => !toGiveItems.includes(leg) && !blockedItems.flat().includes(leg.objKey));
         var chosenLegi = possibleLegis[possibleLegis.length * Math.random() << 0];
         toGiveItems.push(chosenLegi);
@@ -365,7 +367,6 @@ function generate() {
 }
 
 function disableLoading(element) {
-    console.log(element);
     document.getElementById(element).setAttribute("loadingImg", "false");
 }
 
