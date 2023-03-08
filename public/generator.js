@@ -328,13 +328,6 @@ function generate() {
         document.getElementById(itemElement).parentElement.setAttribute("aria-busy", "true");
         document.getElementById(itemElement).src = "https://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + item.objKey + ".png";
         document.getElementById(itemElement).parentElement.setAttribute("data-tooltip", item.objVal.name);
-        console.log("loading image:" + itemElement);
-        document.getElementById(itemElement).onload = (function (nr) {
-            return function () {
-                document.getElementById(itemElement).parentElement.setAttribute("aria-busy", "false");
-                console.log("image loaded: " + itemElement);
-            }
-        }(i));
     }
 
     var blockedRunes = [];
@@ -362,6 +355,11 @@ function generate() {
     document.getElementById("rune2").src = runeIconUrl + rune.icon;
     document.getElementById("rune2").parentElement.setAttribute("data-tooltip", rune.name);
     console.log("KEYSTONE: " + randKeystone.name + " with RUNE: " + rune.name);
+}
+
+function disableLoading(element) {
+    console.log(element);
+    document.getElementById(element).setAttribute("aria-loading", "false");
 }
 
 function objectPropertiesToArray(object) {
