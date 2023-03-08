@@ -326,7 +326,7 @@ function generate() {
     var itemsToGive = 6 - toGiveItems.length;
     console.log(blockedItems);
     for (var i = 0; i < itemsToGive; i++) {
-        possibleLegis = possibleLegis.filter(leg => !toGiveItems.includes(leg) && !blockedItems.flat().includes(leg.objKey));
+        possibleLegis = possibleLegis.filter(leg => (!toGiveItems.includes(leg) && !blockedItems.flat().includes(leg.objKey)));
         var chosenLegi = possibleLegis[possibleLegis.length * Math.random() << 0];
         console.log("trying to give.. " + chosenLegi.objKey + ", " + chosenLegi.objVal.name);
         toGiveItems.push(chosenLegi);
