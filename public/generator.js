@@ -332,7 +332,7 @@ function generate() {
     for (var i = 0; i < 6; i++) {
         var item = toGiveItems[i];
         var itemElement = "item" + (i + 1);
-        document.getElementById(itemElement).parentElement.setAttribute("aria-busy", "true");
+        document.getElementById(itemElement).setAttribute("loadingImg", "true");
         document.getElementById(itemElement).src = "https://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + item.objKey + ".png";
         document.getElementById(itemElement).parentElement.setAttribute("data-tooltip", item.objVal.name);
     }
@@ -366,7 +366,7 @@ function generate() {
 
 function disableLoading(element) {
     console.log(element);
-    document.getElementById(element).parentElement.setAttribute("aria-busy", "false");
+    document.getElementById(element).setAttribute("loadingImg", "false");
 }
 
 function objectPropertiesToArray(object) {
