@@ -329,37 +329,40 @@ function generate() {
         document.getElementById(itemElement).src = "https://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + item.objKey + ".png";
         document.getElementById(itemElement).parentElement.setAttribute("data-tooltip", item.objVal.name);
         console.log("loading image: " + itemElement);
-        document.getElementById(itemElement).onload = function () {
-            document.getElementById(itemElement).parentElement.setAttribute("aria-busy", "false");
-            console.log("image loaded: " + itemElement);
-        };
+        document.getElementById(itemElement).onload = (function (nr) {
+            return function () {
+                document.getElementById(itemElement).parentElement.setAttribute("aria-busy", "false");
+                console.log("image loaded: " + itemElement);
+            }
+        }(i))
     }
+}
 
-    var blockedRunes = [];
-    var keys = Object.keys(keystones);
-    console.log(keys);
-    keys = keys.filter(k => keystones[k].tags.includes(randTag));
-    console.log(keys);
-    var key = keys[keys.length * Math.random() << 0];
-    console.log(randTag);
+var blockedRunes = [];
+var keys = Object.keys(keystones);
+console.log(keys);
+keys = keys.filter(k => keystones[k].tags.includes(randTag));
+console.log(keys);
+var key = keys[keys.length * Math.random() << 0];
+console.log(randTag);
 
-    var randKeystone = keystones[key];
-    blockedRunes.push(randKeystone.blocking);
-    var rune = 0;
-    var runeKeys = Object.keys(runes);
-    runeKeys = runeKeys.filter(rk => runes[rk].tags.includes(randTag));
-    console.log(runeKeys);
-    while (rune == 0) {
-        var key = runeKeys[runeKeys.length * Math.random() << 0];
-        var randRune = runes[key];
-        if (!blockedRunes.flat().includes(randRune.id))
-            rune = randRune;
-    }
-    document.getElementById("rune1").src = runeIconUrl + randKeystone.icon;
-    document.getElementById("rune1").parentElement.setAttribute("data-tooltip", randKeystone.name);
-    document.getElementById("rune2").src = runeIconUrl + rune.icon;
-    document.getElementById("rune2").parentElement.setAttribute("data-tooltip", rune.name);
-    console.log("KEYSTONE: " + randKeystone.name + " with RUNE: " + rune.name);
+var randKeystone = keystones[key];
+blockedRunes.push(randKeystone.blocking);
+var rune = 0;
+var runeKeys = Object.keys(runes);
+runeKeys = runeKeys.filter(rk => runes[rk].tags.includes(randTag));
+console.log(runeKeys);
+while (rune == 0) {
+    var key = runeKeys[runeKeys.length * Math.random() << 0];
+    var randRune = runes[key];
+    if (!blockedRunes.flat().includes(randRune.id))
+        rune = randRune;
+}
+document.getElementById("rune1").src = runeIconUrl + randKeystone.icon;
+document.getElementById("rune1").parentElement.setAttribute("data-tooltip", randKeystone.name);
+document.getElementById("rune2").src = runeIconUrl + rune.icon;
+document.getElementById("rune2").parentElement.setAttribute("data-tooltip", rune.name);
+console.log("KEYSTONE: " + randKeystone.name + " with RUNE: " + rune.name);
 }
 
 function objectPropertiesToArray(object) {
