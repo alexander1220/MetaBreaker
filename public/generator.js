@@ -326,8 +326,9 @@ function generate() {
         var newPossibleLegis = possibleLegis.filter(leg => (!toGiveItems.includes(leg) && !blockedItems.flat().includes(leg.objKey)));
         var chosenLegi = newPossibleLegis[newPossibleLegis.length * Math.random() << 0];
         toGiveItems.push(chosenLegi);
-        if (chosenLegi.objVal.hasOwnProperty("blocking"))
+        if (chosenLegi.objVal.hasOwnProperty("blocking")) {
             blockedItems.push(chosenLegi.objVal.blocking);
+        }
     }
     console.log(toGiveItems);
     for (var i = 0; i < 6; i++) {
@@ -367,7 +368,7 @@ function disableLoading(element) {
 function objectPropertiesToArray(object) {
     var result = [];
     for (var objKey in object)
-        result.push({ objKey, "objVal": object[objKey] })
+        result.push({ "objKey": parseInt(objKey), "objVal": object[objKey] })
     return result;
 }
 
