@@ -323,6 +323,7 @@ function generate() {
     var possibleLegis = legisArray.filter(leg => leg.objVal.tags.includes(randTag));
     var itemsToGive = 6 - toGiveItems.length;
     for (var i = 0; i < itemsToGive; i++) {
+        console.log("item #" + i);
         var newPossibleLegis = possibleLegis.filter(function (leg) {
             console.log(leg);
             console.log(blockedItems);
