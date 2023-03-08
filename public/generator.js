@@ -327,6 +327,10 @@ function generate() {
         var itemElement = "item" + (i + 1);
         document.getElementById(itemElement).src = "https://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + item.objKey + ".png";
         document.getElementById(itemElement).parentElement.setAttribute("data-tooltip", item.objVal.name);
+        document.getElementById(itemElement).parentElement.setAttribute("aria-busy", "true");
+        document.getElementById(itemElement).onload = function () {
+            document.getElementById(itemElement).parentElement.setAttribute("aria-busy", "false");
+        };
     }
 
     var blockedRunes = [];
