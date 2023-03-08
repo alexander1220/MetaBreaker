@@ -27,6 +27,13 @@ let summoners;
 let runes;
 let keystones;
 
+document.getElementById("item1").addEventListener("onload", function () { disableLoading("item1"); });
+document.getElementById("item2").addEventListener("onload", function () { disableLoading("item2"); });
+document.getElementById("item3").addEventListener("onload", function () { disableLoading("item3"); });
+document.getElementById("item4").addEventListener("onload", function () { disableLoading("item4"); });
+document.getElementById("item5").addEventListener("onload", function () { disableLoading("item5"); });
+document.getElementById("item6").addEventListener("onload", function () { disableLoading("item6"); });
+
 Promise.all([fetchChampions(), fetchFullChampions(), fetchSummoners(), fetchStarters(), fetchBoots(), fetchMythics(), fetchLegendaries(), fetchRunes(), fetchKeystones()]).then(() => {
     fillChampionKeys();
     generate();
@@ -359,7 +366,7 @@ function generate() {
 
 function disableLoading(element) {
     console.log(element);
-    document.getElementById(element).setAttribute("aria-loading", "false");
+    document.getElementById(element).parentElement.setAttribute("aria-loading", "false");
 }
 
 function objectPropertiesToArray(object) {
