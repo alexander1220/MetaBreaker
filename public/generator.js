@@ -303,14 +303,16 @@ function generate() {
     var possibleMythics = mythicsArray.filter(m => m.objVal.tags.includes(randTag));
     var chosenMythic = possibleMythics[possibleMythics.length * Math.random() << 0];
     toGiveItems.push(chosenMythic);
-    blockedItems.push(chosenMythic.objVal.blocking);
+    if (chosenMythic.objVal.hasOwnProperty("blocking"))
+        blockedItems.push(chosenMythic.objVal.blocking);
     //GIVE BOOTS (except cassio)
     if (randChamp.name != "Cassiopeia" && !(randChamp.name == "Yuumi" && randLane.id == "switchSup")) {
         var bootsArray = objectPropertiesToArray(boots);
         var possibleBoots = bootsArray.filter(b => b.objVal.tags.includes(randTag));
         var chosenBoots = possibleBoots[possibleBoots.length * Math.random() << 0];
         toGiveItems.push(chosenBoots);
-        blockedItems.push(chosenBoots.objVal.blocking);
+        if (chosenBoots.objVal.hasOwnProperty("blocking"))
+            blockedItems.push(chosenBoots.objVal.blocking);
         document.getElementById("item2").setAttribute("style", "border-color: rgb(168, 168, 221)");
     } else {
         document.getElementById("item2").setAttribute("style", "");
@@ -328,7 +330,9 @@ function generate() {
         var chosenLegi = possibleLegis[possibleLegis.length * Math.random() << 0];
         console.log("trying to give.. " + chosenLegi.objKey + ", " + chosenLegi.objVal.name);
         toGiveItems.push(chosenLegi);
-        blockedItems.push(chosenLegi.objVal.blocking);
+        if (chosenLegi.objVal.hasOwnProperty("blocking"))
+            blockedItems.push(chosenLegi.objVal.blocking);
+        console.log(chosenLegi.objVal);
     }
     console.log(toGiveItems);
     for (var i = 0; i < 6; i++) {
