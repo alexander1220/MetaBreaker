@@ -366,7 +366,7 @@ function generate() {
 
 function disableLoading(element) {
     console.log(element);
-    document.getElementById(element).parentElement.setAttribute("aria-loading", "false");
+    document.getElementById(element).parentElement.setAttribute("aria-busy", "false");
 }
 
 function objectPropertiesToArray(object) {
