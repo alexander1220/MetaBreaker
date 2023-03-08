@@ -27,6 +27,13 @@ let summoners;
 let runes;
 let keystones;
 
+document.getElementById("item1").addEventListener("load", function () { disableLoading("item1"); });
+document.getElementById("item2").addEventListener("load", function () { disableLoading("item2"); });
+document.getElementById("item3").addEventListener("load", function () { disableLoading("item3"); });
+document.getElementById("item4").addEventListener("load", function () { disableLoading("item4"); });
+document.getElementById("item5").addEventListener("load", function () { disableLoading("item5"); });
+document.getElementById("item6").addEventListener("load", function () { disableLoading("item6"); });
+
 Promise.all([fetchChampions(), fetchFullChampions(), fetchSummoners(), fetchStarters(), fetchBoots(), fetchMythics(), fetchLegendaries(), fetchRunes(), fetchKeystones()]).then(() => {
     fillChampionKeys();
     generate();
@@ -325,6 +332,7 @@ function generate() {
     for (var i = 0; i < 6; i++) {
         var item = toGiveItems[i];
         var itemElement = "item" + (i + 1);
+        document.getElementById(itemElement).setAttribute("loadingImg", "true");
         document.getElementById(itemElement).src = "https://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + item.objKey + ".png";
         document.getElementById(itemElement).parentElement.setAttribute("data-tooltip", item.objVal.name);
     }
@@ -354,6 +362,11 @@ function generate() {
     document.getElementById("rune2").src = runeIconUrl + rune.icon;
     document.getElementById("rune2").parentElement.setAttribute("data-tooltip", rune.name);
     console.log("KEYSTONE: " + randKeystone.name + " with RUNE: " + rune.name);
+}
+
+function disableLoading(element) {
+    console.log(element);
+    document.getElementById(element).setAttribute("loadingImg", "false");
 }
 
 function objectPropertiesToArray(object) {
