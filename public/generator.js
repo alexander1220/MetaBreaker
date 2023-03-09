@@ -395,6 +395,8 @@ function fillChamps() {
         newChamp.setAttribute('id', element);
         newChamp.setAttribute('class', "selectedChamp");
         newChamp.setAttribute('alt', element);
+        newChamp.setAttribute('width', "100");
+        newChamp.setAttribute('height', "100");
         newChamp.src = "https://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/" + element + ".png";
         newChamp.addEventListener('click', function (e) {
             if (newChamp.getAttribute('class') == 'deselectedChamp') {
