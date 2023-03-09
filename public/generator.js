@@ -27,9 +27,17 @@ let summoners;
 let runes;
 let keystones;
 
+document.getElementById("item1").addEventListener("load", function () { disableLoading("item1"); });
+document.getElementById("item2").addEventListener("load", function () { disableLoading("item2"); });
+document.getElementById("item3").addEventListener("load", function () { disableLoading("item3"); });
+document.getElementById("item4").addEventListener("load", function () { disableLoading("item4"); });
+document.getElementById("item5").addEventListener("load", function () { disableLoading("item5"); });
+document.getElementById("item6").addEventListener("load", function () { disableLoading("item6"); });
+
 Promise.all([fetchChampions(), fetchFullChampions(), fetchSummoners(), fetchStarters(), fetchBoots(), fetchMythics(), fetchLegendaries(), fetchRunes(), fetchKeystones()]).then(() => {
-    fillChamps();
+    fillChampionKeys();
     generate();
+    fillChamps();
     searchChampion();
 });
 
@@ -124,6 +132,12 @@ async function fetchKeystones() {
             })
             .catch(err => { throw err }));
 }
+function fillChampionKeys() {
+    let keys = Object.keys(champions);
+    keys.forEach(element => {
+        selectedChampions.push(element);
+    });
+}
 
 function generate() {
     if (selectedChampions.length <= 0) {
@@ -135,7 +149,6 @@ function generate() {
     var randChamp = champions[champKey];
 
     console.log(randChamp.name);
-    console.log(randChamp.tags);
     var tagKeys = Object.keys(randChamp.tags);
     var tagKey = tagKeys[tagKeys.length * Math.random() << 0];
     var randTag = randChamp.tags[tagKey];
@@ -233,25 +246,16 @@ function generate() {
     document.getElementById("lane").src = "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/" + laneLink;
     document.getElementById("lane").parentElement.setAttribute("data-tooltip", laneName);
     document.getElementById("buildDescription").innerHTML = randChamp.name + ", " + randTag.replace("AD", "Ad").replace("AP", "Ap").replace(/([a-z])([A-Z])/g, '$1 $2');
-    var starterKeys = Object.keys(starters);
-    var starter = 0;
-    while (starter == 0) {
-        var isJgl = false;
-        if (randLane.id == "switchJgl") {
-            starterKeys = starterKeys.filter(sk => starters[sk].tags.includes("Jungle"));
-            console.log(starterKeys);
-            isJgl = true;
 
-        }
-        var key = starterKeys[starterKeys.length * Math.random() << 0];
-        var randItem = starters[key];
-        if (randItem.tags.includes(randTag) || isJgl) {
-            starter = randItem;
-            givenItems.push(starter);
-            document.getElementById("starterItem").src = "https://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + key + ".png";
-            document.getElementById("starterItem").parentElement.setAttribute("data-tooltip", starter.name);
-        }
+    //STARTER
+    var starterArray = objectPropertiesToArray(starters);
+    var possibleStarters = starterArray.filter(s => s.objVal.tags.includes(randTag));
+    if (randLane.id == "switchJgl") {
+        possibleStarters = starterArray.filter(s => s.objVal.tags.includes("Jungle"));
     }
+    var chosenStarter = possibleStarters[possibleStarters.length * Math.random() << 0];
+    document.getElementById("starterItem").src = "https://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + chosenStarter.objKey + ".png";
+    document.getElementById("starterItem").parentElement.setAttribute("data-tooltip", chosenStarter.objVal.name);
 
     var summonerKeys = Object.keys(summoners);
     var summoner = 0;
@@ -276,7 +280,6 @@ function generate() {
 
         while (summoner == 0) {
             key = summonerKeys[summonerKeys.length * Math.random() << 0];
-            console.log(key);
             randItem = summoners[key];
             if (key != "Flash" && key != firstSummoner) {
                 if (randItem.tags.includes(randTag)) {
@@ -292,68 +295,60 @@ function generate() {
         document.getElementById("sumSpell1").parentElement.setAttribute("data-tooltip", "Smite");
     }
 
+    var toGiveItems = [];
+    //GIVE MYTHIC
+    var mythicsArray = objectPropertiesToArray(mythics);
+    var possibleMythics = mythicsArray.filter(m => m.objVal.tags.includes(randTag));
+    var chosenMythic = possibleMythics[possibleMythics.length * Math.random() << 0];
+    toGiveItems.push(chosenMythic);
+    if (chosenMythic.objVal.hasOwnProperty("blocking"))
+        blockedItems.push(chosenMythic.objVal.blocking);
+    //GIVE BOOTS (except cassio)
+    if (randChamp.name != "Cassiopeia" && !(randChamp.name == "Yuumi" && randLane.id == "switchSup")) {
+        var bootsArray = objectPropertiesToArray(boots);
+        var possibleBoots = bootsArray.filter(b => b.objVal.tags.includes(randTag));
+        var chosenBoots = possibleBoots[possibleBoots.length * Math.random() << 0];
+        toGiveItems.push(chosenBoots);
+        if (chosenBoots.objVal.hasOwnProperty("blocking"))
+            blockedItems.push(chosenBoots.objVal.blocking);
+        document.getElementById("item2").setAttribute("style", "border-color: rgb(168, 168, 221)");
+    } else {
+        document.getElementById("item2").setAttribute("style", "");
+    }
+    //GIVE REST OF ITEMS
+    if (randLane.id == "switchSup")
+        toGiveItems.push(chosenStarter)
 
-    var bootKeys = Object.keys(boots);
-    var boot = 0;
-    while (boot == 0) {
-        var key = bootKeys[bootKeys.length * Math.random() << 0];
-        var randItem = boots[key];
-        if (randItem.tags.includes(randTag)) {
-            boot = randItem;
-            givenItems.push(boot);
-            document.getElementById("item1").src = "https://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + key + ".png";
-            document.getElementById("item1").parentElement.setAttribute("data-tooltip", boot.name);
+    var legisArray = objectPropertiesToArray(legendaries);
+    var possibleLegis = legisArray.filter(leg => leg.objVal.tags.includes(randTag));
+    var itemsToGive = 6 - toGiveItems.length;
+    for (var i = 0; i < itemsToGive; i++) {
+        var newPossibleLegis = possibleLegis.filter(leg => (!toGiveItems.includes(leg) && !blockedItems.flat().includes(leg.objKey)));
+        var chosenLegi = newPossibleLegis[newPossibleLegis.length * Math.random() << 0];
+        toGiveItems.push(chosenLegi);
+        if (chosenLegi.objVal.hasOwnProperty("blocking")) {
+            blockedItems.push(chosenLegi.objVal.blocking);
         }
     }
-
-    var mythicKeys = Object.keys(mythics);
-    var mythic = 0;
-    while (mythic == 0) {
-        var key = mythicKeys[mythicKeys.length * Math.random() << 0];
-        var randItem = mythics[key];
-        if (randItem.tags.includes(randTag)) {
-            mythic = randItem;
-            givenItems.push(mythic);
-            if (randItem.hasOwnProperty("blocking"))
-                blockedItems.push(randItem.blocking)
-            document.getElementById("item2").src = "https://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + key + ".png";
-            document.getElementById("item2").parentElement.setAttribute("data-tooltip", mythic.name);
-        }
-    }
-
-    let items = legendaries;
-    var keys = Object.keys(items);
-    for (let i = 2; i < 6; i++) {
-        var key = keys[keys.length * Math.random() << 0];
-        var randItem = items[key];
-        if (givenItems.includes(randItem.name) || !randItem.tags.includes(randTag) || blockedItems.flat().includes(key)) {
-            i--;
-            continue;
-        }
-
-        if (randItem.hasOwnProperty("blocking"))
-            blockedItems.push(randItem.blocking)
-
-        givenItems.push(randItem.name);
-        var itemId = "item" + (i + 1);
-        document.getElementById(itemId).src = "https://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + key + ".png";
-        document.getElementById(itemId).parentElement.setAttribute("data-tooltip", randItem.name);
+    console.log(toGiveItems);
+    for (var i = 0; i < 6; i++) {
+        var item = toGiveItems[i];
+        var itemElement = "item" + (i + 1);
+        document.getElementById(itemElement).setAttribute("loadingImg", "true");
+        document.getElementById(itemElement).src = "https://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + item.objKey + ".png";
+        document.getElementById(itemElement).parentElement.setAttribute("data-tooltip", item.objVal.name);
     }
 
     var blockedRunes = [];
     var keys = Object.keys(keystones);
-    console.log(keys);
     keys = keys.filter(k => keystones[k].tags.includes(randTag));
-    console.log(keys);
     var key = keys[keys.length * Math.random() << 0];
-    console.log(randTag);
 
     var randKeystone = keystones[key];
     blockedRunes.push(randKeystone.blocking);
     var rune = 0;
     var runeKeys = Object.keys(runes);
     runeKeys = runeKeys.filter(rk => runes[rk].tags.includes(randTag));
-    console.log(runeKeys);
     while (rune == 0) {
         var key = runeKeys[runeKeys.length * Math.random() << 0];
         var randRune = runes[key];
@@ -364,7 +359,23 @@ function generate() {
     document.getElementById("rune1").parentElement.setAttribute("data-tooltip", randKeystone.name);
     document.getElementById("rune2").src = runeIconUrl + rune.icon;
     document.getElementById("rune2").parentElement.setAttribute("data-tooltip", rune.name);
-    console.log("KEYSTONE: " + randKeystone.name + " with RUNE: " + rune.name);
+}
+
+function disableLoading(element) {
+    document.getElementById(element).setAttribute("loadingImg", "false");
+}
+
+function objectPropertiesToArray(object) {
+    var result = [];
+    for (var objKey in object)
+        result.push({ "objKey": parseInt(objKey), "objVal": object[objKey] })
+    return result;
+}
+
+function randomKeyValFromObject(object) {
+    var objKeys = Object.keys(object);
+    var key = objKeys[objKeys.length * Math.random() << 0];
+    return { "objKey": key, "objVal": object[key] };
 }
 
 function fillChamps() {
@@ -378,7 +389,8 @@ function fillChamps() {
         newChamp.addEventListener('click', function (e) {
             if (newChamp.getAttribute('class') == 'deselectedChamp') {
                 newChamp.setAttribute('class', 'selectedChamp');
-                selectedChampions.push(element);
+                if (!selectedChampions.includes(element))
+                    selectedChampions.push(element);
             } else {
                 newChamp.setAttribute('class', 'deselectedChamp');
                 selectedChampions = selectedChampions.filter(e => e !== element);
@@ -387,7 +399,6 @@ function fillChamps() {
         selectedChampions.push(element);
         champGrid.appendChild(newChamp);
     });
-    console.log(keys.length);
 }
 
 function deselectAll() {

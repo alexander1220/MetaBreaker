@@ -30,3 +30,11 @@ td {
 [data-tooltip]:not(a,button,input){
     border: none;
 }
+
+[loadingImg="true"] {
+    filter: contrast(0.5) blur(1px) grayscale(1);
+}
+
+[loadingImg="false"] {
+    filter:none;
+}
