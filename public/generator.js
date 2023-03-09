@@ -244,6 +244,7 @@ function generate() {
     }
 
     document.getElementById("lane").src = "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/" + laneLink;
+    document.getElementById("lane").setAttribute("alt", laneName);
     document.getElementById("lane").parentElement.setAttribute("data-tooltip", laneName);
     document.getElementById("buildDescription").innerHTML = randChamp.name + ", " + randTag.replace("AD", "Ad").replace("AP", "Ap").replace(/([a-z])([A-Z])/g, '$1 $2');
 
@@ -255,6 +256,7 @@ function generate() {
     }
     var chosenStarter = possibleStarters[possibleStarters.length * Math.random() << 0];
     document.getElementById("starterItem").src = "https://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + chosenStarter.objKey + ".png";
+    document.getElementById("starterItem").setAttribute("alt", chosenStarter.objVal.name);
     document.getElementById("starterItem").parentElement.setAttribute("data-tooltip", chosenStarter.objVal.name);
 
     var summonerKeys = Object.keys(summoners);
@@ -267,6 +269,7 @@ function generate() {
             if (randItem.tags.includes(randTag)) {
                 summoner = randItem;
                 document.getElementById("sumSpell1").src = "https://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/" + summoner.name + ".png";
+                document.getElementById("sumSpell1").setAttribute("alt", key);
                 document.getElementById("sumSpell1").parentElement.setAttribute("data-tooltip", key);
                 firstSummoner = key;
             }
@@ -274,6 +277,7 @@ function generate() {
     }
     document.getElementById("sumSpell2").src = "https://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/SummonerFlash.png";
     document.getElementById("sumSpell2").parentElement.setAttribute("data-tooltip", "Flash"); // daweil nur flash lassen?
+    document.getElementById("sumSpell2").setAttribute("alt", "Flash");
     if (randChamp.name == "Yuumi" && isSupp) {
         summonersKeys = summonerKeys.filter(yk => summoners[yk].name != summoner);
         summoner = 0;
@@ -286,6 +290,7 @@ function generate() {
                     summoner = randItem;
                     document.getElementById("sumSpell2").src = "https://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/" + summoner.name + ".png";
                     document.getElementById("sumSpell2").parentElement.setAttribute("data-tooltip", key);
+                    document.getElementById("sumSpell2").setAttribute("alt", key);
                 }
             }
         }
@@ -293,6 +298,7 @@ function generate() {
     if (randLane.id == "switchJgl") {
         document.getElementById("sumSpell1").src = "https://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/SummonerSmite.png";
         document.getElementById("sumSpell1").parentElement.setAttribute("data-tooltip", "Smite");
+        document.getElementById("sumSpell1").setAttribute("alt", "Smite");
     }
 
     var toGiveItems = [];
@@ -337,6 +343,7 @@ function generate() {
         document.getElementById(itemElement).setAttribute("loadingImg", "true");
         document.getElementById(itemElement).src = "https://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/" + item.objKey + ".png";
         document.getElementById(itemElement).parentElement.setAttribute("data-tooltip", item.objVal.name);
+        document.getElementById(itemElement).setAttribute("alt", item.objVal.name);
     }
 
     var blockedRunes = [];
@@ -357,8 +364,10 @@ function generate() {
     }
     document.getElementById("rune1").src = runeIconUrl + randKeystone.icon;
     document.getElementById("rune1").parentElement.setAttribute("data-tooltip", randKeystone.name);
+    document.getElementById("rune1").setAttribute("alt", randKeystone.name);
     document.getElementById("rune2").src = runeIconUrl + rune.icon;
     document.getElementById("rune2").parentElement.setAttribute("data-tooltip", rune.name);
+    document.getElementById("rune2").setAttribute("alt", rune.name);
 }
 
 function disableLoading(element) {
@@ -385,6 +394,7 @@ function fillChamps() {
         var newChamp = document.createElement('img');
         newChamp.setAttribute('id', element);
         newChamp.setAttribute('class', "selectedChamp");
+        newChamp.setAttribute('alt', element);
         newChamp.src = "https://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/" + element + ".png";
         newChamp.addEventListener('click', function (e) {
             if (newChamp.getAttribute('class') == 'deselectedChamp') {
