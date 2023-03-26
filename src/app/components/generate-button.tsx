@@ -1,6 +1,12 @@
-import { RoleSwitch, Role } from "./generation/RoleSwitch";
+"use client";
+
+import { useContext } from "react";
+import { GenerationContext } from "./generation/generation-provider";
+import { Role } from "./generation/Role";
+import { RoleSwitch } from "./generation/role-switch";
 
 export default function GenerateButton() {
+    let { roles } = useContext(GenerationContext);
 
     return (
         <>
@@ -9,12 +15,7 @@ export default function GenerateButton() {
                 display: 'flex',
                 justifyContent: 'space-evenly'
             }}>
-                <RoleSwitch role={Role.Top} />
-                <RoleSwitch role={Role.Jungle} />
-                <RoleSwitch role={Role.Mid} />
-                <RoleSwitch role={Role.Adc} />
-                <RoleSwitch role={Role.Support} />
-                <RoleSwitch role={Role.Fill} />
+                {roles.map(role => <RoleSwitch key={role.role} role={role.role} selected={role.selected} />)}
             </div>
         </>
     );

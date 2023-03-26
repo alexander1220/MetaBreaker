@@ -4,7 +4,7 @@ import React, { createContext } from "react";
 import { useImmer } from "use-immer";
 import { Champion, champions as rawChampions } from "../../logic/types/champions";
 
-interface Selectable {
+export interface Selectable {
     selected: boolean;
 }
 
