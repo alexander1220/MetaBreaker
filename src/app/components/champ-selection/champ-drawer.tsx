@@ -7,7 +7,7 @@ import ChampionSelectionProvider from './champion-selection-provider';
 export default function ChampDrawer() {
     const [searchValue, updateSearchValue] = useImmer('');
     return (
-        <ChampionSelectionProvider>
+        <>
             <div className="grid" style={{ marginTop: 20 }}>
                 <input type="search" id="search-input" name="search" placeholder="Search" value={searchValue} onChange={(event) => {
                     updateSearchValue(event.target.value)
@@ -15,6 +15,6 @@ export default function ChampDrawer() {
                 <ChampSelectionButtons />
             </div>
             <ChampGrid searchString={searchValue} />
-        </ChampionSelectionProvider>
+        </>
     );
 }

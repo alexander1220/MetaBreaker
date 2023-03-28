@@ -1,49 +1,58 @@
 "use client";
 
+import { Champion, champions } from "app/logic/types/champions";
 import { createContext } from "react";
 import { useImmer } from "use-immer";
 import { Selectable } from "../champ-selection/champion-selection-provider";
-import { Role } from "./Role";
+import { Lane } from "./Lane";
 
 export interface GenerationContextType {
-    roles: ({
-        role: Role;
+    lanes: ({
+        lane: Lane;
     } & Selectable)[];
-    toggleRole: (role: Role) => void;
+    toggleLane: (role: Lane) => void;
+    rolledChampion: Champion;
+    updateRolledChampion: (champion: Champion) => void;
+    rolledLane: Lane;
+    updateRolledLane: (lane: Lane) => void;
+
 }
 
-export const GenerationContext = createContext<GenerationContextType>({
-    roles: [],
-    toggleRole: () => { }
-});
+export const GenerationContext = createContext<GenerationContextType>({} as GenerationContextType);
 
-function mapRolesToObjects() {
-    return Object.values(Role).map(role => ({ role, selected: true }));
+function mapLanesToObjects() {
+    return Object.values(Lane).map(lane => ({ lane: lane, selected: true }));
 }
 
 export default function GenerationProvider({ children }: { children: React.ReactNode }) {
-    let [roles, updateRoles] = useImmer(mapRolesToObjects());
+    let [lanes, updateLanes] = useImmer(mapLanesToObjects());
+    let [rolledChampion, updateRolledChampion] = useImmer(champions.find(c => c.name === 'Aatrox')!);
+    let [rolledLane, updateRolledLane] = useImmer(Lane.Top);
 
-    function toggleRole(role: Role) {
-        updateRoles(draft => {
-            let roleToToggle = draft.find(r => r.role === role)!;
-            if (roleToToggle.role === Role.Fill && !roleToToggle.selected) {
+    function toggleLane(lane: Lane) {
+        updateLanes(draft => {
+            let laneToToggle = draft.find(r => r.lane === lane)!;
+            if (laneToToggle.lane === Lane.Fill && !laneToToggle.selected) {
                 draft.forEach(r => r.selected = true);
                 return;
             }
 
-            if (roleToToggle.role !== Role.Fill && roleToToggle.selected) {
-                let fillRole = draft.find(r => r.role === Role.Fill)!;
-                fillRole.selected = false;
+            if (laneToToggle.lane !== Lane.Fill && laneToToggle.selected) {
+                let fillLane = draft.find(r => r.lane === Lane.Fill)!;
+                fillLane.selected = false;
             }
-            roleToToggle.selected = !roleToToggle.selected;
+            laneToToggle.selected = !laneToToggle.selected;
         });
     }
 
     return (
         <GenerationContext.Provider value={{
-            roles,
-            toggleRole
+            lanes,
+            toggleLane,
+            rolledChampion,
+            updateRolledChampion,
+            rolledLane,
+            updateRolledLane
         }}>
             {children}
         </GenerationContext.Provider>

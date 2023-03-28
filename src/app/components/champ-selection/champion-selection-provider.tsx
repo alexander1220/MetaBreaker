@@ -10,27 +10,20 @@ export interface Selectable {
 
 export type ChampionSelectionContextType = {
     champions: (Selectable & Champion)[];
-    toogleChampionSelection: (champion: Champion) => void;
+    toggleChampionSelection: (champion: Champion) => void;
     selectAll: () => void;
     deselectAll: () => void;
 };
 
-const initialSelectedChampions = rawChampions.map((c) => { return { ...c, selected: true } });
-
-export const ChampionSelectionContext = createContext<ChampionSelectionContextType>({
-    champions: initialSelectedChampions,
-    toogleChampionSelection: () => { },
-    selectAll: () => { },
-    deselectAll: () => { },
-});
+export const ChampionSelectionContext = createContext({} as ChampionSelectionContextType);
 
 export default function ChampionSelectionProvider({ children }: { children: React.ReactNode }) {
-    const [champions, updateSelectedChampions] = useImmer(initialSelectedChampions);
+    const [champions, updateSelectedChampions] = useImmer(rawChampions.map((c) => { return { ...c, selected: true } }));
 
-    function toogleChampionSelection(champion: Champion) {
+    function toggleChampionSelection(champion: Champion) {
         updateSelectedChampions(draft => {
-            let champToDeselect = draft.find(c => c.name === champion.name);
-            champToDeselect!.selected = !champToDeselect!.selected;
+            let champToDeselect = draft.find(c => c.name === champion.name)!;
+            champToDeselect.selected = !champToDeselect.selected;
         });
     }
 
@@ -47,7 +40,7 @@ export default function ChampionSelectionProvider({ children }: { children: Reac
     }
 
     return (
-        <ChampionSelectionContext.Provider value={{ champions, toogleChampionSelection, selectAll, deselectAll }}>
+        <ChampionSelectionContext.Provider value={{ champions, toggleChampionSelection, selectAll, deselectAll }}>
             {children}
         </ChampionSelectionContext.Provider>
     );

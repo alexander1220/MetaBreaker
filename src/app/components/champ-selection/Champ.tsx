@@ -6,10 +6,10 @@ import { useContext, useEffect, useState } from "react";
 import { ChampionSelectionContext } from "./champion-selection-provider";
 
 export default function Champ({ champ, selected }: { champ: Champion, selected: boolean }) {
-    let { toogleChampionSelection } = useContext(ChampionSelectionContext);
+    let { champions, toggleChampionSelection } = useContext(ChampionSelectionContext);
 
     function toggleSelected() {
-        toogleChampionSelection(champ);
+        toggleChampionSelection(champ);
     }
 
     return (

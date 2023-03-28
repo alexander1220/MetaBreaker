@@ -1,8 +1,8 @@
-export enum Role {
+export enum Lane {
     Top = 'Top',
     Jungle = 'Jungle',
     Mid = 'Mid',
-    Adc = 'Adc',
+    Adc = 'ADC',
     Support = 'Support',
     Fill = 'Fill'
 }

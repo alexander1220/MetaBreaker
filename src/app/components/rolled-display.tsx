@@ -1,6 +1,9 @@
 import Element, { ElementType, HighlightType } from "./element";
+import RolledChampion from "./rolled-champion";
+import RolledLane from "./rolled-lane";
 
-export default function PickedDisplay() {
+
+export default function RolledDisplay() {
 
     return (
         <>
@@ -9,7 +12,7 @@ export default function PickedDisplay() {
                     <tbody>
                         <tr>
                             <td colSpan={2} rowSpan={2}>
-                                <Element id="champion" type={ElementType.Champion} name={"Aatrox"} description={"Aatrox"} height={120} width={120} />
+                                <RolledChampion />
                             </td>
                             <td>
                                 <h2 id="buildDescription" style={{ textAlign: "left", marginBottom: 0 }}>
@@ -18,7 +21,7 @@ export default function PickedDisplay() {
                                 <Element id="starterItem" type={ElementType.Item} name={"1055"} description={"Doran's Shield"} height={67.2} width={67.2} highlight={HighlightType.Light} />
                             </td>
                             <td style={{ textAlign: "right" }}>
-                                <Element id="lane" type={ElementType.Lane} name={"bottom"} description={"Bottom"} height={60} width={60} />
+                                <RolledLane />
                             </td>
                         </tr>
                         <tr>

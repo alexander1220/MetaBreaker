@@ -8,7 +8,7 @@ export default function ChampGrid({ searchString }: { searchString: string }) {
     return (
         <div className="container" id="champselect">
             {
-                champions.filter(champ => searchString !== '' ? champ.name.startsWith(searchString) : true).map((champ) => {
+                champions.filter(champ => searchString !== '' ? champ.name.toLowerCase().startsWith(searchString.toLowerCase()) : true).map((champ) => {
                     return (
                         <Champ champ={champ} key={champ.name} selected={champ.selected} />
                     )
