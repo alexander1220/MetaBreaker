@@ -1,10 +1,14 @@
+"use client";
 import Element, { ElementType, HighlightType } from "./element";
+import RolledBuildDescription from "./rolled-build-description";
 import RolledChampion from "./rolled-champion";
+import RolledFirstSummonerSpell from "./rolled-first-summoner-spell";
 import RolledLane from "./rolled-lane";
+import RolledSecondSummonerSpell from "./rolled-second-summoner-spell";
+import RolledStarterItem from "./rolled-starter-item";
 
 
 export default function RolledDisplay() {
-
     return (
         <>
             <div className="container">
@@ -15,10 +19,8 @@ export default function RolledDisplay() {
                                 <RolledChampion />
                             </td>
                             <td>
-                                <h2 id="buildDescription" style={{ textAlign: "left", marginBottom: 0 }}>
-                                    Nasus, OnHit
-                                </h2>
-                                <Element id="starterItem" type={ElementType.Item} name={"1055"} description={"Doran's Shield"} height={67.2} width={67.2} highlight={HighlightType.Light} />
+                                <RolledBuildDescription />
+                                <RolledStarterItem />
                             </td>
                             <td style={{ textAlign: "right" }}>
                                 <RolledLane />
@@ -36,7 +38,7 @@ export default function RolledDisplay() {
                         </tr>
                         <tr>
                             <td colSpan={2}>
-                                <Element id="sumSpell2" type={ElementType.Spell} name={"SummonerFlash"} description={"Flash"} height={40} width={40} />
+                                <RolledSecondSummonerSpell />
                             </td>
                             <td colSpan={2} rowSpan={2} style={{ textAlign: "right" }}>
                                 <Element id="rune1" type={ElementType.Rune} name={"darkharvest"} description={"Dark Harvest"} height={64} width={64} />
@@ -45,7 +47,7 @@ export default function RolledDisplay() {
                         </tr>
                         <tr>
                             <td>
-                                <Element id="sumSpell1" type={ElementType.Spell} name={"SummonerFlash"} description={"Flash"} height={40} width={40} />
+                                <RolledFirstSummonerSpell />
                             </td>
                         </tr>
                     </tbody>

@@ -1,10 +1,13 @@
 "use client";
 
 import { Champion, champions } from "app/logic/types/champions";
+import { Tag } from "app/logic/types/enums";
 import { createContext } from "react";
-import { useImmer } from "use-immer";
+import { Updater, useImmer } from "use-immer";
 import { Selectable } from "../champ-selection/champion-selection-provider";
 import { Lane } from "./Lane";
+import { StarterItem } from "app/logic/types/starter-items";
+import { SummonerSpell } from "app/logic/types/summoners";
 
 export interface GenerationContextType {
     lanes: ({
@@ -15,7 +18,12 @@ export interface GenerationContextType {
     updateRolledChampion: (champion: Champion) => void;
     rolledLane: Lane;
     updateRolledLane: (lane: Lane) => void;
-
+    rolledTag: Tag;
+    updateRolledTag: (tag: Tag) => void;
+    rolledStarterItem: StarterItem;
+    updateRolledStarterItem: (item: StarterItem) => void;
+    rolledSummonerSpells: SummonerSpell[];
+    updateRolledSummonerSpells: (spells: SummonerSpell[]) => void;
 }
 
 export const GenerationContext = createContext<GenerationContextType>({} as GenerationContextType);
@@ -28,6 +36,9 @@ export default function GenerationProvider({ children }: { children: React.React
     let [lanes, updateLanes] = useImmer(mapLanesToObjects());
     let [rolledChampion, updateRolledChampion] = useImmer(champions.find(c => c.name === 'Aatrox')!);
     let [rolledLane, updateRolledLane] = useImmer(Lane.Top);
+    let [rolledTag, updateRolledTag] = useImmer(Tag.OnHit);
+    let [rolledStarterItem, updateRolledStarterItem] = useImmer({} as StarterItem);
+    let [rolledSummonerSpells, updateRolledSummonerSpells] = useImmer([] as SummonerSpell[]);
 
     function toggleLane(lane: Lane) {
         updateLanes(draft => {
@@ -52,7 +63,13 @@ export default function GenerationProvider({ children }: { children: React.React
             rolledChampion,
             updateRolledChampion,
             rolledLane,
-            updateRolledLane
+            updateRolledLane,
+            rolledTag,
+            updateRolledTag,
+            rolledStarterItem,
+            updateRolledStarterItem,
+            rolledSummonerSpells,
+            updateRolledSummonerSpells,
         }}>
             {children}
         </GenerationContext.Provider>

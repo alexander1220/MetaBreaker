@@ -1,18 +1,18 @@
 export enum Tag {
-    Fighter,
-    Mage,
-    Bulk_Mage,
-    AP_Assassin,
-    AD_Assassin,
-    Marksman,
-    OnHit,
-    Tank,
-    Enchanter_Support,
-    Tank_Support,
-    Assassin_Support,
-    Mage_Support,
-    OnHit_Mage,
-    Jungle
+    Fighter = 'Fighter',
+    Mage = 'Mage',
+    Bulk_Mage = 'Bulk Mage',
+    AP_Assassin = 'Ap Assassin',
+    AD_Assassin = 'Ad Assassin',
+    Marksman = 'Marksman',
+    OnHit = 'On Hit',
+    Tank = 'Tank',
+    Enchanter_Support = 'Enchanter Support',
+    Tank_Support = 'Tank Support',
+    Assassin_Support = 'Assassin Support',
+    Mage_Support = 'Mage Support',
+    OnHit_Mage = 'On Hit Mage',
+    Jungle = 'Jungle',
 }
 
 export enum LeagueType {
