@@ -78,7 +78,7 @@ function rollChampion(selectedChampions: (Selectable & Champion)[], selectedSupp
 
 function rollTag(rolledChampion: Champion, rolledLane: Lane) {
     if (rolledLane === Lane.Support) {
-        return getRandomElement(rolledChampion.tags);
+        return getRandomElement(rolledChampion.tags.filter(tag => supportTags.includes(tag)));
     }
     return getRandomElement(rolledChampion.tags.filter(tag => !supportTags.includes(tag)));
 }
@@ -94,7 +94,7 @@ function rollSummonerSpells(rolledChampion: Champion, rolledLane: Lane, rolledTa
         summonerSpells.find(spell => spell.name === 'Smite')! :
         getRandomElement(possibleSummonerSpells));
 
-    if (rolledChampion.name === 'Yuumi' && rolledLane === Lane.Support) {
+    if (!(rolledChampion.name === 'Yuumi' && rolledLane === Lane.Support)) {
         rolledSummonerSpells.push(summonerSpells.find(spell => spell.name === 'Flash')!);
     }
     else {
