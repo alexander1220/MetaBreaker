@@ -3,6 +3,7 @@ import Element, { ElementType, HighlightType } from "./element";
 import RolledBuildDescription from "./rolled-build-description";
 import RolledChampion from "./rolled-champion";
 import RolledFirstSummonerSpell from "./rolled-first-summoner-spell";
+import RolledItems from "./rolled-items";
 import RolledLane from "./rolled-lane";
 import RolledSecondSummonerSpell from "./rolled-second-summoner-spell";
 import RolledStarterItem from "./rolled-starter-item";
@@ -28,12 +29,7 @@ export default function RolledDisplay() {
                         </tr>
                         <tr>
                             <td colSpan={2} id="itemslots">
-                                <Element id="item1" type={ElementType.Item} name={"1001"} description={"Boots of Speed"} height={67.2} width={67.2} highlight={HighlightType.Gold} />
-                                <Element id="item2" type={ElementType.Item} name={"1001"} description={"Boots of Speed"} height={67.2} width={67.2} highlight={HighlightType.Light} />
-                                <Element id="item3" type={ElementType.Item} name={"1001"} description={"Boots of Speed"} height={67.2} width={67.2} highlight={HighlightType.Black} />
-                                <Element id="item4" type={ElementType.Item} name={"1001"} description={"Boots of Speed"} height={67.2} width={67.2} highlight={HighlightType.Black} />
-                                <Element id="item5" type={ElementType.Item} name={"1001"} description={"Boots of Speed"} height={67.2} width={67.2} highlight={HighlightType.Black} />
-                                <Element id="item6" type={ElementType.Item} name={"1001"} description={"Boots of Speed"} height={67.2} width={67.2} highlight={HighlightType.Black} />
+                                <RolledItems />
                             </td>
                         </tr>
                         <tr>

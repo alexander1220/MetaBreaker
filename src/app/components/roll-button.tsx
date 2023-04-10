@@ -1,20 +1,23 @@
 "use client";
 
 import { ChampionSelectionContext, Selectable } from "app/components/champ-selection/champion-selection-provider";
-import { GenerationContext } from "app/components/generation/generation-provider";
+import { GenerationContext, Item } from "app/components/generation/generation-provider";
 import { Lane } from "app/components/generation/Lane";
 import { useContext, useEffect } from "react";
 import { Champion } from "../logic/types/champions";
 import { Tag } from "../logic/types/enums";
 import { starterItems } from "../logic/types/starter-items";
 import { SummonerSpell, summonerSpells } from "../logic/types/summoners";
+import { mythics } from "app/logic/types/items/mythics";
+import { boots } from "app/logic/types/items/boots";
+import { legendaryItems } from "app/logic/types/items/legendaries";
 
 
 const supportTags = [Tag.Mage_Support, Tag.Assassin_Support, Tag.Enchanter_Support, Tag.Tank_Support];
 
 export default function RollButton() {
 
-    const { lanes, updateRolledChampion, updateRolledLane, updateRolledTag, updateRolledStarterItem, updateRolledSummonerSpells } = useContext(GenerationContext);
+    const { lanes, updateRolledChampion, updateRolledLane, updateRolledTag, updateRolledStarterItem, updateRolledSummonerSpells, updateRolledItems } = useContext(GenerationContext);
     const { champions } = useContext(ChampionSelectionContext);
 
 
@@ -47,6 +50,10 @@ export default function RollButton() {
 
         const rolledSummonerSpells = rollSummonerSpells(rolledChampion, rolledLane, rolledTag);
         updateRolledSummonerSpells(rolledSummonerSpells);
+
+        const rolledItems = rollItems(rolledChampion, rolledLane, rolledTag);
+        updateRolledItems(rolledItems);
+
 
     }
 
@@ -94,7 +101,7 @@ function rollSummonerSpells(rolledChampion: Champion, rolledLane: Lane, rolledTa
         summonerSpells.find(spell => spell.name === 'Smite')! :
         getRandomElement(possibleSummonerSpells));
 
-    if (!(rolledChampion.name === 'Yuumi' && rolledLane === Lane.Support)) {
+    if (!isYuumiSupport(rolledChampion, rolledLane)) {
         rolledSummonerSpells.push(summonerSpells.find(spell => spell.name === 'Flash')!);
     }
     else {
@@ -109,4 +116,34 @@ function getSelectedSupportChamps(selectedChampions: (Selectable & Champion)[]) 
 
 function getRandomElement(items: any[]) {
     return items[Math.floor(Math.random() * items.length)];
+}
+
+function isYuumiSupport(rolledChampion: Champion, rolledLane: Lane) {
+    return rolledChampion.name === 'Yuumi' && rolledLane === Lane.Support;
+}
+
+// write the method to generate all 6 items (mythic, boots, 4 items)
+
+function rollItems(rolledChampion: Champion, rolledLane: Lane, rolledTag: Tag): Item[] {
+    let items = [] as Item[];
+
+    //roll mythic
+    items.push(getRandomElement(mythics.filter(item => item.tags.includes(rolledTag))));
+
+    //roll boots if not cassiopeia or yuumi support
+    if (!(rolledChampion.name === "Cassiopeia" || isYuumiSupport(rolledChampion, rolledLane))) {
+        items.push(getRandomElement(boots.filter(item => item.tags.includes(rolledTag))));
+    }
+
+    //roll the rest of the items
+    while (items.length < 6) {
+        items.push(getRandomElement(legendaryItems.filter(item => !getBlockedItemIds(items).includes(item.id) && !items.includes(item) && item.tags.includes(rolledTag))));
+    }
+
+
+    return items;
+}
+
+function getBlockedItemIds(items: Item[]) {
+    return items.map(item => item.blocking).flat().filter(Number);
 }
