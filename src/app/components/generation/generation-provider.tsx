@@ -8,8 +8,8 @@ import { Selectable } from "../champ-selection/champion-selection-provider";
 import { Lane } from "./Lane";
 import { StarterItem } from "app/logic/types/starter-items";
 import { SummonerSpell } from "app/logic/types/summoners";
-import { MythicItem } from "app/logic/types/items/mythics";
-import { BootItem } from "app/logic/types/items/boots";
+import { Keystone } from "app/logic/types/keystones";
+import { Rune } from "app/logic/types/runes";
 
 export interface Item {
     name: string;
@@ -34,6 +34,11 @@ export interface GenerationContextType {
     updateRolledSummonerSpells: (spells: SummonerSpell[]) => void;
     rolledItems: Item[];
     updateRolledItems: (items: Item[]) => void;
+    rolledKeystone: Keystone;
+    updateRolledKeystone: (keystone: Keystone) => void;
+    rolledRune: Rune;
+    updateRolledRune: (rune: Rune) => void;
+
 }
 
 export const GenerationContext = createContext<GenerationContextType>({} as GenerationContextType);
@@ -50,6 +55,8 @@ export default function GenerationProvider({ children }: { children: React.React
     let [rolledStarterItem, updateRolledStarterItem] = useImmer({} as StarterItem);
     let [rolledSummonerSpells, updateRolledSummonerSpells] = useImmer([] as SummonerSpell[]);
     let [rolledItems, updateRolledItems] = useImmer([] as Item[]);
+    let [rolledKeyStone, updateRolledKeystone] = useImmer({} as Keystone);
+    let [rolledRune, updateRolledRune] = useImmer({} as Rune);
 
     function toggleLane(lane: Lane) {
         updateLanes(draft => {
@@ -82,7 +89,11 @@ export default function GenerationProvider({ children }: { children: React.React
             rolledSummonerSpells,
             updateRolledSummonerSpells,
             rolledItems,
-            updateRolledItems
+            updateRolledItems,
+            rolledKeystone: rolledKeyStone,
+            updateRolledKeystone,
+            rolledRune,
+            updateRolledRune
         }}>
             {children}
         </GenerationContext.Provider>

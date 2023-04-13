@@ -5,6 +5,7 @@ import RolledChampion from "./rolled-champion";
 import RolledFirstSummonerSpell from "./rolled-first-summoner-spell";
 import RolledItems from "./rolled-items";
 import RolledLane from "./rolled-lane";
+import RolledRunes from "./rolled-runes";
 import RolledSecondSummonerSpell from "./rolled-second-summoner-spell";
 import RolledStarterItem from "./rolled-starter-item";
 
@@ -37,8 +38,7 @@ export default function RolledDisplay() {
                                 <RolledSecondSummonerSpell />
                             </td>
                             <td colSpan={2} rowSpan={2} style={{ textAlign: "right" }}>
-                                <Element id="rune1" type={ElementType.Rune} name={"darkharvest"} description={"Dark Harvest"} height={64} width={64} />
-                                <Element id="rune2" type={ElementType.Rune} name={"darkharvest"} description={"Dark Harvest"} height={32} width={32} />
+                                <RolledRunes />
                             </td>
                         </tr>
                         <tr>

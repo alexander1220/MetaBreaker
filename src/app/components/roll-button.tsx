@@ -11,13 +11,15 @@ import { SummonerSpell, summonerSpells } from "../logic/types/summoners";
 import { mythics } from "app/logic/types/items/mythics";
 import { boots } from "app/logic/types/items/boots";
 import { legendaryItems } from "app/logic/types/items/legendaries";
+import { Keystone, keystones } from "app/logic/types/keystones";
+import { runes } from "app/logic/types/runes";
 
 
 const supportTags = [Tag.Mage_Support, Tag.Assassin_Support, Tag.Enchanter_Support, Tag.Tank_Support];
 
 export default function RollButton() {
 
-    const { lanes, updateRolledChampion, updateRolledLane, updateRolledTag, updateRolledStarterItem, updateRolledSummonerSpells, updateRolledItems } = useContext(GenerationContext);
+    const { lanes, updateRolledChampion, updateRolledLane, updateRolledTag, updateRolledStarterItem, updateRolledSummonerSpells, updateRolledItems, updateRolledKeystone, updateRolledRune } = useContext(GenerationContext);
     const { champions } = useContext(ChampionSelectionContext);
 
 
@@ -29,7 +31,7 @@ export default function RollButton() {
             alert('Please select at least one champion');
             return;
         }
-        if (selectedChampions.length === 0) {
+        if (selectedLanes.length === 0) {
             alert('Please select at least one lane');
             return;
         }
@@ -54,7 +56,11 @@ export default function RollButton() {
         const rolledItems = rollItems(rolledChampion, rolledLane, rolledTag);
         updateRolledItems(rolledItems);
 
+        const rolledKeyStone = rollKeyStone(rolledTag);
+        updateRolledKeystone(rolledKeyStone);
 
+        const rolledRune = rollRune(rolledTag, rolledKeyStone);
+        updateRolledRune(rolledRune);
     }
 
     useEffect(() => {
@@ -137,11 +143,22 @@ function rollItems(rolledChampion: Champion, rolledLane: Lane, rolledTag: Tag): 
 
     //roll the rest of the items
     while (items.length < 6) {
-        items.push(getRandomElement(legendaryItems.filter(item => !getBlockedItemIds(items).includes(item.id) && !items.includes(item) && item.tags.includes(rolledTag))));
+        items.push(getRandomElement(legendaryItems.filter(item =>
+            !getBlockedItemIds(items).includes(item.id) &&
+            !items.includes(item) &&
+            item.tags.includes(rolledTag)))
+        );
     }
 
-
     return items;
+}
+
+function rollKeyStone(rolledTag: Tag) {
+    return getRandomElement(keystones.filter(keystone => keystone.tags.includes(rolledTag)));
+}
+
+function rollRune(rolledTag: Tag, rolledKeyStone: Keystone) {
+    return getRandomElement(runes.filter(rune => !rolledKeyStone.blocking?.includes(rune.id) && rune.tags.includes(rolledTag)));
 }
 
 function getBlockedItemIds(items: Item[]) {
