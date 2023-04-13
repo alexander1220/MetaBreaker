@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { useContext } from "react";
-import Element, { ElementType, HighlightType, TooltipPlacement } from "./element";
+import Element, { ElementType } from "./element";
+import { HighlightType, TooltipPlacement } from "../logic/types/enums";
 import { GenerationContext } from "./generation/generation-provider";
 
 export default function RolledItems() {

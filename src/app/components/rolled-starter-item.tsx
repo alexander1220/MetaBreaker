@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useContext } from "react";
-import { HighlightType, TooltipPlacement } from "./element";
+import { HighlightType, TooltipPlacement } from "../logic/types/enums";
 import { GenerationContext } from "./generation/generation-provider";
 
 export default function RolledStarterItem() {

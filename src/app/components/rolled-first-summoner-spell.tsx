@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useContext } from "react";
-import { TooltipPlacement } from "./element";
+import { TooltipPlacement } from "../logic/types/enums";
 import { GenerationContext } from "./generation/generation-provider";
 
 export default function RolledFirstSummonerSpell() {

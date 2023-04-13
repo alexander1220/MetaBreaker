@@ -1,5 +1,4 @@
 "use client";
-import Element, { ElementType, HighlightType } from "./element";
 import RolledBuildDescription from "./rolled-build-description";
 import RolledChampion from "./rolled-champion";
 import RolledFirstSummonerSpell from "./rolled-first-summoner-spell";

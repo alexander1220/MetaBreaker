@@ -1,3 +1,18 @@
+
+export enum TooltipPlacement {
+    Top = 'top',
+    Bottom = 'bottom',
+    Left = 'left',
+    Right = 'right'
+}
+
+export enum HighlightType {
+    None = 'transparent',
+    Black = 'black',
+    Gold = '#E4A51C',
+    Light = '#B5B5B9'
+}
+
 export enum Tag {
     Fighter = 'Fighter',
     Mage = 'Mage',
