@@ -1,6 +1,8 @@
 import Link from "next/link";
+import ModalToggleLink from "../modal-toggle-link";
 import ThemeSwitch from "../theming/theme-switch";
 import NavLink from "./navlink";
+
 
 export default function Navbar() {
   return (
@@ -13,9 +15,7 @@ export default function Navbar() {
       <ul>
         <li><NavLink href={"/"}>Home</NavLink></li>
         <li>
-          <a data-target="modal-example">
-            Rules
-          </a>
+          <ModalToggleLink />
         </li>
         <li>
           <NavLink href="/about">

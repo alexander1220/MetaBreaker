@@ -3,6 +3,9 @@ import './global.css';
 import ThemeProvider from './components/theming/theme-provider';
 import HTMLBody from './components/html-body';
 import Navbar from './components/navbar/navbar';
+import Script from 'next/script';
+import Providers from './components/providers';
+import RulesModal from './components/modals/rules';
 
 const title = 'MetaBreaker – Generate Unique Item Builds for League of Legends Champions';
 const description = 'Break the meta with MetaBreaker! Our website allows you to generate off-meta item builds for your favorite champions in League of Legends. Give it a try and see what kind of surprises you can come up with!';
@@ -25,12 +28,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-
-    <ThemeProvider>
+    <Providers>
       <HTMLBody>
         <Navbar />
         {children}
+        <RulesModal />
       </HTMLBody>
-    </ThemeProvider>
+    </Providers>
   )
 }

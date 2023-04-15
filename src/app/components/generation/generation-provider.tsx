@@ -3,7 +3,7 @@
 import { Champion, champions } from "app/logic/types/champions";
 import { Tag } from "app/logic/types/enums";
 import { createContext } from "react";
-import { Updater, useImmer } from "use-immer";
+import { useImmer } from "use-immer";
 import { Selectable } from "../champ-selection/champion-selection-provider";
 import { Lane } from "./Lane";
 import { StarterItem } from "app/logic/types/starter-items";

@@ -10,12 +10,10 @@ export default function Page() {
   return (
     <StrictMode>
       <main className="container" style={{ maxWidth: 850 }}>
-        <Providers>
-          <RolledDisplay />
-          <RollButton />
-          <RollSwitches />
-          <ChampDrawer />
-        </Providers>
+        <RolledDisplay />
+        <RollButton />
+        <RollSwitches />
+        <ChampDrawer />
       </main>
     </StrictMode>
   )
