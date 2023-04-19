@@ -1,3 +1,4 @@
+import BugReportModalToggleLink from "app/components/modals/bug-report-modal-toggle-link";
 import Link from "next/link";
 
 export default function Page() {
@@ -19,8 +20,7 @@ export default function Page() {
       <h2 id="bug-🐞">
         Found a bug 🐞 or have a suggestion?
       </h2>
-      <p>If you have something to share, please use our bug reporter and create a <a data-target="bug-popup">bug
-        ticket</a> on the site.</p>
+      <p>If you have something to share, please use our bug reporter and create a <BugReportModalToggleLink>bug ticket</BugReportModalToggleLink> on the site.</p>
       <h2 id="credits-🚀">
         Credits 🚀
       </h2>

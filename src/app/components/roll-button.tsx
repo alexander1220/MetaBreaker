@@ -13,11 +13,21 @@ import { boots } from "app/logic/types/items/boots";
 import { legendaryItems } from "app/logic/types/items/legendaries";
 import { Keystone, keystones } from "app/logic/types/keystones";
 import { runes } from "app/logic/types/runes";
+import * as random from "random-seed";
+import { useRouter } from "next/navigation";
 
 
 const supportTags = [Tag.Mage_Support, Tag.Assassin_Support, Tag.Enchanter_Support, Tag.Tank_Support];
 
-export default function RollButton() {
+let seed: string;
+let rnd: random.RandomSeed;
+
+export default function RollButton({ buildSeed }: { buildSeed: string }) {
+    const router = useRouter();
+
+    rnd = random.create(buildSeed);
+
+
 
     const { lanes, updateRolledChampion, updateRolledLane, updateRolledTag, updateRolledStarterItem, updateRolledSummonerSpells, updateRolledItems, updateRolledKeystone, updateRolledRune } = useContext(GenerationContext);
     const { champions } = useContext(ChampionSelectionContext);
@@ -68,7 +78,9 @@ export default function RollButton() {
     }, []);
 
 
-    return (<button onClick={rollBuild}>ROLL</button>);
+    return (<button onClick={() => {
+        router.push(`/${Math.floor(Number.MAX_SAFE_INTEGER * Math.random()).toString()}`);
+    }}>ROLL</button>);
 }
 
 function rollLane(selectedSupportChamps: (Selectable & Champion)[], selectedLanes: Lane[]) {
@@ -121,7 +133,7 @@ function getSelectedSupportChamps(selectedChampions: (Selectable & Champion)[]) 
 }
 
 function getRandomElement(items: any[]) {
-    return items[Math.floor(Math.random() * items.length)];
+    return items[rnd(items.length - 1)];
 }
 
 function isYuumiSupport(rolledChampion: Champion, rolledLane: Lane) {

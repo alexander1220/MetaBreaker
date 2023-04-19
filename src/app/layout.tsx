@@ -6,6 +6,7 @@ import Navbar from './components/navbar/navbar';
 import Script from 'next/script';
 import Providers from './components/providers';
 import RulesModal from './components/modals/rules';
+import BugReportModal from './components/modals/bug-report';
 
 const title = 'MetaBreaker – Generate Unique Item Builds for League of Legends Champions';
 const description = 'Break the meta with MetaBreaker! Our website allows you to generate off-meta item builds for your favorite champions in League of Legends. Give it a try and see what kind of surprises you can come up with!';
@@ -33,6 +34,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <RulesModal />
+        <BugReportModal />
       </HTMLBody>
     </Providers>
   )

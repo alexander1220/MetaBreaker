@@ -2,14 +2,9 @@
 
 import { ModalContext } from "../modal-provider";
 import { MouseEventHandler, useContext } from "react";
-import { BugReportSubmitButton } from "./bug-report-submit-button";
 import { useImmer } from "use-immer";
+import { BugType } from "./bug-type";
 
-
-export enum BugType {
-    Bug = "bug",
-    Suggestion = "suggestion"
-}
 
 export default function BugReportModal() {
     const { isBugReportModalOpen, toggleBugReportModal } = useContext(ModalContext);
@@ -20,6 +15,19 @@ export default function BugReportModal() {
         event.preventDefault();
         toggleBugReportModal();
     };
+
+    async function saveBugReport() {
+        await fetch("/api/bug-report", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                bug_type: bugType,
+                description
+            })
+        });
+    }
 
     return (
         <dialog id="bug-popup" open={isBugReportModalOpen}>
@@ -38,7 +46,7 @@ export default function BugReportModal() {
                 <small>We'll try to take care of it ASAP. <span id="bug_char_count">0</span>/2000</small>
 
                 <footer>
-                    <BugReportSubmitButton bug_type={bugType} description={description} />
+                    <button onClick={saveBugReport} />
                 </footer>
             </article >
         </dialog >
