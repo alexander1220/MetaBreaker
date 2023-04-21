@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext } from "react";
-import { ThemeContext, ThemeContextType, Theme } from "../providers/theme-provider";
+import { ThemeContext, ThemeContextType, Theme } from "../providers/ThemeProvider";
 
 export default function ThemeSwitch() {
     const { theme, setTheme } = useContext<ThemeContextType>(ThemeContext);

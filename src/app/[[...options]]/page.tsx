@@ -1,10 +1,10 @@
-import RolledDisplay from '../components/rolled-display';
-import ChampDrawer from '../../components/champ-drawer';
-import RollButton from '../../components/buttons/roll-button';
+import ChampDrawer from '../../components/ChampDrawer';
+import RollButton from '../../components/buttons/RollButton';
 import RollSwitches from '../../components/switches/roll-switches';
 import { StrictMode } from 'react';
-import Providers from '../../components/providers/providers';
-import { Lane } from 'components/types/enums/lane';
+import Providers from '../../components/providers/Providers';
+import { Lane } from 'components/types/enums/Lane';
+import RolledDisplay from 'components/RolledDisplay';
 
 export interface RollingOptions {
   seed: string;

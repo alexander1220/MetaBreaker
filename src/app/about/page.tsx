@@ -1,4 +1,4 @@
-import BugReportModalToggleLink from "components/links/bug-report-modal-toggle-link";
+import BugReportModalToggleLink from "components/links/BugReportModalToggleLink";
 import Link from "next/link";
 
 export default function Page() {

@@ -1,7 +1,7 @@
 import Link from "next/link";
-import RuleModalToggleLink from "./links/rule-modal-toggle-link";
+import RuleModalToggleLink from "./links/RuleModalToggleLink";
 import ThemeSwitch from "./switches/theme-switch";
-import NavLink from "./links/navbar-link";
+import NavLink from "./links/NavLink";
 
 
 export default function Navbar() {

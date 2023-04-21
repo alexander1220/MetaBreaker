@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 import { z } from 'zod';
-import { BugType } from "../../../components/types/enums/bug-type";
+import { BugType } from "../../../components/types/enums/BugType";
 
 const prisma = new PrismaClient();
 

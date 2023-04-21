@@ -1,16 +1,19 @@
-import ChampionSelectionProvider from "./champion-selection-provider";
-import GenerationProvider from "./generation-provider";
-import ModalProvider from "./modal-provider";
+import ChampionSelectionProvider from "./ChampionSelectionProvider";
+import GenerationProvider from "./GenerationProvider";
+import ModalProvider from "./ModalProvider";
+import ThemeProvider from "./ThemeProvider";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
     return (
-        <ModalProvider>
-            <ChampionSelectionProvider>
-                <GenerationProvider>
-                    {children}
-                </GenerationProvider>
-            </ChampionSelectionProvider>
-        </ModalProvider>
+        <ThemeProvider>
+            <ModalProvider>
+                <ChampionSelectionProvider>
+                    <GenerationProvider>
+                        {children}
+                    </GenerationProvider>
+                </ChampionSelectionProvider>
+            </ModalProvider>
+        </ThemeProvider>
     );
 
 }

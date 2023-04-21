@@ -1,12 +1,12 @@
 import './pico.min.css';
 import './global.css';
-import ThemeProvider from '../components/providers/theme-provider';
-import HTMLBody from '../components/html-body';
-import Navbar from '../components/navbar';
+import ThemeProvider from '../components/providers/ThemeProvider';
+import HTMLBody from '../components/HtmlBody';
+import Navbar from '../components/Navbar';
 import Script from 'next/script';
-import Providers from '../components/providers/providers';
-import RulesModal from '../components/modals/rules-modal';
-import BugReportModal from '../components/modals/bug-report-modal';
+import Providers from '../components/providers/Providers';
+import RulesModal from '../components/modals/RulesModal';
+import BugReportModal from '../components/modals/BugReportModal';
 
 const title = 'MetaBreaker – Generate Unique Item Builds for League of Legends Champions';
 const description = 'Break the meta with MetaBreaker! Our website allows you to generate off-meta item builds for your favorite champions in League of Legends. Give it a try and see what kind of surprises you can come up with!';
