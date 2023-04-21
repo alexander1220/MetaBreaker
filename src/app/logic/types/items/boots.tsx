@@ -1,4 +1,4 @@
-import { Item } from "app/components/generation/generation-provider";
+import { Item } from "components/providers/generation-provider";
 import { LeagueType, Tag } from "../enums";
 
 export const boots: Item[] = [{

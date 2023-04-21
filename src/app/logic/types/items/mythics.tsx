@@ -1,4 +1,4 @@
-import { Item } from "app/components/generation/generation-provider";
+import { Item } from "components/providers/generation-provider";
 import { Tag, LeagueType } from "../enums";
 
 export const mythics: Item[] = [
