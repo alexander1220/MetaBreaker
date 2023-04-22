@@ -1,7 +1,7 @@
 "use client";
 
+import { GenerationContext } from "components/providers/GenerationProviderReducer";
 import { useContext } from "react";
-import { GenerationContext } from "../providers/GenerationProvider";
 import { Lane } from "../types/enums/Lane";
 
 export function LaneSwitch({ lane, selected }: { lane: Lane, selected: boolean }) {

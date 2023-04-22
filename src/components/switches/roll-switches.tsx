@@ -1,16 +1,16 @@
 "use client";
+import { GenerationContext } from "components/providers/GenerationProviderReducer";
 import { useContext } from "react";
-import { GenerationContext } from "../providers/GenerationProvider";
 import { LaneSwitch } from "./lane-switch";
 
 export default function RollSwitches() {
-    const { lanes } = useContext(GenerationContext);
+    const { selectedLanes } = useContext(GenerationContext);
     return (
         <div style={{
             display: 'flex',
             justifyContent: 'space-evenly'
         }}>
-            {lanes.map(lane => <LaneSwitch key={lane.lane} lane={lane.lane} selected={lane.selected} />)}
+            {selectedLanes.map(selectedLanes => <LaneSwitch key={selectedLanes.lane} lane={selectedLanes.lane} selected={selectedLanes.selected} />)}
         </div>
     );
 }

@@ -1,5 +1,5 @@
 import ChampionSelectionProvider from "./ChampionSelectionProvider";
-import GenerationProvider from "./GenerationProvider";
+import GenerationProvider from "./GenerationProviderReducer";
 import ModalProvider from "./ModalProvider";
 import ThemeProvider from "./ThemeProvider";
 

@@ -2,7 +2,6 @@ import ChampDrawer from '../../components/ChampDrawer';
 import RollButton from '../../components/buttons/RollButton';
 import RollSwitches from '../../components/switches/roll-switches';
 import { StrictMode } from 'react';
-import Providers from '../../components/providers/Providers';
 import { Lane } from 'components/types/enums/Lane';
 import RolledDisplay from 'components/RolledDisplay';
 
@@ -24,7 +23,8 @@ export default function Page({ params }: { params: any }) {
         [Lane.Jungle, decodedParams[1] === "1"],
         [Lane.Mid, decodedParams[2] === "1"],
         [Lane.Adc, decodedParams[3] === "1"],
-        [Lane.Support, decodedParams[4] === "1"]
+        [Lane.Support, decodedParams[4] === "1"],
+        [Lane.Fill, !decodedParams.slice(0, 5).includes("0")]
       ]),
       seed: decodedParams.slice(5)
     }

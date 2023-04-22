@@ -1,7 +1,8 @@
 "use client";
 
 import { ChampionSelectionContext, Selectable } from "components/providers/ChampionSelectionProvider";
-import { GenerationContext, Item } from "components/providers/GenerationProvider";
+import { Item } from "components/providers/GenerationProvider";
+
 import { Lane } from "components/types/enums/Lane";
 import { useContext, useEffect } from "react";
 import { mythics } from "components/types/items/Mythics";
@@ -16,6 +17,7 @@ import { keystones, Keystone } from "components/types/Keystones";
 import { runes } from "components/types/Runes";
 import { starterItems } from "components/types/StarterItems";
 import { summonerSpells, SummonerSpell } from "components/types/Summoners";
+import { GenerationContext } from "components/providers/GenerationProviderReducer";
 
 
 const supportTags = [Tag.Mage_Support, Tag.Assassin_Support, Tag.Enchanter_Support, Tag.Tank_Support];
@@ -23,7 +25,7 @@ const supportTags = [Tag.Mage_Support, Tag.Assassin_Support, Tag.Enchanter_Suppo
 let rnd: random.RandomSeed;
 
 export default function RollButton({ rollingOptions }: { rollingOptions?: RollingOptions }) {
-    const { lanes, updateLanes, updateRolledChampion, updateRolledLane, updateRolledTag, updateRolledStarterItem, updateRolledSummonerSpells, updateRolledItems, updateRolledKeystone, updateRolledRune } = useContext(GenerationContext);
+    const { selectedLanes: lanes, updateSelectedLanes, updateRolledChampion, updateRolledLane, updateRolledTag, updateRolledStarterItem, updateRolledSummonerSpells, updateRolledItems, updateRolledKeystone, updateRolledRune } = useContext(GenerationContext);
     const { champions } = useContext(ChampionSelectionContext);
     const router = useRouter();
 
@@ -70,7 +72,7 @@ export default function RollButton({ rollingOptions }: { rollingOptions?: Rollin
     useEffect(() => {
         if (rollingOptions) {
             let laneOptions = new Map(rollingOptions.lanes);
-            updateLanes(Object.values(Lane).map(lane => ({ lane: lane, selected: laneOptions.get(lane)! })));
+            updateSelectedLanes(Object.values(Lane).map(lane => ({ lane: lane, selected: laneOptions.get(lane)! })));
             rnd = random.create(rollingOptions.seed);
             rollBuild();
         }
@@ -81,18 +83,18 @@ export default function RollButton({ rollingOptions }: { rollingOptions?: Rollin
     }, []);
 
 
-    function getLaneSelected(lane: Lane) {
+    function isLaneSelected(lane: Lane) {
         return lanes.find(obj => obj.lane === lane)?.selected;
     }
 
     function rollOptions() {
 
         let options =
-            `${+getLaneSelected(Lane.Top)!}` +
-            `${+getLaneSelected(Lane.Jungle)!}` +
-            `${+getLaneSelected(Lane.Mid)!}` +
-            `${+getLaneSelected(Lane.Adc)!}` +
-            `${+getLaneSelected(Lane.Support)!}` +
+            `${+isLaneSelected(Lane.Top)!}` +
+            `${+isLaneSelected(Lane.Jungle)!}` +
+            `${+isLaneSelected(Lane.Mid)!}` +
+            `${+isLaneSelected(Lane.Adc)!}` +
+            `${+isLaneSelected(Lane.Support)!}` +
             `${generateSeed()}`;
 
         const base64Options = Buffer.from(options).toString('base64');
@@ -107,15 +109,15 @@ function generateSeed() {
     return Math.floor(Number.MAX_SAFE_INTEGER * Math.random()).toString();
 }
 
-function rollLane(selectedSupportChamps: (Selectable & Champion)[], selectedLanes: Lane[]) {
-    let availableLanes = selectedSupportChamps.length > 0 ? selectedLanes : selectedLanes.filter(lane => lane !== Lane.Support);
+function rollLane(selectedSupportChamps: (Selectable & Champion)[], selectedselectedLanes: Lane[]) {
+    let availableselectedLanes = selectedSupportChamps.length > 0 ? selectedselectedLanes : selectedselectedLanes.filter(lane => lane !== Lane.Support);
 
-    if (availableLanes.length === 0) {
+    if (availableselectedLanes.length === 0) {
         alert('There is no champion for this specific role selected. Don\'t troll too hard!');
         return;
     }
 
-    return getRandomElement(availableLanes);
+    return getRandomElement(availableselectedLanes);
 }
 
 function rollChampion(selectedChampions: (Selectable & Champion)[], selectedSupportChamps: (Selectable & Champion)[], rolledLane: Lane) {
