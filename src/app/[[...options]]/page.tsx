@@ -36,7 +36,7 @@ export default function Page({ params }: { params: any }) {
   return (
     <StrictMode>
       <main className="container" style={{ maxWidth: 850 }}>
-        <RolledDisplay />
+        <RolledDisplay rollingOptions={rollingOptions} />
         <RollButton rollingOptions={rollingOptions} />
         <RollSwitches />
         <ChampDrawer />
