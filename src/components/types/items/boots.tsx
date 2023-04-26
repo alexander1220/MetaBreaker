@@ -1,4 +1,4 @@
-import { Item } from "components/providers/GenerationProvider";
+import { Item } from "components/types/Item";
 import { Tag } from "../enums/Tag";
 
 export const boots: Item[] = [{

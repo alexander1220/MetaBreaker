@@ -1,8 +1,9 @@
 "use client";
 
-import { Champion, champions } from "components/types/Champions";
+import { Champion, champions } from "components/types/champions";
 import { Lane } from "components/types/enums/Lane";
 import { Tag } from "components/types/enums/Tag";
+import { Item } from "components/types/Item";
 import { Keystone } from "components/types/Keystones";
 import { Rune } from "components/types/Runes";
 import { StarterItem } from "components/types/StarterItems";
@@ -10,13 +11,6 @@ import { SummonerSpell } from "components/types/Summoners";
 import { createContext } from "react";
 import { useImmer, useImmerReducer } from "use-immer";
 import { Selectable } from "./ChampionSelectionProvider";
-
-export interface Item {
-    name: string;
-    id: number;
-    tags: Tag[];
-    blocking?: number[];
-}
 
 type SelectableLane = { lane: Lane } & Selectable;
 

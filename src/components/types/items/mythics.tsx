@@ -1,4 +1,4 @@
-import { Item } from "components/providers/GenerationProvider";
+import { Item } from "components/types/Item";
 import { LeagueType } from "../enums/LeagueType";
 import { Tag } from "../enums/Tag";
 

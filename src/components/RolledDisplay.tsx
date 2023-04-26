@@ -1,3 +1,4 @@
+"use client";
 import RolledBuildDescription from "./RolledBuildDescription";
 import RolledChampion from "./RolledChampion";
 import RolledItems from "./RolledItems";
@@ -5,8 +6,7 @@ import RolledLane from "./RolledLane";
 import RolledRunes from "./RolledRunes";
 import RolledSummonerSpell from "./RolledSummonerSpell";
 import RolledStarterItem from "./RolledStarterItem";
-import { Item } from "./providers/GenerationProviderReducer";
-import { Champion, champions } from "./types/Champions";
+import { GenerationContext } from "./providers/GenerationProviderReducer";
 import { Lane } from "./types/enums/Lane";
 import { Tag } from "./types/enums/Tag";
 import { boots } from "./types/items/Boots";
@@ -19,65 +19,92 @@ import { summonerSpells, SummonerSpell } from "./types/Summoners";
 import * as random from "random-seed";
 import { RollingOptions } from "app/[[...options]]/page";
 import ShareButton from "./ShareButton";
-import { redirect } from "next/navigation";
-
+import { useContext, useEffect } from "react";
+import { useImmer } from "use-immer";
+import { ChampionSelectionContext } from "./providers/ChampionSelectionProvider";
+import { Champion } from "./types/champions";
+import { Item } from "./types/Item";
 
 const lanesWithoutFill = Object.values(Lane).filter(l => l !== Lane.Fill);
 const supportTags = [Tag.Mage_Support, Tag.Assassin_Support, Tag.Enchanter_Support, Tag.Tank_Support];
 
 let rnd: random.RandomSeed;
-let rndCalls = 0;
 
 export default function RolledDisplay({ rollingOptions }: { rollingOptions?: RollingOptions }) {
-    let selectedSupportChamps,
-        rolledLane,
-        rolledChampion: null | Champion = null,
-        rolledTag,
-        rolledStarterItem,
-        rolledSummonerSpells,
-        rolledItems,
-        rolledKeystone,
-        rolledRune;
+    const {
+        updateRolledChampion,
+        updateRolledItems,
+        updateRolledKeystone,
+        updateRolledLane,
+        updateRolledRune,
+        updateRolledStarterItem,
+        updateRolledSummonerSpells,
+        updateRolledTag,
+        rolledBuild,
+        selectedLanes
+    } = useContext(GenerationContext);
+    const { champions } = useContext(ChampionSelectionContext);
 
-    rndCalls = 0;
+    const [lastUsedSeed, updateLastUsedSeed] = useImmer<number>(0);
+    const [lastUsedLanes, updateLastUsedLanes] = useImmer<Lane[]>([]);
 
-    let selectedLanes = lanesWithoutFill;
-    let seed: number;
+    function rollBuild(options?: RollingOptions) {
+        let selectedSupportChamps,
+            rolledLane,
+            rolledChampion: null | Champion = null,
+            rolledTag,
+            rolledStarterItem,
+            rolledSummonerSpells,
+            rolledItems,
+            rolledKeystone,
+            rolledRune,
+            lanesForRolling,
+            seed,
+            selectedChampions = champions.filter(c => c.selected);
+        //map to required type
 
-    if (rollingOptions) {
-        selectedLanes = Array.from(rollingOptions!.lanes).map(([lane, selected]) => ({ lane, selected })).filter(r => r.selected && r.lane !== Lane.Fill).map(o => o.lane);
-        seed = rollingOptions.seed;
-        rolledChampion = champions.find(c => c.id === rollingOptions.champId)!;
+        if (options) {
+            lanesForRolling = Array.from(options.lanes).map(([lane, selected]) => ({ lane, selected })).filter(r => r.selected && r.lane !== Lane.Fill).map(o => o.lane);
+            seed = options.seed;
+            rolledChampion = selectedChampions.find(c => c.id === options.champId)!;
+        }
+        else {
+            lanesForRolling = selectedLanes.filter(l => l.selected).map(l => l.lane);
+            seed = Math.fround(Math.random());
+        }
+        rnd = random.create(seed.toString());
+
+        if (selectedLanes.length === 0) {
+            alert("You must select at least one lane");
+        }
+
+        selectedSupportChamps = getSelectedSupportChamps(selectedChampions);
+        rolledLane = rollLane(selectedSupportChamps, lanesForRolling);
+        updateRolledLane(rolledLane);
+
+        let rollChampionResult = rollChampion(selectedChampions, selectedSupportChamps, rolledLane); //roll even if we already have a champion, to make sure the rnd is advanced
+        rolledChampion = rolledChampion ?? rollChampionResult as Champion;
+        updateRolledChampion(rolledChampion);
+        rolledTag = rollTag(rolledChampion, rolledLane);
+        updateRolledTag(rolledTag);
+        rolledStarterItem = rollStarterItem(rolledLane, rolledTag);
+        updateRolledStarterItem(rolledStarterItem);
+        rolledSummonerSpells = rollSummonerSpells(rolledChampion, rolledLane, rolledTag);
+        updateRolledSummonerSpells(rolledSummonerSpells);
+        rolledItems = rollItems(rolledChampion, rolledLane, rolledTag);
+        updateRolledItems(rolledItems);
+        rolledKeystone = rollKeyStone(rolledTag);
+        updateRolledKeystone(rolledKeystone);
+        rolledRune = rollRune(rolledTag, rolledKeystone);
+        updateRolledRune(rolledRune);
+
+        updateLastUsedLanes(lanesForRolling);
+        updateLastUsedSeed(seed);
     }
-    else {
-        seed = Math.fround(Math.random());
-    }
-    console.log("seed: " + seed);
-    rnd = random.create(seed.toString());
 
-    if (selectedLanes.length === 0) {
-        redirect("/");
-        alert("You must select at least one lane"); //TODO FIX
-    }
-
-    selectedSupportChamps = getSelectedSupportChamps(champions);
-    rolledLane = rollLane(selectedSupportChamps, selectedLanes);
-    console.log("rolledLane");
-    let rollChampionResult = rollChampion(champions, selectedSupportChamps, rolledLane); //roll even if we already have a champion, to make sure the rnd is advanced
-    console.log("rollChampionResult");
-    rolledChampion = rolledChampion ?? rollChampionResult as Champion;
-    rolledTag = rollTag(rolledChampion, rolledLane);
-    console.log("rolledTag");
-    rolledStarterItem = rollStarterItem(rolledLane, rolledTag);
-    console.log("rolledStarterItem");
-    rolledSummonerSpells = rollSummonerSpells(rolledChampion, rolledLane, rolledTag);
-    console.log("rolledSummonerSpells");
-    rolledItems = rollItems(rolledChampion, rolledLane, rolledTag);
-    console.log("rolledItems");
-    rolledKeystone = rollKeyStone(rolledTag);
-    console.log("rolledKeystone");
-    rolledRune = rollRune(rolledTag, rolledKeystone);
-    console.log("rolledRune");
+    useEffect(() => {
+        rollBuild(rollingOptions);
+    }, [rollingOptions]);
 
     return (
         <>
@@ -87,57 +114,78 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
                     <tbody>
                         <tr>
                             <td colSpan={2} rowSpan={2}>
-                                <RolledChampion champion={rolledChampion} />
+                                <RolledChampion champion={rolledBuild.champion} />
                             </td>
                             <td>
-                                <RolledBuildDescription champion={rolledChampion} tag={rolledTag} />
-                                <RolledStarterItem starterItem={rolledStarterItem} />
+                                <RolledBuildDescription champion={rolledBuild.champion} tag={rolledBuild.tag} />
+                                <RolledStarterItem starterItem={rolledBuild.starterItem} />
                             </td>
                             <td style={{ textAlign: "right" }}>
-                                <RolledLane lane={rolledLane} />
+                                <RolledLane lane={rolledBuild.lane} />
                             </td>
                         </tr>
                         <tr>
                             <td colSpan={2} id="itemslots">
-                                <RolledItems items={rolledItems} />
+                                <RolledItems items={rolledBuild.items} />
                             </td>
                         </tr>
                         <tr>
                             <td colSpan={2}>
-                                <RolledSummonerSpell summonerSpell={rolledSummonerSpells[1]} />
+                                <RolledSummonerSpell summonerSpell={rolledBuild.summonerSpells[1]} />
                             </td>
                             <td colSpan={2} rowSpan={2} style={{ textAlign: "right" }}>
-                                <RolledRunes keystone={rolledKeystone} rune={rolledRune} />
+                                <RolledRunes keystone={rolledBuild.keystone} rune={rolledBuild.rune} />
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <RolledSummonerSpell summonerSpell={rolledSummonerSpells[0]} />
+                                <RolledSummonerSpell summonerSpell={rolledBuild.summonerSpells[0]} />
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+            <button onClick={() => rollBuild()}>ROLL</button>
         </>
     );
 
-    function getUrlPath() {
-        const buffer = Buffer.alloc(6);
+    // function getUrlPath() {
+    //     const buffer = Buffer.alloc(6);
+    //     let lanebyte = 0x0;
+    //     for (let i = 0; i < lanesWithoutFill.length; i++) {
+    //         lanebyte |= 1 << i;
+    //     }
+    //     buffer.writeInt8(lanebyte);
+    //     buffer.writeFloatBE(seed, 1);
+    //     buffer.writeUInt8(rolledChampion!.id, 5);
+    //     const encoded = buffer.toString("base64url");
+    //     return encoded;
+    // }
+    function getUrlPath(): string {
+        const buffer = new Uint8Array(6);
+        const view = new DataView(buffer.buffer);
         let lanebyte = 0x0;
+
         for (let i = 0; i < lanesWithoutFill.length; i++) {
-            lanebyte |= 1 << i;
+            lanebyte |= +lastUsedLanes.includes(lanesWithoutFill[i]) << i;
         }
-        buffer.writeInt8(lanebyte);
-        buffer.writeFloatBE(seed, 1);
-        buffer.writeUInt8(rolledChampion!.id, 5);
-        const encoded = buffer.toString("base64url");
-        return encoded;
+
+        view.setInt8(0, lanebyte);
+        view.setFloat32(1, lastUsedSeed);
+        view.setUint8(5, rolledBuild.champion.id);
+
+        const base64 = btoa(String.fromCharCode.apply(null, Array.from(buffer)));
+        const base64url = base64.replace('+', '-').replace('/', '_').replace(/=+$/, '');
+
+        return base64url;
     }
+
+
 }
 
 
-function rollLane(selectedSupportChamps: Champion[], selectedselectedLanes: Lane[]) {
-    let availableselectedLanes = selectedSupportChamps.length > 0 ? selectedselectedLanes : selectedselectedLanes.filter(lane => lane !== Lane.Support);
+function rollLane(selectedSupportChamps: Champion[], selectedLanes: Lane[]) {
+    let availableselectedLanes = selectedSupportChamps.length > 0 ? selectedLanes : selectedLanes.filter(lane => lane !== Lane.Support);
 
     if (availableselectedLanes.length === 0) {
         alert('There is no champion for this specific role selected. Don\'t troll too hard!');
@@ -186,8 +234,7 @@ function getSelectedSupportChamps(selectedChampions: Champion[]) {
 }
 
 function getRandomElement(items: any[]) {
-    console.log("random call #" + rndCalls++);
-    return items[rnd(items.length - 1)];
+    return items[rnd(items.length)];
 }
 
 function isYuumiSupport(rolledChampion: Champion, rolledLane: Lane) {

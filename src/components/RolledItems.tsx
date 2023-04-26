@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Item } from "./providers/GenerationProvider";
+import { Item } from "./types/Item";
 import { TooltipPlacement } from "./types/enums/TooltipPlacement";
 import { HighlightType } from "./types/enums/HighlightType";
 export default function RolledItems({ items: rolledItems }: { items: Item[] }) {

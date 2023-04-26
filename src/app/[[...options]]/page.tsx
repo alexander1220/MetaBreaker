@@ -1,12 +1,7 @@
 import { Lane } from 'components/types/enums/Lane';
-import { champions } from 'components/types/Champions';
-import { redirect } from 'next/navigation';
-import { buffer } from 'stream/consumers';
-import RollButton from 'components/buttons/RollButton';
 import ChampDrawer from 'components/ChampDrawer';
 import RolledDisplay from 'components/RolledDisplay';
 import RollSwitches from 'components/switches/roll-switches';
-import { StrictMode } from 'react';
 
 export interface RollingOptions {
   seed: number;
@@ -21,7 +16,6 @@ const lanesWithoutFill = Object.values(Lane).filter(l => l !== Lane.Fill);
 export default function Page({ params }: { params: any }) {
 
   let rollingOptions: RollingOptions | undefined;
-
   if (params?.options && params.options.length === 1) {
     let decoded = Buffer.from(params.options[0], "base64url");
     console.log(decoded);
@@ -42,7 +36,6 @@ export default function Page({ params }: { params: any }) {
   return (
     <main className="container" style={{ maxWidth: 850 }}>
       <RolledDisplay rollingOptions={rollingOptions} />
-      <RollButton />
       <RollSwitches />
       <ChampDrawer />
     </main>
