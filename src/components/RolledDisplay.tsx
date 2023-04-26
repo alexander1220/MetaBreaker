@@ -18,16 +18,20 @@ import { starterItems } from "./types/StarterItems";
 import { summonerSpells, SummonerSpell } from "./types/Summoners";
 import * as random from "random-seed";
 import { RollingOptions } from "app/[[...options]]/page";
+import ShareButton from "./ShareButton";
+import { redirect } from "next/navigation";
 
 
+const lanesWithoutFill = Object.values(Lane).filter(l => l !== Lane.Fill);
 const supportTags = [Tag.Mage_Support, Tag.Assassin_Support, Tag.Enchanter_Support, Tag.Tank_Support];
 
 let rnd: random.RandomSeed;
+let rndCalls = 0;
 
 export default function RolledDisplay({ rollingOptions }: { rollingOptions?: RollingOptions }) {
     let selectedSupportChamps,
         rolledLane,
-        rolledChampion,
+        rolledChampion: null | Champion = null,
         rolledTag,
         rolledStarterItem,
         rolledSummonerSpells,
@@ -35,30 +39,49 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
         rolledKeystone,
         rolledRune;
 
-    if (rollingOptions === undefined) {
-        return;
-    }
+    rndCalls = 0;
 
-    const selectedLanes = Array.from(rollingOptions!.lanes).map(([lane, selected]) => ({ lane, selected })).filter(r => r.selected && r.lane !== Lane.Fill).map(o => o.lane);
-    rnd = random.create(rollingOptions.seed);
+    let selectedLanes = lanesWithoutFill;
+    let seed: number;
+
+    if (rollingOptions) {
+        selectedLanes = Array.from(rollingOptions!.lanes).map(([lane, selected]) => ({ lane, selected })).filter(r => r.selected && r.lane !== Lane.Fill).map(o => o.lane);
+        seed = rollingOptions.seed;
+        rolledChampion = champions.find(c => c.id === rollingOptions.champId)!;
+    }
+    else {
+        seed = Math.fround(Math.random());
+    }
+    console.log("seed: " + seed);
+    rnd = random.create(seed.toString());
 
     if (selectedLanes.length === 0) {
-        console.error('Please select at least one lane');
-        return;
+        redirect("/");
+        alert("You must select at least one lane"); //TODO FIX
     }
 
     selectedSupportChamps = getSelectedSupportChamps(champions);
     rolledLane = rollLane(selectedSupportChamps, selectedLanes);
-    rolledChampion = rollChampion(champions, selectedSupportChamps, rolledLane);
+    console.log("rolledLane");
+    let rollChampionResult = rollChampion(champions, selectedSupportChamps, rolledLane); //roll even if we already have a champion, to make sure the rnd is advanced
+    console.log("rollChampionResult");
+    rolledChampion = rolledChampion ?? rollChampionResult as Champion;
     rolledTag = rollTag(rolledChampion, rolledLane);
+    console.log("rolledTag");
     rolledStarterItem = rollStarterItem(rolledLane, rolledTag);
+    console.log("rolledStarterItem");
     rolledSummonerSpells = rollSummonerSpells(rolledChampion, rolledLane, rolledTag);
+    console.log("rolledSummonerSpells");
     rolledItems = rollItems(rolledChampion, rolledLane, rolledTag);
+    console.log("rolledItems");
     rolledKeystone = rollKeyStone(rolledTag);
+    console.log("rolledKeystone");
     rolledRune = rollRune(rolledTag, rolledKeystone);
+    console.log("rolledRune");
 
     return (
         <>
+            <ShareButton path={getUrlPath()} />
             <div className="container">
                 <table>
                     <tbody>
@@ -97,6 +120,19 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
             </div>
         </>
     );
+
+    function getUrlPath() {
+        const buffer = Buffer.alloc(6);
+        let lanebyte = 0x0;
+        for (let i = 0; i < lanesWithoutFill.length; i++) {
+            lanebyte |= 1 << i;
+        }
+        buffer.writeInt8(lanebyte);
+        buffer.writeFloatBE(seed, 1);
+        buffer.writeUInt8(rolledChampion!.id, 5);
+        const encoded = buffer.toString("base64url");
+        return encoded;
+    }
 }
 
 
@@ -150,6 +186,7 @@ function getSelectedSupportChamps(selectedChampions: Champion[]) {
 }
 
 function getRandomElement(items: any[]) {
+    console.log("random call #" + rndCalls++);
     return items[rnd(items.length - 1)];
 }
 

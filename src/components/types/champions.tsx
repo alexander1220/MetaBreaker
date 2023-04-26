@@ -1,6 +1,7 @@
 import { LeagueType } from "./enums/LeagueType";
 import { Tag } from "./enums/Tag";
 export interface Champion {
+    id: number,
     name: string,
     normalizedName: string,
     tags: Tag[];
@@ -9,6 +10,7 @@ export interface Champion {
 
 export const champions: Champion[] = [
     {
+        id: 0,
         name: "Aatrox",
         normalizedName: "Aatrox",
         type: LeagueType.Champion,
@@ -19,6 +21,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 1,
         name: "Ahri",
         normalizedName: "Ahri",
         type: LeagueType.Champion,
@@ -30,6 +33,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 2,
         name: "Akali",
         normalizedName: "Akali",
         type: LeagueType.Champion,
@@ -42,6 +46,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 3,
         name: "Akshan",
         normalizedName: "Akshan",
         type: LeagueType.Champion,
@@ -52,6 +57,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 4,
         name: "Alistar",
         normalizedName: "Alistar",
         type: LeagueType.Champion,
@@ -65,6 +71,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 5,
         name: "Amumu",
         normalizedName: "Amumu",
         type: LeagueType.Champion,
@@ -78,6 +85,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 6,
         name: "Anivia",
         normalizedName: "Anivia",
         type: LeagueType.Champion,
@@ -88,6 +96,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 7,
         name: "Annie",
         normalizedName: "Annie",
         type: LeagueType.Champion,
@@ -100,6 +109,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 8,
         name: "Aphelios",
         normalizedName: "Aphelios",
         type: LeagueType.Champion,
@@ -110,6 +120,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 9,
         name: "Ashe",
         normalizedName: "Ashe",
         type: LeagueType.Champion,
@@ -120,6 +131,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 10,
         name: "Aurelion Sol",
         normalizedName: "AurelionSol",
         type: LeagueType.Champion,
@@ -130,6 +142,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 11,
         name: "Azir",
         normalizedName: "Azir",
         type: LeagueType.Champion,
@@ -140,6 +153,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 12,
         name: "Bard",
         normalizedName: "Bard",
         type: LeagueType.Champion,
@@ -156,6 +170,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 13,
         name: "Bel'Veth",
         normalizedName: "Belveth",
         type: LeagueType.Champion,
@@ -167,6 +182,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 14,
         name: "Blitzcrank",
         normalizedName: "Blitzcrank",
         type: LeagueType.Champion,
@@ -182,6 +198,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 15,
         name: "Brand",
         normalizedName: "Brand",
         type: LeagueType.Champion,
@@ -194,6 +211,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 16,
         name: "Braum",
         normalizedName: "Braum",
         type: LeagueType.Champion,
@@ -206,6 +224,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 17,
         name: "Caitlyn",
         normalizedName: "Caitlyn",
         type: LeagueType.Champion,
@@ -217,6 +236,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 18,
         name: "Camille",
         normalizedName: "Camille",
         type: LeagueType.Champion,
@@ -227,6 +247,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 19,
         name: "Cassiopeia",
         normalizedName: "Cassiopeia",
         type: LeagueType.Champion,
@@ -238,6 +259,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 20,
         name: "Cho'Gath",
         normalizedName: "Chogath",
         type: LeagueType.Champion,
@@ -250,6 +272,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 21,
         name: "Corki",
         normalizedName: "Corki",
         type: LeagueType.Champion,
@@ -262,6 +285,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 22,
         name: "Darius",
         normalizedName: "Darius",
         type: LeagueType.Champion,
@@ -273,6 +297,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 23,
         name: "Diana",
         normalizedName: "Diana",
         type: LeagueType.Champion,
@@ -285,6 +310,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 24,
         name: "Draven",
         normalizedName: "Draven",
         type: LeagueType.Champion,
@@ -295,6 +321,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 25,
         name: "Dr. Mundo",
         normalizedName: "DrMundo",
         type: LeagueType.Champion,
@@ -305,6 +332,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 26,
         name: "Ekko",
         normalizedName: "Ekko",
         type: LeagueType.Champion,
@@ -317,6 +345,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 27,
         name: "Elise",
         normalizedName: "Elise",
         type: LeagueType.Champion,
@@ -329,6 +358,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 28,
         name: "Evelynn",
         normalizedName: "Evelynn",
         type: LeagueType.Champion,
@@ -340,6 +370,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 29,
         name: "Ezreal",
         normalizedName: "Ezreal",
         type: LeagueType.Champion,
@@ -353,6 +384,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 30,
         name: "Fiddlesticks",
         normalizedName: "Fiddlesticks",
         type: LeagueType.Champion,
@@ -365,6 +397,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 31,
         name: "Fiora",
         normalizedName: "Fiora",
         type: LeagueType.Champion,
@@ -375,6 +408,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 32,
         name: "Fizz",
         normalizedName: "Fizz",
         type: LeagueType.Champion,
@@ -388,6 +422,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 33,
         name: "Galio",
         normalizedName: "Galio",
         type: LeagueType.Champion,
@@ -402,6 +437,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 34,
         name: "Gangplank",
         normalizedName: "Gangplank",
         type: LeagueType.Champion,
@@ -412,6 +448,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 35,
         name: "Garen",
         normalizedName: "Garen",
         type: LeagueType.Champion,
@@ -423,6 +460,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 36,
         name: "Gnar",
         normalizedName: "Gnar",
         type: LeagueType.Champion,
@@ -435,6 +473,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 37,
         name: "Gragas",
         normalizedName: "Gragas",
         type: LeagueType.Champion,
@@ -448,6 +487,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 38,
         name: "Graves",
         normalizedName: "Graves",
         type: LeagueType.Champion,
@@ -458,6 +498,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 39,
         name: "Gwen",
         normalizedName: "Gwen",
         type: LeagueType.Champion,
@@ -468,6 +509,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 40,
         name: "Hecarim",
         normalizedName: "Hecarim",
         type: LeagueType.Champion,
@@ -481,6 +523,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 41,
         name: "Heimerdinger",
         normalizedName: "Heimerdinger",
         type: LeagueType.Champion,
@@ -492,6 +535,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 42,
         name: "Illaoi",
         normalizedName: "Illaoi",
         type: LeagueType.Champion,
@@ -504,6 +548,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 43,
         name: "Irelia",
         normalizedName: "Irelia",
         type: LeagueType.Champion,
@@ -515,6 +560,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 44,
         name: "Ivern",
         normalizedName: "Ivern",
         type: LeagueType.Champion,
@@ -526,6 +572,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 45,
         name: "Janna",
         normalizedName: "Janna",
         type: LeagueType.Champion,
@@ -538,6 +585,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 46,
         name: "Jarvan IV",
         normalizedName: "JarvanIV",
         type: LeagueType.Champion,
@@ -550,6 +598,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 47,
         name: "Jax",
         normalizedName: "Jax",
         type: LeagueType.Champion,
@@ -561,6 +610,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 48,
         name: "Jayce",
         normalizedName: "Jayce",
         type: LeagueType.Champion,
@@ -573,6 +623,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 49,
         name: "Jhin",
         normalizedName: "Jhin",
         type: LeagueType.Champion,
@@ -583,6 +634,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 50,
         name: "Jinx",
         normalizedName: "Jinx",
         type: LeagueType.Champion,
@@ -593,6 +645,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 51,
         name: "Kai'Sa",
         normalizedName: "Kaisa",
         type: LeagueType.Champion,
@@ -608,6 +661,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 52,
         name: "Kalista",
         normalizedName: "Kalista",
         type: LeagueType.Champion,
@@ -618,6 +672,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 53,
         name: "Karma",
         normalizedName: "Karma",
         type: LeagueType.Champion,
@@ -631,6 +686,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 54,
         name: "Karthus",
         normalizedName: "Karthus",
         type: LeagueType.Champion,
@@ -641,6 +697,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 55,
         name: "Kassadin",
         normalizedName: "Kassadin",
         type: LeagueType.Champion,
@@ -653,6 +710,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 56,
         name: "Katarina",
         normalizedName: "Katarina",
         type: LeagueType.Champion,
@@ -664,6 +722,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 57,
         name: "Kayle",
         normalizedName: "Kayle",
         type: LeagueType.Champion,
@@ -677,6 +736,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 58,
         name: "Kayn",
         normalizedName: "Kayn",
         type: LeagueType.Champion,
@@ -687,6 +747,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 59,
         name: "Kennen",
         normalizedName: "Kennen",
         type: LeagueType.Champion,
@@ -701,6 +762,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 60,
         name: "Kha'Zix",
         normalizedName: "Khazix",
         type: LeagueType.Champion,
@@ -711,6 +773,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 61,
         name: "Kindred",
         normalizedName: "Kindred",
         type: LeagueType.Champion,
@@ -723,6 +786,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 62,
         name: "Kled",
         normalizedName: "Kled",
         type: LeagueType.Champion,
@@ -735,6 +799,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 63,
         name: "Kog'Maw",
         normalizedName: "KogMaw",
         type: LeagueType.Champion,
@@ -749,6 +814,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 64,
         name: "K'Sante",
         normalizedName: "KSante",
         type: LeagueType.Champion,
@@ -763,6 +829,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 65,
         name: "LeBlanc",
         normalizedName: "Leblanc",
         type: LeagueType.Champion,
@@ -775,6 +842,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 66,
         name: "Lee Sin",
         normalizedName: "LeeSin",
         type: LeagueType.Champion,
@@ -787,6 +855,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 67,
         name: "Leona",
         normalizedName: "Leona",
         type: LeagueType.Champion,
@@ -797,6 +866,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 68,
         name: "Lillia",
         normalizedName: "Lillia",
         type: LeagueType.Champion,
@@ -808,6 +878,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 69,
         name: "Lissandra",
         normalizedName: "Lissandra",
         type: LeagueType.Champion,
@@ -820,6 +891,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 70,
         name: "Lucian",
         normalizedName: "Lucian",
         type: LeagueType.Champion,
@@ -832,6 +904,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 71,
         name: "Lulu",
         normalizedName: "Lulu",
         type: LeagueType.Champion,
@@ -845,6 +918,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 72,
         name: "Lux",
         normalizedName: "Lux",
         type: LeagueType.Champion,
@@ -855,6 +929,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 73,
         name: "Malphite",
         normalizedName: "Malphite",
         type: LeagueType.Champion,
@@ -869,6 +944,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 74,
         name: "Malzahar",
         normalizedName: "Malzahar",
         type: LeagueType.Champion,
@@ -881,6 +957,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 75,
         name: "Maokai",
         normalizedName: "Maokai",
         type: LeagueType.Champion,
@@ -895,6 +972,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 76,
         name: "Master Yi",
         normalizedName: "MasterYi",
         type: LeagueType.Champion,
@@ -905,6 +983,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 77,
         name: "Miss Fortune",
         normalizedName: "MissFortune",
         type: LeagueType.Champion,
@@ -919,6 +998,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 78,
         name: "Wukong",
         normalizedName: "MonkeyKing",
         type: LeagueType.Champion,
@@ -932,6 +1012,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 79,
         name: "Mordekaiser",
         normalizedName: "Mordekaiser",
         type: LeagueType.Champion,
@@ -946,6 +1027,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 80,
         name: "Morgana",
         normalizedName: "Morgana",
         type: LeagueType.Champion,
@@ -959,6 +1041,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 81,
         name: "Nami",
         normalizedName: "Nami",
         type: LeagueType.Champion,
@@ -975,6 +1058,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 82,
         name: "Nasus",
         normalizedName: "Nasus",
         type: LeagueType.Champion,
@@ -990,6 +1074,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 83,
         name: "Nautilus",
         normalizedName: "Nautilus",
         type: LeagueType.Champion,
@@ -1003,6 +1088,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 84,
         name: "Neeko",
         normalizedName: "Neeko",
         type: LeagueType.Champion,
@@ -1015,6 +1101,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 85,
         name: "Nidalee",
         normalizedName: "Nidalee",
         type: LeagueType.Champion,
@@ -1029,6 +1116,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 86,
         name: "Nilah",
         normalizedName: "Nilah",
         type: LeagueType.Champion,
@@ -1040,6 +1128,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 87,
         name: "Nocturne",
         normalizedName: "Nocturne",
         type: LeagueType.Champion,
@@ -1052,6 +1141,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 88,
         name: "Nunu & Willump",
         normalizedName: "Nunu",
         type: LeagueType.Champion,
@@ -1066,6 +1156,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 89,
         name: "Olaf",
         normalizedName: "Olaf",
         type: LeagueType.Champion,
@@ -1077,6 +1168,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 90,
         name: "Orianna",
         normalizedName: "Orianna",
         type: LeagueType.Champion,
@@ -1088,6 +1180,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 91,
         name: "Ornn",
         normalizedName: "Ornn",
         type: LeagueType.Champion,
@@ -1099,6 +1192,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 92,
         name: "Pantheon",
         normalizedName: "Pantheon",
         type: LeagueType.Champion,
@@ -1111,6 +1205,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 93,
         name: "Poppy",
         normalizedName: "Poppy",
         type: LeagueType.Champion,
@@ -1123,6 +1218,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 94,
         name: "Pyke",
         normalizedName: "Pyke",
         type: LeagueType.Champion,
@@ -1135,6 +1231,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 95,
         name: "Qiyana",
         normalizedName: "Qiyana",
         type: LeagueType.Champion,
@@ -1145,6 +1242,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 96,
         name: "Quinn",
         normalizedName: "Quinn",
         type: LeagueType.Champion,
@@ -1157,6 +1255,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 97,
         name: "Rakan",
         normalizedName: "Rakan",
         type: LeagueType.Champion,
@@ -1172,6 +1271,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 98,
         name: "Rammus",
         normalizedName: "Rammus",
         type: LeagueType.Champion,
@@ -1186,6 +1286,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 99,
         name: "Rek'Sai",
         normalizedName: "RekSai",
         type: LeagueType.Champion,
@@ -1196,6 +1297,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 100,
         name: "Rell",
         normalizedName: "Rell",
         type: LeagueType.Champion,
@@ -1206,6 +1308,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 101,
         name: "Renata Glasc",
         normalizedName: "Renata",
         type: LeagueType.Champion,
@@ -1217,6 +1320,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 102,
         name: "Renekton",
         normalizedName: "Renekton",
         type: LeagueType.Champion,
@@ -1229,6 +1333,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 103,
         name: "Rengar",
         normalizedName: "Rengar",
         type: LeagueType.Champion,
@@ -1243,6 +1348,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 104,
         name: "Riven",
         normalizedName: "Riven",
         type: LeagueType.Champion,
@@ -1253,6 +1359,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 105,
         name: "Rumble",
         normalizedName: "Rumble",
         type: LeagueType.Champion,
@@ -1265,6 +1372,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 106,
         name: "Ryze",
         normalizedName: "Ryze",
         type: LeagueType.Champion,
@@ -1276,6 +1384,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 107,
         name: "Samira",
         normalizedName: "Samira",
         type: LeagueType.Champion,
@@ -1286,6 +1395,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 108,
         name: "Sejuani",
         normalizedName: "Sejuani",
         type: LeagueType.Champion,
@@ -1300,6 +1410,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 109,
         name: "Senna",
         normalizedName: "Senna",
         type: LeagueType.Champion,
@@ -1310,6 +1421,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 110,
         name: "Seraphine",
         normalizedName: "Seraphine",
         type: LeagueType.Champion,
@@ -1321,6 +1433,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 111,
         name: "Sett",
         normalizedName: "Sett",
         type: LeagueType.Champion,
@@ -1334,6 +1447,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 112,
         name: "Shaco",
         normalizedName: "Shaco",
         type: LeagueType.Champion,
@@ -1348,6 +1462,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 113,
         name: "Shen",
         normalizedName: "Shen",
         type: LeagueType.Champion,
@@ -1359,6 +1474,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 114,
         name: "Shyvana",
         normalizedName: "Shyvana",
         type: LeagueType.Champion,
@@ -1374,6 +1490,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 115,
         name: "Singed",
         normalizedName: "Singed",
         type: LeagueType.Champion,
@@ -1387,6 +1504,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 116,
         name: "Sion",
         normalizedName: "Sion",
         type: LeagueType.Champion,
@@ -1399,6 +1517,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 117,
         name: "Sivir",
         normalizedName: "Sivir",
         type: LeagueType.Champion,
@@ -1409,6 +1528,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 118,
         name: "Skarner",
         normalizedName: "Skarner",
         type: LeagueType.Champion,
@@ -1422,6 +1542,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 119,
         name: "Sona",
         normalizedName: "Sona",
         type: LeagueType.Champion,
@@ -1436,6 +1557,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 120,
         name: "Soraka",
         normalizedName: "Soraka",
         type: LeagueType.Champion,
@@ -1450,6 +1572,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 121,
         name: "Swain",
         normalizedName: "Swain",
         type: LeagueType.Champion,
@@ -1464,6 +1587,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 122,
         name: "Sylas",
         normalizedName: "Sylas",
         type: LeagueType.Champion,
@@ -1475,6 +1599,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 123,
         name: "Syndra",
         normalizedName: "Syndra",
         type: LeagueType.Champion,
@@ -1486,6 +1611,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 124,
         name: "Tahm Kench",
         normalizedName: "TahmKench",
         type: LeagueType.Champion,
@@ -1500,6 +1626,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 125,
         name: "Taliyah",
         normalizedName: "Taliyah",
         type: LeagueType.Champion,
@@ -1511,6 +1638,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 126,
         name: "Talon",
         normalizedName: "Talon",
         type: LeagueType.Champion,
@@ -1522,6 +1650,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 127,
         name: "Taric",
         normalizedName: "Taric",
         type: LeagueType.Champion,
@@ -1536,6 +1665,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 128,
         name: "Teemo",
         normalizedName: "Teemo",
         type: LeagueType.Champion,
@@ -1550,6 +1680,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 129,
         name: "Thresh",
         normalizedName: "Thresh",
         type: LeagueType.Champion,
@@ -1561,6 +1692,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 130,
         name: "Tristana",
         normalizedName: "Tristana",
         type: LeagueType.Champion,
@@ -1571,6 +1703,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 131,
         name: "Trundle",
         normalizedName: "Trundle",
         type: LeagueType.Champion,
@@ -1583,6 +1716,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 132,
         name: "Tryndamere",
         normalizedName: "Tryndamere",
         type: LeagueType.Champion,
@@ -1596,6 +1730,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 133,
         name: "Twisted Fate",
         normalizedName: "TwistedFate",
         type: LeagueType.Champion,
@@ -1610,6 +1745,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 134,
         name: "Twitch",
         normalizedName: "Twitch",
         type: LeagueType.Champion,
@@ -1623,6 +1759,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 135,
         name: "Udyr",
         normalizedName: "Udyr",
         type: LeagueType.Champion,
@@ -1635,6 +1772,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 136,
         name: "Urgot",
         normalizedName: "Urgot",
         type: LeagueType.Champion,
@@ -1646,6 +1784,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 137,
         name: "Varus",
         normalizedName: "Varus",
         type: LeagueType.Champion,
@@ -1659,6 +1798,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 138,
         name: "Vayne",
         normalizedName: "Vayne",
         type: LeagueType.Champion,
@@ -1669,6 +1809,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 139,
         name: "Veigar",
         normalizedName: "Veigar",
         type: LeagueType.Champion,
@@ -1681,6 +1822,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 140,
         name: "Vel'Koz",
         normalizedName: "Velkoz",
         type: LeagueType.Champion,
@@ -1692,6 +1834,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 141,
         name: "Vex",
         normalizedName: "Vex",
         type: LeagueType.Champion,
@@ -1703,6 +1846,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 142,
         name: "Vi",
         normalizedName: "Vi",
         type: LeagueType.Champion,
@@ -1715,6 +1859,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 143,
         name: "Viego",
         normalizedName: "Viego",
         type: LeagueType.Champion,
@@ -1726,6 +1871,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 144,
         name: "Viktor",
         normalizedName: "Viktor",
         type: LeagueType.Champion,
@@ -1735,6 +1881,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 145,
         name: "Vladimir",
         normalizedName: "Vladimir",
         type: LeagueType.Champion,
@@ -1746,6 +1893,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 146,
         name: "Volibear",
         normalizedName: "Volibear",
         type: LeagueType.Champion,
@@ -1759,6 +1907,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 147,
         name: "Warwick",
         normalizedName: "Warwick",
         type: LeagueType.Champion,
@@ -1771,6 +1920,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 148,
         name: "Xayah",
         normalizedName: "Xayah",
         type: LeagueType.Champion,
@@ -1782,6 +1932,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 149,
         name: "Xerath",
         normalizedName: "Xerath",
         type: LeagueType.Champion,
@@ -1793,6 +1944,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 150,
         name: "Xin Zhao",
         normalizedName: "XinZhao",
         type: LeagueType.Champion,
@@ -1805,6 +1957,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 151,
         name: "Yasuo",
         normalizedName: "Yasuo",
         type: LeagueType.Champion,
@@ -1816,6 +1969,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 152,
         name: "Yone",
         normalizedName: "Yone",
         type: LeagueType.Champion,
@@ -1828,6 +1982,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 153,
         name: "Yorick",
         normalizedName: "Yorick",
         type: LeagueType.Champion,
@@ -1839,6 +1994,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 154,
         name: "Yuumi",
         normalizedName: "Yuumi",
         type: LeagueType.Champion,
@@ -1851,6 +2007,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 155,
         name: "Zac",
         normalizedName: "Zac",
         type: LeagueType.Champion,
@@ -1865,6 +2022,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 156,
         name: "Zed",
         normalizedName: "Zed",
         type: LeagueType.Champion,
@@ -1875,6 +2033,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 157,
         name: "Zeri",
         normalizedName: "Zeri",
         type: LeagueType.Champion,
@@ -1885,6 +2044,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 158,
         name: "Ziggs",
         normalizedName: "Ziggs",
         type: LeagueType.Champion,
@@ -1894,6 +2054,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 159,
         name: "Zilean",
         normalizedName: "Zilean",
         type: LeagueType.Champion,
@@ -1904,6 +2065,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 160,
         name: "Zoe",
         normalizedName: "Zoe",
         type: LeagueType.Champion,
@@ -1915,6 +2077,7 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 161,
         name: "Zyra",
         normalizedName: "Zyra",
         type: LeagueType.Champion,

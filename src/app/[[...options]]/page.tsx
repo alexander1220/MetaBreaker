@@ -1,46 +1,50 @@
-import ChampDrawer from '../../components/ChampDrawer';
-import RollButton from '../../components/buttons/RollButton';
-import RollSwitches from '../../components/switches/roll-switches';
-import { StrictMode } from 'react';
 import { Lane } from 'components/types/enums/Lane';
+import { champions } from 'components/types/Champions';
+import { redirect } from 'next/navigation';
+import { buffer } from 'stream/consumers';
+import RollButton from 'components/buttons/RollButton';
+import ChampDrawer from 'components/ChampDrawer';
 import RolledDisplay from 'components/RolledDisplay';
+import RollSwitches from 'components/switches/roll-switches';
+import { StrictMode } from 'react';
 
 export interface RollingOptions {
-  seed: string;
+  seed: number;
   lanes: Map<Lane, boolean>;
+  champId: number;
 }
+
+const lanesWithoutFill = Object.values(Lane).filter(l => l !== Lane.Fill);
+
+
 
 export default function Page({ params }: { params: any }) {
 
   let rollingOptions: RollingOptions | undefined;
 
-  let decodedParams = params?.options ? Buffer.from(params?.options[0], "base64").toString() : null;
+  if (params?.options && params.options.length === 1) {
+    let decoded = Buffer.from(params.options[0], "base64url");
+    console.log(decoded);
+    let laneByte = decoded.readInt8(); // lane byte
+    let seed = decoded.readFloatBE(1);
+    let champId = decoded.readUInt8(5);
 
-  if (decodedParams) {
+    let mappedLanes = lanesWithoutFill.map((lane, i) => ([lane, (laneByte & (1 << i)) !== 0] as [Lane, boolean]));
+
+
     rollingOptions = {
-      lanes: new Map([
-        [Lane.Top, decodedParams[0] === "1"],
-        [Lane.Jungle, decodedParams[1] === "1"],
-        [Lane.Mid, decodedParams[2] === "1"],
-        [Lane.Adc, decodedParams[3] === "1"],
-        [Lane.Support, decodedParams[4] === "1"],
-        [Lane.Fill, !decodedParams.slice(0, 5).includes("0")]
-      ]),
-      seed: decodedParams.slice(5)
+      lanes: new Map(mappedLanes),
+      seed: seed,
+      champId: champId
     }
   }
 
-  //TODO: add support for settings in the URL and mask using base64
-
-
   return (
-    <StrictMode>
-      <main className="container" style={{ maxWidth: 850 }}>
-        <RolledDisplay rollingOptions={rollingOptions} />
-        <RollButton rollingOptions={rollingOptions} />
-        <RollSwitches />
-        <ChampDrawer />
-      </main>
-    </StrictMode>
+    <main className="container" style={{ maxWidth: 850 }}>
+      <RolledDisplay rollingOptions={rollingOptions} />
+      <RollButton />
+      <RollSwitches />
+      <ChampDrawer />
+    </main>
   )
 }
