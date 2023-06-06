@@ -1,6 +1,6 @@
 "use client";
 
-import { Champion, champions } from "components/types/champions";
+import { Champion, champions } from "components/types/Champions";
 import { Lane } from "components/types/enums/Lane";
 import { Tag } from "components/types/enums/Tag";
 import { Item } from "components/types/Item";

@@ -22,7 +22,7 @@ import ShareButton from "./ShareButton";
 import { useContext, useEffect } from "react";
 import { useImmer } from "use-immer";
 import { ChampionSelectionContext } from "./providers/ChampionSelectionProvider";
-import { Champion } from "./types/champions";
+import { Champion } from "./types/Champions";
 import { Item } from "./types/Item";
 
 const lanesWithoutFill = Object.values(Lane).filter(l => l !== Lane.Fill);
@@ -69,7 +69,7 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
             rolledChampion = selectedChampions.find(c => c.id === options.champId)!;
         }
         else {
-            lanesForRolling = selectedLanes.filter(l => l.selected).map(l => l.lane);
+            lanesForRolling = selectedLanes.filter(l => l.selected).map(l => l.lane).filter(l => l !== Lane.Fill);
             seed = Math.fround(Math.random());
         }
         rnd = random.create(seed.toString());
@@ -149,18 +149,6 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
         </>
     );
 
-    // function getUrlPath() {
-    //     const buffer = Buffer.alloc(6);
-    //     let lanebyte = 0x0;
-    //     for (let i = 0; i < lanesWithoutFill.length; i++) {
-    //         lanebyte |= 1 << i;
-    //     }
-    //     buffer.writeInt8(lanebyte);
-    //     buffer.writeFloatBE(seed, 1);
-    //     buffer.writeUInt8(rolledChampion!.id, 5);
-    //     const encoded = buffer.toString("base64url");
-    //     return encoded;
-    // }
     function getUrlPath(): string {
         const buffer = new Uint8Array(6);
         const view = new DataView(buffer.buffer);
@@ -179,8 +167,6 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
 
         return base64url;
     }
-
-
 }
 
 
