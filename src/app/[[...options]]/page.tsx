@@ -1,7 +1,10 @@
+'use client';
 import { Lane } from 'components/types/enums/Lane';
 import ChampDrawer from 'components/ChampDrawer';
 import RolledDisplay from 'components/RolledDisplay';
 import RollSwitches from 'components/switches/roll-switches';
+import { Center, VStack } from '@chakra-ui/react';
+
 
 export interface RollingOptions {
   seed: number;
@@ -34,10 +37,12 @@ export default function Page({ params }: { params: any }) {
   }
 
   return (
-    <main className="container" style={{ maxWidth: 850 }}>
-      <RolledDisplay rollingOptions={rollingOptions} />
-      <RollSwitches />
-      <ChampDrawer />
-    </main>
+    <Center>
+      <VStack>
+        <RolledDisplay rollingOptions={rollingOptions} />
+        <RollSwitches />
+        <ChampDrawer />
+      </VStack>
+    </Center>
   )
 }

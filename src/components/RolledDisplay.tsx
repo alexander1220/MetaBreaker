@@ -24,6 +24,7 @@ import { useImmer } from "use-immer";
 import { ChampionSelectionContext } from "./providers/ChampionSelectionProvider";
 import { Champion } from "./types/Champions";
 import { Item } from "./types/Item";
+import { Box, HStack, Heading, SimpleGrid, VStack, Image, Flex, Spacer, Button, Switch, FormLabel } from "@chakra-ui/react";
 
 const lanesWithoutFill = Object.values(Lane).filter(l => l !== Lane.Fill);
 const supportTags = [Tag.Mage_Support, Tag.Assassin_Support, Tag.Enchanter_Support, Tag.Tank_Support];
@@ -108,7 +109,50 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
 
     return (
         <>
-            <ShareButton path={getUrlPath()} />
+            <VStack align={'left'}>
+                <Heading>Nasus, The Metabreaker</Heading>
+                <HStack spacing={6}>
+                    <Image boxSize='128px' src='https://bit.ly/dan-abramov' alt='Dan Abramov' />
+                    <VStack align={'left'}>
+                        <Flex>
+                            <Box width={'60px'} backgroundColor={'red'} height={'60px'}>starter</Box>
+                            <Spacer />
+                            <Box width={'60px'} backgroundColor={'red'} height={'60px'}>role</Box>
+                        </Flex>
+                        <SimpleGrid columns={{ base: 3, md: 6 }} spacing={2}>
+                            <Box width={'60px'} backgroundColor={'red'} height={'60px'}>itm</Box>
+                            <Box width={'60px'} backgroundColor={'red'} height={'60px'}>itm</Box>
+                            <Box width={'60px'} backgroundColor={'red'} height={'60px'}>itm</Box>
+                            <Box width={'60px'} backgroundColor={'red'} height={'60px'}>itm</Box>
+                            <Box width={'60px'} backgroundColor={'red'} height={'60px'}>itm</Box>
+                            <Box width={'60px'} backgroundColor={'red'} height={'60px'}>itm</Box>
+                        </SimpleGrid>
+                    </VStack>
+                </HStack>
+                <Flex>
+                    <VStack align={'left'}>
+                        <Box width={'60px'} backgroundColor={'red'} height={'60px'}>starter</Box>
+                        <Box width={'60px'} backgroundColor={'red'} height={'60px'}>starter</Box>
+                    </VStack>
+                    <Spacer />
+                    <HStack align={'right'}>
+                        <Box width={'60px'} backgroundColor={'red'} height={'60px'}>starter</Box>
+                        <Box width={'60px'} backgroundColor={'red'} height={'60px'}>starter</Box>
+                    </HStack>
+                </Flex>
+                <HStack>
+                    <Button>Roll Again</Button>
+                    <Button>Share</Button>
+                </HStack>
+                <Flex justifyContent={'space-between'}>
+                    <Switch size='lg' />
+                    <Switch size='lg' />
+                    <Switch size='lg' />
+                    <Switch size='lg' />
+                    <Switch size='lg' />
+                    <Switch size='lg' />
+                </Flex>
+            </VStack>
             <div className="container">
                 <table>
                     <tbody>
@@ -145,6 +189,7 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
                     </tbody>
                 </table>
             </div>
+            <ShareButton path={getUrlPath()} />
             <button onClick={() => rollBuild()}>ROLL</button>
         </>
     );
