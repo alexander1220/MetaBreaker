@@ -1,17 +1,10 @@
 "use client";
-import RolledBuildDescription from "./RolledBuildDescription";
-import RolledChampion from "./RolledChampion";
-import RolledItems from "./RolledItems";
-import RolledLane from "./RolledLane";
-import RolledRunes from "./RolledRunes";
-import RolledSummonerSpell from "./RolledSummonerSpell";
-import RolledStarterItem from "./RolledStarterItem";
 import { GenerationContext } from "./providers/GenerationProviderReducer";
 import { Lane } from "./types/enums/Lane";
 import { Tag } from "./types/enums/Tag";
-import { boots } from "./types/items/Boots";
-import { legendaryItems } from "./types/items/Legendaries";
-import { mythics } from "./types/items/Mythics";
+import { boots } from "./types/items/boots";
+import { legendaryItems } from "./types/items/legendaries";
+import { mythics } from "./types/items/mythics";
 import { keystones, Keystone } from "./types/Keystones";
 import { runes } from "./types/Runes";
 import { starterItems } from "./types/StarterItems";
@@ -24,7 +17,7 @@ import { useImmer } from "use-immer";
 import { ChampionSelectionContext } from "./providers/ChampionSelectionProvider";
 import { Champion } from "./types/Champions";
 import { Item } from "./types/Item";
-import { Box, HStack, Heading, SimpleGrid, VStack, Image, Flex, Spacer, Button, Switch, FormLabel } from "@chakra-ui/react";
+import { HStack, Heading, SimpleGrid, VStack, Image, Flex, Spacer, Button, Switch } from "@chakra-ui/react";
 
 const lanesWithoutFill = Object.values(Lane).filter(l => l !== Lane.Fill);
 const supportTags = [Tag.Mage_Support, Tag.Assassin_Support, Tag.Enchanter_Support, Tag.Tank_Support];
@@ -107,42 +100,49 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
         rollBuild(rollingOptions);
     }, [rollingOptions]);
 
+    const laneMappings = new Map([
+        [Lane.Top, "top"],
+        [Lane.Jungle, "jungle"],
+        [Lane.Mid, "middle"],
+        [Lane.Adc, "bottom"],
+        [Lane.Support, "utility"],
+    ]);
+
     return (
         <>
             <VStack align={'left'}>
-                <Heading>Nasus, The Metabreaker</Heading>
+                <Heading>{rolledBuild.champion.name}, {rolledBuild.tag}</Heading>
                 <HStack spacing={6}>
-                    <Image boxSize='128px' src='https://bit.ly/dan-abramov' alt='Dan Abramov' />
+                    <Image boxSize='128px' src={`https://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/${rolledBuild.champion.normalizedName}.png`} alt={rolledBuild.champion.name} />
                     <VStack align={'left'}>
                         <Flex>
-                            <Box width={'60px'} backgroundColor={'red'} height={'60px'}>starter</Box>
+                            <Image boxSize='60px' src={`https://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/${rolledBuild.starterItem.id}.png`} alt={rolledBuild.starterItem.name} />
                             <Spacer />
-                            <Box width={'60px'} backgroundColor={'red'} height={'60px'}>role</Box>
+                            <Image boxSize='60px' src={`https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-${laneMappings.get(rolledBuild.lane)}-blue.png`} alt={rolledBuild.starterItem.name} />
                         </Flex>
                         <SimpleGrid columns={{ base: 3, md: 6 }} spacing={2}>
-                            <Box width={'60px'} backgroundColor={'red'} height={'60px'}>itm</Box>
-                            <Box width={'60px'} backgroundColor={'red'} height={'60px'}>itm</Box>
-                            <Box width={'60px'} backgroundColor={'red'} height={'60px'}>itm</Box>
-                            <Box width={'60px'} backgroundColor={'red'} height={'60px'}>itm</Box>
-                            <Box width={'60px'} backgroundColor={'red'} height={'60px'}>itm</Box>
-                            <Box width={'60px'} backgroundColor={'red'} height={'60px'}>itm</Box>
+                            {rolledBuild.items.map((item, index) => {
+                                return (
+                                    <Image key={index} boxSize='60px' src={`https://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/${item.id}.png`} alt={item.name} />
+                                )
+                            })}
                         </SimpleGrid>
                     </VStack>
                 </HStack>
                 <Flex>
                     <VStack align={'left'}>
-                        <Box width={'60px'} backgroundColor={'red'} height={'60px'}>starter</Box>
-                        <Box width={'60px'} backgroundColor={'red'} height={'60px'}>starter</Box>
+                        <Image boxSize='60px' src={`https://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/${rolledBuild.summonerSpells[1]?.fullName}.png`} alt={rolledBuild.summonerSpells[0]?.name} />
+                        <Image boxSize='60px' src={`https://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/${rolledBuild.summonerSpells[0]?.fullName}.png`} alt={rolledBuild.summonerSpells[1]?.name} />
                     </VStack>
                     <Spacer />
                     <HStack align={'right'}>
-                        <Box width={'60px'} backgroundColor={'red'} height={'60px'}>starter</Box>
-                        <Box width={'60px'} backgroundColor={'red'} height={'60px'}>starter</Box>
+                        <Image boxSize='60px' src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/${rolledBuild.keystone.iconPath}.png`} alt={rolledBuild.keystone.name} />
+                        <Image boxSize='30px' src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/${rolledBuild.rune.iconFileName}.png`} alt={rolledBuild.rune.name} />
                     </HStack>
                 </Flex>
                 <HStack>
-                    <Button>Roll Again</Button>
-                    <Button>Share</Button>
+                    <Button w={'75%'} onClick={() => rollBuild()}>Roll Again</Button>
+                    <ShareButton path={getUrlPath()} />
                 </HStack>
                 <Flex justifyContent={'space-between'}>
                     <Switch size='lg' />
@@ -153,43 +153,6 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
                     <Switch size='lg' />
                 </Flex>
             </VStack>
-            <div className="container">
-                <table>
-                    <tbody>
-                        <tr>
-                            <td colSpan={2} rowSpan={2}>
-                                <RolledChampion champion={rolledBuild.champion} />
-                            </td>
-                            <td>
-                                <RolledBuildDescription champion={rolledBuild.champion} tag={rolledBuild.tag} />
-                                <RolledStarterItem starterItem={rolledBuild.starterItem} />
-                            </td>
-                            <td style={{ textAlign: "right" }}>
-                                <RolledLane lane={rolledBuild.lane} />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colSpan={2} id="itemslots">
-                                <RolledItems items={rolledBuild.items} />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colSpan={2}>
-                                <RolledSummonerSpell summonerSpell={rolledBuild.summonerSpells[1]} />
-                            </td>
-                            <td colSpan={2} rowSpan={2} style={{ textAlign: "right" }}>
-                                <RolledRunes keystone={rolledBuild.keystone} rune={rolledBuild.rune} />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <RolledSummonerSpell summonerSpell={rolledBuild.summonerSpells[0]} />
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <ShareButton path={getUrlPath()} />
             <button onClick={() => rollBuild()}>ROLL</button>
         </>
     );
