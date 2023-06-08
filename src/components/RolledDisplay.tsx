@@ -17,7 +17,7 @@ import { useImmer } from "use-immer";
 import { ChampionSelectionContext } from "./providers/ChampionSelectionProvider";
 import { Champion } from "./types/Champions";
 import { Item } from "./types/Item";
-import { HStack, Heading, SimpleGrid, VStack, Image, Flex, Spacer, Button, Switch } from "@chakra-ui/react";
+import { HStack, Heading, SimpleGrid, VStack, Image, Flex, Spacer, Button, Switch, Tooltip } from "@chakra-ui/react";
 
 const lanesWithoutFill = Object.values(Lane).filter(l => l !== Lane.Fill);
 const supportTags = [Tag.Mage_Support, Tag.Assassin_Support, Tag.Enchanter_Support, Tag.Tank_Support];
@@ -110,20 +110,29 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
 
     return (
         <>
-            <VStack align={'left'}>
+            <VStack align={'left'} w={'100%'}>
                 <Heading>{rolledBuild.champion.name}, {rolledBuild.tag}</Heading>
                 <HStack spacing={6}>
-                    <Image boxSize='128px' src={`https://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/${rolledBuild.champion.normalizedName}.png`} alt={rolledBuild.champion.name} />
+                    <Tooltip label={rolledBuild.champion.name}>
+                        <Image boxSize='128px' src={`https://ddragon.leagueoflegends.com/cdn/13.3.1/img/champion/${rolledBuild.champion.normalizedName}.png`} alt={rolledBuild.champion.name} />
+                    </Tooltip>
                     <VStack align={'left'}>
                         <Flex>
-                            <Image boxSize='60px' src={`https://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/${rolledBuild.starterItem.id}.png`} alt={rolledBuild.starterItem.name} />
+                            <Tooltip label={rolledBuild.starterItem.name}>
+                                <Image boxSize='60px' src={`https://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/${rolledBuild.starterItem.id}.png`} alt={rolledBuild.starterItem.name} />
+                            </Tooltip>
                             <Spacer />
-                            <Image boxSize='60px' src={`https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-${laneMappings.get(rolledBuild.lane)}-blue.png`} alt={rolledBuild.starterItem.name} />
+                            <Tooltip label={rolledBuild.lane}>
+                                <Image boxSize='60px' src={`https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-${laneMappings.get(rolledBuild.lane)}-blue.png`} alt={rolledBuild.lane} />
+                            </Tooltip>
                         </Flex>
                         <SimpleGrid columns={{ base: 3, md: 6 }} spacing={2}>
                             {rolledBuild.items.map((item, index) => {
                                 return (
-                                    <Image key={index} boxSize='60px' src={`https://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/${item.id}.png`} alt={item.name} />
+                                    <Tooltip label={item.name}>
+                                        {/* TODO: 'fallbackSrc' COULD be used for loading? or we implement a spinner and make it fancy */}
+                                        <Image key={index} boxSize='60px' src={`https://ddragon.leagueoflegends.com/cdn/13.3.1/img/item/${item.id}.png`} fallbackSrc='https://via.placeholder.com/150' alt={item.name} />
+                                    </Tooltip>
                                 )
                             })}
                         </SimpleGrid>
@@ -131,13 +140,21 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
                 </HStack>
                 <Flex>
                     <VStack align={'left'}>
-                        <Image boxSize='60px' src={`https://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/${rolledBuild.summonerSpells[1]?.fullName}.png`} alt={rolledBuild.summonerSpells[0]?.name} />
-                        <Image boxSize='60px' src={`https://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/${rolledBuild.summonerSpells[0]?.fullName}.png`} alt={rolledBuild.summonerSpells[1]?.name} />
+                        <Tooltip label={rolledBuild.summonerSpells[1]?.name}>
+                            <Image boxSize='60px' src={`https://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/${rolledBuild.summonerSpells[1]?.fullName}.png`} alt={rolledBuild.summonerSpells[1]?.name} />
+                        </Tooltip>
+                        <Tooltip label={rolledBuild.summonerSpells[0]?.name}>
+                            <Image boxSize='60px' src={`https://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/${rolledBuild.summonerSpells[0]?.fullName}.png`} alt={rolledBuild.summonerSpells[0]?.name} />
+                        </Tooltip>
                     </VStack>
                     <Spacer />
                     <HStack align={'right'}>
-                        <Image boxSize='60px' src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/${rolledBuild.keystone.iconPath}.png`} alt={rolledBuild.keystone.name} />
-                        <Image boxSize='30px' src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/${rolledBuild.rune.iconFileName}.png`} alt={rolledBuild.rune.name} />
+                        <Tooltip label={rolledBuild.keystone.name}>
+                            <Image boxSize='60px' src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/${rolledBuild.keystone.iconPath}.png`} alt={rolledBuild.keystone.name} />
+                        </Tooltip>
+                        <Tooltip label={rolledBuild.rune.name}>
+                            <Image boxSize='30px' src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/${rolledBuild.rune.iconFileName}.png`} alt={rolledBuild.rune.name} />
+                        </Tooltip>
                     </HStack>
                 </Flex>
                 <HStack>
