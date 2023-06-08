@@ -144,16 +144,7 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
                     <Button w={'75%'} onClick={() => rollBuild()}>Roll Again</Button>
                     <ShareButton path={getUrlPath()} />
                 </HStack>
-                <Flex justifyContent={'space-between'}>
-                    <Switch size='lg' />
-                    <Switch size='lg' />
-                    <Switch size='lg' />
-                    <Switch size='lg' />
-                    <Switch size='lg' />
-                    <Switch size='lg' />
-                </Flex>
             </VStack>
-            <button onClick={() => rollBuild()}>ROLL</button>
         </>
     );
 

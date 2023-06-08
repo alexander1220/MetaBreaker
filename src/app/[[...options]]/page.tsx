@@ -1,10 +1,8 @@
-'use client';
 import { Lane } from 'components/types/enums/Lane';
 import ChampDrawer from 'components/ChampDrawer';
 import RolledDisplay from 'components/RolledDisplay';
 import RollSwitches from 'components/switches/roll-switches';
-import { Center, VStack } from '@chakra-ui/react';
-
+import CenterStackWrapper from 'components/MainPageCenterStackWrapper';
 
 export interface RollingOptions {
   seed: number;
@@ -13,8 +11,6 @@ export interface RollingOptions {
 }
 
 const lanesWithoutFill = Object.values(Lane).filter(l => l !== Lane.Fill);
-
-
 
 export default function Page({ params }: { params: any }) {
 
@@ -37,12 +33,10 @@ export default function Page({ params }: { params: any }) {
   }
 
   return (
-    <Center>
-      <VStack>
-        <RolledDisplay rollingOptions={rollingOptions} />
-        <RollSwitches />
-        <ChampDrawer />
-      </VStack>
-    </Center>
+    <CenterStackWrapper>
+      <RolledDisplay rollingOptions={rollingOptions} />
+      <RollSwitches />
+      <ChampDrawer />
+    </CenterStackWrapper>
   )
 }
