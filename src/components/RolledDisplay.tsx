@@ -2,9 +2,9 @@
 import { GenerationContext } from "./providers/GenerationProviderReducer";
 import { Lane } from "./types/enums/Lane";
 import { Tag } from "./types/enums/Tag";
-import { boots } from "./types/items/boots";
-import { legendaryItems } from "./types/items/legendaries";
-import { mythics } from "./types/items/mythics";
+import { boots } from "./types/items/Boots";
+import { legendaryItems } from "./types/items/Legendaries";
+import { mythics } from "./types/items/Mythics";
 import { keystones, Keystone } from "./types/Keystones";
 import { runes } from "./types/Runes";
 import { starterItems } from "./types/StarterItems";

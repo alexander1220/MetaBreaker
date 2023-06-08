@@ -1,10 +1,8 @@
 // import './pico.min.css';
 import './global.css';
-import ThemeProvider from '../components/providers/ThemeProvider';
 import HTMLBody from '../components/HtmlBody';
 import Navbar from '../components/navbar';
-import Script from 'next/script';
-import Providers from '../components/providers/providers';
+import Providers from '../components/providers/Providers';
 import RulesModal from '../components/modals/RulesModal';
 import BugReportModal from '../components/modals/BugReportModal';
 import { StrictMode } from 'react';
