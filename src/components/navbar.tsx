@@ -1,24 +1,95 @@
 'use client';
-import RuleModalToggleLink from "./links/RuleModalToggleLink";
-import ThemeSwitch from "./switches/theme-switch";
-import NavLink from "./links/NavLink";
-import { Flex, Spacer, Link, HStack, Heading } from "@chakra-ui/react";
+import { ReactNode } from 'react';
+import {
+  Box,
+  Flex,
+  Avatar,
+  HStack,
+  Link,
+  IconButton,
+  Button,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuDivider,
+  useDisclosure,
+  useColorModeValue,
+  useColorMode,
+  Stack,
+  Heading,
+} from '@chakra-ui/react';
+import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 
+const Links = [
+  {
+    href: '/',
+    name: 'Home'
+  }, {
+    href: '/',
+    name: 'Rules'
+  }, {
+    href: '/about',
+    name: 'About'
+  }, {
+    href: '/',
+    name: 'How to use'
+  }
+]
+
+const NavLink = ({ children }: { children: { href: string, name: string } }) => (
+  <Link
+    px={2}
+    py={1}
+    rounded={'md'}
+    _hover={{
+      textDecoration: 'none',
+      bg: useColorModeValue('gray.200', 'gray.700'),
+    }}
+    href={children.href}>
+    {children.name}
+  </Link>
+);
 
 export default function Navbar() {
-  /* use chakra templates navbar -> responsive */
+  const { colorMode, toggleColorMode } = useColorMode();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
-    <Flex alignItems='center' marginBottom={10} p={5}>
-      <Link href={"/"} style={{ color: "inherit", textDecoration: 'none' }}>
-        <Heading size='md' _hover={{ color: 'blue.300' }}>MetaBreaker</Heading>
-      </Link>
-      <Spacer />
-      <HStack spacing={5}>
-        <RuleModalToggleLink />
-        <Link href={"/"}>Home</Link>
-        <Link href="/about">About</Link>
-        <ThemeSwitch />
-      </HStack>
-    </Flex>
-  )
+    <Box px={4}>
+      <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
+        <IconButton
+          size={'md'}
+          icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+          aria-label={'Open Menu'}
+          display={{ md: 'none' }}
+          onClick={isOpen ? onClose : onOpen}
+        />
+        <Link href={"/"} style={{ color: "inherit", textDecoration: 'none' }}>
+          <Heading size='md' _hover={{ color: 'blue.300' }}>MetaBreaker</Heading>
+        </Link>
+        <HStack
+          as={'nav'}
+          spacing={4}
+          display={{ base: 'none', md: 'flex' }}>
+          {Links.map((link) => (
+            <NavLink key={link.name}>{link}</NavLink>
+          ))}
+        </HStack>
+        <Button onClick={toggleColorMode}>
+          {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+        </Button>
+      </Flex>
+
+      {isOpen ? (
+        <Box pb={4} display={{ md: 'none' }}>
+          <Stack as={'nav'} spacing={4}>
+            {Links.map((link) => (
+              <NavLink key={link.name}>{link}</NavLink>
+            ))}
+          </Stack>
+        </Box>
+      ) : null}
+    </Box>
+  );
 }

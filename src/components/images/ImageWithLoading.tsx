@@ -12,7 +12,7 @@ export default function ImageWithLoading({ src, alt, boxSize, tooltip }: { src: 
     return (
         <Skeleton isLoaded={isImageLoaded}>
             <Tooltip label={tooltip}>
-                <Image onLoad={handleImageLoad} boxSize={boxSize} src={src} alt={alt} />
+                <Image fit={'contain'} onLoad={handleImageLoad} boxSize={boxSize} src={src} alt={alt} />
             </Tooltip>
         </Skeleton>
     )
