@@ -983,6 +983,17 @@ export const champions: Champion[] = [
         ]
     },
     {
+        id: 162,
+        name: "Milio",
+        normalizedName: "Milio",
+        type: LeagueType.Champion,
+        tags: [
+            Tag.Enchanter_Support,
+            Tag.Mage_Support,
+            Tag.Bulk_Mage
+        ]
+    },
+    {
         id: 77,
         name: "Miss Fortune",
         normalizedName: "MissFortune",

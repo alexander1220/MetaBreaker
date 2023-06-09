@@ -1,6 +1,6 @@
 "use client";
 
-import { Champion, champions as rawChampions } from "components/types/Champions";
+import { Champion, champions as rawChampions } from "components/types/champions";
 import React, { createContext, startTransition } from "react";
 import { useImmer } from "use-immer";
 
