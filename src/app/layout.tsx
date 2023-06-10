@@ -6,7 +6,7 @@ import Providers from '../components/providers/Providers';
 import RulesModal from '../components/modals/RulesModal';
 import BugReportModal from '../components/modals/BugReportModal';
 import { StrictMode } from 'react';
-import UiWrapper from 'components/UiWrapper';
+import UiWrapper from 'components/UIWrapper';
 
 const title = 'MetaBreaker – Generate Unique Item Builds for League of Legends Champions';
 const description = 'Break the meta with MetaBreaker! Our website allows you to generate off-meta item builds for your favorite champions in League of Legends. Give it a try and see what kind of surprises you can come up with!';
