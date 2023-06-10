@@ -20,20 +20,18 @@ import {
   Heading,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
+import RulesButton from './RulesButton';
 
 const Links = [
   {
     href: '/',
     name: 'Home'
   }, {
-    href: '/',
-    name: 'Rules'
-  }, {
     href: '/about',
     name: 'About'
   }, {
     href: '/',
-    name: 'How to use'
+    name: 'Rules'
   }
 ]
 
@@ -73,7 +71,7 @@ export default function Navbar() {
           spacing={4}
           display={{ base: 'none', md: 'flex' }}>
           {Links.map((link) => (
-            <NavLink key={link.name}>{link}</NavLink>
+            link.name == "Rules" ? <RulesButton key={link.name} /> : <NavLink key={link.name}>{link}</NavLink>
           ))}
         </HStack>
         <Button onClick={toggleColorMode}>
@@ -85,7 +83,7 @@ export default function Navbar() {
         <Box pb={4} display={{ md: 'none' }}>
           <Stack as={'nav'} spacing={4}>
             {Links.map((link) => (
-              <NavLink key={link.name}>{link}</NavLink>
+              link.name == "Rules" ? <RulesButton key={link.name} /> : <NavLink key={link.name}>{link}</NavLink>
             ))}
           </Stack>
         </Box>
