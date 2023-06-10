@@ -5,7 +5,7 @@ import {
   Flex,
   Avatar,
   HStack,
-  Link,
+  Link as ChakraLink,
   IconButton,
   Button,
   Menu,
@@ -21,6 +21,7 @@ import {
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import RulesButton from './RulesButton';
+import Link from 'next/link';
 
 const Links = [
   {
@@ -36,7 +37,7 @@ const Links = [
 ]
 
 const NavLink = ({ children }: { children: { href: string, name: string } }) => (
-  <Link
+  <ChakraLink as={Link}
     px={2}
     py={1}
     rounded={'md'}
@@ -46,7 +47,7 @@ const NavLink = ({ children }: { children: { href: string, name: string } }) => 
     }}
     href={children.href}>
     {children.name}
-  </Link>
+  </ChakraLink>
 );
 
 export default function Navbar() {

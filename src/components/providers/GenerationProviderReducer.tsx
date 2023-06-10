@@ -10,6 +10,7 @@ import { StarterItem } from "components/types/StarterItems";
 import { SummonerSpell } from "components/types/Summoners";
 import { createContext } from "react";
 import { useImmer, useImmerReducer } from "use-immer";
+import { unknown } from "zod";
 import { Selectable } from "./ChampionSelectionProvider";
 
 type SelectableLane = { lane: Lane } & Selectable;
@@ -86,12 +87,12 @@ function generationProviderReducer(draft: RolledBuild, action: { type: ActionTyp
 
 export default function GenerationProvider({ children }: { children: React.ReactNode }) {
     const initialState: RolledBuild = {
-        champion: champions.find(c => c.name === 'Aatrox')!,
-        lane: Lane.Top,
-        tag: Tag.OnHit,
+        champion: null!,
+        lane: null!,
+        tag: null!,
         starterItem: {} as StarterItem,
         summonerSpells: [] as SummonerSpell[],
-        items: [] as Item[],
+        items: [null, null, null, null, null, null] as unknown as Item[],
         keystone: {} as Keystone,
         rune: {} as Rune
     };

@@ -3,7 +3,7 @@
 // import Image from "next/image";
 import { useContext } from "react";
 import { ChampionSelectionContext } from "./providers/ChampionSelectionProvider";
-import { Champion } from "./types/champions";
+import { Champion } from "./types/Champions";
 import { Image, Tooltip } from "@chakra-ui/react";
 
 export default function SelectableChampion({ champ, selected }: { champ: Champion, selected: boolean }) {

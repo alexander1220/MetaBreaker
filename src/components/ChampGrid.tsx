@@ -9,7 +9,7 @@ export default function ChampGrid({ searchString }: { searchString: string }) {
     let filteredChamps = champions.filter(champ => searchString !== '' ? champ.name.toLowerCase().startsWith(searchString.toLowerCase()) : true);
     return (
         <>
-            {filteredChamps.length > 0 ? <SimpleGrid columns={{ base: 3, md: 6, lg: 8 }} spacing={'5px'}>{filteredChamps.map((champ) => {
+            {filteredChamps.length > 0 ? <SimpleGrid mb={'10'} columns={{ base: 3, md: 6, lg: 8 }} spacing={'5px'}>{filteredChamps.map((champ) => {
                 return (
                     <SelectableChampion champ={champ} key={champ.name} selected={champ.selected} />
                 )

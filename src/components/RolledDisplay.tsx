@@ -17,8 +17,9 @@ import { useImmer } from "use-immer";
 import { ChampionSelectionContext } from "./providers/ChampionSelectionProvider";
 import { Champion } from "./types/Champions";
 import { Item } from "./types/Item";
-import { HStack, Heading, SimpleGrid, VStack, Image, Flex, Spacer, Button, Switch, Tooltip, Skeleton } from "@chakra-ui/react";
+import { HStack, Heading, SimpleGrid, VStack, Flex, Button, Skeleton, SkeletonText } from "@chakra-ui/react";
 import ImageWithLoading from "./images/ImageWithLoading";
+import { ddragonUrl } from "./types/Constants";
 
 const lanesWithoutFill = Object.values(Lane).filter(l => l !== Lane.Fill);
 const supportTags = [Tag.Mage_Support, Tag.Assassin_Support, Tag.Enchanter_Support, Tag.Tank_Support];
@@ -111,25 +112,27 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
 
     return (
         <>
-            <VStack align={'left'} w={'100%'}>
-                <Heading>{rolledBuild.champion.name}, {rolledBuild.tag}</Heading>
+            <VStack align={'left'} w={'100%'} mt={'10'}>
+                <Skeleton isLoaded={rolledBuild.champion !== null}>
+                    <Heading>{rolledBuild.champion?.name}, {rolledBuild.tag}</Heading>
+                </Skeleton>
                 <HStack spacing={6}>
-                    <ImageWithLoading tooltip={rolledBuild.champion.name} boxSize='128px' src={`https://ddragon.leagueoflegends.com/cdn/13.11.1/img/champion/${rolledBuild.champion.normalizedName}.png`} alt={rolledBuild.champion.name} />
+                    <ImageWithLoading tooltip={rolledBuild.champion?.name} boxSize='128px' src={`${ddragonUrl}/champion/${rolledBuild.champion?.normalizedName}.png`} alt={rolledBuild.champion?.name} />
                     <VStack align={'left'}>
                         <Flex>
-                            <ImageWithLoading tooltip={rolledBuild.starterItem.name} boxSize='60px' src={`https://ddragon.leagueoflegends.com/cdn/13.11.1/img/item/${rolledBuild.starterItem.id}.png`} alt={rolledBuild.starterItem.name} />
+                            <ImageWithLoading tooltip={rolledBuild.starterItem.name} boxSize='60px' src={`${ddragonUrl}/item/${rolledBuild.starterItem.id}.png`} alt={rolledBuild.starterItem.name} />
                         </Flex>
                         <SimpleGrid columns={{ base: 3, md: 6 }} spacing={2}>
                             {rolledBuild.items.map((item, index) => {
                                 return (
-                                    <ImageWithLoading tooltip={item.name} key={index} boxSize='60px' src={`https://ddragon.leagueoflegends.com/cdn/13.11.1/img/item/${item.id}.png`} alt={item.name} />
+                                    <ImageWithLoading tooltip={item?.name} key={index} boxSize='60px' src={`${ddragonUrl}/item/${item?.id}.png`} alt={item?.name} />
                                 )
                             })}
                         </SimpleGrid>
                     </VStack>
                     <VStack align={'right'}>
-                        <ImageWithLoading tooltip={rolledBuild.summonerSpells[1]?.name} boxSize='60px' src={`https://ddragon.leagueoflegends.com/cdn/13.11.1/img/spell/${rolledBuild.summonerSpells[1]?.fullName}.png`} alt={rolledBuild.summonerSpells[1]?.name} />
-                        <ImageWithLoading tooltip={rolledBuild.summonerSpells[0]?.name} boxSize='60px' src={`https://ddragon.leagueoflegends.com/cdn/13.11.1/img/spell/${rolledBuild.summonerSpells[0]?.fullName}.png`} alt={rolledBuild.summonerSpells[0]?.name} />
+                        <ImageWithLoading tooltip={rolledBuild.summonerSpells[1]?.name} boxSize='60px' src={`${ddragonUrl}/spell/${rolledBuild.summonerSpells[1]?.fullName}.png`} alt={rolledBuild.summonerSpells[1]?.name} />
+                        <ImageWithLoading tooltip={rolledBuild.summonerSpells[0]?.name} boxSize='60px' src={`${ddragonUrl}/spell/${rolledBuild.summonerSpells[0]?.fullName}.png`} alt={rolledBuild.summonerSpells[0]?.name} />
                     </VStack>
                     <VStack align={'center'}>
                         <ImageWithLoading tooltip={rolledBuild.keystone.name} boxSize='60px' src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/${rolledBuild.keystone.iconPath}.png`} alt={rolledBuild.keystone.name} />
@@ -156,7 +159,7 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
 
         view.setInt8(0, lanebyte);
         view.setFloat32(1, lastUsedSeed);
-        view.setUint8(5, rolledBuild.champion.id);
+        view.setUint8(5, rolledBuild.champion?.id);
 
         const base64 = btoa(String.fromCharCode.apply(null, Array.from(buffer)));
         const base64url = base64.replace('+', '-').replace('/', '_').replace(/=+$/, '');
