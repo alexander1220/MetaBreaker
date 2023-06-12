@@ -65,7 +65,7 @@ export default function Navbar() {
           onClick={isOpen ? onClose : onOpen}
         />
         <Link href={"/"} style={{ color: "inherit", textDecoration: 'none' }}>
-          <Heading size='md' _hover={{ color: 'blue.300' }}>MetaBreaker</Heading>
+          <Heading size='md' _hover={{ color: 'blue.300', transform: 'scale(1.1)' }} transition={'all 0.3s ease-out'}>MetaBreaker</Heading>
         </Link>
         <HStack
           as={'nav'}

@@ -4,6 +4,7 @@ import RolledDisplay from 'components/RolledDisplay';
 import RollSwitches from 'components/switches/roll-switches';
 import CenterStackWrapper from 'components/MainPageCenterStackWrapper';
 import { readRollingOptionsFromParams } from 'components/utils/RollingOptionsReader';
+import { Heading } from '@chakra-ui/react';
 
 
 export async function generateMetadata({ params }: { params: any }) {

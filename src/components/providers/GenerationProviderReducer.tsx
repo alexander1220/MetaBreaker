@@ -102,16 +102,21 @@ export default function GenerationProvider({ children }: { children: React.React
     function toggleLane(lane: Lane) {
         updateSelectedLanes(draft => {
             let laneToToggle = draft.find(r => r.lane === lane)!;
-            if (laneToToggle.lane === Lane.Fill && !laneToToggle.selected) {
-                draft.forEach(r => r.selected = true);
+            if (laneToToggle.lane === Lane.Fill) {
+                draft.forEach(r => r.selected = !laneToToggle.selected);
                 return;
             }
 
-            if (laneToToggle.lane !== Lane.Fill && laneToToggle.selected) {
+            if (laneToToggle.selected) {
                 let fillLane = draft.find(r => r.lane === Lane.Fill)!;
                 fillLane.selected = false;
             }
+
             laneToToggle.selected = !laneToToggle.selected;
+            if (!draft.some(e => !e.selected && e.lane !== Lane.Fill)) {
+                let fillLane = draft.find(r => r.lane === Lane.Fill)!;
+                fillLane.selected = true;
+            }
         });
     }
 

@@ -80,7 +80,7 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
 
     return (
         <>
-            <VStack align={'left'} w={'100%'} mt={'10'}>
+            <VStack align={'left'} w={'100%'} mt={'10'} spacing={4}>
                 <Skeleton isLoaded={rolledBuild.champion !== null}>
                     <Heading>{rolledBuild.champion?.name}, {rolledBuild.tag}</Heading>
                 </Skeleton>
