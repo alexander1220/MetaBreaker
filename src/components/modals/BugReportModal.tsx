@@ -43,7 +43,7 @@ export default function BugReportModal() {
                 <label htmlFor='bug_description'>Tell us something about it</label>
                 <textarea id='bug_description' name='description' cols={40} rows={3} placeholder='Give us information...'
                     maxLength={2000} required style={{ minWidth: 500 }} value={description} onChange={(event) => updateDescription(event.target.value)}></textarea>
-                <small>We'll try to take care of it ASAP. <span id='bug_char_count'>0</span>/2000</small>
+                <small>We&apos;ll try to take care of it ASAP. <span id='bug_char_count'>0</span>/2000</small>
 
                 <footer>
                     <button onClick={saveBugReport} />

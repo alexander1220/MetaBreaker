@@ -14,7 +14,7 @@ export default function Page() {
         <Heading as={'h2'} id='usage-🕹️'>
           Usage 🕹️
         </Heading>
-        <Text>To use MetaBreaker, simply head to <Link href='/'>home</Link> and select a champion. MetaBreaker will generate a random off-meta item build for that champion. You can press 'Roll Again' to generate a new build.</Text>
+        <Text>To use MetaBreaker, simply head to <Link href='/'>home</Link> and select a champion. MetaBreaker will generate a random off-meta item build for that champion. You can press &apos;Roll Again&apos; to generate a new build.</Text>
         <Heading as={'h2'} id='development-👨💻'>
           Development 👨‍💻
         </Heading>
@@ -28,7 +28,7 @@ export default function Page() {
           Credits 🚀
         </Heading>
         <Text>MetaBreaker was made by <Link href='https://github.com/alexander1220'>alexander1220</Link>, <Link href='https://github.com/satar2332'>satar2332</Link>, <Link href='https://github.com/Erdem-Sevilmis'>Erdem Sevilmis</Link>, <Link href='https://github.com/Dyuni0r'>Dyuni0r</Link> and <Link href='https://github.com/helloplayer1'>helloplayer1</Link>.</Text>
-        <Text>We'd like to thank the following resources for their help in creating this project:</Text>
+        <Text>We&apos;d like to thank the following resources for their help in creating this project:</Text>
         <UnorderedList>
           <ListItem><Link href='https://developer.riotgames.com/docs/lol#data-dragon'>Data Dragon</Link></ListItem>
           <ListItem><Link href='https://www.communitydragon.org/'>CommunityDragon</Link></ListItem>

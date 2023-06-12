@@ -15,7 +15,7 @@ export default function RulesButton() {
                     <ModalCloseButton />
                     <ModalBody>
                         <Text>Break the meta.</Text>
-                        <Text>If you don't build EXACTLY what you rolled... then what's the point of using it 😪</Text>
+                        <Text>If you don&apos;t build EXACTLY what you rolled... then what&apos;s the point of using it 😪</Text>
                         <Text>You are allowed to switch up the order of the items.</Text>
                     </ModalBody>
                     <ModalFooter>
