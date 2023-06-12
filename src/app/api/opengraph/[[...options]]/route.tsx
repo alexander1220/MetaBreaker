@@ -22,11 +22,11 @@ const rubikBold = fetch(
 
 
 const laneMappings = new Map([
-    [Lane.Top, "top"],
-    [Lane.Jungle, "jungle"],
-    [Lane.Mid, "middle"],
-    [Lane.Adc, "bottom"],
-    [Lane.Support, "utility"],
+    [Lane.Top, 'top'],
+    [Lane.Jungle, 'jungle'],
+    [Lane.Mid, 'middle'],
+    [Lane.Adc, 'bottom'],
+    [Lane.Support, 'utility'],
 ]);
 
 // Image generation

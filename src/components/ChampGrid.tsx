@@ -13,7 +13,7 @@ export default function ChampGrid({ searchString }: { searchString: string }) {
                 return (
                     <SelectableChampion champ={champ} key={champ.name} selected={champ.selected} />
                 )
-            })}</SimpleGrid> : <Text maxW={'100%'}>"No champions found"</Text>}
+            })}</SimpleGrid> : <Text maxW={'100%'}>No champions found</Text>}
         </>
     )
 }
