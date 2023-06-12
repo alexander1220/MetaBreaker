@@ -95,16 +95,16 @@ export async function GET(request: Request, { params }: { params: { options: str
                             gap: '0.625rem'
                         }}>
                             <img
-                                src={`${ddragonUrl}/spell/${rolledBuild.summonerSpells[0]?.fullName}.png`}
-                                alt={rolledBuild.summonerSpells[0]?.name}
-                                style={{ width: '75px', height: '75px' }}
-                                title={rolledBuild.summonerSpells[0]?.name}
-                            />
-                            <img
                                 src={`${ddragonUrl}/spell/${rolledBuild.summonerSpells[1]?.fullName}.png`}
                                 alt={rolledBuild.summonerSpells[1]?.name}
                                 style={{ width: '75px', height: '75px' }}
                                 title={rolledBuild.summonerSpells[1]?.name}
+                            />
+                            <img
+                                src={`${ddragonUrl}/spell/${rolledBuild.summonerSpells[0]?.fullName}.png`}
+                                alt={rolledBuild.summonerSpells[0]?.name}
+                                style={{ width: '75px', height: '75px' }}
+                                title={rolledBuild.summonerSpells[0]?.name}
                             />
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.625rem' }}>
