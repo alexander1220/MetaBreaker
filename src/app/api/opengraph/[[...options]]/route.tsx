@@ -12,9 +12,6 @@ const size = {
 
 export const runtime = 'edge' // 'nodejs' is the default
 
-export const contentType = 'image/png'
-
-
 // Font
 const rubikBold = fetch(
     new URL('./Rubik-Bold.ttf', import.meta.url)
