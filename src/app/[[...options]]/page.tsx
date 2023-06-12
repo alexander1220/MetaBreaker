@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: any }) {
           type: 'image/png',
           width: 1200,
           height: 630,
-          url: `/opengraph/${params?.options[0]}`
+          url: `/api/opengraph/${params?.options[0]}`
         }
       ]
     },
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: any }) {
           type: 'image/png',
           width: 1200,
           height: 630,
-          url: `/opengraph/${params?.options[0]}`
+          url: `/api/opengraph/${params?.options[0]}`
         }
       ]
     }
