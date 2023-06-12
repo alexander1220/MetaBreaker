@@ -24,6 +24,7 @@ export async function generateMetadata({ params }: { params: any }) {
       ]
     },
     twitter: {
+      card: 'summary_large_image',
       images: [
         {
           type: 'image/png',

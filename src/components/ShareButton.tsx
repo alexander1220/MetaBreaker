@@ -7,16 +7,16 @@ import { useImmer } from 'use-immer';
 import { BsTwitter } from 'react-icons/bs';
 
 export default function ShareButton({ path }: { path: string }) {
-    let [host, updateHost] = useImmer("");
+    let [origin, updateOrigin] = useImmer("");
     let [buttonText, setButtonText] = useState("Share");
     useEffect(() => {
-        updateHost(window.location.host);
+        updateOrigin(window.location.origin);
     }, []);
     function CopiedTextButton() {
         setButtonText("Copied!");
         setTimeout(() => setButtonText("Share"), 2500);
     }
-    const buildLink = `${host}/${path}`;
+    const buildLink = `${origin}/${path}`;
     const tweetText = 'Hey! Check out this crazy build i generated using metabreaker.gg: ' + buildLink;
     const finalTweet = tweetText.replace(' ', '%20');
     return (
