@@ -63,18 +63,6 @@ export const legendaryItems: LegendaryItem[] = [{
 },
 
 {
-  name: "Infinity Edge",
-  id: 3031,
-  tags: [
-    Tag.Marksman
-  ],
-  blocking: [
-    3124,
-    6675
-  ]
-},
-
-{
   name: "Mortal Reminder",
   id: 3033,
   tags: [
@@ -224,6 +212,15 @@ export const legendaryItems: LegendaryItem[] = [{
 },
 
 {
+  name: "Statikk Shiv",
+  id: 3087,
+  tags: [
+      Tag.Marksman,
+      Tag.AP_Assassin
+  ],
+},
+
+{
   name: "Rabadon's Deathcap",
   id: 3089,
   tags: [
@@ -341,18 +338,6 @@ export const legendaryItems: LegendaryItem[] = [{
 },
 
 {
-  name: "Guinsoo's Rageblade",
-  id: 3124,
-  tags: [
-    Tag.OnHit
-  ],
-  blocking: [
-    3031,
-    6675
-  ]
-},
-
-{
   name: "Void Staff",
   id: 3135,
   tags: [
@@ -371,16 +356,6 @@ export const legendaryItems: LegendaryItem[] = [{
   blocking: [
     6035
   ]
-},
-
-{
-  name: "Youmuu's Ghostblade",
-  id: 3142,
-  tags: [
-    Tag.AD_Assassin,
-    Tag.Fighter,
-    Tag.Assassin_Support
-  ],
 },
 
 {
@@ -435,9 +410,7 @@ export const legendaryItems: LegendaryItem[] = [{
   tags: [
     Tag.Fighter
   ],
-  blocking: [
-    6675
-  ]
+  blocking: []
 },
 
 {
@@ -536,6 +509,16 @@ export const legendaryItems: LegendaryItem[] = [{
 },
 
 {
+  name: "Imperial Mandate",
+  id: 4005,
+  tags: [
+    Tag.Mage_Support,
+    Tag.Enchanter_Support
+  ],
+  blocking: [],
+},
+
+{
   name: "Force of Nature",
   id: 4401,
   tags: [
@@ -631,16 +614,25 @@ export const legendaryItems: LegendaryItem[] = [{
 },
 
 {
-  name: "Navori Quickblades",
-  id: 6675,
+  name: "Kraken Slayer",
+  id: 6672,
   tags: [
-    Tag.AD_Assassin,
+    Tag.Marksman,
+    Tag.OnHit
+  ],
+  blocking: [],
+},
+
+{
+  name: "Immortal Shieldbow",
+  id: 6673,
+  tags: [
     Tag.Marksman
   ],
   blocking: [
-    3031,
-    3161,
-    3124
+    3003,
+    3156,
+    3053
   ]
 },
 
@@ -652,6 +644,16 @@ export const legendaryItems: LegendaryItem[] = [{
     Tag.Marksman,
     Tag.OnHit
   ],
+},
+
+{
+  name: "Prowler's Claw",
+  id: 6693,
+  tags: [
+    Tag.AD_Assassin,
+    Tag.Assassin_Support
+  ],
+  blocking: [],
 },
 
 {
@@ -705,8 +707,6 @@ export const legendaryItems: LegendaryItem[] = [{
     Tag.Tank_Support,
     Tag.Bulk_Mage
   ],
-  blocking: [
-    6657
-  ]
+  blocking: []
 }
 ];

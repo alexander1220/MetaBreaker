@@ -24,6 +24,18 @@ export const mythics: Item[] = [
   },
 
   {
+    name: "Infinity Edge",
+    id: 3031,
+    tags: [
+      Tag.Marksman
+    ],
+    blocking: [
+      3124,
+      6675
+    ]
+  },
+
+  {
     name: "Trinity Force",
     id: 3078,
     tags: [Tag.Fighter
@@ -39,6 +51,28 @@ export const mythics: Item[] = [
       Tag.Tank_Support
     ],
     blocking: [],
+  },
+
+  {
+    name: "Guinsoo's Rageblade",
+    id: 3124,
+    tags: [
+      Tag.OnHit
+    ],
+    blocking: [
+      3031,
+      6675
+    ]
+  },
+
+  {
+    name: "Youmuu's Ghostblade",
+    id: 3142,
+    tags: [
+      Tag.AD_Assassin,
+      Tag.Fighter,
+      Tag.Assassin_Support
+    ],
   },
 
   {
@@ -58,16 +92,6 @@ export const mythics: Item[] = [
     tags: [
       Tag.Tank,
       Tag.Tank_Support,
-      Tag.Enchanter_Support
-    ],
-    blocking: [],
-  },
-
-  {
-    name: "Imperial Mandate",
-    id: 4005,
-    tags: [
-      Tag.Mage_Support,
       Tag.Enchanter_Support
     ],
     blocking: [],
@@ -108,6 +132,15 @@ export const mythics: Item[] = [
   {
     name: "Moonstone Renewer",
     id: 6617,
+    tags: [
+      Tag.Enchanter_Support
+    ],
+    blocking: [],
+  },
+
+  {
+    name: "Echoes of Helia",
+    id: 6620,
     tags: [
       Tag.Enchanter_Support
     ],
@@ -220,25 +253,16 @@ export const mythics: Item[] = [
   },
 
   {
-    name: "Kraken Slayer",
-    id: 6672,
+    name: "Navori Quickblades",
+    id: 6675,
     tags: [
-      Tag.Marksman,
-      Tag.OnHit
-    ],
-    blocking: [],
-  },
-
-  {
-    name: "Immortal Shieldbow",
-    id: 6673,
-    tags: [
+      Tag.AD_Assassin,
       Tag.Marksman
     ],
     blocking: [
-      3003,
-      3156,
-      3053
+      3031,
+      3161,
+      3124
     ]
   },
 
@@ -257,16 +281,6 @@ export const mythics: Item[] = [
     id: 6692,
     tags: [
       Tag.AD_Assassin
-    ],
-    blocking: [],
-  },
-
-  {
-    name: "Prowler's Claw",
-    id: 6693,
-    tags: [
-      Tag.AD_Assassin,
-      Tag.Assassin_Support
     ],
     blocking: [],
   }
