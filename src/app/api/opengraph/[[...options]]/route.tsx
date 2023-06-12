@@ -5,7 +5,7 @@ import { rollBuild } from 'components/utils/BuildRoller';
 import { readRollingOptionsFromParams } from 'components/utils/RollingOptionsReader';
 import { ImageResponse } from 'next/server';
 
-export const size = {
+const size = {
     width: 1200,
     height: 630,
 }
