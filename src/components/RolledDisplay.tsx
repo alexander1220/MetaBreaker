@@ -10,7 +10,6 @@ import { runes } from "./types/Runes";
 import { starterItems } from "./types/StarterItems";
 import { summonerSpells, SummonerSpell } from "./types/Summoners";
 import * as random from "random-seed";
-import { RollingOptions } from "app/[[...options]]/page";
 import ShareButton from "./ShareButton";
 import { useContext, useEffect } from "react";
 import { useImmer } from "use-immer";
@@ -20,6 +19,8 @@ import { Item } from "./types/Item";
 import { HStack, Heading, SimpleGrid, VStack, Flex, Button, Skeleton, SkeletonText } from "@chakra-ui/react";
 import ImageWithLoading from "./images/ImageWithLoading";
 import { ddragonUrl } from "./types/Constants";
+import { rollBuild } from "./utils/BuildRoller";
+import { RollingOptions } from "./utils/RollingOptionsReader";
 
 const lanesWithoutFill = Object.values(Lane).filter(l => l !== Lane.Fill);
 const supportTags = [Tag.Mage_Support, Tag.Assassin_Support, Tag.Enchanter_Support, Tag.Tank_Support];
@@ -44,62 +45,29 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
     const [lastUsedSeed, updateLastUsedSeed] = useImmer<number>(0);
     const [lastUsedLanes, updateLastUsedLanes] = useImmer<Lane[]>([]);
 
-    function rollBuild(options?: RollingOptions) {
-        let selectedSupportChamps,
-            rolledLane,
-            rolledChampion: null | Champion = null,
-            rolledTag,
-            rolledStarterItem,
-            rolledSummonerSpells,
-            rolledItems,
-            rolledKeystone,
-            rolledRune,
-            lanesForRolling,
-            seed,
-            selectedChampions = champions.filter(c => c.selected);
-        //map to required type
-
-        if (options) {
-            lanesForRolling = Array.from(options.lanes).map(([lane, selected]) => ({ lane, selected })).filter(r => r.selected && r.lane !== Lane.Fill).map(o => o.lane);
-            seed = options.seed;
-            rolledChampion = selectedChampions.find(c => c.id === options.champId)!;
-        }
-        else {
-            lanesForRolling = selectedLanes.filter(l => l.selected).map(l => l.lane).filter(l => l !== Lane.Fill);
-            seed = Math.fround(Math.random());
-        }
-        rnd = random.create(seed.toString());
-
+    function roll(options?: RollingOptions) {
         if (selectedLanes.length === 0) {
-            alert("You must select at least one lane");
+            alert("You must select at least one lane!");
+            return;
         }
 
-        selectedSupportChamps = getSelectedSupportChamps(selectedChampions);
-        rolledLane = rollLane(selectedSupportChamps, lanesForRolling);
-        updateRolledLane(rolledLane);
+        let build = rollBuild(champions.filter(c => c.selected), options, selectedLanes.filter(l => l.selected).map(l => l.lane).filter(l => l !== Lane.Fill));
 
-        let rollChampionResult = rollChampion(selectedChampions, selectedSupportChamps, rolledLane); //roll even if we already have a champion, to make sure the rnd is advanced
-        rolledChampion = rolledChampion ?? rollChampionResult as Champion;
-        updateRolledChampion(rolledChampion);
-        rolledTag = rollTag(rolledChampion, rolledLane);
-        updateRolledTag(rolledTag);
-        rolledStarterItem = rollStarterItem(rolledLane, rolledTag);
-        updateRolledStarterItem(rolledStarterItem);
-        rolledSummonerSpells = rollSummonerSpells(rolledChampion, rolledLane, rolledTag);
-        updateRolledSummonerSpells(rolledSummonerSpells);
-        rolledItems = rollItems(rolledChampion, rolledLane, rolledTag);
-        updateRolledItems(rolledItems);
-        rolledKeystone = rollKeyStone(rolledTag);
-        updateRolledKeystone(rolledKeystone);
-        rolledRune = rollRune(rolledTag, rolledKeystone);
-        updateRolledRune(rolledRune);
+        updateRolledLane(build.lane);
+        updateRolledChampion(build.champion);
+        updateRolledTag(build.tag);
+        updateRolledStarterItem(build.starterItem);
+        updateRolledSummonerSpells(build.summonerSpells);
+        updateRolledItems(build.items);
+        updateRolledKeystone(build.keystone);
+        updateRolledRune(build.rune);
 
-        updateLastUsedLanes(lanesForRolling);
-        updateLastUsedSeed(seed);
+        updateLastUsedLanes(build.lanesForRolling);
+        updateLastUsedSeed(build.seed);
     }
 
     useEffect(() => {
-        rollBuild(rollingOptions);
+        roll(rollingOptions);
     }, [rollingOptions]);
 
     const laneMappings = new Map([
@@ -141,7 +109,7 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
                     <ImageWithLoading tooltip={rolledBuild.lane} boxSize='60px' src={`https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-${laneMappings.get(rolledBuild.lane)}-blue.png`} alt={rolledBuild.lane} />
                 </HStack>
                 <HStack>
-                    <Button w={'75%'} onClick={() => rollBuild()}>Roll Again</Button>
+                    <Button w={'75%'} onClick={() => roll()}>Roll Again</Button>
                     <ShareButton path={getUrlPath()} />
                 </HStack>
             </VStack>

@@ -3,34 +3,42 @@ import ChampDrawer from 'components/ChampDrawer';
 import RolledDisplay from 'components/RolledDisplay';
 import RollSwitches from 'components/switches/roll-switches';
 import CenterStackWrapper from 'components/MainPageCenterStackWrapper';
+import { readRollingOptionsFromParams } from 'components/utils/RollingOptionsReader';
 
-export interface RollingOptions {
-  seed: number;
-  lanes: Map<Lane, boolean>;
-  champId: number;
+
+export async function generateMetadata({ params }: { params: any }) {
+
+  let rollingOptions = readRollingOptionsFromParams(params);
+  if (!rollingOptions)
+    return {};
+
+  return {
+    openGraph: {
+      images: [
+        {
+          type: 'image/png',
+          width: 1200,
+          height: 630,
+          url: `/opengraph/${params?.options[0]}`
+        }
+      ]
+    },
+    twitter: {
+      images: [
+        {
+          type: 'image/png',
+          width: 1200,
+          height: 630,
+          url: `/opengraph/${params?.options[0]}`
+        }
+      ]
+    }
+  }
 }
-
-const lanesWithoutFill = Object.values(Lane).filter(l => l !== Lane.Fill);
 
 export default function Page({ params }: { params: any }) {
 
-  let rollingOptions: RollingOptions | undefined;
-  if (params?.options && params.options.length === 1) {
-    let decoded = Buffer.from(params.options[0], "base64url");
-    console.log(decoded);
-    let laneByte = decoded.readInt8(); // lane byte
-    let seed = decoded.readFloatBE(1);
-    let champId = decoded.readUInt8(5);
-
-    let mappedLanes = lanesWithoutFill.map((lane, i) => ([lane, (laneByte & (1 << i)) !== 0] as [Lane, boolean]));
-
-
-    rollingOptions = {
-      lanes: new Map(mappedLanes),
-      seed: seed,
-      champId: champId
-    }
-  }
+  let rollingOptions = readRollingOptionsFromParams(params);
 
   return (
     <CenterStackWrapper>
