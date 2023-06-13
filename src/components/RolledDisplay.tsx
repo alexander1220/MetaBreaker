@@ -22,6 +22,7 @@ import { ddragonUrl } from "./types/Constants";
 import { rollBuild } from "./utils/BuildRoller";
 import { RollingOptions } from "./utils/RollingOptionsReader";
 import SelectableChampion from "./SelectableChampion";
+import { useAnimate } from "framer-motion";
 
 const lanesWithoutFill = Object.values(Lane).filter(l => l !== Lane.Fill);
 const supportTags = [Tag.Mage_Support, Tag.Assassin_Support, Tag.Enchanter_Support, Tag.Tank_Support];
@@ -45,6 +46,9 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
 
     const [lastUsedSeed, updateLastUsedSeed] = useImmer<number>(0);
     const [lastUsedLanes, updateLastUsedLanes] = useImmer<Lane[]>([]);
+    const [casinoChamps, updateCasinoChamps] = useImmer<Champion[]>([]);
+
+    const [animScope, animate] = useAnimate();
 
     function roll(options?: RollingOptions) {
         if (selectedLanes.length === 0) {
@@ -65,7 +69,16 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
 
         updateLastUsedLanes(build.lanesForRolling);
         updateLastUsedSeed(build.seed);
+
+        let tempCasino = casinoChamps.length > 0 ? [casinoChamps[casinoChamps.length - 1]] : [];
+        tempCasino.push(...RandomChamps(9 - tempCasino.length), build.champion);
+
+        updateCasinoChamps(tempCasino);
     }
+
+    useEffect(() => {
+        animate(animScope.current, { y: [0, -60 * (casinoChamps.length - 1)] }, { duration: 3, ease: "easeOut", });
+    }, [casinoChamps]);
 
     useEffect(() => {
         roll(rollingOptions);
@@ -79,7 +92,7 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
         [Lane.Support, "utility"],
     ]);
 
-    function RandomChampNames(amount: number) {
+    function RandomChamps(amount: number) {
         let res = [];
         let selectableChampions = champions.filter(c => c.selected);
         for (var i = 0; i < amount; i++) {
@@ -87,45 +100,6 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
             res.push(selectableChampions[rand]);
         }
         return res;
-    }
-
-    let animKeyframes = keyframes`
-    0%   {transform: translateY(0px);}
-    100% {transform: translateY(-540px);}
-    `;
-
-    let anim = `${animKeyframes} 1 3s`;
-
-    const [animationClip, setAnimationClip] = useState(anim);
-    const boxRef = useRef<HTMLDivElement>(null);
-    function GetRandomImageChamps(firstChamp: any) {
-
-        let champs = RandomChampNames(10);
-        champs[0] = firstChamp;
-        return (
-            <>
-                {champs.map((champ) => {
-                    return (
-                        <ImageWithLoading tooltip={champ.name} boxSize='60px' src={`${ddragonUrl}/champion/${champ.normalizedName}.png`} alt={champ.name} />
-                    )
-                })}
-            </>
-        )
-    }
-
-    function ResetChampions() {
-        // var keys = keyframes`
-        // 0%   {transform: translateY(0px);}
-        // 100% {transform: translateY(-540px);}
-        // `;
-
-        // var newAnim = `${keys} 1 3s forwards`;
-        // setAnimationClip(newAnim);
-        // if (boxRef.current != null) {
-        //     boxRef.current.animate();
-        //     void boxRef.current.offsetWidth; // Trigger reflow to restart the animation
-        //     boxRef.current.classList.add('animation');
-        // }
     }
 
     return (
@@ -162,10 +136,12 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
                     <Button w={'75%'} onClick={() => roll()}>Roll Again</Button>
                     <ShareButton path={getUrlPath()} />
                 </HStack>
-                <Button onClick={() => ResetChampions()}>spin</Button>
+                <Button onClick={() => { }}>spin</Button>
                 <Box h={'60px'} overflow={'hidden'}>
-                    {rolledBuild.champion &&
-                        <VStack ref={boxRef} spacing={0} animation={animationClip} w={'60px'}>{GetRandomImageChamps(rolledBuild.champion)}</VStack>}
+                    <VStack spacing={0} w={'60px'} ref={animScope}>{
+                        casinoChamps.map((champ, index) =>
+                            <ImageWithLoading key={champ.name} tooltip={champ.name} boxSize='60px' src={`${ddragonUrl}/champion/${champ.normalizedName}.png`} alt={champ.name} />
+                        )}</VStack>
                 </Box>
             </VStack>
         </>
