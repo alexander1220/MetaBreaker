@@ -11,16 +11,17 @@ import { starterItems } from "./types/StarterItems";
 import { summonerSpells, SummonerSpell } from "./types/Summoners";
 import * as random from "random-seed";
 import ShareButton from "./ShareButton";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useImmer } from "use-immer";
 import { ChampionSelectionContext } from "./providers/ChampionSelectionProvider";
 import { Champion } from "./types/Champions";
 import { Item } from "./types/Item";
-import { HStack, Heading, SimpleGrid, VStack, Flex, Button, Skeleton, SkeletonText } from "@chakra-ui/react";
+import { HStack, Heading, SimpleGrid, VStack, Flex, Button, Skeleton, SkeletonText, Image, Box, keyframes } from "@chakra-ui/react";
 import ImageWithLoading from "./images/ImageWithLoading";
 import { ddragonUrl } from "./types/Constants";
 import { rollBuild } from "./utils/BuildRoller";
 import { RollingOptions } from "./utils/RollingOptionsReader";
+import SelectableChampion from "./SelectableChampion";
 
 const lanesWithoutFill = Object.values(Lane).filter(l => l !== Lane.Fill);
 const supportTags = [Tag.Mage_Support, Tag.Assassin_Support, Tag.Enchanter_Support, Tag.Tank_Support];
@@ -78,6 +79,55 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
         [Lane.Support, "utility"],
     ]);
 
+    function RandomChampNames(amount: number) {
+        let res = [];
+        let selectableChampions = champions.filter(c => c.selected);
+        for (var i = 0; i < amount; i++) {
+            var rand = Math.floor((Math.random() * selectableChampions.length))
+            res.push(selectableChampions[rand]);
+        }
+        return res;
+    }
+
+    let animKeyframes = keyframes`
+    0%   {transform: translateY(0px);}
+    100% {transform: translateY(-540px);}
+    `;
+
+    let anim = `${animKeyframes} 1 3s`;
+
+    const [animationClip, setAnimationClip] = useState(anim);
+    const boxRef = useRef<HTMLDivElement>(null);
+    function GetRandomImageChamps(firstChamp: any) {
+
+        let champs = RandomChampNames(10);
+        champs[0] = firstChamp;
+        return (
+            <>
+                {champs.map((champ) => {
+                    return (
+                        <ImageWithLoading tooltip={champ.name} boxSize='60px' src={`${ddragonUrl}/champion/${champ.normalizedName}.png`} alt={champ.name} />
+                    )
+                })}
+            </>
+        )
+    }
+
+    function ResetChampions() {
+        // var keys = keyframes`
+        // 0%   {transform: translateY(0px);}
+        // 100% {transform: translateY(-540px);}
+        // `;
+
+        // var newAnim = `${keys} 1 3s forwards`;
+        // setAnimationClip(newAnim);
+        // if (boxRef.current != null) {
+        //     boxRef.current.animate();
+        //     void boxRef.current.offsetWidth; // Trigger reflow to restart the animation
+        //     boxRef.current.classList.add('animation');
+        // }
+    }
+
     return (
         <>
             <VStack align={'left'} w={'100%'} mt={'10'} spacing={4}>
@@ -112,6 +162,11 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
                     <Button w={'75%'} onClick={() => roll()}>Roll Again</Button>
                     <ShareButton path={getUrlPath()} />
                 </HStack>
+                <Button onClick={() => ResetChampions()}>spin</Button>
+                <Box h={'60px'} overflow={'hidden'}>
+                    {rolledBuild.champion &&
+                        <VStack ref={boxRef} spacing={0} animation={animationClip} w={'60px'}>{GetRandomImageChamps(rolledBuild.champion)}</VStack>}
+                </Box>
             </VStack>
         </>
     );
