@@ -27,12 +27,12 @@ export default function Page() {
         <Heading as={'h2'} id='credits-🚀'>
           Credits 🚀
         </Heading>
-        <Text>MetaBreaker was made by <Link style={{ color: 'crimson' }} href='https://github.com/alexander1220'>alexander1220</Link>, <Link style={{ color: 'DarkOrange' }} href='https://github.com/satar2332'>satar2332</Link>, <Link style={{ color: 'Yellow' }} href='https://github.com/Erdem-Sevilmis'>Erdem Sevilmis</Link>, <Link style={{ color: 'Chartreuse' }} href='https://github.com/Dyuni0r'>Dyuni0r</Link> and <Link style={{ color: 'Turquoise' }} href='https://github.com/helloplayer1'>helloplayer1</Link>.</Text>
+        <Text>MetaBreaker was made by <Link style={{ color: 'crimson' }} href='https://github.com/alexander1220' target='_blank'>alexander1220</Link>, <Link style={{ color: 'DarkOrange' }} href='https://github.com/satar2332' target='_blank'>satar2332</Link>, <Link style={{ color: 'Yellow' }} href='https://github.com/Erdem-Sevilmis' target='_blank'>Erdem Sevilmis</Link>, <Link style={{ color: 'Chartreuse' }} href='https://github.com/Dyuni0r' target='_blank'>Dyuni0r</Link> and <Link style={{ color: 'Turquoise' }} href='https://github.com/helloplayer1' target='_blank'>helloplayer1</Link>.</Text>
         <Text>We&apos;d like to thank the following resources for their help in creating this project:</Text>
         <UnorderedList>
-          <ListItem><Link style={{ color: 'teal' }} href='https://developer.riotgames.com/docs/lol#data-dragon'>Data Dragon</Link></ListItem>
-          <ListItem><Link style={{ color: 'teal' }} href='https://www.communitydragon.org/'>CommunityDragon</Link></ListItem>
-          <ListItem><Link style={{ color: 'teal' }} href='https://leagueoflegends.fandom.com/wiki/League_of_Legends_Wiki'>League of Legends Wiki</Link></ListItem>
+          <ListItem><Link style={{ color: 'teal' }} href='https://developer.riotgames.com/docs/lol#data-dragon' target='_blank'>Data Dragon</Link></ListItem>
+          <ListItem><Link style={{ color: 'teal' }} href='https://www.communitydragon.org/' target='_blank'>CommunityDragon</Link></ListItem>
+          <ListItem><Link style={{ color: 'teal' }} href='https://leagueoflegends.fandom.com/wiki/League_of_Legends_Wiki' target='_blank'>League of Legends Wiki</Link></ListItem>
         </UnorderedList>
       </VStack>
     </Center>
