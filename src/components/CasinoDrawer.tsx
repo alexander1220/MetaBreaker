@@ -9,9 +9,9 @@ import { ddragonUrl } from "./types/Constants";
 export default function CasinoChampDrawer({ casinoItems, size }: { casinoItems: any[], size: number }) {
 
     const [animChampScope, animateChamp] = useAnimate();
-
+    const durationTime = randomNumber(0, 10) / 10 + 1;
     useEffect(() => {
-        animateChamp(animChampScope.current, { y: [0, -size * (casinoItems.length - 1)] }, { duration: 1.5, ease: "easeInOut" });
+        animateChamp(animChampScope.current, { y: [0, -size * (casinoItems.length - 1)] }, { duration: durationTime, ease: "easeInOut" });
     }, [casinoItems]);
 
     return (
@@ -27,9 +27,10 @@ export default function CasinoChampDrawer({ casinoItems, size }: { casinoItems: 
 export function CasinoItemDrawer({ casinoItems, size }: { casinoItems: any[], size: number }) {
 
     const [animChampScope, animateChamp] = useAnimate();
+    const durationTime = randomNumber(0, 10) / 10 + 1;
 
     useEffect(() => {
-        animateChamp(animChampScope.current, { y: [0, -size * (casinoItems.length - 1)] }, { duration: 1.5, ease: "easeInOut" });
+        animateChamp(animChampScope.current, { y: [0, -size * (casinoItems.length - 1)] }, { duration: durationTime, ease: "easeInOut" });
     }, [casinoItems]);
 
     return (
@@ -40,4 +41,8 @@ export function CasinoItemDrawer({ casinoItems, size }: { casinoItems: any[], si
                 )}</VStack>
         </Box>
     )
+}
+
+function randomNumber(min: number, max: number) {
+    return Math.random() * (max - min) + min;
 }
