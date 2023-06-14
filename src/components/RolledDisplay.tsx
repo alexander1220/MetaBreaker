@@ -48,7 +48,8 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
     const [lastUsedLanes, updateLastUsedLanes] = useImmer<Lane[]>([]);
     const [casinoChamps, updateCasinoChamps] = useImmer<Champion[]>([]);
     const [casinoItems, updateCasinoItems] = useImmer<Item[][]>([]);
-    const [animScope, animate] = useAnimate();
+    const [animChampScope, animateChamp] = useAnimate();
+    const itemAnimationHandlers = Array(6).fill(useAnimate()).map(([scope, animate]) => ({ scope, animate }));
 
     let lastChamp: Champion;
     let lastItems: Item[];
@@ -74,30 +75,28 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
         updateLastUsedLanes(build.lanesForRolling);
         updateLastUsedSeed(build.seed);
 
-        let tempCasino = RandomChamps(9);
-        let tempItems: Item[][] = RandomFullBuildItems(9);
-        if (lastChamp != null) {
-            tempCasino[0] = lastChamp;
-        }
+        let tempCasino = lastChamp ? [lastChamp] : [];
+        tempCasino.push(...RandomChamps(9 - tempCasino.length, [lastChamp, build.champion]), build.champion);
+
+        let tempItems: Item[][] = [];
 
         for (let i = 0; i < lastItems.length; i++) {
-            if (lastItems[i] != null)
-                tempItems[i][0] = lastItems[i];
+            tempItems.push(lastItems[i] ? [lastItems[i]] : []);
+            tempItems[i].push(...RandomItems(i, 5 - tempItems[i].length, [lastItems[i], build.items[i]]), build.items[i]);
         }
 
-        tempCasino.push(build.champion);
-        for (let i = 0; i < lastItems.length; i++) {
-            tempItems[i].push(build.items[i]);
-        }
-
-        console.log(tempItems);
         updateCasinoChamps(tempCasino);
         updateCasinoItems(tempItems);
     }
 
     useEffect(() => {
-        animate(animScope.current, { y: [0, -60 * (casinoChamps.length - 1)] }, { duration: 3, ease: "easeInOut", });
+        animateChamp(animChampScope.current, { y: [0, -60 * (casinoChamps.length - 1)] }, { duration: 3, ease: "easeInOut" });
     }, [casinoChamps]);
+
+    useEffect(() => {
+        itemAnimationHandlers.forEach(handler => handler.animate(handler.scope.current, { y: [0, -60 * (casinoItems.length - 1)] }, { duration: 3, ease: "easeInOut" }));
+    }, [casinoItems]);
+
 
     useEffect(() => {
         roll(rollingOptions);
@@ -111,29 +110,28 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
         [Lane.Support, "utility"],
     ]);
 
-    function RandomChamps(amount: number) {
+    function RandomChamps(amount: number, exclude?: Champion[]) {
         let res: Champion[] = [];
-        let selectableChampions = champions.filter(c => c.selected);
-        for (var i = 0; i < amount; i++) {
-            var rand = Math.floor(Math.random() * selectableChampions.length)
-            res.push(selectableChampions[rand]);
+        while (res.length < amount) {
+            var rand = Math.floor(Math.random() * champions.length);
+            if (res.indexOf(champions[rand]) == -1 && (!exclude || exclude.indexOf(champions[rand]) == -1))
+                res.push(champions[rand]);
         }
         return res;
     }
 
-    function RandomFullBuildItems(amount: number) {
-        let res: Item[][] = [];
-        for (let i = 0; i < 6; i++) {
-            res.push([]);
-            let items = legendaryItems;
-            if (i == 0)
-                items = mythics;
-            else if (i == 1)
-                items = boots;
-            for (let j = 0; j < amount; j++) {
-                var randItem = Math.floor(Math.random() * items.length);
-                res[i].push(items[randItem]);
-            }
+    function RandomItems(index: number, amount: number, exclude?: Item[]) {
+        let res: Item[] = [];
+        let itemPool = legendaryItems;
+        if (index === 0)
+            itemPool = mythics;
+        else if (index === 1)
+            itemPool = boots;
+
+        while (res.length < amount) {
+            var rand = Math.floor(Math.random() * itemPool.length);
+            if (res.indexOf(itemPool[rand]) == -1 && (!exclude || exclude.indexOf(itemPool[rand]) == -1))
+                res.push(itemPool[rand]);
         }
         return res;
     }
@@ -174,26 +172,23 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
                 </HStack>
                 <Button onClick={() => { }}>spin</Button>
                 <Box h={'60px'} overflow={'hidden'}>
-                    <VStack spacing={0} w={'60px'} ref={animScope}>{casinoChamps.length == 10 &&
+                    <VStack spacing={0} w={'60px'} ref={animChampScope}>{
                         casinoChamps.map((champ, index) =>
-                            <ImageWithLoading key={index} tooltip={champ.name} boxSize='60px' src={`${ddragonUrl}/champion/${champ.normalizedName}.png`} alt={champ.name} />
+                            <ImageWithLoading key={champ.name} tooltip={champ.name} boxSize='60px' src={`${ddragonUrl}/champion/${champ.normalizedName}.png`} alt={champ.name} />
                         )}</VStack>
                 </Box>
                 <HStack>
-                    {casinoItems.length == 6 && casinoItems.map((items) => {
-                        return (
-                            <Box h={'60px'} overflow={'hidden'}>
-                                <VStack spacing={0} w={'60px'} ref={animScope}>
-                                    {
-                                        items.length == 10 &&
-                                        items.map((item, index) =>
-                                            <ImageWithLoading key={index} tooltip={item.name} boxSize='60px' src={`${ddragonUrl}/item/${item.id}.png`} alt={item.name} />
-                                        )
-                                    }
-                                </VStack>
-                            </Box>
-                        )
-                    })}
+                    {casinoItems.map((items, index) =>
+                        <Box h={'60px'} overflow={'hidden'} key={itemAnimationHandlers[index].scope}>
+                            <VStack key={itemAnimationHandlers[index].scope} spacing={0} w={'60px'} ref={itemAnimationHandlers[index].scope}>
+                                {
+                                    items.map((item, index) =>
+                                        <ImageWithLoading key={item.name} tooltip={item.name} boxSize='60px' src={`${ddragonUrl}/item/${item.id}.png`} alt={item.name} />
+                                    )
+                                }
+                            </VStack>
+                        </Box>
+                    )}
                 </HStack>
             </VStack>
         </>
