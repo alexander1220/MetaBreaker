@@ -90,11 +90,11 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
     }
 
     useEffect(() => {
-        animateChamp(animChampScope.current, { y: [0, -60 * (casinoChamps.length - 1)] }, { duration: 3, ease: "easeInOut" });
+        animateChamp(animChampScope.current, { y: [0, -60 * (casinoChamps.length - 1)] }, { duration: 1.5, ease: "easeInOut" });
     }, [casinoChamps]);
 
     useEffect(() => {
-        itemAnimationHandlers.forEach(handler => handler.animate(handler.scope.current, { y: [0, -60 * (casinoItems.length - 1)] }, { duration: 3, ease: "easeInOut" }));
+        itemAnimationHandlers.forEach(handler => handler.animate(handler.scope.current, { y: [0, -60 * (casinoItems.length - 1)] }, { duration: 1.5, ease: "easeInOut" }));
     }, [casinoItems]);
 
 
@@ -170,7 +170,6 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
                     <Button w={'75%'} onClick={() => roll()}>Roll Again</Button>
                     <ShareButton path={getUrlPath()} />
                 </HStack>
-                <Button onClick={() => { }}>spin</Button>
                 <Box h={'60px'} overflow={'hidden'}>
                     <VStack spacing={0} w={'60px'} ref={animChampScope}>{
                         casinoChamps.map((champ, index) =>
