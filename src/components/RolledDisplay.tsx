@@ -23,6 +23,8 @@ import { rollBuild } from "./utils/BuildRoller";
 import { RollingOptions } from "./utils/RollingOptionsReader";
 import SelectableChampion from "./SelectableChampion";
 import { useAnimate } from "framer-motion";
+import { CasinoItemDrawer } from "./CasinoDrawer";
+import CasinoChampDrawer from "./CasinoDrawer";
 
 const lanesWithoutFill = Object.values(Lane).filter(l => l !== Lane.Fill);
 const supportTags = [Tag.Mage_Support, Tag.Assassin_Support, Tag.Enchanter_Support, Tag.Tank_Support];
@@ -48,8 +50,6 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
     const [lastUsedLanes, updateLastUsedLanes] = useImmer<Lane[]>([]);
     const [casinoChamps, updateCasinoChamps] = useImmer<Champion[]>([]);
     const [casinoItems, updateCasinoItems] = useImmer<Item[][]>([]);
-    const [animChampScope, animateChamp] = useAnimate();
-    const itemAnimationHandlers = Array(6).fill(useAnimate()).map(([scope, animate]) => ({ scope, animate }));
 
     let lastChamp: Champion;
     let lastItems: Item[];
@@ -88,15 +88,6 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
         updateCasinoChamps(tempCasino);
         updateCasinoItems(tempItems);
     }
-
-    useEffect(() => {
-        animateChamp(animChampScope.current, { y: [0, -60 * (casinoChamps.length - 1)] }, { duration: 1.5, ease: "easeInOut" });
-    }, [casinoChamps]);
-
-    useEffect(() => {
-        itemAnimationHandlers.forEach(handler => handler.animate(handler.scope.current, { y: [0, -60 * (casinoItems.length - 1)] }, { duration: 1.5, ease: "easeInOut" }));
-    }, [casinoItems]);
-
 
     useEffect(() => {
         roll(rollingOptions);
@@ -138,22 +129,29 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
 
     return (
         <>
+            <HStack>
+
+            </HStack>
             <VStack align={'left'} w={'100%'} mt={'10'} spacing={4}>
                 <Skeleton isLoaded={rolledBuild.champion !== null}>
                     <Heading>{rolledBuild.champion?.name}, {rolledBuild.tag}</Heading>
                 </Skeleton>
                 <HStack spacing={6}>
-                    <ImageWithLoading tooltip={rolledBuild.champion?.name} boxSize='128px' src={`${ddragonUrl}/champion/${rolledBuild.champion?.normalizedName}.png`} alt={rolledBuild.champion?.name} />
+                    <CasinoChampDrawer casinoItems={casinoChamps} size={128} />
+                    {/*<ImageWithLoading tooltip={rolledBuild.champion?.name} boxSize='128px' src={`${ddragonUrl}/champion/${rolledBuild.champion?.normalizedName}.png`} alt={rolledBuild.champion?.name} />*/}
                     <VStack align={'left'}>
                         <Flex>
                             <ImageWithLoading tooltip={rolledBuild.starterItem.name} boxSize='60px' src={`${ddragonUrl}/item/${rolledBuild.starterItem.id}.png`} alt={rolledBuild.starterItem.name} />
                         </Flex>
                         <SimpleGrid columns={{ base: 3, md: 6 }} spacing={2}>
-                            {rolledBuild.items.map((item, index) => {
+                            {casinoItems.map((items) =>
+                                <CasinoItemDrawer casinoItems={items} size={60} />
+                            )}
+                            {/*rolledBuild.items.map((item, index) => {
                                 return (
                                     <ImageWithLoading tooltip={item?.name} key={index} boxSize='60px' src={`${ddragonUrl}/item/${item?.id}.png`} alt={item?.name} />
                                 )
-                            })}
+                            })*/}
                         </SimpleGrid>
                     </VStack>
                     <VStack align={'right'}>
@@ -169,25 +167,6 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
                 <HStack>
                     <Button w={'75%'} onClick={() => roll()}>Roll Again</Button>
                     <ShareButton path={getUrlPath()} />
-                </HStack>
-                <Box h={'60px'} overflow={'hidden'}>
-                    <VStack spacing={0} w={'60px'} ref={animChampScope}>{
-                        casinoChamps.map((champ, index) =>
-                            <ImageWithLoading key={champ.name} tooltip={champ.name} boxSize='60px' src={`${ddragonUrl}/champion/${champ.normalizedName}.png`} alt={champ.name} />
-                        )}</VStack>
-                </Box>
-                <HStack>
-                    {casinoItems.map((items, index) =>
-                        <Box h={'60px'} overflow={'hidden'} key={itemAnimationHandlers[index].scope}>
-                            <VStack key={itemAnimationHandlers[index].scope} spacing={0} w={'60px'} ref={itemAnimationHandlers[index].scope}>
-                                {
-                                    items.map((item, index) =>
-                                        <ImageWithLoading key={item.name} tooltip={item.name} boxSize='60px' src={`${ddragonUrl}/item/${item.id}.png`} alt={item.name} />
-                                    )
-                                }
-                            </VStack>
-                        </Box>
-                    )}
                 </HStack>
             </VStack>
         </>
