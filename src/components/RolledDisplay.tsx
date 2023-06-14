@@ -6,8 +6,8 @@ import { boots } from "./types/items/Boots";
 import { legendaryItems } from "./types/items/Legendaries";
 import { mythics } from "./types/items/Mythics";
 import { keystones, Keystone } from "./types/Keystones";
-import { runes } from "./types/Runes";
-import { starterItems } from "./types/StarterItems";
+import { Rune, runes } from "./types/Runes";
+import { StarterItem, starterItems } from "./types/StarterItems";
 import { summonerSpells, SummonerSpell } from "./types/Summoners";
 import * as random from "random-seed";
 import ShareButton from "./ShareButton";
@@ -23,7 +23,7 @@ import { rollBuild } from "./utils/BuildRoller";
 import { RollingOptions } from "./utils/RollingOptionsReader";
 import SelectableChampion from "./SelectableChampion";
 import { useAnimate } from "framer-motion";
-import { CasinoItemDrawer } from "./CasinoDrawer";
+import { CasinoItemDrawer, CasinoKeystoneDrawer, CasinoLaneDrawer, CasinoRuneDrawer, CasinoSummonerDrawer } from "./CasinoDrawer";
 import CasinoChampDrawer from "./CasinoDrawer";
 
 const lanesWithoutFill = Object.values(Lane).filter(l => l !== Lane.Fill);
@@ -50,9 +50,19 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
     const [lastUsedLanes, updateLastUsedLanes] = useImmer<Lane[]>([]);
     const [casinoChamps, updateCasinoChamps] = useImmer<Champion[]>([]);
     const [casinoItems, updateCasinoItems] = useImmer<Item[][]>([]);
+    const [casinoSummoners, updateCasinoSummoners] = useImmer<SummonerSpell[][]>([]);
+    const [casinoStarter, updateCasinoStarter] = useImmer<Item[]>([]);
+    const [casinoRune, updateCasinoRune] = useImmer<Rune[]>([]);
+    const [casinoKeystone, updateCasinoKeystone] = useImmer<Keystone[]>([]);
+    const [casinoLane, updateCasinoLane] = useImmer<Lane[]>([]);
 
     let lastChamp: Champion;
     let lastItems: Item[];
+    let lastSumSpells: SummonerSpell[];
+    let lastStarter: Item;
+    let lastRune: Rune;
+    let lastKeystone: Keystone;
+    let lastLane: Lane;
     function roll(options?: RollingOptions) {
         if (selectedLanes.length === 0) {
             alert("You must select at least one lane!");
@@ -61,7 +71,14 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
 
         lastChamp = rolledBuild.champion;
         lastItems = rolledBuild.items;
+        lastSumSpells = rolledBuild.summonerSpells;
+        lastStarter = rolledBuild.starterItem;
+        lastKeystone = rolledBuild.keystone;
+        lastRune = rolledBuild.rune;
+        lastLane = rolledBuild.lane;
         let build = rollBuild(champions.filter(c => c.selected), options, selectedLanes.filter(l => l.selected).map(l => l.lane).filter(l => l !== Lane.Fill));
+
+        console.log(build);
 
         updateRolledLane(build.lane);
         updateRolledChampion(build.champion);
@@ -75,18 +92,35 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
         updateLastUsedLanes(build.lanesForRolling);
         updateLastUsedSeed(build.seed);
 
-        let tempCasino = lastChamp ? [lastChamp] : [];
-        tempCasino.push(...RandomChamps(9 - tempCasino.length, [lastChamp, build.champion]), build.champion);
-
+        let tempCasinoChamps = lastChamp ? [lastChamp] : [];
         let tempItems: Item[][] = [];
+        let tempSummoners: SummonerSpell[][] = [];
+        let tempStarter = lastStarter ? [lastStarter] : [];
+        let tempRune = lastRune ? [lastRune] : [];
+        let tempKeystone = lastKeystone ? [lastKeystone] : [];
+        let tempLane = lastLane ? [lastLane] : [];
 
+        tempCasinoChamps.push(...RandomFrom<Champion>(9 - tempCasinoChamps.length, champions, [lastChamp, build.champion]), build.champion);
         for (let i = 0; i < lastItems.length; i++) {
             tempItems.push(lastItems[i] ? [lastItems[i]] : []);
             tempItems[i].push(...RandomItems(i, 5 - tempItems[i].length, [lastItems[i], build.items[i]]), build.items[i]);
         }
+        for (let i = 0; i < lastSumSpells.length; i++) {
+            tempSummoners.push(lastSumSpells[i] ? [lastSumSpells[i]] : []);
+            tempSummoners[i].push(...RandomFrom<SummonerSpell>(3 - tempSummoners[i].length, summonerSpells, [lastSumSpells[i], build.summonerSpells[i]]), build.summonerSpells[i]);
+        }
+        tempStarter.push(...RandomFrom<StarterItem>(5 - tempStarter.length, starterItems, [lastStarter, build.starterItem]), build.starterItem);
+        tempRune.push(...RandomFrom<Rune>(4 - tempRune.length, runes, [lastRune, build.rune]), build.rune);
+        tempKeystone.push(...RandomFrom<Keystone>(5 - tempKeystone.length, keystones, [lastKeystone, build.keystone]), build.keystone);
+        tempLane.push(...RandomFrom<Lane>(3 - tempLane.length, lanesWithoutFill, [lastLane, build.lane]), build.lane);
 
-        updateCasinoChamps(tempCasino);
+        updateCasinoChamps(tempCasinoChamps);
         updateCasinoItems(tempItems);
+        updateCasinoSummoners(tempSummoners);
+        updateCasinoStarter(tempStarter);
+        updateCasinoRune(tempRune);
+        updateCasinoKeystone(tempKeystone);
+        updateCasinoLane(tempLane);
     }
 
     useEffect(() => {
@@ -101,12 +135,21 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
         [Lane.Support, "utility"],
     ]);
 
-    function RandomChamps(amount: number, exclude?: Champion[]) {
-        let res: Champion[] = [];
+    // function RandomChamps(amount: number, exclude?: Champion[]) {
+    //     let res: Champion[] = [];
+    //     while (res.length < amount) {
+    //         var rand = Math.floor(Math.random() * champions.length);
+    //         if (res.indexOf(champions[rand]) == -1 && (!exclude || exclude.indexOf(champions[rand]) == -1))
+    //             res.push(champions[rand]);
+    //     }
+    //     return res;
+    // }
+    function RandomFrom<T>(amount: number, pool: T[], exclude?: T[]) {
+        let res: T[] = [];
         while (res.length < amount) {
-            var rand = Math.floor(Math.random() * champions.length);
-            if (res.indexOf(champions[rand]) == -1 && (!exclude || exclude.indexOf(champions[rand]) == -1))
-                res.push(champions[rand]);
+            var rand = Math.floor(Math.random() * pool.length);
+            if (res.indexOf(pool[rand]) == -1 && (!exclude || exclude.indexOf(pool[rand]) == -1))
+                res.push(pool[rand]);
         }
         return res;
     }
@@ -124,6 +167,7 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
             if (res.indexOf(itemPool[rand]) == -1 && (!exclude || exclude.indexOf(itemPool[rand]) == -1))
                 res.push(itemPool[rand]);
         }
+
         return res;
     }
 
@@ -141,7 +185,8 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
                     {/*<ImageWithLoading tooltip={rolledBuild.champion?.name} boxSize='128px' src={`${ddragonUrl}/champion/${rolledBuild.champion?.normalizedName}.png`} alt={rolledBuild.champion?.name} />*/}
                     <VStack align={'left'}>
                         <Flex>
-                            <ImageWithLoading tooltip={rolledBuild.starterItem.name} boxSize='60px' src={`${ddragonUrl}/item/${rolledBuild.starterItem.id}.png`} alt={rolledBuild.starterItem.name} />
+                            <CasinoItemDrawer casinoItems={casinoStarter} size={60} />
+                            {/*<ImageWithLoading tooltip={rolledBuild.starterItem.name} boxSize='60px' src={`${ddragonUrl}/item/${rolledBuild.starterItem.id}.png`} alt={rolledBuild.starterItem.name} />*/}
                         </Flex>
                         <SimpleGrid columns={{ base: 3, md: 6 }} spacing={2}>
                             {casinoItems.map((items) =>
@@ -155,14 +200,22 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
                         </SimpleGrid>
                     </VStack>
                     <VStack align={'right'}>
+                        {casinoSummoners.map((sums) =>
+                            <CasinoSummonerDrawer casinoItems={sums} size={60} />
+                        )}
+                        {/* 
                         <ImageWithLoading tooltip={rolledBuild.summonerSpells[1]?.name} boxSize='60px' src={`${ddragonUrl}/spell/${rolledBuild.summonerSpells[1]?.fullName}.png`} alt={rolledBuild.summonerSpells[1]?.name} />
                         <ImageWithLoading tooltip={rolledBuild.summonerSpells[0]?.name} boxSize='60px' src={`${ddragonUrl}/spell/${rolledBuild.summonerSpells[0]?.fullName}.png`} alt={rolledBuild.summonerSpells[0]?.name} />
+                    */}
                     </VStack>
                     <VStack align={'center'}>
-                        <ImageWithLoading tooltip={rolledBuild.keystone.name} boxSize='60px' src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/${rolledBuild.keystone.iconPath}.png`} alt={rolledBuild.keystone.name} />
-                        <ImageWithLoading tooltip={rolledBuild.rune.name} boxSize='30px' src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/${rolledBuild.rune.iconFileName}.png`} alt={rolledBuild.rune.name} />
+                        <CasinoKeystoneDrawer casinoItems={casinoKeystone} size={60} />
+                        <CasinoRuneDrawer casinoItems={casinoRune} size={30} />
+                        {/*<ImageWithLoading tooltip={rolledBuild.keystone.name} boxSize='60px' src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/${rolledBuild.keystone.iconPath}.png`} alt={rolledBuild.keystone.name} />
+                        <ImageWithLoading tooltip={rolledBuild.rune.name} boxSize='30px' src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/${rolledBuild.rune.iconFileName}.png`} alt={rolledBuild.rune.name} />*/}
                     </VStack>
-                    <ImageWithLoading tooltip={rolledBuild.lane} boxSize='60px' src={`https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-${laneMappings.get(rolledBuild.lane)}-blue.png`} alt={rolledBuild.lane} />
+                    <CasinoLaneDrawer casinoItems={casinoLane} size={60} />
+                    {/* <ImageWithLoading tooltip={rolledBuild.lane} boxSize='60px' src={`https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-${laneMappings.get(rolledBuild.lane)}-blue.png`} alt={rolledBuild.lane} /> */}
                 </HStack>
                 <HStack>
                     <Button w={'75%'} onClick={() => roll()}>Roll Again</Button>
