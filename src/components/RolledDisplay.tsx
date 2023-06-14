@@ -23,8 +23,7 @@ import { rollBuild } from "./utils/BuildRoller";
 import { RollingOptions } from "./utils/RollingOptionsReader";
 import SelectableChampion from "./SelectableChampion";
 import { useAnimate } from "framer-motion";
-import { CasinoItemDrawer, CasinoKeystoneDrawer, CasinoLaneDrawer, CasinoRuneDrawer, CasinoSummonerDrawer } from "./CasinoDrawer";
-import CasinoChampDrawer from "./CasinoDrawer";
+import { CasinoGeneralDrawer, CasinoLaneDrawer } from "./CasinoDrawer";
 
 const lanesWithoutFill = Object.values(Lane).filter(l => l !== Lane.Fill);
 const supportTags = [Tag.Mage_Support, Tag.Assassin_Support, Tag.Enchanter_Support, Tag.Tank_Support];
@@ -100,19 +99,19 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
         let tempKeystone = lastKeystone ? [lastKeystone] : [];
         let tempLane = lastLane ? [lastLane] : [];
 
-        tempCasinoChamps.push(...RandomFrom<Champion>(9 - tempCasinoChamps.length, champions, [lastChamp, build.champion]), build.champion);
+        tempCasinoChamps.push(...RandomFrom<Champion>(4 - tempCasinoChamps.length, champions, [lastChamp, build.champion]), build.champion);
         for (let i = 0; i < lastItems.length; i++) {
             tempItems.push(lastItems[i] ? [lastItems[i]] : []);
-            tempItems[i].push(...RandomItems(i, 5 - tempItems[i].length, [lastItems[i], build.items[i]]), build.items[i]);
+            tempItems[i].push(...RandomItems(i, 4 - tempItems[i].length, [lastItems[i], build.items[i]]), build.items[i]);
         }
         for (let i = 0; i < lastSumSpells.length; i++) {
             tempSummoners.push(lastSumSpells[i] ? [lastSumSpells[i]] : []);
-            tempSummoners[i].push(...RandomFrom<SummonerSpell>(3 - tempSummoners[i].length, summonerSpells, [lastSumSpells[i], build.summonerSpells[i]]), build.summonerSpells[i]);
+            tempSummoners[i].push(...RandomFrom<SummonerSpell>(4 - tempSummoners[i].length, summonerSpells, [lastSumSpells[i], build.summonerSpells[i]]), build.summonerSpells[i]);
         }
-        tempStarter.push(...RandomFrom<StarterItem>(5 - tempStarter.length, starterItems, [lastStarter, build.starterItem]), build.starterItem);
+        tempStarter.push(...RandomFrom<StarterItem>(4 - tempStarter.length, starterItems, [lastStarter, build.starterItem]), build.starterItem);
         tempRune.push(...RandomFrom<Rune>(4 - tempRune.length, runes, [lastRune, build.rune]), build.rune);
-        tempKeystone.push(...RandomFrom<Keystone>(5 - tempKeystone.length, keystones, [lastKeystone, build.keystone]), build.keystone);
-        tempLane.push(...RandomFrom<Lane>(3 - tempLane.length, lanesWithoutFill, [lastLane, build.lane]), build.lane);
+        tempKeystone.push(...RandomFrom<Keystone>(4 - tempKeystone.length, keystones, [lastKeystone, build.keystone]), build.keystone);
+        tempLane.push(...RandomFrom<Lane>(4 - tempLane.length, lanesWithoutFill, [lastLane, build.lane]), build.lane);
 
         updateCasinoChamps(tempCasinoChamps);
         updateCasinoItems(tempItems);
@@ -181,16 +180,16 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
                     <Heading>{rolledBuild.champion?.name}, {rolledBuild.tag}</Heading>
                 </Skeleton>
                 <HStack spacing={6}>
-                    <CasinoChampDrawer casinoItems={casinoChamps} size={128} />
+                    <CasinoGeneralDrawer casinoItems={casinoChamps} size={128} url={`${ddragonUrl}/champion/`} propertyName="normalizedName" />
                     {/*<ImageWithLoading tooltip={rolledBuild.champion?.name} boxSize='128px' src={`${ddragonUrl}/champion/${rolledBuild.champion?.normalizedName}.png`} alt={rolledBuild.champion?.name} />*/}
                     <VStack align={'left'}>
                         <Flex>
-                            <CasinoItemDrawer casinoItems={casinoStarter} size={60} />
+                            <CasinoGeneralDrawer casinoItems={casinoStarter} size={60} url={`${ddragonUrl}/item/`} propertyName="id" />
                             {/*<ImageWithLoading tooltip={rolledBuild.starterItem.name} boxSize='60px' src={`${ddragonUrl}/item/${rolledBuild.starterItem.id}.png`} alt={rolledBuild.starterItem.name} />*/}
                         </Flex>
                         <SimpleGrid columns={{ base: 3, md: 6 }} spacing={2}>
                             {casinoItems.map((items) =>
-                                <CasinoItemDrawer casinoItems={items} size={60} />
+                                <CasinoGeneralDrawer casinoItems={items} size={60} url={`${ddragonUrl}/item/`} propertyName="id" />
                             )}
                             {/*rolledBuild.items.map((item, index) => {
                                 return (
@@ -201,7 +200,7 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
                     </VStack>
                     <VStack align={'right'}>
                         {casinoSummoners.map((sums) =>
-                            <CasinoSummonerDrawer casinoItems={sums} size={60} />
+                            <CasinoGeneralDrawer casinoItems={sums} size={60} url={`${ddragonUrl}/spell/`} propertyName="fullName" />
                         )}
                         {/* 
                         <ImageWithLoading tooltip={rolledBuild.summonerSpells[1]?.name} boxSize='60px' src={`${ddragonUrl}/spell/${rolledBuild.summonerSpells[1]?.fullName}.png`} alt={rolledBuild.summonerSpells[1]?.name} />
@@ -209,8 +208,8 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
                     */}
                     </VStack>
                     <VStack align={'center'}>
-                        <CasinoKeystoneDrawer casinoItems={casinoKeystone} size={60} />
-                        <CasinoRuneDrawer casinoItems={casinoRune} size={30} />
+                        <CasinoGeneralDrawer casinoItems={casinoKeystone} size={60} url={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/`} propertyName="iconPath" />
+                        <CasinoGeneralDrawer casinoItems={casinoRune} size={30} url={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/`} propertyName="iconFileName" />
                         {/*<ImageWithLoading tooltip={rolledBuild.keystone.name} boxSize='60px' src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/${rolledBuild.keystone.iconPath}.png`} alt={rolledBuild.keystone.name} />
                         <ImageWithLoading tooltip={rolledBuild.rune.name} boxSize='30px' src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/${rolledBuild.rune.iconFileName}.png`} alt={rolledBuild.rune.name} />*/}
                     </VStack>

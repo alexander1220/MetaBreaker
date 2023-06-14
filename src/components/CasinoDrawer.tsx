@@ -3,11 +3,11 @@ import { Box, VStack } from "@chakra-ui/react";
 import { useAnimate } from "framer-motion";
 import { useEffect } from "react";
 import ImageWithLoading from "./images/ImageWithLoading";
-import { ddragonUrl, laneMappings } from "./types/Constants";
+import { laneMappings } from "./types/Constants";
 
-export default function CasinoChampDrawer({ casinoItems, size }: { casinoItems: any[], size: number }) {
+export function CasinoGeneralDrawer({ casinoItems, size, url, propertyName }: { casinoItems: any[], size: number, url: string, propertyName: string }) {
     const [animChampScope, animateChamp] = useAnimate();
-    const durationTime = randomNumber(0, 10) / 10 + 1;
+    const durationTime = randomNumber(0, 5) / 10 + 0.5;
 
     useEffect(() => {
         animateChamp(animChampScope.current, { y: [0, -size * (casinoItems.length - 1)] }, { duration: durationTime, ease: "easeInOut" });
@@ -16,83 +16,8 @@ export default function CasinoChampDrawer({ casinoItems, size }: { casinoItems: 
     return (
         <Box h={size + "px"} overflow={'hidden'}>
             <VStack spacing={0} w={size + "px"} ref={animChampScope}>{
-                casinoItems.map((rollItem, index) =>
-                    <ImageWithLoading key={rollItem.name} tooltip={rollItem.name} boxSize={size + "px"} src={`${ddragonUrl}/champion/${rollItem.normalizedName}.png`} alt={rollItem.name} />
-                )}
-            </VStack>
-        </Box>
-    )
-}
-
-export function CasinoItemDrawer({ casinoItems, size }: { casinoItems: any[], size: number }) {
-    const [animChampScope, animateChamp] = useAnimate();
-    const durationTime = randomNumber(0, 10) / 10 + 1;
-
-    useEffect(() => {
-        animateChamp(animChampScope.current, { y: [0, -size * (casinoItems.length - 1)] }, { duration: durationTime, ease: "easeInOut" });
-    }, [casinoItems]);
-
-    return (
-        <Box h={size + "px"} overflow={'hidden'}>
-            <VStack spacing={0} w={size + "px"} ref={animChampScope}>{
-                casinoItems.map((rollItem, index) =>
-                    <ImageWithLoading key={rollItem.name} tooltip={rollItem.name} boxSize={size + "px"} src={`${ddragonUrl}/item/${rollItem.id}.png`} alt={rollItem.name} />
-                )}
-            </VStack>
-        </Box>
-    )
-}
-
-export function CasinoSummonerDrawer({ casinoItems, size }: { casinoItems: any[], size: number }) {
-    const [animChampScope, animateChamp] = useAnimate();
-    const durationTime = randomNumber(0, 10) / 10 + 1;
-
-    useEffect(() => {
-        animateChamp(animChampScope.current, { y: [0, -size * (casinoItems.length - 1)] }, { duration: durationTime, ease: "easeInOut" });
-    }, [casinoItems]);
-
-    return (
-        <Box h={size + "px"} overflow={'hidden'}>
-            <VStack spacing={0} w={size + "px"} ref={animChampScope}>{
-                casinoItems.map((rollItem, index) =>
-                    <ImageWithLoading key={index} tooltip={rollItem.name} boxSize={size + "px"} src={`${ddragonUrl}/spell/${rollItem.fullName}.png`} alt={rollItem.name} />
-                )}
-            </VStack>
-        </Box>
-    )
-}
-export function CasinoRuneDrawer({ casinoItems, size }: { casinoItems: any[], size: number }) {
-    const [animChampScope, animateChamp] = useAnimate();
-    const durationTime = randomNumber(0, 10) / 10 + 1;
-
-    useEffect(() => {
-        animateChamp(animChampScope.current, { y: [0, -size * (casinoItems.length - 1)] }, { duration: durationTime, ease: "easeInOut" });
-    }, [casinoItems]);
-
-    return (
-        <Box h={size + "px"} overflow={'hidden'}>
-            <VStack spacing={0} w={size + "px"} ref={animChampScope}>{
-                casinoItems.map((rollItem, index) =>
-                    <ImageWithLoading key={index} tooltip={rollItem.name} boxSize={size + "px"} src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/${rollItem.iconFileName}.png`} alt={rollItem.name} />
-                )}
-            </VStack>
-        </Box>
-    )
-}
-
-export function CasinoKeystoneDrawer({ casinoItems, size }: { casinoItems: any[], size: number }) {
-    const [animChampScope, animateChamp] = useAnimate();
-    const durationTime = randomNumber(0, 10) / 10 + 1;
-
-    useEffect(() => {
-        animateChamp(animChampScope.current, { y: [0, -size * (casinoItems.length - 1)] }, { duration: durationTime, ease: "easeInOut" });
-    }, [casinoItems]);
-
-    return (
-        <Box h={size + "px"} overflow={'hidden'}>
-            <VStack spacing={0} w={size + "px"} ref={animChampScope}>{
-                casinoItems.map((rollItem, index) =>
-                    <ImageWithLoading key={index} tooltip={rollItem.name} boxSize={size + "px"} src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/${rollItem.iconPath}.png`} alt={rollItem.name} />
+                casinoItems.map((rollItem) =>
+                    <ImageWithLoading key={rollItem.name} tooltip={rollItem.name} boxSize={size + "px"} src={url + rollItem[propertyName] + '.png'} alt={rollItem.name} />
                 )}
             </VStack>
         </Box>
@@ -101,7 +26,7 @@ export function CasinoKeystoneDrawer({ casinoItems, size }: { casinoItems: any[]
 
 export function CasinoLaneDrawer({ casinoItems, size }: { casinoItems: any[], size: number }) {
     const [animChampScope, animateChamp] = useAnimate();
-    const durationTime = randomNumber(0, 10) / 10 + 1;
+    const durationTime = randomNumber(0, 5) / 10 + 0.5;
 
     useEffect(() => {
         animateChamp(animChampScope.current, { y: [0, -size * (casinoItems.length - 1)] }, { duration: durationTime, ease: "easeInOut" });
