@@ -77,8 +77,6 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
         lastLane = rolledBuild.lane;
         let build = rollBuild(champions.filter(c => c.selected), options, selectedLanes.filter(l => l.selected).map(l => l.lane).filter(l => l !== Lane.Fill));
 
-        console.log(build);
-
         updateRolledLane(build.lane);
         updateRolledChampion(build.champion);
         updateRolledTag(build.tag);
@@ -104,10 +102,12 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
             tempItems.push(lastItems[i] ? [lastItems[i]] : []);
             tempItems[i].push(...RandomItems(i, 4 - tempItems[i].length, [lastItems[i], build.items[i]]), build.items[i]);
         }
+
         for (let i = 0; i < lastSumSpells.length; i++) {
             tempSummoners.push(lastSumSpells[i] ? [lastSumSpells[i]] : []);
             tempSummoners[i].push(...RandomFrom<SummonerSpell>(4 - tempSummoners[i].length, summonerSpells, [lastSumSpells[i], build.summonerSpells[i]]), build.summonerSpells[i]);
         }
+
         tempStarter.push(...RandomFrom<StarterItem>(4 - tempStarter.length, starterItems, [lastStarter, build.starterItem]), build.starterItem);
         tempRune.push(...RandomFrom<Rune>(4 - tempRune.length, runes, [lastRune, build.rune]), build.rune);
         tempKeystone.push(...RandomFrom<Keystone>(4 - tempKeystone.length, keystones, [lastKeystone, build.keystone]), build.keystone);
@@ -120,6 +120,22 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
         updateCasinoRune(tempRune);
         updateCasinoKeystone(tempKeystone);
         updateCasinoLane(tempLane);
+    }
+
+    function tryRoll() {
+        if (isAbleToRoll()) {
+            roll();
+        }
+    }
+
+    function isAbleToRoll() {
+        if (selectedLanes.length > 0) {
+            return true;
+        }
+        else {
+            alert('Select a lane first!');
+        }
+        return false;
     }
 
     useEffect(() => {
@@ -217,7 +233,7 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
                     {/* <ImageWithLoading tooltip={rolledBuild.lane} boxSize='60px' src={`https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-${laneMappings.get(rolledBuild.lane)}-blue.png`} alt={rolledBuild.lane} /> */}
                 </HStack>
                 <HStack>
-                    <Button w={'75%'} onClick={() => roll()}>Roll Again</Button>
+                    <Button w={'75%'} onClick={() => tryRoll()}>Roll Again</Button>
                     <ShareButton path={getUrlPath()} />
                 </HStack>
             </VStack>
@@ -242,18 +258,6 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
 
         return base64url;
     }
-}
-
-
-function rollLane(selectedSupportChamps: Champion[], selectedLanes: Lane[]) {
-    let availableselectedLanes = selectedSupportChamps.length > 0 ? selectedLanes : selectedLanes.filter(lane => lane !== Lane.Support);
-
-    if (availableselectedLanes.length === 0) {
-        alert('There is no champion for this specific role selected. Don\'t troll too hard!');
-        return;
-    }
-
-    return getRandomElement(availableselectedLanes);
 }
 
 function rollChampion(selectedChampions: Champion[], selectedSupportChamps: Champion[], rolledLane: Lane) {

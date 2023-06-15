@@ -91,7 +91,7 @@ export default function GenerationProvider({ children }: { children: React.React
         lane: null!,
         tag: null!,
         starterItem: {} as StarterItem,
-        summonerSpells: [] as SummonerSpell[],
+        summonerSpells: [null, null] as unknown as SummonerSpell[],
         items: [null, null, null, null, null, null] as unknown as Item[],
         keystone: {} as Keystone,
         rune: {} as Rune
