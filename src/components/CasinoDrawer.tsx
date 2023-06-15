@@ -1,7 +1,7 @@
 'use client';
-import { Box, VStack } from "@chakra-ui/react";
-import { useAnimate } from "framer-motion";
-import { useEffect } from "react";
+import { Box, Heading, Skeleton, VStack } from "@chakra-ui/react";
+import { useAnimate, useMotionValue, useTransform } from "framer-motion";
+import { useEffect, useState } from "react";
 import ImageWithLoading from "./images/ImageWithLoading";
 import { laneMappings } from "./types/Constants";
 
@@ -41,6 +41,27 @@ export function CasinoLaneDrawer({ casinoItems, size }: { casinoItems: any[], si
                 )}
             </VStack>
         </Box>
+    )
+}
+
+export function CasinoNameDrawer({ casinoItems }: { casinoItems: string[] }) {
+    const [text, setText] = useState(casinoItems[0]);
+
+    useEffect(() => {
+        changeText(1);
+    }, [casinoItems]);
+
+    function changeText(index: number) {
+        setTimeout(() => {
+            if (index < casinoItems.length) {
+                setText(casinoItems[index])
+                changeText(index + 1);
+            }
+        }, 100);
+    }
+
+    return (
+        <Heading>{text}</Heading>
     )
 }
 

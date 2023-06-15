@@ -1,5 +1,5 @@
 'use client';
-import { Center, Heading, ListItem, Text, UnorderedList, VStack } from '@chakra-ui/react';
+import { Center, Heading, ListItem, Text, UnorderedList, VStack, useColorModeValue } from '@chakra-ui/react';
 import BugReportModalToggleLink from 'components/links/BugReportModalToggleLink';
 import Link from 'next/link';
 
@@ -28,7 +28,12 @@ export default function Page() {
           Credits 🚀
         </Heading>
         {/* Use ColorMode Values for link colors (light mode) */}
-        <Text>MetaBreaker was made by <Link style={{ color: 'crimson' }} href='https://github.com/alexander1220' target='_blank'>alexander1220</Link>, <Link style={{ color: 'DarkOrange' }} href='https://github.com/satar2332' target='_blank'>satar2332</Link>, <Link style={{ color: 'Yellow' }} href='https://github.com/Erdem-Sevilmis' target='_blank'>Erdem Sevilmis</Link>, <Link style={{ color: 'Chartreuse' }} href='https://github.com/Dyuni0r' target='_blank'>Dyuni0r</Link> and <Link style={{ color: 'Turquoise' }} href='https://github.com/helloplayer1' target='_blank'>helloplayer1</Link>.</Text>
+        <Text>MetaBreaker was made by <Link style={{ color: useColorModeValue('#d9324b', 'crimson') }}
+          href='https://github.com/alexander1220' target='_blank'>alexander1220</Link>, <Link style={{ color: useColorModeValue('#d93296', 'DarkOrange') }}
+            href='https://github.com/satar2332' target='_blank'>satar2332</Link>, <Link style={{ color: useColorModeValue('#bd32d9', 'Yellow') }}
+              href='https://github.com/Erdem-Sevilmis' target='_blank'>Erdem Sevilmis</Link>, <Link style={{ color: useColorModeValue('#5632d9', 'Chartreuse') }}
+                href='https://github.com/Dyuni0r' target='_blank'>Dyuni0r</Link> and <Link style={{ color: useColorModeValue('#32a7d9', 'Turquoise') }}
+                  href='https://github.com/helloplayer1' target='_blank'>helloplayer1</Link>.</Text>
         <Text>We&apos;d like to thank the following resources for their help in creating this project:</Text>
         <UnorderedList>
           <ListItem><Link style={{ color: 'teal' }} href='https://developer.riotgames.com/docs/lol#data-dragon' target='_blank'>Data Dragon</Link></ListItem>

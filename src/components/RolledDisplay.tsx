@@ -23,7 +23,7 @@ import { rollBuild } from "./utils/BuildRoller";
 import { RollingOptions } from "./utils/RollingOptionsReader";
 import SelectableChampion from "./SelectableChampion";
 import { useAnimate } from "framer-motion";
-import { CasinoGeneralDrawer, CasinoLaneDrawer } from "./CasinoDrawer";
+import { CasinoGeneralDrawer, CasinoLaneDrawer, CasinoNameDrawer } from "./CasinoDrawer";
 
 const lanesWithoutFill = Object.values(Lane).filter(l => l !== Lane.Fill);
 const supportTags = [Tag.Mage_Support, Tag.Assassin_Support, Tag.Enchanter_Support, Tag.Tank_Support];
@@ -47,6 +47,7 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
 
     const [lastUsedSeed, updateLastUsedSeed] = useImmer<number>(0);
     const [lastUsedLanes, updateLastUsedLanes] = useImmer<Lane[]>([]);
+    const [casinoChampNames, updateCasinoChampNames] = useImmer<string[]>([]);
     const [casinoChamps, updateCasinoChamps] = useImmer<Champion[]>([]);
     const [casinoItems, updateCasinoItems] = useImmer<Item[][]>([]);
     const [casinoSummoners, updateCasinoSummoners] = useImmer<SummonerSpell[][]>([]);
@@ -55,6 +56,7 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
     const [casinoKeystone, updateCasinoKeystone] = useImmer<Keystone[]>([]);
     const [casinoLane, updateCasinoLane] = useImmer<Lane[]>([]);
 
+    let lastChampName: string;
     let lastChamp: Champion;
     let lastItems: Item[];
     let lastSumSpells: SummonerSpell[];
@@ -69,6 +71,7 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
         }
 
         lastChamp = rolledBuild.champion;
+        lastChampName = `${rolledBuild.champion?.name}, ${rolledBuild.tag}`;
         lastItems = rolledBuild.items;
         lastSumSpells = rolledBuild.summonerSpells;
         lastStarter = rolledBuild.starterItem;
@@ -89,6 +92,7 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
         updateLastUsedLanes(build.lanesForRolling);
         updateLastUsedSeed(build.seed);
 
+        let tempChampName = lastChampName ? [lastChampName] : [];
         let tempCasinoChamps = lastChamp ? [lastChamp] : [];
         let tempItems: Item[][] = [];
         let tempSummoners: SummonerSpell[][] = [];
@@ -97,6 +101,7 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
         let tempKeystone = lastKeystone ? [lastKeystone] : [];
         let tempLane = lastLane ? [lastLane] : [];
 
+        tempChampName.push(...RandomName(4 - tempCasinoChamps.length), `${build.champion?.name}, ${build.tag}`);
         tempCasinoChamps.push(...RandomFrom<Champion>(4 - tempCasinoChamps.length, champions, [lastChamp, build.champion]), build.champion);
         for (let i = 0; i < lastItems.length; i++) {
             tempItems.push(lastItems[i] ? [lastItems[i]] : []);
@@ -113,6 +118,7 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
         tempKeystone.push(...RandomFrom<Keystone>(4 - tempKeystone.length, keystones, [lastKeystone, build.keystone]), build.keystone);
         tempLane.push(...RandomFrom<Lane>(4 - tempLane.length, lanesWithoutFill, [lastLane, build.lane]), build.lane);
 
+        updateCasinoChampNames(tempChampName);
         updateCasinoChamps(tempCasinoChamps);
         updateCasinoItems(tempItems);
         updateCasinoSummoners(tempSummoners);
@@ -123,19 +129,17 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
     }
 
     function tryRoll() {
-        if (isAbleToRoll()) {
-            roll();
-        }
-    }
-
-    function isAbleToRoll() {
-        if (selectedLanes.length > 0) {
-            return true;
-        }
-        else {
+        if (!selectedLanes.some(lane => lane.selected && lane.lane != Lane.Fill)) {
             alert('Select a lane first!');
+            return;
         }
-        return false;
+
+        if (!champions.some(c => c.selected)) {
+            alert('Select a champion first!');
+            return;
+        }
+
+        roll();
     }
 
     useEffect(() => {
@@ -169,6 +173,16 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
         return res;
     }
 
+    function RandomName(amount: number) {
+        let res: string[] = [];
+        while (res.length < amount) {
+            var randChamp = Math.floor(Math.random() * champions.length);
+            var randTag = Math.floor(Math.random() * Object.keys(Tag).length);
+            res.push(`${champions[randChamp].name}, ${Object.values(Tag)[randTag]}`);
+        }
+        return res;
+    }
+
     function RandomItems(index: number, amount: number, exclude?: Item[]) {
         let res: Item[] = [];
         let itemPool = legendaryItems;
@@ -192,9 +206,10 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
 
             </HStack>
             <VStack align={'left'} w={'100%'} mt={'10'} spacing={4}>
-                <Skeleton isLoaded={rolledBuild.champion !== null}>
+                <CasinoNameDrawer casinoItems={casinoChampNames} />
+                {/* <Skeleton isLoaded={rolledBuild.champion !== null}>
                     <Heading>{rolledBuild.champion?.name}, {rolledBuild.tag}</Heading>
-                </Skeleton>
+                </Skeleton> */}
                 <HStack spacing={6}>
                     <CasinoGeneralDrawer casinoItems={casinoChamps} size={128} url={`${ddragonUrl}/champion/`} propertyName="normalizedName" />
                     {/*<ImageWithLoading tooltip={rolledBuild.champion?.name} boxSize='128px' src={`${ddragonUrl}/champion/${rolledBuild.champion?.normalizedName}.png`} alt={rolledBuild.champion?.name} />*/}
