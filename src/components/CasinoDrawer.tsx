@@ -6,12 +6,12 @@ import ImageWithLoading from "./images/ImageWithLoading";
 import { laneMappings } from "./types/Constants";
 
 export function CasinoGeneralDrawer({ casinoItems, size, url, propertyName }: { casinoItems: any[], size: number, url: string, propertyName: string }) {
-    const [animationScope, animate] = useAnimate();
-    const durationTime = randomNumber(0, 5) / 10 + 0.5;
+    // const [animationScope, animate] = useAnimate();
+    // const durationTime = randomNumber(0, 5) / 10 + 0.5;
 
-    useEffect(() => {
-        animate(animationScope.current, { y: [0, -size * (casinoItems.length - 1)] }, { duration: durationTime, ease: "easeInOut" });
-    }, [casinoItems]);
+    // useEffect(() => {
+    //     animate(animationScope.current, { y: [0, -size * (casinoItems.length - 1)] }, { duration: durationTime, ease: "easeInOut" });
+    // }, [casinoItems]);
 
     return (
         <Box h={size + "px"} overflow={'hidden'}>
@@ -26,12 +26,12 @@ export function CasinoGeneralDrawer({ casinoItems, size, url, propertyName }: { 
 }
 
 export function CasinoLaneDrawer({ casinoItems, size }: { casinoItems: any[], size: number }) {
-    const [animationScope, animate] = useAnimate();
-    const durationTime = randomNumber(0, 5) / 10 + 0.5;
+    // const [animationScope, animate] = useAnimate();
+    // const durationTime = randomNumber(0, 5) / 10 + 0.5;
 
-    useEffect(() => {
-        animate(animationScope.current, { y: [0, -size * (casinoItems.length - 1)] }, { duration: durationTime, ease: "easeInOut" });
-    }, [casinoItems]);
+    // useEffect(() => {
+    //     animate(animationScope.current, { y: [0, -size * (casinoItems.length - 1)] }, { duration: durationTime, ease: "easeInOut" });
+    // }, [casinoItems]);
 
     return (
         <Box h={size + "px"} overflow={'hidden'}>
