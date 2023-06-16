@@ -101,7 +101,7 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
         let tempKeystone = lastKeystone ? [lastKeystone] : [];
         let tempLane = lastLane ? [lastLane] : [];
 
-        tempChampName.push(...RandomName(4 - tempCasinoChamps.length), `${build.champion?.name}, ${build.tag}`);
+        tempChampName.push(...RandomName(6 - tempCasinoChamps.length), `${build.champion?.name}, ${build.tag}`);
         tempCasinoChamps.push(...RandomFrom<Champion>(4 - tempCasinoChamps.length, champions, [lastChamp, build.champion]), build.champion);
         for (let i = 0; i < lastItems.length; i++) {
             tempItems.push(lastItems[i] ? [lastItems[i]] : []);

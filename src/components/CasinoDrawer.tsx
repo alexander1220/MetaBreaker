@@ -57,7 +57,7 @@ export function CasinoNameDrawer({ casinoItems }: { casinoItems: string[] }) {
                 setText(casinoItems[index])
                 changeText(index + 1);
             }
-        }, 100);
+        }, index * (index / 1.4) * 10);
     }
 
     return (
