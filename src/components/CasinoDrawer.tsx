@@ -1,6 +1,6 @@
 'use client';
-import { Box, Heading, Skeleton, VStack } from "@chakra-ui/react";
-import { useAnimate, useMotionValue, useTransform } from "framer-motion";
+import { Box, Heading, VStack } from "@chakra-ui/react";
+import { useAnimate } from "framer-motion";
 import { useEffect, useState } from "react";
 import ImageWithLoading from "./images/ImageWithLoading";
 import { laneMappings } from "./types/Constants";
@@ -15,12 +15,12 @@ export function CasinoGeneralDrawer({ casinoItems, size, url, propertyName }: { 
 
     return (
         <Box h={size + "px"} overflow={'hidden'}>
-            <VStack spacing={0} w={size + "px"} ref={animationScope}>{
+            {/* <VStack spacing={0} w={size + "px"} ref={animationScope}>{
                 casinoItems.map((rollItem, index) =>
                     //is the key really correct? {rollItem.name} seems to be slower thatn {index} (they cant be reused anyway because there are no duplicates in each roll no?) 
                     <ImageWithLoading key={index} tooltip={rollItem.name} boxSize={size + "px"} src={url + rollItem[propertyName] + '.png'} alt={rollItem.name} />
                 )}
-            </VStack>
+            </VStack> */}
         </Box>
     )
 }
@@ -35,11 +35,11 @@ export function CasinoLaneDrawer({ casinoItems, size }: { casinoItems: any[], si
 
     return (
         <Box h={size + "px"} overflow={'hidden'}>
-            <VStack spacing={0} w={size + "px"} ref={animationScope}>{
+            {/* <VStack spacing={0} w={size + "px"} ref={animationScope}>{
                 casinoItems.map((rollItem, index) =>
                     <ImageWithLoading key={index} tooltip={rollItem} boxSize={size + "px"} src={`https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-${laneMappings.get(rollItem)}-blue.png`} alt={rollItem} />
                 )}
-            </VStack>
+            </VStack> */}
         </Box>
     )
 }
