@@ -4,6 +4,7 @@ import BugReportModalToggleLink from 'components/links/BugReportModalToggleLink'
 import Link from 'next/link';
 
 export default function Page() {
+
   return (
     <Center p={'50px'}>
       <VStack spacing={4} align={'left'} maxWidth={'4xl'}>
@@ -27,7 +28,6 @@ export default function Page() {
         <Heading as={'h2'} id='credits-🚀'>
           Credits 🚀
         </Heading>
-        {/* Use ColorMode Values for link colors (light mode) */}
         <Text>MetaBreaker was made by <Link style={{ color: useColorModeValue('#d9324b', 'crimson') }}
           href='https://github.com/alexander1220' target='_blank'>alexander1220</Link>, <Link style={{ color: useColorModeValue('#d93296', 'DarkOrange') }}
             href='https://github.com/satar2332' target='_blank'>satar2332</Link>, <Link style={{ color: useColorModeValue('#bd32d9', 'Yellow') }}
