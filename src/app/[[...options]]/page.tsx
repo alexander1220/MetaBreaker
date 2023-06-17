@@ -44,9 +44,9 @@ export default function Page({ params }: { params: any }) {
 
   return (
     <CenterStackWrapper>
-      <RolledDisplay rollingOptions={rollingOptions} />
+      {/* <RolledDisplay rollingOptions={rollingOptions} />
       <RollSwitches />
-      <ChampDrawer />
+      <ChampDrawer /> */}
     </CenterStackWrapper>
   )
 }
