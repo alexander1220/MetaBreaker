@@ -219,8 +219,8 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
                             {/*<ImageWithLoading tooltip={rolledBuild.starterItem.name} boxSize='60px' src={`${ddragonUrl}/item/${rolledBuild.starterItem.id}.png`} alt={rolledBuild.starterItem.name} />*/}
                         </Flex>
                         <SimpleGrid columns={{ base: 3, md: 6 }} spacing={2}>
-                            {casinoItems.map((items) =>
-                                <CasinoGeneralDrawer casinoItems={items} size={60} url={`${ddragonUrl}/item/`} propertyName="id" />
+                            {casinoItems.map((items, index) =>
+                                <CasinoGeneralDrawer key={index} casinoItems={items} size={60} url={`${ddragonUrl}/item/`} propertyName="id" />
                             )}
                             {/*rolledBuild.items.map((item, index) => {
                                 return (
@@ -230,8 +230,8 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
                         </SimpleGrid>
                     </VStack>
                     <VStack align={'right'}>
-                        {casinoSummoners.map((sums) =>
-                            <CasinoGeneralDrawer casinoItems={sums} size={60} url={`${ddragonUrl}/spell/`} propertyName="fullName" />
+                        {casinoSummoners.map((sums, index) =>
+                            <CasinoGeneralDrawer key={index} casinoItems={sums} size={60} url={`${ddragonUrl}/spell/`} propertyName="fullName" />
                         )}
                         {/* 
                         <ImageWithLoading tooltip={rolledBuild.summonerSpells[1]?.name} boxSize='60px' src={`${ddragonUrl}/spell/${rolledBuild.summonerSpells[1]?.fullName}.png`} alt={rolledBuild.summonerSpells[1]?.name} />
