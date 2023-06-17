@@ -199,7 +199,7 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
 
         return res;
     }
-
+    //implement non-animaiton (performace) and mobile (non anim.?+smaller images) mode
     return (
         <>
             <HStack>
