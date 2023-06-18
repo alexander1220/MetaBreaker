@@ -44,7 +44,7 @@ export function CasinoLaneDrawer({ casinoItems, size }: { casinoItems: any[], si
     )
 }
 
-export function CasinoNameDrawer({ casinoItems }: { casinoItems: string[] }) {
+export function CasinoNameDrawer({ casinoItems, size }: { casinoItems: string[], size?: string }) {
     const [text, setText] = useState(casinoItems[0]);
 
     useEffect(() => {
@@ -61,7 +61,7 @@ export function CasinoNameDrawer({ casinoItems }: { casinoItems: string[] }) {
     }
 
     return (
-        <Heading>{text}</Heading>
+        <Heading size={size ?? "xl"}>{text}</Heading>
     )
 }
 

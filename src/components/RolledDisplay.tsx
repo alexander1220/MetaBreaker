@@ -199,13 +199,42 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
 
         return res;
     }
+
+    const MobilePage = function () {
+        return (
+            <VStack display={{ md: 'none' }} align={'left'} w={'100%'} mt={'10'} spacing={10}>
+                <CasinoNameDrawer size="lg" casinoItems={casinoChampNames} />
+                <HStack>
+                    <CasinoGeneralDrawer casinoItems={casinoChamps} size={100} url={`${ddragonUrl}/champion/`} propertyName="normalizedName" />
+                    <VStack align={'right'}>
+                        {casinoSummoners.map((sums, index) =>
+                            <CasinoGeneralDrawer key={index} casinoItems={sums} size={45} url={`${ddragonUrl}/spell/`} propertyName="fullName" />
+                        )}
+                    </VStack>
+                    <VStack align={'center'}>
+                        <CasinoGeneralDrawer casinoItems={casinoKeystone} size={60} url={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/`} propertyName="iconPath" />
+                        <CasinoGeneralDrawer casinoItems={casinoRune} size={30} url={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/`} propertyName="iconFileName" />
+                    </VStack>
+                    <CasinoLaneDrawer casinoItems={casinoLane} size={60} />
+                </HStack>
+                <CasinoGeneralDrawer casinoItems={casinoStarter} size={60} url={`${ddragonUrl}/item/`} propertyName="id" />
+                <SimpleGrid columns={{ base: 6 }} spacing={2}>
+                    {casinoItems.map((items, index) =>
+                        <CasinoGeneralDrawer key={index} casinoItems={items} size={50} url={`${ddragonUrl}/item/`} propertyName="id" />
+                    )}
+                </SimpleGrid>
+                <HStack>
+                    <Button w={'75%'} onClick={() => tryRoll()}>Roll Again</Button>
+                    <ShareButton path={getUrlPath()} />
+                </HStack>
+            </VStack>
+        );
+    }
     //implement non-animaiton (performace) and mobile (non anim.?+smaller images) mode
     return (
         <>
-            <HStack>
-
-            </HStack>
-            <VStack align={'left'} w={'100%'} mt={'10'} spacing={4}>
+            <MobilePage />
+            <VStack display={{ base: 'none', md: 'flex' }} align={'left'} w={'100%'} mt={'10'} spacing={4}>
                 <CasinoNameDrawer casinoItems={casinoChampNames} />
                 {/* <Skeleton isLoaded={rolledBuild.champion !== null}>
                     <Heading>{rolledBuild.champion?.name}, {rolledBuild.tag}</Heading>
