@@ -3,8 +3,6 @@ import './global.css';
 import HTMLBody from '../components/HtmlBody';
 import Navbar from '../components/navbar';
 import Providers from '../components/providers/Providers';
-import RulesModal from '../components/modals/RulesModal';
-import BugReportModal from '../components/modals/BugReportModal';
 import { StrictMode } from 'react';
 import UiWrapper from 'components/UIWrapper';
 
@@ -35,8 +33,6 @@ export default function RootLayout({
           <UiWrapper>
             <Navbar />
             {children}
-            <RulesModal />
-            <BugReportModal />
           </UiWrapper>
         </HTMLBody>
       </Providers>
