@@ -202,9 +202,9 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
 
     const MobilePage = function () {
         return (
-            <VStack display={{ md: 'none' }} align={'left'} w={'100%'} mt={'10'} spacing={10}>
+            <VStack display={{ md: 'none' }} align={'left'} w={'100%'} mt={'10'} spacing={4}>
                 <CasinoNameDrawer size="lg" casinoItems={casinoChampNames} />
-                <HStack>
+                <HStack my={4}>
                     <CasinoGeneralDrawer casinoItems={casinoChamps} size={100} url={`${ddragonUrl}/champion/`} propertyName="normalizedName" />
                     <VStack align={'right'}>
                         {casinoSummoners.map((sums, index) =>
@@ -218,13 +218,13 @@ export default function RolledDisplay({ rollingOptions }: { rollingOptions?: Rol
                     <CasinoLaneDrawer casinoItems={casinoLane} size={60} />
                 </HStack>
                 <CasinoGeneralDrawer casinoItems={casinoStarter} size={60} url={`${ddragonUrl}/item/`} propertyName="id" />
-                <SimpleGrid columns={{ base: 6 }} spacing={2}>
+                <SimpleGrid my={4} columns={{ base: 6 }} spacing={2}>
                     {casinoItems.map((items, index) =>
                         <CasinoGeneralDrawer key={index} casinoItems={items} size={50} url={`${ddragonUrl}/item/`} propertyName="id" />
                     )}
                 </SimpleGrid>
-                <HStack>
-                    <Button w={'75%'} onClick={() => tryRoll()}>Roll Again</Button>
+                <HStack w={'100%'}>
+                    <Button w={'100%'} onClick={() => tryRoll()}>Roll Again</Button>
                     <ShareButton path={getUrlPath()} />
                 </HStack>
             </VStack>

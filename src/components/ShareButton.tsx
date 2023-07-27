@@ -20,9 +20,9 @@ export default function ShareButton({ path }: { path: string }) {
     const tweetText = 'Hey! Check out this crazy build i generated using metabreaker.gg: ' + buildLink;
     const finalTweet = tweetText.replace(' ', '%20');
     return (
-        <HStack w={'25%'}>
+        <HStack>
             <CopyToClipboard text={buildLink}>
-                <Button id='shareBtn' w={'100%'} _focus={{ bg: '#48BB78' }} onClick={() => CopiedTextButton()}>{buttonText}</Button>
+                <Button id='shareBtn' w={{ base: '100px', md: '150px' }} _focus={{ bg: '#48BB78' }} onClick={() => CopiedTextButton()}>{buttonText}</Button>
             </CopyToClipboard>
             <IconButton
                 as={'a'}
@@ -32,6 +32,6 @@ export default function ShareButton({ path }: { path: string }) {
                 aria-label='Tweet Button'
                 icon={<BsTwitter />}
             />
-        </HStack>
+        </HStack >
     );
 }

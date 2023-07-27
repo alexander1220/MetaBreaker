@@ -1,6 +1,6 @@
 'use client';
 
-import { ChakraProvider, extendTheme } from '@chakra-ui/react'
+import { ChakraProvider, ColorModeScript, ThemeConfig, extendTheme } from '@chakra-ui/react'
 import '@fontsource/rubik/400.css'
 import '@fontsource/roboto/400.css'
 
@@ -16,6 +16,7 @@ export default function UiWrapper({
                 body: `'Roboto', sans-serif`
             }
         })}>
+            <ColorModeScript initialColorMode="dark" />
             {children}
         </ChakraProvider>
     )

@@ -12,8 +12,14 @@ export default function ChampDrawer() {
         <>
             <HStack w={'100%'}>
                 <Input placeholder='Filter for champions ...' w={'100%'} onChange={(event) => { updateSearchValue(event.target.value) }} />
-                <Button onClick={selectAll}>Select All</Button>
-                <Button onClick={deselectAll}>Deselect All</Button>
+                <HStack display={{ base: 'none', md: 'inline-flex' }}>
+                    <Button onClick={selectAll}>Select All</Button>
+                    <Button onClick={deselectAll}>Deselect All</Button>
+                </HStack>
+            </HStack>
+            <HStack w={'100%'} display={{ base: 'inline-flex', md: 'none' }}>
+                <Button w={'100%'} onClick={selectAll}>Select All</Button>
+                <Button w={'100%'} onClick={deselectAll}>Deselect All</Button>
             </HStack>
             <ChampGrid searchString={searchValue} />
         </>
