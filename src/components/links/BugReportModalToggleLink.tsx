@@ -65,6 +65,7 @@ export default function BugReportModalToggleLink({ children }: { children: React
                 })
             });
             onClose();
+            setTextBoxValue("");
             setSentReport(false);
         }
     }

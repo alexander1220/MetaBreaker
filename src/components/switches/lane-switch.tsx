@@ -3,7 +3,7 @@
 import { GenerationContext } from "components/providers/GenerationProviderReducer";
 import { useContext } from "react";
 import { Lane } from "../types/enums/Lane";
-import { Checkbox, CheckboxGroup, Image, Tooltip } from '@chakra-ui/react'
+import { Image, Tooltip } from '@chakra-ui/react'
 
 const laneMappings = new Map([
     [Lane.Top, "top"],
