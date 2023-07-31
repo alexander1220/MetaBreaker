@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { ChampionSelectionContext } from "./providers/ChampionSelectionProvider";
 import { Champion } from "./types/Champions";
 import { Image, Tooltip } from "@chakra-ui/react";
+import { ddragonUrl } from "./types/Constants";
 
 export default function SelectableChampion({ champ, selected }: { champ: Champion, selected: boolean }) {
     let { champions, toggleChampionSelection } = useContext(ChampionSelectionContext);
@@ -20,7 +21,7 @@ export default function SelectableChampion({ champ, selected }: { champ: Champio
                 className={selected ? 'selectedChamp' : 'deselectedChamp'}
                 boxSize='100px'
                 draggable={false}
-                src={`https://ddragon.leagueoflegends.com/cdn/13.11.1/img/champion/${champ.normalizedName}.png`}
+                src={`${ddragonUrl}/champion/${champ.normalizedName}.png`}
                 onClick={toggleSelected}
             />
         </Tooltip>

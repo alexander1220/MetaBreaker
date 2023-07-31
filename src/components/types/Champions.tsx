@@ -7,7 +7,7 @@ export interface Champion {
     tags: Tag[];
     type: LeagueType;
 }
-
+//newest, milio 162
 export const champions: Champion[] = [
     {
         id: 0,
@@ -1049,6 +1049,20 @@ export const champions: Champion[] = [
             Tag.Bulk_Mage,
             Tag.Tank,
             Tag.Tank_Support
+        ]
+    },
+    {
+        id: 163,
+        name: "Naafiri",
+        normalizedName: "Naafiri",
+        type: LeagueType.Champion,
+        tags: [
+            Tag.AD_Assassin,
+            Tag.Assassin_Support,
+            Tag.Fighter,
+            Tag.Marksman,
+            Tag.Tank_Support,
+            Tag.OnHit
         ]
     },
     {

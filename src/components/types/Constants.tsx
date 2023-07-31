@@ -1,6 +1,6 @@
 import { Lane } from "./enums/Lane";
 
-const ddragonVersion = '13.11.1';
+const ddragonVersion = '13.14.1';
 export const ddragonUrl = `https://ddragon.leagueoflegends.com/cdn/${ddragonVersion}/img`;
 
 export const laneMappings = new Map([

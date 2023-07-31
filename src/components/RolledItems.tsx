@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Item } from "./types/Item";
 import { TooltipPlacement } from "./types/enums/TooltipPlacement";
 import { HighlightType } from "./types/enums/HighlightType";
+import { ddragonUrl } from "./types/Constants";
 export default function RolledItems({ items: rolledItems }: { items: Item[] }) {
     return (
         <>
@@ -11,7 +12,7 @@ export default function RolledItems({ items: rolledItems }: { items: Item[] }) {
                     display: "inline-block",
                     margin: 1.5
                 }} data-tooltip={item.name} data-placement={TooltipPlacement.Bottom}>
-                    <Image alt={item.name} height={67.2} width={67.2} src={`https://ddragon.leagueoflegends.com/cdn/13.11.1/img/item/${item.id}.png`}
+                    <Image alt={item.name} height={67.2} width={67.2} src={`${ddragonUrl}/item/${item.id}.png`}
                         style={{
                             border: 2, borderStyle: "solid", borderRadius: 5, borderColor: (() => {
                                 switch (index) {
