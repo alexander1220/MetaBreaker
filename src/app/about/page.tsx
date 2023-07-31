@@ -11,7 +11,7 @@ export default function Page() {
         <Heading as={'h1'} id='metabreaker'>
           MetaBreaker 🎲
         </Heading>
-        <Text>MetaBreaker is a League of Legends item build generator that helps you create off-meta builds for every champion. This web application is made by five people as a fun project, and more updates are on the way.</Text>
+        <Text>MetaBreaker (v1.1) is a League of Legends item build generator that helps you create off-meta builds for every champion. This web application is made by five people as a fun project, and more updates are on the way.</Text>
         <Heading as={'h2'} id='usage-🕹️'>
           Usage 🕹️
         </Heading>
