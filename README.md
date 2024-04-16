@@ -1,38 +1,25 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# MetaBreaker 🎲
 
-## Getting Started
+MetaBreaker (v1.1) is a League of Legends item build generator that helps you create off-meta builds for every champion. This web application is made by five people as a fun project, and more updates are on the way.
 
-First, run the development server:
+## Usage 🕹️
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+To use MetaBreaker, simply head to  [home](https://metabreaker.vercel.app/)  and select a champion. MetaBreaker will generate a random off-meta item build for that champion. You can press 'Roll Again' to generate a new build.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Development 👨‍💻
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This web application is built using Next.js and Chakra UI. It also utilizes the Riot Games Data Dragon to gather data about champions and items.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Found a bug 🐞 or have a suggestion?
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+If you have something to share, please use our bug reporter and create a  [bug ticket](https://metabreaker.vercel.app/about)  on the site.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Credits 🚀
 
-## Learn More
+MetaBreaker was made by  [alexander1220](https://github.com/alexander1220),  [satar2332](https://github.com/satar2332),  [Erdem Sevilmis](https://github.com/Erdem-Sevilmis),  [Dyuni0r](https://github.com/Dyuni0r)  and  [helloplayer1](https://github.com/helloplayer1).
 
-To learn more about Next.js, take a look at the following resources:
+We'd like to thank the following resources for their help in creating this project:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+-   [Data Dragon](https://developer.riotgames.com/docs/lol#data-dragon)
+-   [CommunityDragon](https://www.communitydragon.org/)
+-   [League of Legends Wiki](https://leagueoflegends.fandom.com/wiki/League_of_Legends_Wiki)
