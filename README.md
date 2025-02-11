@@ -4,7 +4,7 @@ MetaBreaker (v1.1) is a League of Legends item build generator that helps you cr
 
 ## Usage 🕹️
 
-To use MetaBreaker, simply head to  [home](https://metabreaker.vercel.app/)  and select a champion. MetaBreaker will generate a random off-meta item build for that champion. You can press 'Roll Again' to generate a new build.
+To use MetaBreaker, simply head to  [home](https://metabreaker.vercel.app/)  (currently the website is not online) and select a champion. MetaBreaker will generate a random off-meta item build for that champion. You can press 'Roll Again' to generate a new build.
 
 ## Development 👨‍💻
 
